@@ -1,33 +1,80 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import { AiFillAppstore } from "react-icons/ai";
+import { AiOutlineAppstore } from "react-icons/ai";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { AiOutlineDollar } from "react-icons/ai";
+import { AiFillDollarCircle } from "react-icons/ai";
 
-import LOGO from '@/img/logo.png';
 
+import LOGO from "@/img/logo.png";
 
 import styles from "../styles/Nav.module.scss";
-const iconstyle = { fontSize: "2em", paddingRight: "10%", paddingLeft: "7%" }
+const iconstyle = { fontSize: "1.5em", paddingRight: "10%", paddingLeft: "7%" };
 
 const Nav = () => {
-    return(
-        <div className={styles.container}>
-			<Image src={LOGO} className={styles.logostyle} alt={'logo'} />
-            <ul className={styles.listconatiner}>
-                <li className={styles.select}>
-                    <div className={styles.innerconaainer}><AiFillAppstore style={iconstyle} /><span className={styles.innertext}>대시보드</span></div>
-                </li>
-                <li className={styles.nonselect}><div><HiOutlineUsers style={iconstyle}/><span className={styles.innertext}>대시보드</span></div></li>
-                <li className={styles.nonselect}><div><HiOutlineUsers style={iconstyle}/><span className={styles.innertext}>대시보드</span></div></li>
-                <li className={styles.nonselect}><div><HiOutlineUsers style={iconstyle}/><span className={styles.innertext}>대시보드</span></div></li>
-                <li className={styles.nonselect}><div><AiOutlineDollar style={iconstyle}/><span className={styles.innertext}>대시보드</span></div></li>
-                <li className={styles.nonselect}><div><AiOutlineDollar style={iconstyle}/><span className={styles.innertext}>대시보드</span></div></li>
-            </ul>
-        </div>
-    )
-}
+  const pathname = usePathname();
 
-export default Nav; 
+  return (
+    <div className={styles.container}>
+      <Image src={LOGO} className={styles.logostyle} alt={"logo"} />
+      <ul className={styles.listconatiner}>
+        <Link href="/">
+          <li className={pathname === "/" ? styles.select : styles.nonselect}>
+            <div className={styles.innerconaainer}>
+                {pathname === "/" ? (<AiFillAppstore style={iconstyle} />) : (<AiOutlineAppstore style={iconstyle} />)}
+                <span className={styles.innertext}>대시보드</span>
+            </div>
+          </li>
+        </Link>
+        <Link href="/search">
+          <li className={styles.nonselect}>
+            <div className={styles.innerconaainer}>
+              <HiOutlineUsers style={iconstyle} />
+              <span className={styles.innertext}>고객 정보 검색</span>
+            </div>
+          </li>
+        </Link>
+        <Link href="/create">
+          <li className={styles.nonselect}>
+            <div className={styles.innerconaainer}>
+              <HiOutlineUsers style={iconstyle} />
+              <span className={styles.innertext}>고객 정보 입력</span>
+            </div>
+          </li>
+        </Link>
+        <Link href="/modify">
+          <li className={styles.nonselect}>
+            <div className={styles.innerconaainer}>
+              <HiOutlineUsers style={iconstyle} />
+              <span className={styles.innertext}>고객 정보 수정</span>
+            </div>
+          </li>
+        </Link>
+        <Link href="/inputmoney">
+        <li className={pathname === "/inputmoney" ? styles.select : styles.nonselect}>
+            <div className={styles.innerconaainer}>
+            {pathname === "/inputmoney" ? (<AiFillDollarCircle style={iconstyle} />) : (<AiOutlineDollar style={iconstyle} />)}
+                <span className={styles.innertext}>납입금 관리</span>
+            </div>
+          </li>
+        </Link>
+        <Link href="/control">
+          <li className={pathname === "/control" ? styles.select : styles.nonselect}>
+            <div className={styles.innerconaainer}>
+                {pathname === "/control" ? (<AiFillDollarCircle style={iconstyle} />) : (<AiOutlineDollar style={iconstyle} />)}
+                <span className={styles.innertext}>차수 관리</span>
+            </div>
+          </li>
+        </Link>
+      </ul>
+    </div>
+  );
+};
+
+export default Nav;
