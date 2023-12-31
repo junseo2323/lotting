@@ -1,9 +1,9 @@
 import Test from "@/components/Test"
 
-export default function Home() {
+export default function Testpage() {
   return (
       <>
-        <h1>hello world</h1>
+        <h1>thisistestpage</h1>
         <Test></Test>
       </>
     )
