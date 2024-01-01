@@ -20,6 +20,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
+    "react-error-overlay": "^6.0.9",
     "sass": "^1.69.6",
     "tailwindcss": "^3.3.0"
   }
