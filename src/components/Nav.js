@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { AiFillAppstore } from "react-icons/ai";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { HiOutlineUsers } from "react-icons/hi2";
+import { HiUsers } from "react-icons/hi";
 import { AiOutlineDollar } from "react-icons/ai";
 import { AiFillDollarCircle } from "react-icons/ai";
 
@@ -33,25 +34,25 @@ const Nav = () => {
           </li>
         </Link>
         <Link href="/search">
-          <li className={styles.nonselect}>
+          <li className={pathname === "/search" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-              <HiOutlineUsers style={iconstyle} />
+              {pathname === "/search" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
               <span className={styles.innertext}>고객 정보 검색</span>
             </div>
           </li>
         </Link>
         <Link href="/create">
-          <li className={styles.nonselect}>
+          <li className={pathname === "/create" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-              <HiOutlineUsers style={iconstyle} />
+              {pathname === "/create" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
               <span className={styles.innertext}>고객 정보 입력</span>
             </div>
           </li>
         </Link>
         <Link href="/modify">
-          <li className={styles.nonselect}>
+          <li className={pathname === "/modify" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-              <HiOutlineUsers style={iconstyle} />
+              {pathname === "/modify" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
               <span className={styles.innertext}>고객 정보 수정</span>
             </div>
           </li>
