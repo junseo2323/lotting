@@ -1,5 +1,7 @@
+
 import Nav from '@/components/Nav'
 import './globals.css'
+import Header from '@/components/Header'
 
 export const metadata = {
   title: 'LOTTING',
@@ -8,9 +10,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <>
-      <Nav />
-      <main>{children}</main>
-    </>
+    <html>
+      <body>
+        <Nav />
+        <Header />
+        <main>{children}</main>
+      </body>
+    </html>
   )
 }
