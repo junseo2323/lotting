@@ -7,6 +7,7 @@ body{
     margin: 0;
 }
 
+
 ul, li{
     text-decoration: none;
     list-style: none;
@@ -14,3 +15,16 @@ ul, li{
     padding: 0;
 }
 
+input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+input[type="button"]{
+    background: inherit; 
+    box-shadow:none; 
+    cursor:pointer;
+}
