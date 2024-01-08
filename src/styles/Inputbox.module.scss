@@ -1,0 +1,78 @@
+.inputcontainer {
+    border-radius: 10px;
+    border: 1px solid rgba(162, 161, 168, 0.20);
+    display: flex;
+    height: 30px;   
+    width: 1fr;
+    padding: 10px 20px 10px 16px;
+    float: left;
+}
+
+.Longinputcontainer {
+    border-radius: 10px;
+    border: 1px solid rgba(162, 161, 168, 0.20);
+    display: flex;
+    height: 30px;   
+    width: 100%;
+    padding: 10px 20px 10px 16px;
+    margin-right: 100px;
+    float: left;
+    grid-column: span 2;
+}
+
+.Dropinputcontainer {
+    border-radius: 10px;
+    border: 1px solid rgba(162, 161, 168, 0.20);
+    display: flex;
+    height: 50px;   
+    width: 100%;
+    padding: 10px 20px 10px 16px;
+    margin-right: 100px;
+    float: left;
+}
+
+
+
+.Fileinputcontainer{
+    grid-row: span 2;
+    width: 1fr;
+    height: 133px;
+    border: 1px dashed  #7152F3;
+    border-radius: 10px;
+}   
+
+.filetext{
+    text-align: center;
+    font-family: Lexend;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% */
+    color: #000;
+}
+
+.texthighlight{
+    color: #7152F3;
+}
+
+.filetypetext{
+    font-family: Lexend;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 16px; /* 145.455% */
+    color: #A2A1A8;
+    text-align: center;
+
+}
+
+.postcontainer {
+    border-radius: 10px;
+    border: 1px solid rgba(162, 161, 168, 0.20);
+    display: flex;
+    height: 50px;   
+    width: 100%;
+    padding: 10px 20px 10px 16px;
+    margin-right: 100px;
+    float: left;
+}
