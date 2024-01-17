@@ -20,31 +20,32 @@ const iconstyle = { fontSize: "1.5em", paddingRight: "10%", paddingLeft: "7%" };
 
 const Nav = () => {
   const pathname = usePathname();
+  const splitpath = pathname.split('/');
 
   return (
     <div className={styles.container}>
       <Image src={LOGO} className={styles.logostyle} alt={"logo"} />
       <ul className={styles.listconatiner}>
         <Link href="/">
-          <li className={pathname === "/" ? styles.select : styles.nonselect}>
+          <li className={splitpath[1] === "" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-                {pathname === "/" ? (<AiFillAppstore style={iconstyle} />) : (<AiOutlineAppstore style={iconstyle} />)}
+                {splitpath[1] === "" ? (<AiFillAppstore style={iconstyle} />) : (<AiOutlineAppstore style={iconstyle} />)}
                 <span className={styles.innertext}>대시보드</span>
             </div>
           </li>
         </Link>
         <Link href="/search">
-          <li className={pathname === "/search" ? styles.select : styles.nonselect}>
+          <li className={splitpath[1] === "search" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-              {pathname === "/search" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
+              {splitpath[1] === "search" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
               <span className={styles.innertext}>고객 정보 검색</span>
             </div>
           </li>
         </Link>
         <Link href="/create">
-          <li className={pathname === "/create" ? styles.select : styles.nonselect}>
+          <li className={splitpath[1] === "create" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-              {pathname === "/create" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
+              {splitpath[1] === "create" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
               <span className={styles.innertext}>고객 정보 입력</span>
             </div>
           </li>
@@ -58,17 +59,17 @@ const Nav = () => {
           </li>
         </Link>
         <Link href="/inputmoney">
-        <li className={pathname === "/inputmoney" ? styles.select : styles.nonselect}>
+        <li className={splitpath[1] === "inputmoney" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-            {pathname === "/inputmoney" ? (<AiFillDollarCircle style={iconstyle} />) : (<AiOutlineDollar style={iconstyle} />)}
+            {splitpath[1] === "inputmoney" ? (<AiFillDollarCircle style={iconstyle} />) : (<AiOutlineDollar style={iconstyle} />)}
                 <span className={styles.innertext}>납입금 관리</span>
             </div>
           </li>
         </Link>
         <Link href="/control">
-          <li className={pathname === "/control" ? styles.select : styles.nonselect}>
+          <li className={splitpath[1] === "control" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-                {pathname === "/control" ? (<AiFillDollarCircle style={iconstyle} />) : (<AiOutlineDollar style={iconstyle} />)}
+                {splitpath[1] === "control" ? (<AiFillDollarCircle style={iconstyle} />) : (<AiOutlineDollar style={iconstyle} />)}
                 <span className={styles.innertext}>차수 관리</span>
             </div>
           </li>

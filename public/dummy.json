@@ -1,0 +1,98 @@
+{
+    "id": 1,
+    "typeid": 1,
+    "classification": 1,
+    "type": "84A",
+    "group": "사",
+    "turn": 1,
+    "tempinfo": "84A-사-1",
+    "order": {
+      "1차": {
+        "findate": null,
+        "price": null,
+        "price2": null,
+        "discountprice": null,
+        "deleteprice": null,
+        "ext": null,
+        "sumprice": null
+      },
+      "2차": {
+        "findate": null,
+        "price": null,
+        "price2": null,
+        "discountprice": null,
+        "deleteprice": null,
+        "ext": null,
+        "sumprice": null
+      },
+      "3차": {
+        "findate": null,
+        "price": null,
+        "price2": null,
+        "discountprice": null,
+        "deleteprice": null,
+        "ext": null,
+        "sumprice": null
+      }
+    },
+    "submitdate": "2024-01-11T00:00:00.000Z",
+    "registerdate": "2024-12-27T00:00:00.000Z",
+    "resgisterprice": "565435000",
+    "userinfo": {
+      "name": "oh jun seo",
+      "firstid": "030523",
+      "secondid": "1234567",
+      "phone": "01034307314",
+      "getpost": "인천광역시 중구 운서동 신도시남로 15 금호베스트빌 101동 101호",
+      "email": "hunseol03@gmail.com",
+      "bank": "신한은행",
+      "bankid": "110479111111",
+      "bankwho": "오준서",
+      "bankwhere": "무궁화신탁",
+      "postnumber": 12345,
+      "post": "인천광역시 중구 운서동 신도시남로 15 금호베스트빌 101동 101호",
+      "come": "친구/지인"
+    },
+    "data": {
+      "type": null,
+      "grout": null,
+      "turn": null,
+      "submitturn": null,
+      "submitdate": null,
+      "trustsubmitdate": null,
+      "submitprice": null,
+      "earnestdate": null,
+      "earnest": null
+    },
+    "loan": {
+      "loandate": null,
+      "price1": null,
+      "price2": null,
+      "selfdate": null,
+      "price3": null,
+      "price4": null,
+      "sumprice": null
+    },
+    "fileinfo": {
+      "file1": null,
+      "file2": null,
+      "file3": null,
+      "file4": null,
+      "file5": null,
+      "file6": null,
+      "file7": null,
+      "file8": null
+    },
+    "ext": {
+      "manage": null,
+      "managemain": null,
+      "manageteam": null,
+      "managename": null,
+      "ext": null
+    },
+    "cancel": {
+      "canceldate": null,
+      "paybackdate": null,
+      "paybackprice": null
+    }
+  }
