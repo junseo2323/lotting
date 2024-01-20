@@ -2,6 +2,8 @@
 import Nav from '@/components/Nav'
 import './globals.css'
 import Header from '@/components/Header'
+import RecoilRootProvider from './recoilRootProvider';
+
 
 export const metadata = {
   title: 'LOTTING',
@@ -15,9 +17,11 @@ export default function RootLayout({ children }) {
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       </head>
       <body>
-        <Nav />
+        <Nav /> 
         <Header />
-        <main>{children}</main>
+        <RecoilRootProvider>
+          <main>{children}</main>
+        </RecoilRootProvider>
       </body>
     </html>
   )

@@ -3,6 +3,8 @@
 import Mininav from "@/components/Mininav"
 import styles from "@/styles/payinfo.module.scss"
 import { useEffect } from "react"
+import { useRecoilValue, useRecoilValueLoadable } from "recoil"
+import { userinfoSelector } from "@/utils/selector"
 
 const dummydata = {
   "id": 122321,
@@ -189,13 +191,8 @@ const dummydata = {
 }
 
 export default function Search() {
-    useEffect(()=>{
-      dummydata.order.map((k)=>{
-        console.log(k.duedate)
-      });
-    },[]);
-
-    
+  const userdata = useRecoilValue(userinfoSelector);
+  const count = [1,2,3,4,5,6,7,8,9,10];
 
     return (
         <>
@@ -212,20 +209,26 @@ export default function Search() {
             
            
             <span>예약금</span>
-            <span>{dummydata.order[0].duedate.slice(0,10)}</span>
-            <span>{dummydata.order[0].findate.slice(0,10)}</span>
-            <span>{dummydata.order[0].price.toLocaleString('ko-KR')}</span>
-            <span>{dummydata.order[0].price2.toLocaleString('ko-KR')}</span>
-            <span>{dummydata.order[0].discountprice.toLocaleString('ko-KR')}</span>
-            <span>{dummydata.order[0].sumprice.toLocaleString('ko-KR')}</span>
+            <span>{userdata.order[0].duedate.slice(0,10)}</span>
+            <span>{userdata.order[0].findate.slice(0,10)}</span>
+            <span>{userdata.order[0].price.toLocaleString('ko-KR')}</span>
+            <span>{userdata.order[0].price2.toLocaleString('ko-KR')}</span>
+            <span>{userdata.order[0].discountprice.toLocaleString('ko-KR')}</span>
+            <span>{userdata.order[0].sumprice.toLocaleString('ko-KR')}</span>
             
-            <span>1차</span>
-            <span>{dummydata.order[1].duedate.slice(0,10)}</span>
-            <span>{dummydata.order[1].findate.slice(0,10)}</span>
-            <span>{dummydata.order[1].price.toLocaleString('ko-KR')}</span>
-            <span>{dummydata.order[1].price2.toLocaleString('ko-KR')}</span>
-            <span>{dummydata.order[1].discountprice.toLocaleString('ko-KR')}</span>
-            <span>{dummydata.order[1].sumprice.toLocaleString('ko-KR')}</span>
+            {
+              count.map((i)=>(
+                <>
+                  <span>{i}차</span>
+                  <span>{userdata.order[i].duedate.slice(0,10)}</span>
+                  <span>{userdata.order[i].findate.slice(0,10)}</span>
+                  <span>{userdata.order[i].price.toLocaleString('ko-KR')}</span>
+                  <span>{userdata.order[i].price2.toLocaleString('ko-KR')}</span>
+                  <span>{userdata.order[i].discountprice.toLocaleString('ko-KR')}</span>
+                  <span>{userdata.order[i].sumprice.toLocaleString('ko-KR')}</span>
+                </>
+              ))
+            }
 
           </div>
         </>
