@@ -2,7 +2,11 @@
 
 import { Inputbox,PostInputbox,LongInputbox,DropInputbox,FileInputbox } from "@/components/Inputbox"
 import styles from "@/styles/Search.module.scss";
+import { searchnameState } from "@/utils/atom";
+import { namesearchSelector } from "@/utils/selector";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 const dummydata = [
   {
@@ -23,16 +27,56 @@ const dummydata = [
   },
 ]
 
+
+const SearchList = (name) => {
+  const searchname = name.name;
+  
+  const setNameState = useSetRecoilState(searchnameState);
+  let searchdata = useRecoilValueLoadable(namesearchSelector);
+  useEffect(()=>{ setNameState(searchname)});
+  
+  switch(searchdata.state){
+    case 'loading':
+      return <h1>loding</h1>
+    case 'hasValue':
+      return <div>
+          test
+          {(searchdata.contents).map((k) =>
+            <Link className={styles.maincontainer} href={"/search/userinfo/"+k.id}>
+              <span>{k.id}</span>
+              <span>{k.userinfo.name}</span>
+              <span>{k.type}</span>
+              <span>{k.group}</span>
+              <span>{k.turn}</span>
+              <span>{k.tempinfo}</span>
+            </Link>
+          )}
+      </div>
+    case "hasError":
+      throw "error"
+  }
+
+}
+
 export default function Search() {
+  const [name,setName] = useState("오준식");
+  const onChange = e => {
+    setName(e.target.value)
+  }
+  const onKeyPress = e => {
+    if(e.key === 'Enter'){
+      
+    }
+  }
   return (
       <>
         <h1></h1>
-        <div className={styles.container}>
-          <Inputbox type="text" placeholder="고객 성함" />
+        <form className={styles.container}>
+          <Inputbox type="text" placeholder="고객 성함" onChange={onChange} onKeyPress={onKeyPress}/>
           <DropInputbox />
           <DropInputbox />
           <DropInputbox />
-        </div>
+        </form>
         <div className={styles.tablecontainer}>
           <span>관리번호</span>
           <span>성명</span>
@@ -41,16 +85,7 @@ export default function Search() {
           <span>순번</span>
           <span>임시동호</span>
         </div>
-          {dummydata.map((k) =>
-            <Link className={styles.maincontainer} href={"/search/userinfo/"+k.관리번호}>
-              <span>{k.관리번호}</span>
-              <span>{k.성명}</span>
-              <span>{k.타입}</span>
-              <span>{k.군}</span>
-              <span>{k.순번}</span>
-              <span>{k.임시동호}</span>
-            </Link>
-          )}
+        <SearchList name={name} />   
       </>
     )
 }
