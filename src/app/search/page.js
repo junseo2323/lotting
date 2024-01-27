@@ -29,7 +29,8 @@ const dummydata = [
 
 
 const SearchList = (name) => {
-  const searchname = name.name;
+  let searchname;
+  if((name.name).length > 1) searchname = name.name;
   
   const setNameState = useSetRecoilState(searchnameState);
   let searchdata = useRecoilValueLoadable(namesearchSelector);
@@ -37,10 +38,9 @@ const SearchList = (name) => {
   
   switch(searchdata.state){
     case 'loading':
-      return <h1>loding</h1>
+      return <></>
     case 'hasValue':
       return <div>
-          test
           {(searchdata.contents).map((k) =>
             <Link className={styles.maincontainer} href={"/search/userinfo/"+k.id}>
               <span>{k.id}</span>
@@ -59,7 +59,7 @@ const SearchList = (name) => {
 }
 
 export default function Search() {
-  const [name,setName] = useState("오준식");
+  const [name,setName] = useState("");
   const onChange = e => {
     setName(e.target.value)
   }
