@@ -9,3 +9,8 @@ export const useridState = atom({
     key: 'useridState',
     default: null,
 })
+
+export const searchnameState = atom({
+    key: 'searchnameState',
+    default: null,
+})

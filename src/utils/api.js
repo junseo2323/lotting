@@ -8,9 +8,17 @@ export const fetchUserinfo = (userid) => {
     })
     .catch(error => {
         console.error(error);
-
         throw error;
+    })  
+};
+
+export const fetchNameSearch = (username) => {
+    return axios.get('http://localhost:8000/api/searchname/'+username)
+    .then(result => {
+        return result.data;
     })
-   
-    
+    .catch(error => {
+        console.log(error);
+        throw error;
+    })  
 };

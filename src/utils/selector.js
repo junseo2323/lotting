@@ -1,14 +1,11 @@
 import { selector } from "recoil";
-import { fetchUserinfo } from "./api";
-import { useridState, userinfoState } from "./atom";
+import { fetchNameSearch, fetchUserinfo } from "./api";
+import { searchnameState, useridState, userinfoState } from "./atom";
 
 export const userinfoSelector = selector({
     key: 'userinfoSelector',
     get: async ({ get }) => {
-      // 'userinfoState' Atom에서 현재 값을 가져옴
       const userid = get(useridState);
-      const currentData = get(userinfoState);
-
       try {
         const data = await fetchUserinfo(userid); 
         return data;
@@ -18,4 +15,12 @@ export const userinfoSelector = selector({
       }
     },
 });
-  
+
+export const namesearchSelector = selector({
+  key: 'namesearchSelector',
+  get: async ({ get }) => {
+    const username = get(searchnameState);
+    
+      const data = await fetchNameSearch(username); 
+      return data;
+}});
