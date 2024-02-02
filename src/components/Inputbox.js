@@ -38,13 +38,15 @@ export const LongInputbox = (props) => {
 
 
 export const DropInputbox = (props) => {
-    const type = props.type;
-    const placeholder = props.placeholder;
+    const optionlist = props.list;
+
     return(
         <select className={styles.Dropinputcontainer}>
-            <option value="test">테스트1</option>
-            <option value="test">테스트2</option>
-            <option value="test">테스트3</option>
+            {
+                optionlist.map((i)=>
+                    <option value={i.value}>{i.item}</option>
+                )
+            }
         </select>
     )
 }
