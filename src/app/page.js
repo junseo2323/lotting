@@ -3,6 +3,11 @@
 import { Inputbox,PostInputbox,LongInputbox,DropInputbox,FileInputbox } from "@/components/Inputbox"
 import styles from "@/app/Home.module.scss"
 
+const testlist = [{
+  "value" : "여기에 벨류를 입력하세요",
+  "item" : "여기에 아이템을 입력하세요"
+}]
+
 export default function Home() {
   const handleChange = e => {
     console.log(e.target.value)
@@ -20,8 +25,9 @@ export default function Home() {
           <Inputbox />
           <LongInputbox />
           <Inputbox />
-          <DropInputbox />
           <Inputbox />
+          <DropInputbox list={testlist}/>
+
         </div>    
       </div>
     )
