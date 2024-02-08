@@ -22,6 +22,27 @@ export const Inputbox = (props) => {
     )
 }
 
+export const LoginInputbox = (props) => {
+    const type = props.type;
+    const placeholder = props.placeholder;
+    const value = props.value;
+    const onChange = props.onChange;
+    const name = props.name;
+    
+    return(
+        <>
+            <input
+                className={styles.logininputcontainer}
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+            />
+        </>
+    )
+}
+
 export const LongInputbox = (props) => {
     const type = props.type;
     const placeholder = props.placeholder;

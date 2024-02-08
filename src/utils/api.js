@@ -1,8 +1,12 @@
 import axios from 'axios';
 const path = "http://localhost:8000"
 
+export const fetchLogin = (username,password) => {
+    return axios.post(path+"/api/auth/signin")
+}
+
 export const fetchUserinfo = (userid) => {    
-    return axios.get('http://localhost:8000/api/userinfo/'+userid)
+    return axios.get(path+'/api/userinfo/'+userid)
     .then(result => {
         return result.data[0];
     })
@@ -13,7 +17,7 @@ export const fetchUserinfo = (userid) => {
 };
 
 export const fetchNameSearch = (username) => {
-    return axios.get('http://localhost:8000/api/searchname/'+username)
+    return axios.get(path+'/api/searchname/'+username)
     .then(result => {
         return result.data;
     })
