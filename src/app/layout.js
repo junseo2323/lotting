@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       </head>
       <body>
-        <Nav /> 
-        <Header />
+        {true?<Nav />:<></>}
+        {true?<Header />:<></>}
         <RecoilRootProvider>
           <main>{children}</main>
         </RecoilRootProvider>
