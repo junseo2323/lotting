@@ -1,0 +1,18 @@
+
+.Container{
+    width: 1079px;
+    height: 1424px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+.MainBody{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 1080px;
+    height: 741px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
+}
