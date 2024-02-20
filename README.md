@@ -20,4 +20,5 @@
     - **Database** : `nosql` `MongoDB`
 
     이승준이 최고다
+    별로다
 
