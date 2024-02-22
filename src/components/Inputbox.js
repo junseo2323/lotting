@@ -88,6 +88,7 @@ export const PostInputbox = (props) => {
     const [postnumber,setPostnumber] = useState("우편번호")
     const [post,setPost] = useState("주소")
     const [postdetail,setPostdetail] = useState("")
+    const placeholder = props.placeholder
 
     const getpost = () => {
         new daum.Postcode( {
@@ -104,6 +105,7 @@ export const PostInputbox = (props) => {
 
     return(
         <>
+            <p>{placeholder}</p>
             <input
                 className={styles.postcontainer}
                 type="button"
