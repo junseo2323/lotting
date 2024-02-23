@@ -7,7 +7,7 @@ import up from "../../img/up.png";
 import calendar from "../../img/calendar.png";
 
 
-const Dashboard = () => {
+export default function Dashboard() {
     return (
       <div className={styles.container}>
         <div className={styles.MainTitle}>
@@ -424,4 +424,3 @@ const Dashboard = () => {
       );
   };
 
-export default Dashboard;
