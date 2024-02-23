@@ -1,6 +1,7 @@
 import styles from "../../styles/Inputmoneyloan.module.scss";
-import BottonIcon from "../../img/BottonIcon.png";
-import User from "../../img/User.png";
+import { BsDatabase } from "react-icons/bs";
+import { CgSearch } from "react-icons/cg";
+
 
 const Inputmoneyloan = () =>{
     return(
@@ -15,18 +16,24 @@ const Inputmoneyloan = () =>{
                     </div>
                     <div className={styles.MainTitle2}>
                         <div className={styles.Botton}>
-                            <img src={BottonIcon} className={styles.BottonIcon}></img>
+                            <div className={styles.BottonIcon} style={{ color: 'white' }}>
+                                <CgSearch style={{ width: '100%', height: '100%' }} />
+                            </div>
                             <div className={styles.BottonFont}>고객선택</div>
                         </div>
                     </div>
                 </div>
                 <div className={styles.InputBody}>
                     <div className={styles.InputBodyTitle}>
-                        <img src={User} className={styles.IBTIcon}></img>
+                    <div className={styles.IBTIcon}>
+                            <div className={styles.Icon} style={{ color: '#7152F3' }}>
+                                <BsDatabase style={{ width: '100%', height: '100%' }} />
+                            </div>
+                        </div>
                         <div className={styles.IBTText}>대출</div>
                     </div>
                     <div className={styles.Line}></div>
-                    <div className={styles.IBLayer}>
+                        <div className={styles.IBLayer}>
                         <div className={styles.IBTText2}>
                             <div className={styles.IBTText2Font}>농협</div>
                         </div>
@@ -56,7 +63,11 @@ const Inputmoneyloan = () =>{
                     {/* 한 덩어리 */}
 
                     <div className={styles.InputBodyTitle}>
-                        <img src={User} className={styles.IBTIcon}></img>
+                        <div className={styles.IBTIcon}>
+                            <div className={styles.Icon} style={{ color: '#7152F3' }}>
+                                <BsDatabase style={{ width: '100%', height: '100%' }} />
+                            </div>
+                        </div>
                         <div className={styles.IBTText}>자납</div>
                     </div>
 
@@ -83,7 +94,11 @@ const Inputmoneyloan = () =>{
                     {/* 한 덩어리 */}
 
                     <div className={styles.InputBodyTitle}>
-                        <img src={User} className={styles.IBTIcon}></img>
+                        <div className={styles.IBTIcon}>
+                            <div className={styles.Icon} style={{ color: '#7152F3' }}>
+                                <BsDatabase style={{ width: '100%', height: '100%' }} />
+                            </div>
+                        </div>
                         <div className={styles.IBTText}>총액</div>
                     </div>
 

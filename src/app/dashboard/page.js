@@ -6,8 +6,7 @@ import dash4 from "../../img/dash4.png";
 import up from "../../img/up.png";
 import calendar from "../../img/calendar.png";
 
-
-export default function Dashboard() {
+const Dashboard = () =>{
     return (
       <div className={styles.container}>
         <div className={styles.MainTitle}>
@@ -424,3 +423,4 @@ export default function Dashboard() {
       );
   };
 
+export default Dashboard;
