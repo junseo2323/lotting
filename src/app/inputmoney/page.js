@@ -1,7 +1,9 @@
 import styles from "../../styles/Inputmoney.module.scss";
-import money from "../../img/money.png";
-import BottonIcon from "../../img/BottonIcon.png";
-import Bag from "../../img/Bag.png";
+
+import { BsBagDash } from "react-icons/bs";
+import { BsDatabase } from "react-icons/bs";
+import { CgSearch } from "react-icons/cg";
+
 const Inputmoney = () =>{
   return(
     <div className={styles.Container}>
@@ -24,7 +26,10 @@ const Inputmoney = () =>{
             <div className={styles.SearchFont2}>84A</div>
           </div>
           <div className={styles.Botton}>
-            <img src={BottonIcon} className={styles.BottonIcon}></img>
+            <div className={styles.BottonIcon} style={{ color: 'white' }}>
+              <CgSearch style={{ width: '100%', height: '100%' }} />
+            </div>
+
             <div className={styles.BottonFont}>고객선택</div>
           </div>
         </div>
@@ -40,7 +45,12 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-                <img src={Bag} className={styles.CBTIcon}></img>
+                <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
+
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>4차 납부</div>
@@ -59,7 +69,12 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+                <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
+
                 <div className={styles.CBSumText}>4차 총액</div>
                 <div className={styles.CBSumNum}>390,000,000 ₩</div>
               </div>
@@ -68,7 +83,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>5차 납부</div>
@@ -87,7 +106,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>5차 총액</div>
                 <div className={styles.CBSumNum}>390,000,000 ₩</div>
               </div>
@@ -96,7 +119,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>6차 납부</div>
@@ -115,7 +142,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>6차 총액</div>
                 <div className={styles.CBSumNum}>390,000,000 ₩</div>
               </div>
@@ -124,7 +155,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>7차 납부</div>
@@ -143,7 +178,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>7차 총액</div>
                 <div className={styles.CBSumNum}>390,000,000 ₩</div>
               </div>
@@ -161,7 +200,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>1차 납부</div>
@@ -180,7 +223,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>1차 총액</div>
                 <div className={styles.CBSumNum}>1,000,000 ₩</div>
               </div>
@@ -189,7 +236,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>2차 납부</div>
@@ -208,7 +259,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>2차 총액</div>
                 <div className={styles.CBSumNum}>390,000,000 ₩</div>
               </div>
@@ -217,7 +272,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>3차 납부</div>
@@ -236,7 +295,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>3차 총액</div>
                 <div className={styles.CBSumNum}>390,000,000 ₩</div>
               </div>
@@ -252,7 +315,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody_L}>
               <div className={styles.ContentBodyTitle_L}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>대출 / 자납</div>
@@ -269,17 +336,29 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>대출액</div>
                 <div className={styles.CBSumNum}>100,000,000 ₩</div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>자납액</div>
                 <div className={styles.CBSumNum}>390,000,000 ₩</div>
               </div>
               <div className={styles.CBSum}>
-                <img src={money} className={styles.CBMoneyImg}></img>
+              <div className={styles.CBMoneyImg}>
+                  <div className={styles.Icon2}>
+                    <BsDatabase style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBSumText}>총액</div>
                 <div className={styles.CBSumNum}>490,000,000 ₩</div>
               </div>
@@ -288,7 +367,11 @@ const Inputmoney = () =>{
 
             <div className={styles.ContentBody}>
               <div className={styles.ContentBodyTitle}>
-              <img src={Bag} className={styles.CBTIcon}></img>
+              <div className={styles.CBTIcon}>
+                  <div className={styles.Icon}>
+                    <BsBagDash style={{ width: '100%', height: '100%' }} />
+                  </div>
+                </div>
                 <div className={styles.CBTText}>
                   <div className={styles.CBTCha}>
                     <div className={styles.CBTChaFont}>해약</div>

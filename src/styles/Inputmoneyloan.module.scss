@@ -116,7 +116,6 @@
     margin-top:20px;
     background: var(--Primary-500, #7152F3);
 }
-
 .BottonIcon{
     width: 24px;
     height: 24px;
@@ -145,7 +144,7 @@
 }
 .InputBody{
     width: 1080px;
-    height: 741px;
+    height: 817px;
     border-radius: 10px;
     border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
 }
@@ -203,6 +202,32 @@
 .IBInputBox_L{
     display: flex;
     width:1040px;
+    height:54px;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
+}
+.IBTText2{
+    display: flex;
+    width: 56px;
+    height: 56px;
+    margin-left:20px;
+    margin-right:8px;
+}
+.IBTText2Font{
+    margin-top:13px;
+    color: var(--Dark-500, #16151C);
+    text-align: center;
+    /* Body-1 Bold */
+    font-family: Lexend;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+}
+.IBInputBox_M{
+    display: flex;
+    width:974px;
     height:54px;
     gap: 10px;
     border-radius: 10px;

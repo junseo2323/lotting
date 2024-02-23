@@ -1,8 +1,9 @@
-import styles from "../../styles/Inputmoneypay.module.scss";
+import styles from "../../styles/Inputmoneyloan.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 
-const Inputmoneypay = () =>{
+
+const Inputmoneyloan = () =>{
     return(
         <div className={styles.Container}>
             <div className={styles.Mainbody}>
@@ -24,43 +25,62 @@ const Inputmoneypay = () =>{
                 </div>
                 <div className={styles.InputBody}>
                     <div className={styles.InputBodyTitle}>
+                    <div className={styles.IBTIcon}>
+                            <div className={styles.Icon} style={{ color: '#7152F3' }}>
+                                <BsDatabase style={{ width: '100%', height: '100%' }} />
+                            </div>
+                        </div>
+                        <div className={styles.IBTText}>대출</div>
+                    </div>
+                    <div className={styles.Line}></div>
+                        <div className={styles.IBLayer}>
+                        <div className={styles.IBTText2}>
+                            <div className={styles.IBTText2Font}>농협</div>
+                        </div>
+                        <div className={styles.IBInputBox_M}>
+                            <div className={styles.SearchFont1}>대출일</div>
+                        </div>
+                    </div>
+                    {/* 한 덩어리 */}
+
+
+                    <div className={styles.IBLayer}>
+                        <div className={styles.IBTText2}>
+                            <div className={styles.IBTText2Font}>새마을</div>
+                        </div>
+                        <div className={styles.IBInputBox_L}>
+                            <div className={styles.SearchFont1}>대출금</div>
+                        </div>
+                    </div>
+                    {/* 한 덩어리 */}
+
+                    {/* 한 덩어리 */}
+                    <div className={styles.IBLayer}>
+                        <div className={styles.IBInputBox_L}>
+                            <div className={styles.SearchFont1}>대출금</div>
+                        </div>
+                    </div>
+                    {/* 한 덩어리 */}
+
+                    <div className={styles.InputBodyTitle}>
                         <div className={styles.IBTIcon}>
                             <div className={styles.Icon} style={{ color: '#7152F3' }}>
                                 <BsDatabase style={{ width: '100%', height: '100%' }} />
                             </div>
                         </div>
-                        <div className={styles.IBTText}>5차 납입</div>
+                        <div className={styles.IBTText}>자납</div>
                     </div>
-                    <div className={styles.Line}></div>
-                    <div className={styles.IBBottonLayer}>
-                        <div className={styles.BackgroundBotton}>
-                            <div className={styles.InnerBotton}>
-                            <div className={styles.BottonFont}>납입</div>
-                        </div>
-                            <div className={styles.BackgroundBottonFont}>예정</div>
-                        </div>
 
-                    </div>
                     <div className={styles.IBLayer}>
                         <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>완납일</div>
-                        </div>
-                    </div>
-                    {/* 한 덩어리 */}
-
-                    <div className={styles.IBLayer}>
-                        <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>부담금</div>
-                        </div>
-                        <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>업무대행비</div>
+                            <div className={styles.SearchFont1}>자납일</div>
                         </div>
                     </div>
                     {/* 한 덩어리 */}
 
                     <div className={styles.IBLayer}>
                         <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>할인액</div>
+                            <div className={styles.SearchFont1}>자납</div>
                         </div>
                     </div>
                     {/* 한 덩어리 */}
@@ -73,13 +93,18 @@ const Inputmoneypay = () =>{
                     </div>
                     {/* 한 덩어리 */}
 
-                    <div className={styles.IBLayer}>
-                        <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>이동</div>
+                    <div className={styles.InputBodyTitle}>
+                        <div className={styles.IBTIcon}>
+                            <div className={styles.Icon} style={{ color: '#7152F3' }}>
+                                <BsDatabase style={{ width: '100%', height: '100%' }} />
+                            </div>
                         </div>
-                        <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>총액 :</div>
-                            <div className={styles.SearchFont2}>123,456,789 ₩</div>
+                        <div className={styles.IBTText}>총액</div>
+                    </div>
+
+                    <div className={styles.IBLayer}>
+                        <div className={styles.IBInputBox_L}>
+                            <div className={styles.SearchFont1}>총액</div>
                         </div>
                     </div>
                     {/* 한 덩어리 */}
@@ -96,4 +121,4 @@ const Inputmoneypay = () =>{
     );
 };
 
-export default Inputmoneypay
+export default Inputmoneyloan
