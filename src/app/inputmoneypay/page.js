@@ -1,6 +1,8 @@
+
 import styles from "../../styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
+
 
 const Inputmoneypay = () =>{
     return(
