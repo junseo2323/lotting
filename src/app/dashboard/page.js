@@ -5,6 +5,11 @@ import dash3 from "../../img/dash3.png";
 import dash4 from "../../img/dash4.png";
 import up from "../../img/up.png";
 import calendar from "../../img/calendar.png";
+import { BsBagDash } from "react-icons/bs";
+import { BiGroup } from "react-icons/bi";
+import { BsDatabase } from "react-icons/bs";
+import { BiCalendar } from "react-icons/bi";
+import { AiFillCaretUp } from "react-icons/ai";
 
 const Dashboard = () =>{
     return (
@@ -16,7 +21,9 @@ const Dashboard = () =>{
               <div className={styles.ContractSum}>
                 <div className={styles.ContractValue}>
                   <div className={styles.ContractIcons}>
-                    <img src={dash1} className={styles.ContractImg}></img>
+                    <div className={styles.ContractImg} style = {{color:'#7152F3'}}>
+                      <BsBagDash style={{ width: '100%', height: '100%' }} />
+                    </div>
                   </div>
                   <div className={styles.ContractName}>총 계약건수</div>
                 </div>
@@ -26,7 +33,12 @@ const Dashboard = () =>{
                   </div>
                   <div className={styles.ContractVal2}>
                     <div className={styles.Percentage_G}>
-                      <img src={up} className={styles.UpImg}></img>
+                      <div className={styles.UpImg} style = {{color:'#30BE82'}}>
+                        <AiFillCaretUp style={{ width: '100%', height: '100%' }} />
+                      </div>
+                      <div className={styles.UpText}>
+                        12%
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -41,7 +53,9 @@ const Dashboard = () =>{
               <div className={styles.ContractSum}>
                 <div className={styles.ContractValue}>
                   <div className={styles.ContractIcons}>
-                    <img src={dash2} className={styles.ContractImg}></img>
+                    <div className={styles.ContractImg} style = {{color:'#7152F3'}}>
+                      <BiGroup style={{ width: '100%', height: '100%' }} />
+                    </div>
                   </div>
                   <div className={styles.ContractName}>완료인원</div>
                 </div>
@@ -50,7 +64,14 @@ const Dashboard = () =>{
                     <div className={styles.Value}>390</div>
                   </div>
                   <div className={styles.ContractVal2}>
-                    <div className={styles.Percentage}></div>
+                    <div className={styles.Percentage_G}>
+                      <div className={styles.UpImg} style = {{color:'#30BE82'}}>
+                        <AiFillCaretUp style={{ width: '100%', height: '100%' }} />
+                      </div>
+                      <div className={styles.UpText}>
+                        5%
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.Bottominfo}>
@@ -66,7 +87,9 @@ const Dashboard = () =>{
               <div className={styles.ContractSum}>
                 <div className={styles.ContractValue}>
                   <div className={styles.ContractIcons}>
-                    <img src={dash3} className={styles.ContractImg}></img>
+                    <div className={styles.ContractImg} style = {{color:'#7152F3'}}>
+                      <BsDatabase style={{ width: '100%', height: '100%' }} />
+                    </div>
                   </div>
                   <div className={styles.ContractName}>계약금액</div>
                 </div>
@@ -86,7 +109,9 @@ const Dashboard = () =>{
               <div className={styles.ContractSum}>
                 <div className={styles.ContractValue}>
                   <div className={styles.ContractIcons}>
-                    <img src={dash4} className={styles.ContractImg}></img>
+                    <div className={styles.ContractImg} style = {{color:'#7152F3'}}>
+                      <BsDatabase style={{ width: '100%', height: '100%' }} />
+                    </div>
                   </div>
                   <div className={styles.ContractName}>확입금액</div>
                 </div>
@@ -329,7 +354,9 @@ const Dashboard = () =>{
               </div>
               <div className={styles.DateTitle2}>
                 <div className={styles.DateIcon}>
-                  <img src={calendar} className={styles.ContractImg}></img>
+                  <div className={styles.CalendarImg} style = {{color:'#7152F3'}}>
+                      <BiCalendar style={{ width: '100%', height: '100%' }} />
+                  </div>
                 </div>
               </div>
             </div>

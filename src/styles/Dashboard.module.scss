@@ -84,8 +84,6 @@
     display: inline-flex;
     height: 26px;
     width:54px;
-    padding: 5px;
-
     gap: 5px;
     flex-shrink: 0;
     border-radius: 5px;
@@ -109,13 +107,29 @@
     margin-right:10px;
 }
 .UpImg{
-    width:10.5px;
-    height:9px;
+    width:12px;
+    height:12px;
     flex-shrink: 0;
+    margin-left:5px;
+}
+.UpText{
+    color: var(--Color-Option-Color-Option-1, #30BE82);
+    /* Label Regular */
+    font-family: Lexend;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 145.455% */
+}
+.CalendarImg{
+    width:30px;
+    height:30px;
+    margin-top:9px;
+    margin-left:10px
 }
 .ContractImg{
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     flex-shrink: 0;
 }
 .ContractName{
