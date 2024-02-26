@@ -197,7 +197,7 @@ export default function Search() {
     return (
         <>
           <h1></h1>
-          <Mininav />
+          <Mininav control="search"/>
           <div className={styles.container}>
             <span className={styles.title}>차수</span>
             <span className={styles.title}>예정일</span>

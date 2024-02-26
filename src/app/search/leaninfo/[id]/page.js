@@ -16,7 +16,7 @@ export default function Search() {
     return (
         <>
           <h1></h1>
-          <Mininav />
+          <Mininav control="search"/>
           <div className={styles.titlecontainer}>
             <FaUser style={iconstyle} />
             <span>대출</span>
