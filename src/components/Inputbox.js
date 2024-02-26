@@ -16,7 +16,6 @@ export const Spanbox = ({children}) => {
 }
 
 export const Inputbox = (props) => {
-    const { register,watch,handleSubmit } = useForm();
     const type = props.type;
     const placeholder = props.placeholder;
     const onChange = props.onChange;
@@ -29,6 +28,7 @@ export const Inputbox = (props) => {
                 data-placeholder={date_placeholder}
                 type={type}
                 placeholder={placeholder}
+                {...props.register}
             />
         </>
     )
@@ -50,6 +50,7 @@ export const LoginInputbox = (props) => {
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
+                {...props.register}
             />
         </>
     )
@@ -64,6 +65,7 @@ export const LongInputbox = (props) => {
                 className={styles.Longinputcontainer}
                 type={type}
                 placeholder={placeholder}
+                {...props.register}
             />
         </>
     )
@@ -74,7 +76,7 @@ export const DropInputbox = (props) => {
     const optionlist = props.list;
 
     return(
-        <select className={styles.Dropinputcontainer}>
+        <select className={styles.Dropinputcontainer} {...props.register}>
             {
                 optionlist.map((i)=>
                     <option value={i.value}>{i.item}</option>
@@ -124,6 +126,7 @@ export const PostInputbox = (props) => {
                 value={postnumber}
                 onClick={getpost}
                 placeholder="우편번호"
+                {...props.register}
             />
             <input
                 className={styles.postcontainer}
@@ -131,6 +134,7 @@ export const PostInputbox = (props) => {
                 value={post}
                 onClick={getpost}
                 placeholder="주소"
+                {...props.register}
             />
             <input
                 className={styles.inputcontainer}
@@ -138,6 +142,7 @@ export const PostInputbox = (props) => {
                 onChange={handleChange}
                 value={postdetail}
                 placeholder="주소상세"
+                {...props.register}
             />
         </>
     )
