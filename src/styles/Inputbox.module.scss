@@ -1,3 +1,18 @@
+
+  
+.spancontainer {
+    border-radius: 10px;
+    border: 1px solid rgba(162, 161, 168, 0.20);
+    display: flex;
+    height: 30px;   
+    width: 1fr;
+
+    padding: 10px 20px 10px 16px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+
 .inputcontainer {
     border-radius: 10px;
     border: 1px solid rgba(162, 161, 168, 0.20);

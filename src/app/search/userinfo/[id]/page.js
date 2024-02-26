@@ -25,7 +25,7 @@ export default function Search() {
       else return (
         <>
         <h1></h1>
-          <Mininav />
+          <Mininav control="search"/>
 
           <div className={styles.container}>
             <span className={styles.title}>관리번호</span>

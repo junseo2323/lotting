@@ -1,5 +1,13 @@
-.create_container {
+.content_container{
     display: grid;
 	grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 10px;
+
+    padding: 20px;
+    width: 75vw;
+    height: 85vh;
+    flex-shrink: 0;
+    margin-left:20px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
 }

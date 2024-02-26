@@ -3,19 +3,31 @@
 import React,{useState} from 'react'
 import styles from '@/styles/Inputbox.module.scss'
 import { IoMdCloudUpload } from "react-icons/io";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+
+export const Spanbox = ({children}) => {
+    return(
+        <>
+            <span className={styles.spancontainer}>
+                {children}
+            </span>
+        </>
+    )
+}
 
 export const Inputbox = (props) => {
+    const { register,watch,handleSubmit } = useForm();
     const type = props.type;
     const placeholder = props.placeholder;
-    const value = props.value;
     const onChange = props.onChange;
+    const date_placeholder = props.date_placeholder;
+    const name = props.name;
     return(
         <>
             <input
                 className={styles.inputcontainer}
+                data-placeholder={date_placeholder}
                 type={type}
-                value={value}
-                onChange={onChange}
                 placeholder={placeholder}
             />
         </>
