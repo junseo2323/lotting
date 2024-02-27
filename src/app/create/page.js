@@ -5,6 +5,10 @@ import { Inputbox,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox }
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 
+const handleChange = e => {
+  setPostdetail(e.target.value)
+}
+
 const banklist = [{
   "value" : "sinhan",
   "item" : "신한은행"
@@ -42,10 +46,10 @@ export default function Create() {
               <Inputbox type="email" placeholder="이메일" register={register('email')}/>
               <Inputbox type="text" placeholder="가입경로" register={register('path')} />
               <h1></h1>
-              <DropInputbox list={banklist} register={register('')}/>
+              {/* <DropInputbox list={banklist} register={register('')}/>
               <Inputbox type="text" placeholder="계좌번호" register={register('')} />
               <Inputbox type="text" placeholder="예금주" register={register('')} />
-              <DropInputbox list={banklist} register={register('')}/>
+              <DropInputbox list={banklist} register={register('')}/> */}
               <PostInputbox placeholder="우편물 수령주소"/>
               <PostInputbox placeholder="주소지"/>
             </div>    
@@ -53,12 +57,12 @@ export default function Create() {
 
             <h3>관리 정보</h3>
             <div className={styles.content_container}>
-              <DropInputbox list={banklist} register={register('')}/> 
+              {/* <DropInputbox list={banklist} register={register('')}/> 
               <DropInputbox list={banklist} register={register('')}/>
               <DropInputbox list={banklist} register={register('')}/>
-              <DropInputbox list={banklist} register={register('')}/>
+              <DropInputbox list={banklist} register={register('')}/> */}
               <Spanbox>임시동호 : </Spanbox>
-              <Inputbox type="text" placeholder="가입차순" onChange={handleChange} register={register('')}/>
+              {/* <Inputbox type="text" placeholder="가입차순" onChange={handleChange} register={register('')}/>
 
               <Inputbox type="date" date_placeholder="가입일자" onChange={handleChange}register={register('')} />
               <Inputbox type="date" date_placeholder="신탁사 제출일자" onChange={handleChange}register={register('')} />
@@ -69,7 +73,7 @@ export default function Create() {
               <Inputbox type="text" placeholder="예금주" onChange={handleChange} register={register('')}/>
               <DropInputbox list={banklist} register={register('')}/>
               <PostInputbox placeholder="우편물 수령주소" register={register('')}/>
-              <PostInputbox placeholder="주소지" register={register('')}/>
+              <PostInputbox placeholder="주소지" register={register('')}/> */}
             </div> 
           </form>
       </div>

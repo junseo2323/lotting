@@ -12,7 +12,25 @@
     text-align: center;
     font-size: 13px;
 }
-
+.inputcontainer_L{
+    display: flex;
+    width:1040px;
+    height:30px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
+    padding: 10px 20px 10px 16px;
+    float: left;
+}
+.inputcontainer_M{
+    display: flex;
+    width:520px;
+    height:30px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
+    padding: 10px 20px 10px 16px;
+    float: left;
+    margin-right:10px;
+}
 .inputcontainer {
     border-radius: 10px;
     border: 1px solid rgba(162, 161, 168, 0.20);
