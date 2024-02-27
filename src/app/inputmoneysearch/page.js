@@ -1,5 +1,6 @@
 import styles from "../../styles/Inputmoneysearch.module.scss";
-
+import { Inputbox,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
+import { useForm } from "react-hook-form"
 import { BsBagDash } from "react-icons/bs";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
@@ -10,25 +11,30 @@ const Inputmoneysearch = () =>{
         <div className={styles.Container}>
             <div className={styles.Mainbody}>
                 <div className={styles.SearchBody}>
+
                 <div className={styles.SearchNum}>
                     <div className={styles.SearchFont1}>관리번호 :</div>
                     <div className={styles.SearchFont2}>123456</div>
                 </div>
+
                 <div className={styles.SearchName}>
                     <div className={styles.SearchFont1}>성함 :</div>
                     <div className={styles.SearchFont2}>이승준</div>
                 </div>
+
                 <div className={styles.SearchCha}>
                     <div className={styles.SearchFont1}>가입차순 :</div>
                     <div className={styles.SearchFont2}>1-2차시</div>
                 </div>
+
                 <div className={styles.SearchType}>
                     <div className={styles.SearchFont1}>가입타입 :</div>
                     <div className={styles.SearchFont2}>84A</div>
                 </div>
+
                 <div className={styles.Botton}>
                     <div className={styles.BottonIcon} style={{ color: 'white' }}>
-                    <CgSearch style={{ width: '100%', height: '100%' }} />
+                        <CgSearch style={{ width: '100%', height: '100%' }} />
                     </div>
 
                     <div className={styles.BottonFont}>고객선택</div>

@@ -21,10 +21,51 @@ export const Inputbox = (props) => {
     const onChange = props.onChange;
     const date_placeholder = props.date_placeholder;
     const name = props.name;
+
     return(
         <>
             <input
                 className={styles.inputcontainer}
+                data-placeholder={date_placeholder}
+                type={type}
+                placeholder={placeholder}
+                {...props.register}
+            />
+        </>
+    )
+}
+
+export const Inputbox_L = (props) => {
+    const type = props.type;
+    const placeholder = props.placeholder;
+    const onChange = props.onChange;
+    const date_placeholder = props.date_placeholder;
+    const name = props.name;
+
+    return(
+        <>
+            <input
+                className={styles.inputcontainer_L}
+                data-placeholder={date_placeholder}
+                type={type}
+                placeholder={placeholder}
+                {...props.register}
+            />
+        </>
+    )
+}
+
+export const Inputbox_M = (props) => {
+    const type = props.type;
+    const placeholder = props.placeholder;
+    const onChange = props.onChange;
+    const date_placeholder = props.date_placeholder;
+    const name = props.name;
+
+    return(
+        <>
+            <input
+                className={styles.inputcontainer_M}
                 data-placeholder={date_placeholder}
                 type={type}
                 placeholder={placeholder}
