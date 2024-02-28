@@ -89,3 +89,15 @@
     margin-left:30px;
     margin-top:13px;
 }
+
+.modifybutton{
+    display: flex;
+    width:65px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    background: var(--Primary-500, #7152F3);
+    margin-right:10px;
+}
