@@ -41,19 +41,13 @@ export const SearchButton = (props) => {
     )
 }
 
-export const ToggleButton = () => {
-    const [isPayment, setIsPayment] = useState(false); // 납입 상태를 관리하는 상태
-
-    const handleClick = () => {
-        setIsPayment(!isPayment); // 상태를 반전시킴
-    };
-
-    return (
-        <button className={`${styles.toggleButton} ${isPayment ? styles.payment : styles.schedule}`} onClick={handleClick}>
-            {isPayment ? '예정' : '납입'} {/* 상태에 따라 버튼 텍스트를 변경 */}
+export const ModifyButton = (props) => {
+    return(
+        <button className={styles.modifybutton}>
+            {props.children}
         </button>
-    );
-};
+    )
+}
 
 export const PaymentScheduleButton = () => {
     const [isActivePayment, setIsActivePayment] = useState(true); // 납입 버튼 활성화 상태를 관리하는 상태
@@ -69,7 +63,7 @@ export const PaymentScheduleButton = () => {
     return (
         <div>
             <button className={`${styles.toggleButton} ${isActivePayment ? styles.active : ''}`} onClick={handlePaymentClick}>
-                <div className={styles.ButtonFont1}>납입</div>
+                <div className={styles.ButtonFont}>납입</div>
             </button>
             <button className={`${styles.toggleButton} ${!isActivePayment ? styles.active : ''}`} onClick={handleScheduleClick}>
                 <div className={styles.ButtonFont2}>예정</div>

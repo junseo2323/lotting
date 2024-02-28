@@ -1,8 +1,15 @@
+"use client"
+
+import { Inputbox,Inputbox_L,Inputbox_M,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
+import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N, ModifyButton} from "@/components/Button"
 import styles from "../../styles/Inputmoneycancle.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
+import { useForm } from 'react-hook-form';
 
 const Inputmoneycancle = () =>{
+
+    const { register,watch,handleSubmit } = useForm();
     return(
         <div className={styles.Container}>
             <div className={styles.Mainbody}>
@@ -14,12 +21,12 @@ const Inputmoneycancle = () =>{
                         </div>
                     </div>
                     <div className={styles.MainTitle2}>
-                        <div className={styles.Botton}>
+                        <SearchButton>
                             <div className={styles.BottonIcon} style={{ color: 'white' }}>
                                 <CgSearch style={{ width: '100%', height: '100%' }} />
                             </div>
                             <div className={styles.BottonFont}>고객선택</div>
-                        </div>
+                        </SearchButton>
                     </div>
                 </div>
                 <div className={styles.InputBody}>
@@ -33,32 +40,24 @@ const Inputmoneycancle = () =>{
                     </div>
                     <div className={styles.Line}></div>
                     <div className={styles.IBLayer}>
-                        <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>해지일자</div>
-                        </div>
+                        <Inputbox_L type="text" placeholder="해지일자" register={register('cancledate')} />
                     </div>
                     {/* 한 덩어리 */}
 
                     <div className={styles.IBLayer}>
-                        <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>환급일자</div>
-                        </div>
+                        <Inputbox_L type="text" placeholder="환급일자" register={register('paybackdate')} />
                     </div>
                     {/* 한 덩어리 */}
 
                     {/* 한 덩어리 */}
                     <div className={styles.IBLayer}>
-                        <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>면제액</div>
-                        </div>
+                        <Inputbox_L type="text" placeholder="해지일자" register={register('paybackmoney')} />
                     </div>
                     {/* 한 덩어리 */}
                     
                     <div className={styles.IBBottonLayer}>
-                        <div className={styles.Botton_N}>취소</div>
-                        <div className={styles.Botton_Y}>
-                            <div className={styles.BottonFont}>해약</div>
-                        </div>
+                        <Button_N><div className = {styles.BottonFont2}>취소</div></Button_N>
+                        <Button_Y><div className = {styles.BottonFont}>해약</div></Button_Y>
                     </div>
                 </div>
             </div>
