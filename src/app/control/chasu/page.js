@@ -2,7 +2,7 @@
 
 import { Inputbox, Inputbox_L, Inputbox_M, PostInputbox, LongInputbox, DropInputbox, FileInputbox, Spanbox } from "@/components/Inputbox"
 import { PaymentScheduleButton, ToggleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
-import styles from "../../styles/chasu.module.scss";
+import styles from "@/styles/chasu.module.scss";
 import { useState, useEffect } from "react"; // useEffect와 useState 추가
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
