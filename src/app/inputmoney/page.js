@@ -1,5 +1,8 @@
-import styles from "../../styles/Inputmoney.module.scss";
+"use client"
 
+import styles from "../../styles/Inputmoney.module.scss";
+import { Inputbox,Inputbox_L,Inputbox_M,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
+import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N, ModifyButton} from "@/components/Button"
 import { BsBagDash } from "react-icons/bs";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
@@ -25,13 +28,19 @@ const Inputmoney = () =>{
             <div className={styles.SearchFont1}>가입타입 :</div>
             <div className={styles.SearchFont2}>84A</div>
           </div>
-          <div className={styles.Botton}>
+          {/* <div className={styles.Botton}>
             <div className={styles.BottonIcon} style={{ color: 'white' }}>
               <CgSearch style={{ width: '100%', height: '100%' }} />
             </div>
 
             <div className={styles.BottonFont}>고객선택</div>
-          </div>
+          </div> */}
+              <SearchButton>
+                    <div className={styles.BottonIcon} style={{ color: 'white' }}>
+                        <CgSearch style={{ width: '100%', height: '100%' }} />
+                    </div>
+                  <div className={styles.BottonFont}>고객선택</div>
+              </SearchButton>
         </div>
 
         <div className={styles.MainContent}>
@@ -61,12 +70,15 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+
+                {/* <div className={styles.CBBotton}>
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div>
-                <div className={styles.CBBotton}>
+                </div> */}
+                <ModifyButton><div className={styles.CBBottonFont}>납부수정</div></ModifyButton>
+                {/* <div className={styles.CBBotton}>
                   <div className={styles.CBBottonFont}>초기화</div>
-                </div>
+                </div> */}
+                <ModifyButton><div className={styles.CBBottonFont}>초기화</div></ModifyButton>
               </div>
               <div className={styles.CBSum}>
                 <div className={styles.CBMoneyImg}>
@@ -98,12 +110,13 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div>
-                <div className={styles.CBBotton}>
+                </ModifyButton>
+
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
-                </div>
+                </ModifyButton>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -134,12 +147,13 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div>
-                <div className={styles.CBBotton}>
+                </ModifyButton>
+
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
-                </div>
+                </ModifyButton>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -170,12 +184,13 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div>
-                <div className={styles.CBBotton}>
+                </ModifyButton>
+
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
-                </div>
+                </ModifyButton>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -215,12 +230,13 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div>
-                <div className={styles.CBBotton}>
+                </ModifyButton>
+
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
-                </div>
+                </ModifyButton>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -251,12 +267,13 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div>
-                <div className={styles.CBBotton}>
+                </ModifyButton>
+
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
-                </div>
+                </ModifyButton>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -287,12 +304,13 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div>
-                <div className={styles.CBBotton}>
+                </ModifyButton>
+
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
-                </div>
+                </ModifyButton>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -331,9 +349,9 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>대출수정</div>
-                </div>
+                </ModifyButton>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -382,9 +400,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-                <div className={styles.CBBotton}>
+            
+                <ModifyButton>
                   <div className={styles.CBBottonFont}>해약하기</div>
-                </div>
+                </ModifyButton>
+              
               </div>
             </div>
             {/* 한 덩어리 */}

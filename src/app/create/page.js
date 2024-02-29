@@ -5,6 +5,10 @@ import { Inputbox,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox }
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 
+const handleChange = e => {
+  setPostdetail(e.target.value)
+}
+
 const banklist = [{
   "value" : "sinhan",
   "item" : "신한은행"
@@ -42,17 +46,27 @@ export default function Create() {
               <Inputbox type="email" placeholder="이메일" register={register('email')}/>
               <Inputbox type="text" placeholder="가입경로" register={register('path')} />
               <h1></h1>
+<<<<<<< HEAD
               <DropInputbox list={banklist} register={register('bank')}/>
               <Inputbox type="text" placeholder="계좌번호" register={register('bankid')} />
               <Inputbox type="text" placeholder="예금주" register={register('bankwho')} />
               <DropInputbox list={banklist} register={register('bankwhere')}/>
               <PostInputbox placeholder="우편물 수령주소" register={register('getpost')}/>
               <PostInputbox placeholder="주소지" register={register('post')}/>
+=======
+              {/* <DropInputbox list={banklist} register={register('')}/>
+              <Inputbox type="text" placeholder="계좌번호" register={register('')} />
+              <Inputbox type="text" placeholder="예금주" register={register('')} />
+              <DropInputbox list={banklist} register={register('')}/> */}
+              <PostInputbox placeholder="우편물 수령주소"/>
+              <PostInputbox placeholder="주소지"/>
+>>>>>>> 784c6343a50acee36f917ff1206fe8ffb0dc0925
             </div>    
             <input type="submit" value="초기화 전송" />
 
             <h3>관리 정보</h3>
             <div className={styles.content_container}>
+<<<<<<< HEAD
               <DropInputbox list={banklist} register={register('typeid')}/> 
               <DropInputbox list={banklist} register={register('type')}/>
               <DropInputbox list={banklist} register={register('group')}/>
@@ -65,6 +79,25 @@ export default function Create() {
               <Inputbox type="text" placeholder="가입경로" register={register('come')}/>
               <Inputbox type="date" date_placeholder="예약금 납입일자" register={register('earnestdate')}/>
               <Inputbox type="number" placeholder="예약금" register={register('earnest')}/>
+=======
+              {/* <DropInputbox list={banklist} register={register('')}/> 
+              <DropInputbox list={banklist} register={register('')}/>
+              <DropInputbox list={banklist} register={register('')}/>
+              <DropInputbox list={banklist} register={register('')}/> */}
+              <Spanbox>임시동호 : </Spanbox>
+              {/* <Inputbox type="text" placeholder="가입차순" onChange={handleChange} register={register('')}/>
+
+              <Inputbox type="date" date_placeholder="가입일자" onChange={handleChange}register={register('')} />
+              <Inputbox type="date" date_placeholder="신탁사 제출일자" onChange={handleChange}register={register('')} />
+              <Inputbox type="email" placeholder="이메일" onChange={handleChange} register={register('')}/>
+              <Inputbox type="text" placeholder="가입경로" onChange={handleChange} register={register('')}/>
+              <h1></h1>
+              <Inputbox type="text" placeholder="계좌번호" onChange={handleChange} register={register('')}/>
+              <Inputbox type="text" placeholder="예금주" onChange={handleChange} register={register('')}/>
+              <DropInputbox list={banklist} register={register('')}/>
+              <PostInputbox placeholder="우편물 수령주소" register={register('')}/>
+              <PostInputbox placeholder="주소지" register={register('')}/> */}
+>>>>>>> 784c6343a50acee36f917ff1206fe8ffb0dc0925
             </div> 
           </form>
       </div>
