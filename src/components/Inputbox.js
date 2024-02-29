@@ -160,7 +160,7 @@ export const PostInputbox = (props) => {
 
     return(
         <>
-            <p>{placeholder}</p>
+            <label>{placeholder}</label>
             <input
                 className={styles.postcontainer}
                 type="button"
