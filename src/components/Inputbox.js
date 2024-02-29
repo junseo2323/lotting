@@ -28,13 +28,14 @@ export const Inputbox = (props) => {
                 className={styles.inputcontainer}
                 data-placeholder={date_placeholder}
                 type={type}
+                onChange={onChange}
                 placeholder={placeholder}
                 {...props.register}
             />
         </>
     )
 }
-
+   
 export const Inputbox_L = (props) => {
     const type = props.type;
     const placeholder = props.placeholder;
@@ -129,11 +130,12 @@ export const DropInputbox = (props) => {
 const iconstyle = { fontSize: "3.4em", textAlign: "center",color: "#7152F3",paddingRight: "10%", paddingLeft: "7%" };
 
 export const FileInputbox = (props) => {
-
+    console.log(props)
     return(
         <label className={styles.Fileinputcontainer} for="file">
-            <input type='file'id="file"/>
+            <input type='file' id="file" onChange={props.handleChange} className={props.className}/>
             <p style={{textAlign: "center",margin: 0}}><IoMdCloudUpload  style={iconstyle}/></p>
+            {props.isupload?<p>업로드완료</p>:<p>업로드하십쇼.</p>}
             <p className={styles.filetext}>드래그 드랍 또는 <span className={styles.texthighlight}>업로드 할 파일</span>을 선택해주세요</p>
             <p className={styles.filetypetext}>파일형식 : PDF, PNG, JPEG</p>
         </label>

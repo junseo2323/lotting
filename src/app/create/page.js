@@ -29,7 +29,13 @@ const banklist = [{
 
 export default function Create() {
   const { register,watch,handleSubmit } = useForm();
+  const [isupload,setIsupload] = useState({'A':false, 'B':true})
 
+  const handleChange = e => {
+    const changename = e.target.className;
+    console.log(e.target)
+    setIsupload(prev => ({...prev, [changename]:true}))
+  }
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -46,48 +52,40 @@ export default function Create() {
               <Inputbox type="email" placeholder="이메일" register={register('email')}/>
               <Inputbox type="text" placeholder="가입경로" register={register('path')} />
               <h1></h1>
-              {/* <DropInputbox list={banklist} register={register('')}/>
-              <Inputbox type="text" placeholder="계좌번호" register={register('')} />
-              <Inputbox type="text" placeholder="예금주" register={register('')} />
-              <DropInputbox list={banklist} register={register('')}/> */}
-              <PostInputbox placeholder="우편물 수령주소"/>
-              <PostInputbox placeholder="주소지"/>
+              <DropInputbox list={banklist} register={register('bank')}/>
+              <Inputbox type="text" placeholder="계좌번호" register={register('bankid')} />
+              <Inputbox type="text" placeholder="예금주" register={register('bankwho')} />
+              <DropInputbox list={banklist} register={register('bankwhere')}/>
+              <PostInputbox placeholder="우편물 수령주소" register={register('getpost')}/>
+              <PostInputbox placeholder="주소지" register={register('post')}/>
             </div>    
             <input type="submit" value="초기화 전송" />
 
             <h3>관리 정보</h3>
             <div className={styles.content_container}>
-<<<<<<< HEAD
-              {/* <DropInputbox list={banklist} register={register('')}/> 
-              <DropInputbox list={banklist} register={register('')}/>
-              <DropInputbox list={banklist} register={register('')}/>
-              <DropInputbox list={banklist} register={register('')}/> */}
+              <DropInputbox list={banklist} register={register('typeid')}/> 
+              <DropInputbox list={banklist} register={register('type')}/>
+              <DropInputbox list={banklist} register={register('group')}/>
+              <DropInputbox list={banklist} register={register('turn')}/>
               <Spanbox>임시동호 : </Spanbox>
-              {/* <Inputbox type="text" placeholder="가입차순" onChange={handleChange} register={register('')}/>
-=======
-              <DropInputbox list={banklist} register={register('')}/> 
-              <DropInputbox list={banklist} register={register('')}/>
-              <DropInputbox list={banklist} register={register('')}/>
-              <DropInputbox list={banklist} register={register('')}/>
-              <Spanbox>임시동호 : </Spanbox>
-              <Inputbox type="text" placeholder="가입차순" onChange={handleChange} register={register('')}/>
->>>>>>> 82f32a0 (create modify)
-
-              <Inputbox type="date" date_placeholder="가입일자" onChange={handleChange}register={register('')} />
-              <Inputbox type="date" date_placeholder="신탁사 제출일자" onChange={handleChange}register={register('')} />
-              <Inputbox type="email" placeholder="이메일" onChange={handleChange} register={register('')}/>
-              <Inputbox type="text" placeholder="가입경로" onChange={handleChange} register={register('')}/>
-              <h1></h1>
-              <Inputbox type="text" placeholder="계좌번호" onChange={handleChange} register={register('')}/>
-              <Inputbox type="text" placeholder="예금주" onChange={handleChange} register={register('')}/>
-              <DropInputbox list={banklist} register={register('')}/>
-              <PostInputbox placeholder="우편물 수령주소" register={register('')}/>
-<<<<<<< HEAD
-              <PostInputbox placeholder="주소지" register={register('')}/> */}
-=======
-              <PostInputbox placeholder="주소지" register={register('')}/>
->>>>>>> 82f32a0 (create modify)
+              <Inputbox type="text" placeholder="가입차순"  register={register('submitturn')}/>
+              <Inputbox type="date" date_placeholder="가입일자"  register={register('submitdate')} />
+              <Inputbox type="date" date_placeholder="신탁사 제출일자" register={register('trustsubmitdate')} />
+              <Inputbox type="number" placeholder="가입가" register={register('submitprice')}/>
+              <Inputbox type="text" placeholder="가입경로" register={register('come')}/>
+              <Inputbox type="date" date_placeholder="예약금 납입일자" register={register('earnestdate')}/>
+              <Inputbox type="number" placeholder="예약금" register={register('earnest')}/>
             </div> 
+
+            <h3>부속서류</h3>
+            <div className={styles.content_container}>
+              <span>인감증명서</span>
+              <span>본인서명확인서</span>
+              <input type="button" value="TEST A" onClick={handleChange} name="A TEST"/>
+              <input type="button" value="TEST B" onClick={handleChange} name="B TEST"/>
+              <FileInputbox className='A' isupload={isupload['A']} handleChange={handleChange}/>
+              <FileInputbox className='B' isupload={isupload['B']} handleChange={handleChange}/>
+            </div>
           </form>
       </div>
       )

@@ -29,6 +29,7 @@ input[type="file"] {
     overflow: hidden;
     border: 0;
 }
+
 input[type="button"]{
     background: inherit; 
     box-shadow:none; 
