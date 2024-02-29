@@ -12,10 +12,7 @@ input[type='date']::before {
     width: 100%;
 }
 
-input[type='date']:focus::before,
-input[type='date']:valid::before {
-  display: none;
-}
+
 
 ul, li{
     text-decoration: none;

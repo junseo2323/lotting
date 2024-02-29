@@ -1,11 +1,11 @@
 .content_container{
     display: grid;
 	grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 20px;
 
     padding: 20px;
     width: 60vw;
-    height: 85vh;
+    height: auto;
     flex-shrink: 0;
     margin-left:20px;
     border-radius: 10px;
