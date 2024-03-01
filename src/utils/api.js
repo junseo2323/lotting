@@ -1,6 +1,14 @@
 import axios from 'axios';
 const path = "http://localhost:8000"
 
+export const createFile = (files) => {
+    console.log("업로드 파일 : " ,files)
+    
+    return axios.post(path+"/upload",{
+        file: files
+    })
+}
+
 export const fetchLogin = (username,password) => {
     return axios.post(path+"/api/auth/signin")
 }
@@ -26,3 +34,4 @@ export const fetchNameSearch = (username) => {
         throw error;
     })  
 };
+

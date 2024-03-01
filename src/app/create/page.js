@@ -4,6 +4,7 @@ import styles from "@/styles/Create.module.scss"
 import { Inputbox,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
+import {createFile} from "@/utils/api"
 
 const handleChange = e => {
   setPostdetail(e.target.value)
@@ -29,12 +30,18 @@ const banklist = [{
 
 export default function Create() {
   const { register,watch,handleSubmit } = useForm();
-  const [isupload,setIsupload] = useState({'A':false, 'B':true})
+  const [isupload,setIsupload] = useState({'A':false, 'B':false})
+  const [file,setFile] = useState({'A':"",'B':""})
 
   const handleChange = e => {
     const changename = e.target.className;
+    const value = e.target.value;
     console.log(e.target)
     setIsupload(prev => ({...prev, [changename]:true}))
+    setFile(prev=>({...prev,[changename]:[value]}))
+    const formData = new FormData()
+    formData.append('files',e.target.files[0])
+    createFile(formData)
   }
   const onSubmit = (data) => {
     console.log(data);
@@ -81,10 +88,8 @@ export default function Create() {
             <div className={styles.content_container}>
               <span>인감증명서</span>
               <span>본인서명확인서</span>
-              <input type="button" value="TEST A" onClick={handleChange} name="A TEST"/>
-              <input type="button" value="TEST B" onClick={handleChange} name="B TEST"/>
-              <FileInputbox className='A' isupload={isupload['A']} handleChange={handleChange}/>
-              <FileInputbox className='B' isupload={isupload['B']} handleChange={handleChange}/>
+              <FileInputbox className='A' name="fileA" value={file['A']} isupload={isupload['A']} handleChange={handleChange}/>
+              <FileInputbox className='B' name="fileB" value={file['B']} isupload={isupload['B']} handleChange={handleChange}/>
             </div>
           </form>
       </div>
