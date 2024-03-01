@@ -49,6 +49,13 @@ export const ModifyButton = (props) => {
     )
 }
 
+export const ChecButton = (props) => {
+    return(
+        <button className={styles.checkbutton}>
+            {props.children}
+        </button>
+    )
+}
 export const PaymentScheduleButton = () => {
     const [isActivePayment, setIsActivePayment] = useState(true); // 납입 버튼 활성화 상태를 관리하는 상태
 

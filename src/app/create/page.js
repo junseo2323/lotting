@@ -52,6 +52,7 @@ export default function Create() {
               <DropInputbox list={banklist} register={register('bankwhere')}/>
               <PostInputbox placeholder="우편물 수령주소" register={register('getpost')}/>
               <PostInputbox placeholder="주소지" register={register('post')}/>
+
             </div>    
             <input type="submit" value="초기화 전송" />
 
