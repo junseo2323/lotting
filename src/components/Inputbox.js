@@ -58,6 +58,26 @@ export const InputAreabox = (props) => {
     )
 }
    
+
+export const Searchbox = (props) => {
+    const type = props.type;
+    const placeholder = props.placeholder;
+    const onChange = props.onChange;
+    const date_placeholder = props.date_placeholder;
+    const name = props.name;
+
+    return(
+        <>
+            <input
+                className={styles.searchclient}
+                data-placeholder={date_placeholder}
+                type={type}
+                placeholder={placeholder}
+                {...props.register}
+            />
+        </>
+    )
+}
 export const Inputbox_L = (props) => {
     const type = props.type;
     const placeholder = props.placeholder;

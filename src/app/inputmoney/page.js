@@ -1,13 +1,15 @@
 "use client"
 
 import styles from "../../styles/Inputmoney.module.scss";
-import { Inputbox,Inputbox_L,Inputbox_M,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
+
 import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N, ModifyButton} from "@/components/Button"
 import { BsBagDash } from "react-icons/bs";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
+import Link from "next/link";
 
-const Inputmoney = () =>{
+export default function Inputmoney() {
+
   return(
     <div className={styles.Container}>
       <div className={styles.Mainbody}>
@@ -35,12 +37,14 @@ const Inputmoney = () =>{
 
             <div className={styles.BottonFont}>고객선택</div>
           </div> */}
+          <Link href = "/inputmoneysearch">
               <SearchButton>
                     <div className={styles.BottonIcon} style={{ color: 'white' }}>
                         <CgSearch style={{ width: '100%', height: '100%' }} />
                     </div>
                   <div className={styles.BottonFont}>고객선택</div>
               </SearchButton>
+            </Link>
         </div>
 
         <div className={styles.MainContent}>
@@ -71,13 +75,14 @@ const Inputmoney = () =>{
               </div>
               <div className={styles.CBBottonBody}>
 
-                {/* <div className={styles.CBBotton}>
+              
+                <ModifyButton>
+                <Link href = "/inputmoneypay">
                   <div className={styles.CBBottonFont}>납부수정</div>
-                </div> */}
-                <ModifyButton><div className={styles.CBBottonFont}>납부수정</div></ModifyButton>
-                {/* <div className={styles.CBBotton}>
-                  <div className={styles.CBBottonFont}>초기화</div>
-                </div> */}
+                </Link>
+                </ModifyButton>
+              
+
                 <ModifyButton><div className={styles.CBBottonFont}>초기화</div></ModifyButton>
               </div>
               <div className={styles.CBSum}>
@@ -110,9 +115,12 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
+                
+              <Link href = "/inputmoneypay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
+              </Link>
 
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
@@ -147,9 +155,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
+              <Link href = "/inputmoneypay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
+              </Link>
 
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
@@ -184,9 +194,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
+              <Link href = "/inputmoneypay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
+              </Link>
 
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
@@ -230,9 +242,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
+              <Link href = "/inputmoneypay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
+              </Link>
 
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
@@ -267,9 +281,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
+              <Link href = "/inputmoneypay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
+              </Link>
 
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
@@ -304,9 +320,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
+              <Link href = "/inputmoneypay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
+              </Link>
 
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>초기화</div>
@@ -349,9 +367,11 @@ const Inputmoney = () =>{
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
+              <Link href = "/inputmoneyloan">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>대출수정</div>
                 </ModifyButton>
+              </Link>
               </div>
               <div className={styles.CBSum}>
               <div className={styles.CBMoneyImg}>
@@ -401,9 +421,11 @@ const Inputmoney = () =>{
               </div>
               <div className={styles.CBBottonBody}>
             
+              <Link href = "/inputmoneycancle">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>해약하기</div>
                 </ModifyButton>
+              </Link>
               
               </div>
             </div>
@@ -416,5 +438,3 @@ const Inputmoney = () =>{
     </div>
   )
 };
-
-export default Inputmoney;
