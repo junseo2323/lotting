@@ -28,6 +28,7 @@ export const Inputbox = (props) => {
                 className={styles.inputcontainer}
                 data-placeholder={date_placeholder}
                 type={type}
+                onChange={onChange}
                 placeholder={placeholder}
                 {...props.register}
             />
@@ -35,6 +36,28 @@ export const Inputbox = (props) => {
     )
 }
 
+
+export const InputAreabox = (props) => {
+    const type = props.type;
+    const placeholder = props.placeholder;
+    const onChange = props.onChange;
+    const date_placeholder = props.date_placeholder;
+    const name = props.name;
+
+    return(
+        <>
+            <textarea
+                className={styles.areacontainer}
+                data-placeholder={date_placeholder}
+                type={type}
+                onChange={onChange}
+                placeholder={placeholder}
+                {...props.register}
+            />
+        </>
+    )
+}
+   
 export const Inputbox_L = (props) => {
     const type = props.type;
     const placeholder = props.placeholder;
@@ -115,12 +138,14 @@ export const LongInputbox = (props) => {
 
 export const DropInputbox = (props) => {
     const optionlist = props.list;
-
+    const handlechange = props.handlechange;
+    const value = props.value;
     return(
-        <select className={styles.Dropinputcontainer} {...props.register}>
+        <select className={styles.Dropinputcontainer} {...props.register} >
             {
-                optionlist.map((i)=>
-                    <option value={i.value}>{i.item}</option>
+                optionlist.map((i)=>{
+                    return <option value={i.value}>{i.item}</option>
+                    }
                 )
             }
         </select>
@@ -129,17 +154,18 @@ export const DropInputbox = (props) => {
 const iconstyle = { fontSize: "3.4em", textAlign: "center",color: "#7152F3",paddingRight: "10%", paddingLeft: "7%" };
 
 export const FileInputbox = (props) => {
-
     return(
-        <label className={styles.Fileinputcontainer} for="file">
-            <input type='file'id="file"/>
+        <label className={styles.Fileinputcontainer} for={props.className}>
+            <input type='file' id={props.className} onChange={props.handleChange} className={props.className} name={props.name}/>
             <p style={{textAlign: "center",margin: 0}}><IoMdCloudUpload  style={iconstyle}/></p>
-            <p className={styles.filetext}>드래그 드랍 또는 <span className={styles.texthighlight}>업로드 할 파일</span>을 선택해주세요</p>
-            <p className={styles.filetypetext}>파일형식 : PDF, PNG, JPEG</p>
+            {props.isupload?<><p className={styles.successtext}>업로드완료</p><p className={styles.successfilename}>{(props.value).toString().slice(12)}</p></>:<><p className={styles.filetext}>드래그 드랍 또는 <span className={styles.texthighlight}>업로드 할 파일</span>을 선택해주세요</p>
+            <p className={styles.filetypetext}>파일형식 : PDF, PNG, JPEG</p></>}
         </label>
     )
 }
 export const PostInputbox = (props) => {
+    const { register } = useForm(); 
+
     const [postnumber,setPostnumber] = useState("우편번호")
     const [post,setPost] = useState("주소")
     const [postdetail,setPostdetail] = useState("")
@@ -167,7 +193,8 @@ export const PostInputbox = (props) => {
                 value={postnumber}
                 onClick={getpost}
                 placeholder="우편번호"
-                {...props.register}
+                {...register("TEST")}
+
             />
             <input
                 className={styles.postcontainer}
@@ -175,7 +202,6 @@ export const PostInputbox = (props) => {
                 value={post}
                 onClick={getpost}
                 placeholder="주소"
-                {...props.register}
             />
             <input
                 className={styles.inputcontainer}
@@ -183,7 +209,6 @@ export const PostInputbox = (props) => {
                 onChange={handleChange}
                 value={postdetail}
                 placeholder="주소상세"
-                {...props.register}
             />
         </>
     )

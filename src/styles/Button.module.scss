@@ -32,7 +32,11 @@
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    background: var(--Primary-500, #7152F3);
+
+    box-shadow: none;
+
+    background: #7152F3;
+    color: #fff;
 }
 .buttonstyle_n{
     display: flex;

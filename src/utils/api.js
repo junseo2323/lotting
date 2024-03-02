@@ -1,6 +1,35 @@
 import axios from 'axios';
 const path = "http://localhost:8000"
 
+export const newIdGenerate = () => {
+    return axios.get(path+"/api/generateid")
+    .then(result => {
+        return result.data.nextid;
+    })
+    .catch(error => {
+        console.error(error);
+        throw error;
+    })  
+}
+
+export const createFile = (files) => {
+    console.log("업로드 파일 : " ,files)
+    const formData = new FormData()
+    files.forEach(data => {
+        formData.append('file', data );
+    });
+
+    return axios.post(path+'/upload', formData, {
+        headers: {'Content-Type': 'multipart/form-data', charset: 'utf-8'},
+    });
+
+}
+
+export const createUser = (data) => {
+    console.log("생성하는 유저의 정보 : ", data);
+    return axios.post(path+'/api/createuser',data);
+}
+
 export const fetchLogin = (username,password) => {
     return axios.post(path+"/api/auth/signin")
 }
@@ -26,3 +55,4 @@ export const fetchNameSearch = (username) => {
         throw error;
     })  
 };
+

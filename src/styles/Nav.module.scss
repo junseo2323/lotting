@@ -1,7 +1,7 @@
 .container{
     background-color: rgba(162, 161, 168, 0.01);
     width: 280px;
-    height: 1500px;
+    height: 800px; /* 뷰포트 높이의 100%로 설정합니다. */
     float: left;
 }
 .logostyle{
