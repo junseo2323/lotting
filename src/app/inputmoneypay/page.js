@@ -6,7 +6,7 @@ import styles from "../../styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
-
+import Link from "next/link";
 
 const handleChange = e => {
     setPostdetail(e.target.value)
@@ -35,12 +35,14 @@ export default function Inputmoneypay() {
                     </div>
                     <div className={styles.MainTitle2}>
 
+                    <Link href = "/inputmoneysearch">
                         <SearchButton>
-                            <div className={styles.BottonIcon} style={{ color: 'white' }}>
-                                <CgSearch style={{ width: '100%', height: '100%' }} />
-                            </div>
-                            <div className={styles.BottonFont}>고객선택</div>
+                                <div className={styles.BottonIcon} style={{ color: 'white' }}>
+                                    <CgSearch style={{ width: '100%', height: '100%' }} />
+                                </div>
+                                <div className={styles.BottonFont}>고객선택</div>
                         </SearchButton>
+                    </Link>
 
 
                     </div>

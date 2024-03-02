@@ -20,6 +20,18 @@
     text-align: center;
     font-size: 13px;
 }
+.searchclient{
+    display: flex;
+    width: 310px;
+    height:56px;
+    box-sizing: border-box;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
+    gap: 10px;
+}
 .inputcontainer_L{
     display: flex;
     width:1040px;
