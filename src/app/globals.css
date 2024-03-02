@@ -7,12 +7,18 @@ body{
     margin: 0;
 }
 
+main{
+    padding-left: 280px;
+}
+
 input[type='date']::before {
     content: attr(data-placeholder);
     width: 100%;
 }
 
-
+button{ 
+    background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer
+}
 
 ul, li{
     text-decoration: none;

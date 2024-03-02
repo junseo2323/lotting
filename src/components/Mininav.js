@@ -17,7 +17,7 @@ import styles from "../styles/Mininav.module.scss";
 
 const iconstyle = { fontSize: "1.2em", paddingRight: "2%", paddingLeft: "1%" };
 
-const Searchnav = () => {
+const Mininav = () => {
     const pathname = usePathname();
     const splitpath = pathname.split('/');
   
@@ -52,14 +52,5 @@ const Searchnav = () => {
 }
 
 
-const Mininav = props => {
-    const control = props.constrol;
-    console.log
-    if(control === "search"){
-        return(
-            <Searchnav />
-        )
-    }
-}
 
 export default Mininav;
