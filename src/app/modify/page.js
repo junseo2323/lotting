@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
+
 const SearchList = (name) => {
   let searchname;
   if((name.name).length > 1) searchname = name.name;
@@ -22,7 +23,7 @@ const SearchList = (name) => {
     case 'hasValue':
       return <div>
           {(searchdata.contents).map((k) =>
-            <Link className={styles.maincontainer} href={"/modify/userinfo/"+k.id}>
+            <Link className={styles.maincontainer} href={"/modify/"+k.id}>
               <span>{k.id}</span>
               <span>{k.userinfo.name}</span>
               <span>{k.type}</span>

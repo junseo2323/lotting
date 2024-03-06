@@ -21,6 +21,7 @@ export const Inputbox = (props) => {
     const onChange = props.onChange;
     const date_placeholder = props.date_placeholder;
     const name = props.name;
+    const value = props.value;
 
     return(
         <>
@@ -159,9 +160,10 @@ export const LongInputbox = (props) => {
 export const DropInputbox = (props) => {
     const optionlist = props.list;
     const handlechange = props.handlechange;
+    const defaultValue = props.defaultValue;
     const value = props.value;
     return(
-        <select className={styles.Dropinputcontainer} {...props.register} >
+        <select className={styles.Dropinputcontainer} defaultValue={defaultValue}  {...props.register} >
             {
                 optionlist.map((i)=>{
                     return <option value={i.value}>{i.item}</option>
