@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import styles from "../../styles/Inputmoneyloan.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
-
+import Link from "next/link";
 
 const Inputmoneyloan = () =>{
     const { register,watch,handleSubmit } = useForm();
@@ -22,12 +22,14 @@ const Inputmoneyloan = () =>{
                         </div>
                     </div>
                     <div className={styles.MainTitle2}>
+                    <Link href = "/inputmoneysearch">
                         <SearchButton>
-                            <div className={styles.BottonIcon} style={{ color: 'white' }}>
-                                <CgSearch style={{ width: '100%', height: '100%' }} />
-                            </div>
-                            <div className={styles.BottonFont}>고객선택</div>
-                        </SearchButton> 
+                                <div className={styles.BottonIcon} style={{ color: 'white' }}>
+                                    <CgSearch style={{ width: '100%', height: '100%' }} />
+                                </div>
+                                <div className={styles.BottonFont}>고객선택</div>
+                        </SearchButton>
+                    </Link>
                     </div>
                 </div>
                 <div className={styles.InputBody}>

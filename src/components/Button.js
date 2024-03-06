@@ -1,10 +1,20 @@
 "use client"
 import styles from "@/styles/Button.module.scss"
 import { useState } from 'react'
+import { CgSearch } from "react-icons/cg";
 
 export const Button = (props) => {
     return(
         <button className={styles.buttonstyle}>
+            {props.children}
+        </button>
+    )
+}
+
+export const CgSearchButton = (props) => {
+    return(
+        <button className={styles.CgButton}>
+            <CgSearch />
             {props.children}
         </button>
     )
