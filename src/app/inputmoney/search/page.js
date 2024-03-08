@@ -16,7 +16,6 @@ export default function Inputmoneysearch() {
       };
 
   return(
-    <div className={styles.Blur}>
         <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.SelectContainer}>
             <div className={styles.SelectTitleBody}>
@@ -98,7 +97,6 @@ export default function Inputmoneysearch() {
             </div>
         </div>
         </form>
-    </div>
   )
 };
 
