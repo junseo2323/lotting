@@ -2,6 +2,7 @@
 import styles from "@/styles/Button.module.scss"
 import { useState } from 'react'
 import { CgSearch } from "react-icons/cg";
+import { FaFileDownload } from "react-icons/fa";
 
 export const Button = (props) => {
     return(
@@ -10,6 +11,19 @@ export const Button = (props) => {
         </button>
     )
 }
+
+const iconstyle = { fontSize: "1.5em", marginLeft: "10px", marginTop: "10px" };
+
+export const DownloadButton = (props) => {
+    return(
+        <>
+        <p>{props.children}</p>
+        <button className={styles.downloadbuttonstyle}>
+            다운로드
+        </button>
+        </>
+    )
+} 
 
 export const CgSearchButton = (props) => {
     return(
@@ -66,6 +80,7 @@ export const ChecButton = (props) => {
         </button>
     )
 }
+
 export const PaymentScheduleButton = () => {
     const [isActivePayment, setIsActivePayment] = useState(true); // 납입 버튼 활성화 상태를 관리하는 상태
 

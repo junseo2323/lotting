@@ -6,7 +6,7 @@ import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { userinfoSelector } from "@/utils/selector";
 import { useState } from "react";
 import { useridState } from "@/utils/atom";
-
+import { DownloadButton } from "@/components/Button";
 
 
 export default function Search() {
@@ -24,9 +24,7 @@ export default function Search() {
       if(userdata===undefined) return <><h1>잘못된 접근입니다</h1></>
       else return (
         <>
-        <h1></h1>
-          <Mininav control="search"/>
-
+          <h3>고객정보</h3>
           <div className={styles.container}>
             <span className={styles.title}>관리번호</span>
             <span className={styles.title}>성명</span>
@@ -87,6 +85,22 @@ export default function Search() {
             <span>{userdata.ext.managemain}</span>
             <span>{userdata.ext.manageteam}</span>
             <span>{userdata.ext.managename}</span>
+          </div>
+          <h1></h1>
+          <hr/>
+          <h3>부속서류</h3>
+          <div className={styles.file_container}>
+            <DownloadButton>인감증명서</DownloadButton>
+            <DownloadButton>본인서명확인서</DownloadButton>
+            <DownloadButton>신분증</DownloadButton>
+            <DownloadButton>확약서</DownloadButton>
+            <DownloadButton>상준위용</DownloadButton>
+            <DownloadButton>무상옵션</DownloadButton>
+            <DownloadButton>선호도조사</DownloadButton>
+            <DownloadButton>총회동의서</DownloadButton>
+            <DownloadButton>사은품</DownloadButton>
+
+
           </div>
         </>
     )
