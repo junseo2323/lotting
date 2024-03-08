@@ -21,17 +21,7 @@ const handleChange = e => {
 export default function Create() {
   const router = useRouter();
 
-  const { register,handleSubmit,reset} = useForm({
-    defaultValues: {
-      file1: false,
-      file2: false,
-      file3: false,
-      file4: false,
-      file5: false,
-      file6: false,
-      file7: false,
-    }
-  });
+  const { register,handleSubmit,reset} = useForm();
   
   const [newid, setNewid] = useState("");
 
