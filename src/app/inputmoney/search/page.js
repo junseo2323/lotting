@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "../../styles/Inputmoneysearch.module.scss";
+import styles from "@/styles/Inputmoneysearch.module.scss";
 import { Searchbox } from "@/components/Inputbox"
 import { useForm } from "react-hook-form"
 import {CgSearchButton} from "@/components/Button"

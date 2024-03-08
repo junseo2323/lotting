@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "../../styles/Inputmoney.module.scss";
+import styles from "@/styles/Inputmoney.module.scss";
 
 import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N, ModifyButton} from "@/components/Button"
 import { BsBagDash } from "react-icons/bs";
@@ -37,7 +37,7 @@ export default function Inputmoney() {
 
             <div className={styles.BottonFont}>고객선택</div>
           </div> */}
-          <Link href = "/inputmoneysearch">
+          <Link href = "/inputmoney/search">
               <SearchButton>
                     <div className={styles.BottonIcon} style={{ color: 'white' }}>
                         <CgSearch style={{ width: '100%', height: '100%' }} />
@@ -77,7 +77,7 @@ export default function Inputmoney() {
 
               
                 <ModifyButton>
-                <Link href = "/inputmoneypay">
+                <Link href = "/inputmoney/pay">
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </Link>
                 </ModifyButton>
@@ -116,7 +116,7 @@ export default function Inputmoney() {
               </div>
               <div className={styles.CBBottonBody}>
                 
-              <Link href = "/inputmoneypay">
+              <Link href = "/inputmoney/pay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
@@ -155,7 +155,7 @@ export default function Inputmoney() {
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-              <Link href = "/inputmoneypay">
+              <Link href = "/inputmoney/pay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
@@ -194,7 +194,7 @@ export default function Inputmoney() {
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-              <Link href = "/inputmoneypay">
+              <Link href = "/inputmoney/pay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
@@ -242,7 +242,7 @@ export default function Inputmoney() {
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-              <Link href = "/inputmoneypay">
+              <Link href = "/inputmoney/pay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
@@ -281,7 +281,7 @@ export default function Inputmoney() {
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-              <Link href = "/inputmoneypay">
+              <Link href = "/inputmoney/pay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
@@ -320,7 +320,7 @@ export default function Inputmoney() {
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-              <Link href = "/inputmoneypay">
+              <Link href = "/inputmoney/pay">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>납부수정</div>
                 </ModifyButton>
@@ -367,7 +367,7 @@ export default function Inputmoney() {
                 </div>
               </div>
               <div className={styles.CBBottonBody}>
-              <Link href = "/inputmoneyloan">
+              <Link href = "/inputmoney/loan">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>대출수정</div>
                 </ModifyButton>
@@ -421,7 +421,7 @@ export default function Inputmoney() {
               </div>
               <div className={styles.CBBottonBody}>
             
-              <Link href = "/inputmoneycancle">
+              <Link href = "/inputmoney/cancle">
                 <ModifyButton>
                   <div className={styles.CBBottonFont}>해약하기</div>
                 </ModifyButton>
