@@ -7,6 +7,21 @@
     margin-top: 3%;
     color: #fff;
 }
+.downloadbuttonstyle{
+    width: 100px;
+    background-color: #7152F3;
+    border: 0;
+    border-radius: 10px;
+    height: 43px;
+    margin-top: 3%;
+    color: #fff;
+
+    span{
+        font-weight: 500;
+        font-size: 15px;
+        margin-right: 10px;
+    }
+}
 .searchbuttonstyle{
     display: inline-flex;
     width:133px;
