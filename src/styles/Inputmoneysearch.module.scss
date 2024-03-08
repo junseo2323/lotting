@@ -1,15 +1,10 @@
-.Blur {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    backdrop-filter: blur(10px);
-    z-index: 999; // 다른 요소 위에 보이도록 z-index 설정
+.MainContainer{
+    width:383px;
+    height:100vh;
 }
 .SelectContainer {
-    margin-left: 528px;
-    margin-top: 160px;
+    margin-left: 300px;
+    margin-top: 40px;
     width: 383px;
     height: 554px;
     border-radius: 20px;
