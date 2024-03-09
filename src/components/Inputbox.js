@@ -178,7 +178,7 @@ const iconstyle = { fontSize: "3.4em", textAlign: "center",color: "#7152F3",padd
 export const FileInputbox = (props) => {
     return(
         <label className={styles.Fileinputcontainer} for={props.className}>
-            <input type='file' id={props.className} onChange={props.handleChange} className={props.className} name={props.name}/>
+            <input type='file' id={props.className} onChange={props.handleChange} className={props.className} name={props.name} />
             <p style={{textAlign: "center",margin: 0}}><IoMdCloudUpload  style={iconstyle}/></p>
             {props.isupload?<><p className={styles.successtext}>업로드완료</p><p className={styles.successfilename}>{(props.value).toString().slice(12)}</p></>:<><p className={styles.filetext}>드래그 드랍 또는 <span className={styles.texthighlight}>업로드 할 파일</span>을 선택해주세요</p>
             <p className={styles.filetypetext}>파일형식 : PDF, PNG, JPEG</p></>}

@@ -21,17 +21,7 @@ const handleChange = e => {
 export default function Create() {
   const router = useRouter();
 
-  const { register,handleSubmit,reset} = useForm({
-    defaultValues: {
-      file1: false,
-      file2: false,
-      file3: false,
-      file4: false,
-      file5: false,
-      file6: false,
-      file7: false,
-    }
-  });
+  const { register,handleSubmit,reset} = useForm();
   
   const [newid, setNewid] = useState("");
 
@@ -45,8 +35,8 @@ export default function Create() {
     getData();
   }, []);
 
-  const [isupload,setIsupload] = useState({'A':false, 'B':false})
-  const [file,setFile] = useState({'A':"",'B':""})
+  const [isupload,setIsupload] = useState({'A':false, 'B':false,'C':false, 'D':false,'E':false, 'F':false,'G':false, 'H':false,'I':false})
+  const [file,setFile] = useState({'A':"", 'B':"",'C':"", 'D':"",'E':"", 'F':"",'G':"", 'H':"",'I':""})
   const [files, setFiles] = useState([])
 
   const handleChange = e => { //file 핸들링
@@ -63,7 +53,9 @@ export default function Create() {
   }
 
   const onSubmit = (data) => {
+    data.fileinfo = isupload;
     console.log(data);
+
     createFile(files);
     createUser(data);
     reset();
