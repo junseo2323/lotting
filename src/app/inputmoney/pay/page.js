@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from 'next/router'; 
 import React, { useState } from 'react';
 import { Inputbox,Inputbox_L,Inputbox_M,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
 import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N} from "@/components/Button"
@@ -9,130 +10,94 @@ import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
-const handleChange = e => {
-    setPostdetail(e.target.value)
-  }
-
 export default function Inputmoneypay() {
-
-    const { register,watch,handleSubmit } = useForm();
-
+    const router = useRouter(); // 라우터 객체 생성
+    const { register, handleSubmit } = useForm();
     const [price, setPrice] = useState('');
 
     const onSubmit = (data) => {
         console.log(data);
-      };
-
-    const handleChange = (newValue) => {
-    setPrice(newValue);
-  };
-    return(
+    };
+      
+    const handleCancel = () => {
+        router.back(); // 이전 페이지로 이동
+    };
+    
+    return (
         <div className={styles.Container}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.Mainbody}>
-                <div className={styles.MainTitle}>
-                    <div className={styles.MainTitle1}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className={styles.Mainbody}>
+                    <div className={styles.MainTitle}>
+                        <div className={styles.MainTitle1}>
 
-                        <div className={styles.SearchClientNum}>
-                            <div className={styles.SearchFont1}>고객번호 : </div>
-                            <div className={styles.SearchFont2}>123456</div>
+                            <div className={styles.SearchClientNum}>
+                                <div className={styles.SearchFont1}>고객번호 : </div>
+                                <div className={styles.SearchFont2}>123456</div>
+                            </div>
+                            <div className={styles.SearchClientNum}>
+                                <div className={styles.SearchFont1}>성함 : </div>
+                                <div className={styles.SearchFont2}>이승준</div>
+                            </div>
+                            
                         </div>
-                        
-                    </div>
-                    <div className={styles.MainTitle2}>
+                        <div className={styles.MainTitle2}>
 
-                    <Link href = "/inputmoneysearch">
-                        <SearchButton>
-                                <div className={styles.BottonIcon} style={{ color: 'white' }}>
-                                    <CgSearch style={{ width: '100%', height: '100%' }} />
+                        <Link href = "/inputmoneysearch">
+                            <SearchButton>
+                                    <div className={styles.BottonIcon} style={{ color: 'white' }}>
+                                        <CgSearch style={{ width: '100%', height: '100%' }} />
+                                    </div>
+                                    <div className={styles.BottonFont}>고객선택</div>
+                            </SearchButton>
+                        </Link>
+
+
+                        </div>
+                    </div>
+                    <div className={styles.InputBody}>
+                        <div className={styles.InputBodyTitle}>
+                            <div className={styles.IBTIcon}>
+                                <div className={styles.Icon} style={{ color: '#7152F3' }}>
+                                    <BsDatabase style={{ width: '100%', height: '100%' }} />
                                 </div>
-                                <div className={styles.BottonFont}>고객선택</div>
-                        </SearchButton>
-                    </Link>
+                            </div>
+                            <div className={styles.IBTText}>5차 납입</div>
+                        </div>
+                        <div className={styles.Line}></div>
+                        <div className={styles.IBBottonLayer}>
+                            <PaymentScheduleButton/>
+                        </div>
+                        <div className={styles.IBLayer}>
+                            <Inputbox_L type="text" placeholder="완납일" register={register('fullpayment')} />
+                        </div>
 
+                        <div className={styles.IBLayer}>
+                            <Inputbox_M type="text" placeholder="부담금" register={register('data.price')} />
+                            <Inputbox_M type="text" placeholder="업무대행비" register={register('data.price2')} />
+                        </div>
 
-                    </div>
-                </div>
-                <div className={styles.InputBody}>
-                    <div className={styles.InputBodyTitle}>
-                        <div className={styles.IBTIcon}>
-                            <div className={styles.Icon} style={{ color: '#7152F3' }}>
-                                <BsDatabase style={{ width: '100%', height: '100%' }} />
+                        <div className={styles.IBLayer}>
+                            <Inputbox_L type="text" placeholder="할인액" register={register('data.discountprice')} />
+                        </div>
+
+                        <div className={styles.IBLayer}>
+                            <Inputbox_L type="text" placeholder="면제액" register={register('data.deleteprice')} />
+                        </div>
+
+                        <div className={styles.IBLayer}>
+                            <Inputbox_M type="text" placeholder="이동" register={register('move')} />
+                            <div className={styles.IBInputBox_S}>
+                                <div className={styles.SearchFont1}>총액 :</div>
+                                <div className={styles.SearchFont2}>123,456,789 ₩</div>
                             </div>
                         </div>
-                        <div className={styles.IBTText}>5차 납입</div>
-                    </div>
-                    <div className={styles.Line}></div>
-                    <div className={styles.IBBottonLayer}>
-
-                        {/* <div className={styles.BackgroundBotton}>
-                            <div className={styles.InnerBotton}>
-                            <div className={styles.BottonFont}>납입</div>
+                        
+                        <div className={styles.IBBottonLayer}>
+                            <Button_N onClick={handleCancel}><div className = {styles.BottonFont2}>취소</div></Button_N>
+                            <Button_Y type="submit"><div className = {styles.BottonFont}>확인</div></Button_Y>
                         </div>
-                            <div className={styles.BackgroundBottonFont}>예정</div>
-                        </div> */}
-                        <PaymentScheduleButton/>
-
-                    </div>
-                    <div className={styles.IBLayer}>
-                        {/* <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>완납일</div>
-                        </div> */}
-                        <Inputbox_L type="text" placeholder="완납일" register={register('fullpayment')} />
-                    </div>
-                    {/* 한 덩어리 */}
-
-                    <div className={styles.IBLayer}>
-                        {/* <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>부담금</div>
-                        </div> */}
-                        <Inputbox_M type="text" placeholder="부담금" register={register('data.price')} />
-                        {/* <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>업무대행비</div>
-                        </div> */}
-                        <Inputbox_M type="text" placeholder="업무대행비" register={register('data.price2')} />
-                    </div>
-                    {/* 한 덩어리 */}
-
-                    <div className={styles.IBLayer}>
-                        {/* <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>할인액</div>
-                        </div> */}
-                        <Inputbox_L type="text" placeholder="할인액" register={register('data.discountprice')} />
-                    </div>
-                    {/* 한 덩어리 */}
-
-                    {/* 한 덩어리 */}
-                    <div className={styles.IBLayer}>
-                        {/* <div className={styles.IBInputBox_L}>
-                            <div className={styles.SearchFont1}>면제액</div>
-                        </div> */}
-                        <Inputbox_L type="text" placeholder="면제액" register={register('data.deleteprice')} />
-                    </div>
-                    {/* 한 덩어리 */}
-
-                    <div className={styles.IBLayer}>
-                        {/* <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>이동</div>
-                        </div> */}
-                        <Inputbox_M type="text" placeholder="이동" register={register('move')} />
-                        <div className={styles.IBInputBox_S}>
-                            <div className={styles.SearchFont1}>총액 :</div>
-                            <div className={styles.SearchFont2}>123,456,789 ₩</div>
-                        </div>
-                    </div>
-                    {/* 한 덩어리 */}
-                    
-                    <div className={styles.IBBottonLayer}>
-                        {/* <div className={styles.Botton_N}>취소</div> */}
-                        <Button_N><div className = {styles.BottonFont2}>취소</div></Button_N>
-                        <Button_Y><div className = {styles.BottonFont}>확인</div></Button_Y>
-                        {/* <div className={styles.Botton_Y}>
-                            <div className={styles.BottonFont}>확인</div>
-                        </div> */}
                     </div>
                 </div>
-            </div>
             </form>
         </div>
     );
