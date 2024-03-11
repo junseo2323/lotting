@@ -14,6 +14,7 @@ const SearchList = ({ name }) => {
     let searchname;
     if (name && name.name && name.name.length > 1) {
         searchname = name.name;
+        console.log(searchname);
       } else {
         searchname = ''; // name이 없거나 name.name이 없는 경우 빈 문자열로 설정
       }
