@@ -1,7 +1,6 @@
-"use client"
-
-import { useRouter } from 'next/router'; 
-import React, { useState } from 'react';
+'use client'
+import { usePathname } from 'next/navigation'; 
+import React, { useState,useEffect } from 'react';
 import { Inputbox,Inputbox_L,Inputbox_M,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
 import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N} from "@/components/Button"
 import styles from "@/styles/Inputmoneypay.module.scss";
@@ -11,9 +10,22 @@ import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
 export default function Inputmoneypay() {
-    const router = useRouter(); // 라우터 객체 생성
-    const { register, handleSubmit } = useForm();
-    const [price, setPrice] = useState('');
+    const router = usePathname(); // 라우터 객체 생성
+    const { register, handleSubmit, watch } = useForm();
+    const [totalAmount, setTotalAmount] = useState(0);
+
+    useEffect(() => {
+        // 부담금, 업무대행비, 할인액, 면제액, 이동 값을 가져옵니다.
+        const price = parseInt(watch('data.price')) || 0; // 부담금
+        const price2 = parseInt(watch('data.price2')) || 0; // 업무대행비
+        const discountPrice = parseInt(watch('data.discountprice')) || 0; // 할인액
+        const deletePrice = parseInt(watch('data.deleteprice')) || 0; // 면제액
+        const movePrice = parseInt(watch('move')) || 0; // 이동
+
+        // 총액 계산: 부담금 + 업무대행비 - 할인액 - 면제액 + 이동
+        const total = price + price2 - discountPrice - deletePrice + movePrice;
+        setTotalAmount(total);
+    }, [watch]);
 
     const onSubmit = (data) => {
         console.log(data);
@@ -68,7 +80,7 @@ export default function Inputmoneypay() {
                             <PaymentScheduleButton/>
                         </div>
                         <div className={styles.IBLayer}>
-                            <Inputbox_L type="text" placeholder="완납일" register={register('fullpayment')} />
+                            <Inputbox type="date" placeholder="완납일" register={register('fullpayment')} />
                         </div>
 
                         <div className={styles.IBLayer}>
@@ -88,7 +100,7 @@ export default function Inputmoneypay() {
                             <Inputbox_M type="text" placeholder="이동" register={register('move')} />
                             <div className={styles.IBInputBox_S}>
                                 <div className={styles.SearchFont1}>총액 :</div>
-                                <div className={styles.SearchFont2}>123,456,789 ₩</div>
+                                <div className={styles.SearchFont2}>{totalAmount.toLocaleString('ko-KR')} ₩</div>
                             </div>
                         </div>
                         
