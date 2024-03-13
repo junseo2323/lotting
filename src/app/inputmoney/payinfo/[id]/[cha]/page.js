@@ -1,4 +1,5 @@
 'use client'
+
 import { usePathname } from 'next/navigation'; 
 import React, { useState,useEffect } from 'react';
 import { Inputbox,Inputbox_L,Inputbox_M,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
@@ -11,29 +12,51 @@ import Link from "next/link";
 
 export default function Inputmoneypay() {
     const router = usePathname(); // 라우터 객체 생성
-    const { register, handleSubmit, watch } = useForm();
-    const [totalAmount, setTotalAmount] = useState(0);
-
-    useEffect(() => {
-        // 부담금, 업무대행비, 할인액, 면제액, 이동 값을 가져옵니다.
-        const price = parseInt(watch('data.price')) || 0; // 부담금
-        const price2 = parseInt(watch('data.price2')) || 0; // 업무대행비
-        const discountPrice = parseInt(watch('data.discountprice')) || 0; // 할인액
-        const deletePrice = parseInt(watch('data.deleteprice')) || 0; // 면제액
-        const movePrice = parseInt(watch('move')) || 0; // 이동
-
-        // 총액 계산: 부담금 + 업무대행비 - 할인액 - 면제액 + 이동
-        const total = price + price2 - discountPrice - deletePrice + movePrice;
-        setTotalAmount(total);
-    }, [watch]);
-
+    const { register, handleSubmit } = useForm();
+    const [pay, setpay] = useState('');
+    const [work, setwork] = useState('');
+    const [discount, setdiscount] = useState('');
+    const [del, setdelete] = useState('');
+    const [tot, settotal] = useState(0);
     const onSubmit = (data) => {
         console.log(data);
     };
-      
+    useEffect(() => {
+        calculateTotal();
+      }, [pay, work, discount, del]);
+
+    const calculateTotal = () => {
+        const payValue = parseInt(pay) || 0;
+        const workValue = parseInt(work) || 0;
+        const discountValue = parseInt(discount) || 0;
+        const deleteValue = parseInt(del) || 0;
+    
+        const total = payValue + workValue - discountValue - deleteValue;
+        settotal(total);
+      };
+
     const handleCancel = () => {
         router.back(); // 이전 페이지로 이동
     };
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        switch (name) {
+          case 'pay':
+            setpay(value);
+            break;
+          case 'work':
+            setwork(value);
+            break;
+          case 'discount':
+            setdiscount(value);
+            break;
+          case 'del':
+            setdelete(value);
+            break;
+          default:
+            break;
+        }
+      };
     
     return (
         <div className={styles.Container}>
@@ -54,7 +77,7 @@ export default function Inputmoneypay() {
                         </div>
                         <div className={styles.MainTitle2}>
 
-                        <Link href = "/inputmoneysearch">
+                        <Link href = "/inputmoney/search">
                             <SearchButton>
                                     <div className={styles.BottonIcon} style={{ color: 'white' }}>
                                         <CgSearch style={{ width: '100%', height: '100%' }} />
@@ -80,27 +103,27 @@ export default function Inputmoneypay() {
                             <PaymentScheduleButton/>
                         </div>
                         <div className={styles.IBLayer}>
-                            <Inputbox type="date" placeholder="완납일" register={register('fullpayment')} />
+                            <Inputbox type="date" placeholder="완납일" register={('completedate')} />
                         </div>
 
                         <div className={styles.IBLayer}>
-                            <Inputbox_M type="text" placeholder="부담금" register={register('data.price')} />
-                            <Inputbox_M type="text" placeholder="업무대행비" register={register('data.price2')} />
+                            <Inputbox_M type="text" placeholder="부담금" name="pay" onChange={onChange} />
+                            <Inputbox_M type="text" placeholder="업무대행비" name="work" onChange={onChange} />
                         </div>
 
                         <div className={styles.IBLayer}>
-                            <Inputbox_L type="text" placeholder="할인액" register={register('data.discountprice')} />
+                            <Inputbox_L type="text" placeholder="할인액" name="discount" onChange={onChange} />
                         </div>
 
                         <div className={styles.IBLayer}>
-                            <Inputbox_L type="text" placeholder="면제액" register={register('data.deleteprice')} />
+                            <Inputbox_L type="text" placeholder="면제액" name="del" onChange={onChange} />
                         </div>
 
                         <div className={styles.IBLayer}>
                             <Inputbox_M type="text" placeholder="이동" register={register('move')} />
                             <div className={styles.IBInputBox_S}>
                                 <div className={styles.SearchFont1}>총액 :</div>
-                                <div className={styles.SearchFont2}>{totalAmount.toLocaleString('ko-KR')} ₩</div>
+                                <div className={styles.SearchFont2}>{tot.toLocaleString()}₩</div>
                             </div>
                         </div>
                         

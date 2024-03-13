@@ -19,6 +19,7 @@ export default function Inputmoney() {
   const setIdState = useSetRecoilState(useridState);
   useState(()=>{setIdState(splitpath[3])});
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
+
   switch(userselectordata.state){
     case 'hasValue':
       const userdata = userselectordata.contents;
@@ -38,19 +39,13 @@ export default function Inputmoney() {
               </div>
               <div className={styles.SearchCha}>
                 <div className={styles.SearchFont1}>가입차순 :</div>
-                <div className={styles.SearchFont2}>{userdata.userinfo.firstid}-{userdata.userinfo.secondid}</div>
+                <div className={styles.SearchFont2}>{userdata.registerturn}</div>
               </div>
               <div className={styles.SearchType}>
                 <div className={styles.SearchFont1}>가입타입 :</div>
-                <div className={styles.SearchFont2}>84A</div>
+                <div className={styles.SearchFont2}>{userdata.type}</div>
               </div>
-              {/* <div className={styles.Botton}>
-                <div className={styles.BottonIcon} style={{ color: 'white' }}>
-                  <CgSearch style={{ width: '100%', height: '100%' }} />
-                </div>
 
-                <div className={styles.BottonFont}>고객선택</div>
-              </div> */}
               <Link href = "/inputmoney/search">
                   <SearchButton>
                         <div className={styles.BottonIcon} style={{ color: 'white' }}>
@@ -62,7 +57,6 @@ export default function Inputmoney() {
             </div>
 
             <div className={styles.MainContent}>
-
 
               <div className={styles.Content}>
                 <div className={styles.ContentTitle}>
@@ -91,7 +85,7 @@ export default function Inputmoney() {
 
                   
                     <ModifyButton>
-                    <Link href = "/inputmoney/pay">
+                    <Link href = "/inputmoney/payinfo">
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </Link>
                     </ModifyButton>
@@ -130,7 +124,7 @@ export default function Inputmoney() {
                   </div>
                   <div className={styles.CBBottonBody}>
                     
-                  <Link href = "/inputmoney/pay">
+                  <Link href = "/inputmoney/payinfo">
                     <ModifyButton>
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </ModifyButton>
@@ -169,7 +163,7 @@ export default function Inputmoney() {
                     </div>
                   </div>
                   <div className={styles.CBBottonBody}>
-                  <Link href = "/inputmoney/pay">
+                  <Link href = "/inputmoney/payinfo">
                     <ModifyButton>
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </ModifyButton>
@@ -208,7 +202,7 @@ export default function Inputmoney() {
                     </div>
                   </div>
                   <div className={styles.CBBottonBody}>
-                  <Link href = "/inputmoney/pay">
+                  <Link href = "/inputmoney/payinfo">
                     <ModifyButton>
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </ModifyButton>
@@ -256,7 +250,7 @@ export default function Inputmoney() {
                     </div>
                   </div>
                   <div className={styles.CBBottonBody}>
-                  <Link href = "/inputmoney/pay">
+                  <Link href = {"/inputmoney/payinfo"}>
                     <ModifyButton>
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </ModifyButton>
@@ -295,7 +289,7 @@ export default function Inputmoney() {
                     </div>
                   </div>
                   <div className={styles.CBBottonBody}>
-                  <Link href = "/inputmoney/pay">
+                  <Link href = "/inputmoney/payinfo">
                     <ModifyButton>
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </ModifyButton>
@@ -334,7 +328,7 @@ export default function Inputmoney() {
                     </div>
                   </div>
                   <div className={styles.CBBottonBody}>
-                  <Link href = "/inputmoney/pay">
+                  <Link href = "/inputmoney/payinfo">
                     <ModifyButton>
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </ModifyButton>
@@ -450,12 +444,17 @@ export default function Inputmoney() {
             </div>
           </div>
         </div>
-      )
-      case 'loading':
+          
+    )
+
+    case 'loading':
       console.log("lodding");
       return <></>
     
     case 'hasError':
       throw userselectordata.contents;
-            };
-    };
+  }
+
+  
+  }
+  
