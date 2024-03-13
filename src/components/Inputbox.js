@@ -73,7 +73,9 @@ export const Searchbox = (props) => {
                 className={styles.searchclient}
                 data-placeholder={date_placeholder}
                 type={type}
+                name={name}
                 placeholder={placeholder}
+                onChange={onChange}
                 {...props.register}
             />
         </>
@@ -92,8 +94,10 @@ export const Inputbox_L = (props) => {
                 className={styles.inputcontainer_L}
                 data-placeholder={date_placeholder}
                 type={type}
+                name={name}
                 placeholder={placeholder}
                 {...props.register}
+                onChange={onChange}
             />
         </>
     )
@@ -112,8 +116,10 @@ export const Inputbox_M = (props) => {
                 className={styles.inputcontainer_M}
                 data-placeholder={date_placeholder}
                 type={type}
+                name={name}
                 placeholder={placeholder}
                 {...props.register}
+                onChange={onChange}
             />
         </>
     )
