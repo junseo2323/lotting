@@ -42,16 +42,16 @@ export default function Search() {
             <span className={styles.title}>순번</span>
             
             <span>{userdata.userinfo.phone}</span>
-            <span>{userdata.type}</span>
-            <span>{userdata.group}</span>
-            <span>{userdata.turn}</span>
+            <span>{userdata.data.type}</span>
+            <span>{userdata.data.group}</span>
+            <span>{userdata.data.turn}</span>
 
             <span className={styles.title}>가입차순</span>
             <span className={styles.title}>신탁사제출</span>
             <span className={styles.title}>가입일자</span>
             <span className={styles.title}>가입가</span>
             
-            <span>{userdata.registerturn}</span>
+            <span>{userdata.data.submitturn}</span>
             <span>{userdata.submitdate.slice(0,10)}</span>
             <span>{userdata.registerdate.slice(0,10)}</span>
             <span>{parseInt(userdata.resgisterprice).toLocaleString('ko-KR')}₩</span>
@@ -90,18 +90,21 @@ export default function Search() {
           <hr/>
           <h3>부속서류</h3>
           <div className={styles.file_container}>
-            <DownloadButton>인감증명서</DownloadButton>
-            <DownloadButton>본인서명확인서</DownloadButton>
-            <DownloadButton>신분증</DownloadButton>
-            <DownloadButton>확약서</DownloadButton>
-            <DownloadButton>상준위용</DownloadButton>
-            <DownloadButton>무상옵션</DownloadButton>
-            <DownloadButton>선호도조사</DownloadButton>
-            <DownloadButton>총회동의서</DownloadButton>
-            <DownloadButton>사은품</DownloadButton>
-
-
+            {JSON.parse(userdata.fileinfo.file1) ? <DownloadButton>인감증명서</DownloadButton> : <><p>인감증명서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file2) ? <DownloadButton>본인서명확인서</DownloadButton> : <><p>본인서명확인서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file3) ? <DownloadButton>신분증</DownloadButton> : <><p>신분증</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file4) ? <DownloadButton>확약서</DownloadButton> : <><p>확약서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file5) ? <DownloadButton>상준위용</DownloadButton> : <><p>상준위용</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file6) ? <DownloadButton>무상옵션</DownloadButton> : <><p>무상옵션</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file7) ? <DownloadButton>선호도조사</DownloadButton> : <><p>선호도조사</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file8) ? <DownloadButton>총회동의서</DownloadButton> : <><p>총회동의서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.file9) ? <DownloadButton>사은품</DownloadButton> : <><p>사은품</p><p>파일이 없습니다.</p></>}
           </div>
+          <hr />
+          <h3>납임금 관리</h3>
+          이버튼을누르면납입금관리로간다
+          <hr />
+          <h3>기타 정보</h3>
         </>
     )
 

@@ -1,4 +1,3 @@
-
 export const banklist = [{
 "value" : "SHINHAN",
 "item" : "신한은행"
