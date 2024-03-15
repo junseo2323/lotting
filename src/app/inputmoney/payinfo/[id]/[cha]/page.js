@@ -1,17 +1,19 @@
-'use client'
+"use client"
 
-import { usePathname } from 'next/navigation'; 
-import React, { useState,useEffect } from 'react';
-import { Inputbox,Inputbox_L,Inputbox_M,PostInputbox,LongInputbox,DropInputbox,FileInputbox, Spanbox } from "@/components/Inputbox"
-import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N} from "@/components/Button"
+
+import React, { useState, useEffect } from 'react';
+import { Inputbox, Inputbox_L, Inputbox_M, PostInputbox, LongInputbox, DropInputbox, FileInputbox, Spanbox } from "@/components/Inputbox"
+import { PaymentScheduleButton, ToggleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
 import styles from "@/styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
+
+
 export default function Inputmoneypay() {
-    const router = usePathname(); // 라우터 객체 생성
+
     const { register, handleSubmit } = useForm();
     const [pay, setpay] = useState('');
     const [work, setwork] = useState('');
@@ -23,41 +25,38 @@ export default function Inputmoneypay() {
     };
     useEffect(() => {
         calculateTotal();
-      }, [pay, work, discount, del]);
+    }, [pay, work, discount, del]);
 
     const calculateTotal = () => {
         const payValue = parseInt(pay) || 0;
         const workValue = parseInt(work) || 0;
         const discountValue = parseInt(discount) || 0;
         const deleteValue = parseInt(del) || 0;
-    
+
         const total = payValue + workValue - discountValue - deleteValue;
         settotal(total);
-      };
-
-    const handleCancel = () => {
-        router.back(); // 이전 페이지로 이동
     };
+
     const onChange = (e) => {
         const { name, value } = e.target;
         switch (name) {
-          case 'pay':
-            setpay(value);
-            break;
-          case 'work':
-            setwork(value);
-            break;
-          case 'discount':
-            setdiscount(value);
-            break;
-          case 'del':
-            setdelete(value);
-            break;
-          default:
-            break;
+            case 'pay':
+                setpay(value);
+                break;
+            case 'work':
+                setwork(value);
+                break;
+            case 'discount':
+                setdiscount(value);
+                break;
+            case 'del':
+                setdelete(value);
+                break;
+            default:
+                break;
         }
-      };
-    
+    };
+
     return (
         <div className={styles.Container}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -73,18 +72,18 @@ export default function Inputmoneypay() {
                                 <div className={styles.SearchFont1}>성함 : </div>
                                 <div className={styles.SearchFont2}>이승준</div>
                             </div>
-                            
+
                         </div>
                         <div className={styles.MainTitle2}>
 
-                        <Link href = "/inputmoney/search">
-                            <SearchButton>
+                            <Link href="/inputmoney/search">
+                                <SearchButton>
                                     <div className={styles.BottonIcon} style={{ color: 'white' }}>
                                         <CgSearch style={{ width: '100%', height: '100%' }} />
                                     </div>
                                     <div className={styles.BottonFont}>고객선택</div>
-                            </SearchButton>
-                        </Link>
+                                </SearchButton>
+                            </Link>
 
 
                         </div>
@@ -100,7 +99,7 @@ export default function Inputmoneypay() {
                         </div>
                         <div className={styles.Line}></div>
                         <div className={styles.IBBottonLayer}>
-                            <PaymentScheduleButton/>
+                            <PaymentScheduleButton />
                         </div>
                         <div className={styles.IBLayer}>
                             <Inputbox type="date" placeholder="완납일" register={('completedate')} />
@@ -126,10 +125,13 @@ export default function Inputmoneypay() {
                                 <div className={styles.SearchFont2}>{tot.toLocaleString()}₩</div>
                             </div>
                         </div>
-                        
+
                         <div className={styles.IBBottonLayer}>
-                            <Button_N onClick={handleCancel}><div className = {styles.BottonFont2}>취소</div></Button_N>
-                            <Button_Y type="submit"><div className = {styles.BottonFont}>확인</div></Button_Y>
+                    
+                        <Link href={"/inputmoney/payinfo/"}>
+                            <Button_N type="submit"><div className={styles.BottonFont2}>취소</div></Button_N>
+                        </Link>
+                            <Button_Y type="submit"><div className={styles.BottonFont}>확인</div></Button_Y>
                         </div>
                     </div>
                 </div>

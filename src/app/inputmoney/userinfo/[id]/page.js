@@ -3,7 +3,7 @@
 import styles from "@/styles/Inputmoney.module.scss";
 import { usePathname } from "next/navigation";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { userinfoSelector } from "@/utils/selector";
+import { userinfoSelector,namesearchSelector } from "@/utils/selector";
 import { useState } from "react";
 import { useridState } from "@/utils/atom";
 import {PaymentScheduleButton,ToggleButton,SearchButton,Button_Y,Button_N, ModifyButton} from "@/components/Button"
@@ -19,13 +19,14 @@ export default function Inputmoney() {
   const setIdState = useSetRecoilState(useridState);
   useState(()=>{setIdState(splitpath[3])});
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
-
+  let searchdata = useRecoilValueLoadable(namesearchSelector);
   switch(userselectordata.state){
     case 'hasValue':
       const userdata = userselectordata.contents;
       console.log(userdata)
       if(userdata===undefined) return <><h1>잘못된 접근입니다</h1></>
       else return (
+        
         <div className={styles.Container}>
           <div className={styles.Mainbody}>
             <div className={styles.SearchBody}>
@@ -85,9 +86,11 @@ export default function Inputmoney() {
 
                   
                     <ModifyButton>
-                    <Link href = "/inputmoney/payinfo">
+                    
+                    <Link href = {"/inputmoney/payinfo/12332/1"}>
                       <div className={styles.CBBottonFont}>납부수정</div>
                     </Link>
+                  
                     </ModifyButton>
                   
 
