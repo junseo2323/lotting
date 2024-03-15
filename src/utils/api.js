@@ -45,6 +45,28 @@ export const fetchUserinfo = (userid) => {
     })  
 };
 
+export const searchFinchasu = (userid) => {
+    return axios.get(path+"/api/chasufin"+userid)
+    .then(result => {
+        return result.data[0];
+    })
+    .catch(error => {
+        console.error(error);
+        throw error;
+    })
+}
+
+export const searchPrechasu = (userid) => {
+    return axios.get(path+"/api/chasuPre"+userid)
+    .then(result => {
+        return result.data[0];
+    })
+    .catch(error => {
+        console.error(error);
+        throw error;
+    })
+}
+
 export const fetchNameSearch = (username) => {
     return axios.get(path+'/api/searchname/'+username)
     .then(result => {
