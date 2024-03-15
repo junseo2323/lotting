@@ -26,7 +26,7 @@ const Nav = () => {
     <div className={styles.container}>
       <Image src={LOGO} className={styles.logostyle} alt={"logo"} />
       <ul className={styles.listconatiner}>
-        <Link href="/">
+        <Link href="/dashboard">
           <li className={splitpath[1] === "" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
                 {splitpath[1] === "" ? (<AiFillAppstore style={iconstyle} />) : (<AiOutlineAppstore style={iconstyle} />)}
