@@ -1,29 +1,49 @@
-"use client"
+'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Inputbox, Inputbox_L, Inputbox_M, PostInputbox, LongInputbox, DropInputbox, FileInputbox, Spanbox } from "@/components/Inputbox"
-import { PaymentScheduleButton, ToggleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
+import { Inputbox, Inputbox_L, Inputbox_M } from "@/components/Inputbox"
+import { PaymentScheduleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
 import styles from "@/styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
+import { useridState } from "@/utils/atom";
+import { usePathname} from 'next/navigation';
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { userinfoSelector} from "@/utils/selector";
 
 export default function Inputmoneypay() {
-
     const { register, handleSubmit } = useForm();
     const [pay, setpay] = useState('');
     const [work, setwork] = useState('');
     const [discount, setdiscount] = useState('');
     const [del, setdelete] = useState('');
     const [tot, settotal] = useState(0);
+
+    const pathname = usePathname();
+    const splitpath = pathname.split('/');
+    const setIdState = useSetRecoilState(useridState);
+    const [userData, setUserData] = useState(null);
+    useState(() => { setIdState(splitpath[3]) });
+    const userselectordata = useRecoilValueLoadable(userinfoSelector);
+
     const onSubmit = (data) => {
         console.log(data);
     };
+    
     useEffect(() => {
         calculateTotal();
-    }, [pay, work, discount, del]);
+        if (userselectordata.state === 'hasValue') {
+            const userdata = userselectordata.contents;
+            if (userdata === undefined) {
+              console.log('잘못된 접근입니다');
+            } else {
+              setUserData(userdata);
+            }
+          }
+    }, [pay, work, discount, del, userselectordata]);
 
     const calculateTotal = () => {
         const payValue = parseInt(pay) || 0;
@@ -56,6 +76,7 @@ export default function Inputmoneypay() {
     };
 
     return (
+
         <div className={styles.Container}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.Mainbody}>
@@ -92,7 +113,7 @@ export default function Inputmoneypay() {
                                     <BsDatabase style={{ width: '100%', height: '100%' }} />
                                 </div>
                             </div>
-                            <div className={styles.IBTText}>5차 납입</div>
+                            <div className={styles.IBTText}>차 납입</div>
                         </div>
                         <div className={styles.Line}></div>
                         <div className={styles.IBBottonLayer}>

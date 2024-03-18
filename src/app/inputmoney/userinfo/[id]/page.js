@@ -1,8 +1,6 @@
 "use client"
 
 import styles from "@/styles/Inputmoney.module.scss";
-import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { userinfoSelector, namesearchSelector } from "@/utils/selector";
 import { useState, useEffect } from "react";
 import { useridState } from "@/utils/atom";
 import { SearchButton, ModifyButton } from "@/components/Button";
@@ -10,75 +8,16 @@ import { BsBagDash } from "react-icons/bs";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import Link from "next/link";
-import { searchFinchasu } from '@/utils/api';
-import { searchPrechasu } from '@/utils/api';
+import ChasuPreBody from "@/components/ChasuPreBody";
+import ChasuFinBody from "@/components/ChasuFinBody";
+
 import { usePathname, useRouter } from 'next/navigation';
-
-const ChasuPreBody = ({userId}) => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchData(); // 데이터 가져오는 함수 호출
-  }, []);
-
-  // 데이터를 가져오는 함수
-  const fetchData = async () => {
-    try {
-      const data = await searchPrechasu(userId); // searchFinchasu 함수를 통해 데이터 가져오기
-      setData(data);
-      console.log(data.length);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  if (!data) {
-    return <></>; // 데이터가 없을 때는 아무것도 렌더링하지 않음
-  }
-  return (
-      <div className={styles.ContentBody}>
-        <div className={styles.ContentBodyTitle}>
-          <div className={styles.CBTIcon}>
-            <div className={styles.Icon}>
-              <BsBagDash style={{ width: '100%', height: '100%' }} />
-            </div>
-          </div>
-          <div className={styles.CBTText}>
-            <div className={styles.CBTCha}>
-              <div className={styles.CBTChaFont}>{data.chasu}차 납부</div>
-            </div>
-            <div className={styles.CBTDate}>
-              <div className={styles.CBTDateFont}>{data.duedate}</div> {/* 납부 날짜 출력 */}
-            </div>
-          </div>
-        </div>
-        <div className={styles.CBBottonBody}>
-          <ModifyButton>
-            <Link href={`/inputmoney/payinfo/${data.id}/${data.chasu}`}>
-              <div className={styles.CBBottonFont}>납부수정</div>
-            </Link>
-          </ModifyButton>
-          <ModifyButton>
-            <div className={styles.CBBottonFont}>초기화</div>
-          </ModifyButton>
-        </div>
-        <div className={styles.CBSum}>
-          <div className={styles.CBMoneyImg}>
-            <div className={styles.Icon2}>
-              <BsDatabase style={{ width: '100%', height: '100%' }} />
-            </div>
-          </div>
-          <div className={styles.CBSumText}>{data.chasu}차 총액</div>
-          <div className={styles.CBSumNum}>{data.sumprice} ₩</div>
-        </div>
-      </div>
-  );
-};
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { userinfoSelector, namesearchSelector } from "@/utils/selector";
 
 export default function Inputmoney() {
   const pathname = usePathname();
-  const splitpath = pathname.split('/'); //splitpath[3]
-  
+  const splitpath = pathname.split('/');
   const setIdState = useSetRecoilState(useridState);
   const [userData, setUserData] = useState(null);
   useState(() => { setIdState(splitpath[3]) });
@@ -120,22 +59,7 @@ export default function Inputmoney() {
                 <div className={styles.SearchFont2}>{userData.type}</div>
               </div>
               {/* 납부 정보 표시 부분 */}
-              <div className={styles.SearchChasu}>
-                <div className={styles.SearchFont1}>차순 :</div>
-                <div className={styles.SearchFont2}>{userData.chasu}</div>
-              </div>
-              <div className={styles.SearchPrice}>
-                <div className={styles.SearchFont1}>Price :</div>
-                <div className={styles.SearchFont2}>{userData.price}</div>
-              </div>
-              <div className={styles.SearchPrice2}>
-                <div className={styles.SearchFont1}>Price2 :</div>
-                <div className={styles.SearchFont2}>{userData.price2}</div>
-              </div>
-              <div className={styles.SearchSumPrice}>
-                <div className={styles.SearchFont1}>총 금액 :</div>
-                <div className={styles.SearchFont2}>{userData.sumprice}</div>
-              </div>
+             
               <Link href="/inputmoney/search">
                 <SearchButton>
                   <div className={styles.BottonIcon} style={{ color: 'white' }}>
@@ -146,7 +70,7 @@ export default function Inputmoney() {
               </Link>
             </div>
             <div className={styles.MainContent}>
-              <div className={styles.Content}>
+              <div className={styles.Content} style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 200px)' }}>
                 <div className={styles.ContentTitle}>
                   <div className={styles.ContentTitleIcon_Y}></div>
                   <div className={styles.ContentTitleFont}>진행 예정 납부</div>
@@ -154,11 +78,12 @@ export default function Inputmoney() {
                 <ChasuPreBody userId={userData.id} />
               </div>
 
-              <div className={styles.Content}>
+              <div className={styles.Content} style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 200px)' }}>
                 <div className={styles.ContentTitle}>
                   <div className={styles.ContentTitleIcon_G}></div>
                   <div className={styles.ContentTitleFont}>진행된 납부</div>
-                </div>              
+                </div>   
+                <ChasuFinBody userId={userData.id} />           
               </div>
               <div className={styles.Content}>
                 <div className={styles.ContentTitle}>
