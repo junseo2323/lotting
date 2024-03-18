@@ -46,9 +46,9 @@ export const fetchUserinfo = (userid) => {
 };
 
 export const searchFinchasu = (userid) => {
-    return axios.get(path+"/api/chasufin"+userid)
+    return axios.get(path+"/api/chasufin/"+userid)
     .then(result => {
-        return result.data[0];
+        return result.data;
     })
     .catch(error => {
         console.error(error);
@@ -57,9 +57,9 @@ export const searchFinchasu = (userid) => {
 }
 
 export const searchPrechasu = (userid) => {
-    return axios.get(path+"/api/chasuPre"+userid)
+    return axios.get(path+"/api/chasuPre/"+userid)
     .then(result => {
-        return result.data[0];
+        return result.data;
     })
     .catch(error => {
         console.error(error);

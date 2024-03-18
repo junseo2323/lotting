@@ -1,6 +1,5 @@
 "use client"
 
-
 import React, { useState, useEffect } from 'react';
 import { Inputbox, Inputbox_L, Inputbox_M, PostInputbox, LongInputbox, DropInputbox, FileInputbox, Spanbox } from "@/components/Inputbox"
 import { PaymentScheduleButton, ToggleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
@@ -9,7 +8,6 @@ import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
-
 
 
 export default function Inputmoneypay() {
@@ -84,7 +82,6 @@ export default function Inputmoneypay() {
                                     <div className={styles.BottonFont}>고객선택</div>
                                 </SearchButton>
                             </Link>
-
 
                         </div>
                     </div>
