@@ -30,7 +30,7 @@ const ChasuFinBody = ({ userId }) => {
   return (
     <div>
       {data.map((item, index) => (
-        <div key={index} className={styles.ContentBody}>
+        <div key={index} className={styles.ContentFinBody}>
           <div className={styles.ContentBodyTitle}>
             <div className={styles.CBTIcon}>
               <div className={styles.Icon}>
@@ -62,6 +62,15 @@ const ChasuFinBody = ({ userId }) => {
             </div>
             <div className={styles.CBSumText}>{item.chasu}차 총액</div>
             <div className={styles.CBSumNum}>{item.sumprice.toLocaleString()} ₩</div>
+          </div>
+          <div className={styles.CBSum}>
+            <div className={styles.CBMoneyImg}>
+              <div className={styles.Icon2}>
+                <BsDatabase style={{ width: '100%', height: '100%' }} />
+              </div>
+            </div>
+            <div className={styles.CBSumText}>납입금액</div>
+            <div className={styles.CBSumNum} style={{color:'#3E9C12'}}>{item.payprice.toLocaleString()} ₩</div>
           </div>
         </div>
       ))}
