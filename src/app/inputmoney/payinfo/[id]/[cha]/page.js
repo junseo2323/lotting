@@ -9,11 +9,6 @@ import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
-import { useridState } from "@/utils/atom";
-import { usePathname} from 'next/navigation';
-import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { userinfoSelector} from "@/utils/selector";
-
 export default function Inputmoneypay() {
     const { register, handleSubmit } = useForm();
     const [pay, setpay] = useState('');
@@ -22,12 +17,6 @@ export default function Inputmoneypay() {
     const [del, setdelete] = useState('');
     const [tot, settotal] = useState(0);
 
-    const pathname = usePathname();
-    const splitpath = pathname.split('/');
-    const setIdState = useSetRecoilState(useridState);
-    const [userData, setUserData] = useState(null);
-    useState(() => { setIdState(splitpath[3]) });
-    const userselectordata = useRecoilValueLoadable(userinfoSelector);
 
     const onSubmit = (data) => {
         console.log(data);
@@ -35,15 +24,7 @@ export default function Inputmoneypay() {
     
     useEffect(() => {
         calculateTotal();
-        if (userselectordata.state === 'hasValue') {
-            const userdata = userselectordata.contents;
-            if (userdata === undefined) {
-              console.log('잘못된 접근입니다');
-            } else {
-              setUserData(userdata);
-            }
-          }
-    }, [pay, work, discount, del, userselectordata]);
+    }, [pay, work, discount, del]);
 
     const calculateTotal = () => {
         const payValue = parseInt(pay) || 0;

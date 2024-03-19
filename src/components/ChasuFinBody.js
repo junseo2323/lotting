@@ -42,7 +42,7 @@ const ChasuFinBody = ({ userId }) => {
                 <div className={styles.CBTChaFont}>{item.chasu}차 납부</div>
               </div>
               <div className={styles.CBTDate}>
-                <div className={styles.CBTDateFont}>{item.duedate}</div> {/* 납부 날짜 출력 */}
+                <div className={styles.CBTDateFont}>업데이트 : {new Date(item.duedate).toLocaleDateString('KR-GB')}</div>
               </div>
             </div>
           </div>
@@ -52,9 +52,7 @@ const ChasuFinBody = ({ userId }) => {
                 <div className={styles.CBBottonFont}>납부수정</div>
               </Link>
             </ModifyButton>
-            <ModifyButton>
-              <div className={styles.CBBottonFont}>초기화</div>
-            </ModifyButton>
+
           </div>
           <div className={styles.CBSum}>
             <div className={styles.CBMoneyImg}>
@@ -63,7 +61,7 @@ const ChasuFinBody = ({ userId }) => {
               </div>
             </div>
             <div className={styles.CBSumText}>{item.chasu}차 총액</div>
-            <div className={styles.CBSumNum}>{item.sumprice} ₩</div>
+            <div className={styles.CBSumNum}>{item.sumprice.toLocaleString()} ₩</div>
           </div>
         </div>
       ))}
