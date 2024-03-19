@@ -52,11 +52,11 @@ export default function Inputmoney() {
               </div>
               <div className={styles.SearchCha}>
                 <div className={styles.SearchFont1}>가입차순 :</div>
-                <div className={styles.SearchFont2}>{userData.registerturn}</div>
+                <div className={styles.SearchFont2}>{userData.data.submitturn}</div>
               </div>
               <div className={styles.SearchType}>
                 <div className={styles.SearchFont1}>가입타입 :</div>
-                <div className={styles.SearchFont2}>{userData.type}</div>
+                <div className={styles.SearchFont2}>{userData.data.type}</div>
               </div>
               {/* 납부 정보 표시 부분 */}
              

@@ -30,7 +30,7 @@ const ChasuPreBody = ({ userId }) => {
   return (
     <div>
       {data.map((item, index) => (
-        <div key={index} className={styles.ContentBody}>
+        <div key={index} className={styles.ContentPreBody}>
           <div className={styles.ContentBodyTitle}>
             <div className={styles.CBTIcon}>
               <div className={styles.Icon}>
@@ -62,6 +62,24 @@ const ChasuPreBody = ({ userId }) => {
             </div>
             <div className={styles.CBSumText}>{item.chasu}차 총액</div>
             <div className={styles.CBSumNum}>{item.sumprice.toLocaleString()} ₩</div>
+          </div>
+          <div className={styles.CBSum}>
+            <div className={styles.CBMoneyImg}>
+              <div className={styles.Icon2}>
+                <BsDatabase style={{ width: '100%', height: '100%' }} />
+              </div>
+            </div>
+            <div className={styles.CBSumText}>납입금액</div>
+            <div className={styles.CBSumNum}>{item.payprice.toLocaleString()} ₩</div>
+          </div>
+          <div className={styles.CBSum}>
+            <div className={styles.CBMoneyImg}>
+              <div className={styles.Icon2}>
+                <BsDatabase style={{ width: '100%', height: '100%' }} />
+              </div>
+            </div>
+            <div className={styles.CBSumText}>미납금액</div>
+            <div className={styles.CBSumNum} style={{color: '#D11414'}}>{(item.sumprice-item.payprice).toLocaleString()} ₩</div>
           </div>
         </div>
       ))}

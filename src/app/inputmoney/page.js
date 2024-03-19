@@ -35,7 +35,7 @@ const SearchList = ( name ) => {
                   <div className={styles.ContentFont}>{k.userinfo.name}</div>
                 </div>
                 <div className={styles.CategoryBody1}>
-                  <div className={styles.ContentFont}>{k.type}-{k.group}-{k.turn}</div>
+                  <div className={styles.ContentFont}>{k.data.type}-{k.data.group}-{k.data.turn}</div>
                 </div>
               </div>
             </Link>
