@@ -4,32 +4,37 @@ import styles from "@/styles/Inputmoney.module.scss";
 import { useState, useEffect } from "react";
 import { useridState } from "@/utils/atom";
 import { SearchButton, ModifyButton } from "@/components/Button";
-import { BsBagDash } from "react-icons/bs";
-import { BsDatabase } from "react-icons/bs";
+import { BsBagDash,BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import Link from "next/link";
 import ChasuPreBody from "@/components/ChasuPreBody";
 import ChasuFinBody from "@/components/ChasuFinBody";
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { useRecoilValueLoadable, useRecoilState } from "recoil";
 import { userinfoSelector, namesearchSelector } from "@/utils/selector";
+
+import {fetchLoanInit} from '@/utils/api';
 
 export default function Inputmoney() {
   const pathname = usePathname();
   const splitpath = pathname.split('/');
-  const setIdState = useSetRecoilState(useridState);
+  const [IdState, setIdState] = useRecoilState(useridState);
+
   const [userData, setUserData] = useState(null);
+  const [loanData,setLoandata] = useState(null);
   useState(() => { setIdState(splitpath[3]) });
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
 
   useEffect(() => {
     if (userselectordata.state === 'hasValue') {
       const userdata = userselectordata.contents;
+      const userloaninit = fetchLoanInit(IdState);
       if (userdata === undefined) {
         console.log('잘못된 접근입니다');
       } else {
         setUserData(userdata);
+        setLoandata(userloaninit);
       }
     }
   }, [userselectordata]);
@@ -130,7 +135,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>자납액</div>
-                    <div className={styles.CBSumNum}>390,000,000 ₩</div>
+                    <div className={styles.CBSumNum}>{loanData.selfprice} ₩</div>
                   </div>
                   <div className={styles.CBSum}>
                   <div className={styles.CBMoneyImg}>
