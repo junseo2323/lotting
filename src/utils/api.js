@@ -81,8 +81,6 @@ export const fetchNameSearch = (username) => {
 export const fetchLoanInit = (userid) => {
     return axios.get(path+"/api/chasuinit/loan/"+userid)
     .then(result => {
-        console.log(userid)
-        console.log(result.data)
         return result.data;
     })
     .catch(error => {
