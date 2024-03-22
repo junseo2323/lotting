@@ -9,6 +9,8 @@ import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
+import { usePathname, useRouter } from 'next/navigation';
+
 export default function Inputmoneypay() {
     const { register, handleSubmit } = useForm();
     const [pay, setpay] = useState('');
@@ -17,11 +19,34 @@ export default function Inputmoneypay() {
     const [del, setdelete] = useState('');
     const [tot, settotal] = useState(0);
 
+    const pathname = usePathname();
+    console.log(pathname);
+    const[id,setId]=useState(null);
+    const[chasu,setChasu]=useState(null);
+    useEffect(()=>{
+        const regex = /\/(\d+)\/(\d+)$/;
+        const match = pathname.match(regex);
 
+        if(match){
+            const extractedId = match[1];
+            const extractedChasu=match[2];
+            setId(extractedId);
+            setChasu(extractedChasu);
+        }
+    },[pathname])
+    const regex = /\/(\d+)\/(\d+)$/;
+    const match = pathname.match(regex);
+
+    if(match){
+        const id = match[1];
+        const chasu=match[2];
+        console.log(id);
+        console.log(chasu);
+    }
+    
     const onSubmit = (data) => {
         console.log(data);
     };
-    
     useEffect(() => {
         calculateTotal();
     }, [pay, work, discount, del]);
@@ -31,7 +56,6 @@ export default function Inputmoneypay() {
         const workValue = parseInt(work) || 0;
         const discountValue = parseInt(discount) || 0;
         const deleteValue = parseInt(del) || 0;
-
         const total = payValue + workValue - discountValue - deleteValue;
         settotal(total);
     };
@@ -63,16 +87,14 @@ export default function Inputmoneypay() {
                 <div className={styles.Mainbody}>
                     <div className={styles.MainTitle}>
                         <div className={styles.MainTitle1}>
-
                             <div className={styles.SearchClientNum}>
                                 <div className={styles.SearchFont1}>고객번호 : </div>
-                                <div className={styles.SearchFont2}>123456</div>
+                                <div className={styles.SearchFont2}>{id}</div>
                             </div>
                             <div className={styles.SearchClientNum}>
                                 <div className={styles.SearchFont1}>성함 : </div>
                                 <div className={styles.SearchFont2}>이승준</div>
                             </div>
-
                         </div>
                         <div className={styles.MainTitle2}>
 
@@ -94,7 +116,7 @@ export default function Inputmoneypay() {
                                     <BsDatabase style={{ width: '100%', height: '100%' }} />
                                 </div>
                             </div>
-                            <div className={styles.IBTText}>차 납입</div>
+                            <div className={styles.IBTText}>{chasu}차 납입</div>
                         </div>
                         <div className={styles.Line}></div>
                         <div className={styles.IBBottonLayer}>
