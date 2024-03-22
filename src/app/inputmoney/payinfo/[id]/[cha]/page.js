@@ -8,21 +8,23 @@ import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
+import { searchMoney } from '@/utils/api';
+import { usePathname } from 'next/navigation';
 
-import { usePathname, useRouter } from 'next/navigation';
 
 export default function Inputmoneypay() {
     const { register, handleSubmit } = useForm();
-    const [pay, setpay] = useState('');
-    const [work, setwork] = useState('');
-    const [discount, setdiscount] = useState('');
-    const [del, setdelete] = useState('');
+    const[pay, setpay] = useState('');
+    const[work, setwork] = useState('');
+    const[discount, setdiscount] = useState('');
+    const[del, setdelete] = useState('');
     const [tot, settotal] = useState(0);
-
+    const [data, setData] = useState(null);
+    
     const pathname = usePathname();
-    console.log(pathname);
     const[id,setId]=useState(null);
     const[chasu,setChasu]=useState(null);
+
     useEffect(()=>{
         const regex = /\/(\d+)\/(\d+)$/;
         const match = pathname.match(regex);
@@ -34,15 +36,7 @@ export default function Inputmoneypay() {
             setChasu(extractedChasu);
         }
     },[pathname])
-    const regex = /\/(\d+)\/(\d+)$/;
-    const match = pathname.match(regex);
 
-    if(match){
-        const id = match[1];
-        const chasu=match[2];
-        console.log(id);
-        console.log(chasu);
-    }
     
     const onSubmit = (data) => {
         console.log(data);
@@ -93,7 +87,7 @@ export default function Inputmoneypay() {
                             </div>
                             <div className={styles.SearchClientNum}>
                                 <div className={styles.SearchFont1}>성함 : </div>
-                                <div className={styles.SearchFont2}>이승준</div>
+                                <div className={styles.SearchFont2}>{id}</div>
                             </div>
                         </div>
                         <div className={styles.MainTitle2}>

@@ -44,7 +44,16 @@ export const fetchUserinfo = (userid) => {
         throw error;
     })  
 };
-
+export const searchMoney = (userid,chasu) => {
+    return axios.get(path+"/api/chasu/"+userid+chasu)
+    .then(result => {
+        return result.data;
+    })
+    .catch(error => {
+        console.error(error);
+        throw error;
+    })
+}
 export const searchFinchasu = (userid) => {
     return axios.get(path+"/api/chasuinit/fin/"+userid)
     .then(result => {
