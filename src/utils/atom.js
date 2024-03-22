@@ -19,3 +19,8 @@ export const usernewState = atom ({
     key: 'usernewState',
     default: null
 })
+
+export const chasuState = atom ({
+    key: 'chasuState',
+    default: null
+})
