@@ -1,12 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-
 import { userchasuSelector } from '@/utils/selector';
 import { useridState,chasuState } from "@/utils/atom";
 import { useRecoilValueLoadable, useRecoilState } from "recoil";
-
-
 import { Inputbox, Inputbox_L, Inputbox_M } from "@/components/Inputbox"
 import { PaymentScheduleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
 import styles from "@/styles/Inputmoneypay.module.scss";
@@ -14,6 +11,7 @@ import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
+import { userinfoSelector } from "@/utils/selector";
 
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -28,7 +26,6 @@ export default function Inputmoneypay() {
     const pathname = usePathname();
     const [IdState, setIdState] = useRecoilState(useridState);
     const [ChasuState, setChasuState] = useRecoilState(chasuState);
-
     const [userChasuData, setUserChasuData] = useState(null);
 
 
@@ -41,6 +38,21 @@ export default function Inputmoneypay() {
         setIdState(extractedId);
         setChasuState(extractedChasu);
     })
+    const splitpath = pathname.split('/');
+    const [userData, setUserData] = useState(null);
+
+    useState(() => { setIdState(splitpath[3]) });
+    const userselectordata = useRecoilValueLoadable(userinfoSelector);
+    useEffect(() => {
+        if (userselectordata.state === 'hasValue') {
+          const userdata = userselectordata.contents;
+          if (userdata === undefined) {
+            console.log('잘못된 접근입니다');
+          } else {
+            setUserData(userdata);
+          }
+        }
+      }, [userselectordata]);
 
     const userChasudata = useRecoilValueLoadable(userchasuSelector);
 
@@ -97,7 +109,7 @@ export default function Inputmoneypay() {
     };
 
     return <>
-        {userChasuData && 
+        {userChasuData && userselectordata.state === 'hasValue' &&
         (
             <div className={styles.Container}>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -110,7 +122,7 @@ export default function Inputmoneypay() {
                                 </div>
                                 <div className={styles.SearchClientNum}>
                                     <div className={styles.SearchFont1}>성함 : </div>
-                                    <div className={styles.SearchFont2}>이승준</div>
+                                    <div className={styles.SearchFont2}>{userData.userinfo.name}</div>
                                 </div>
                             </div>
                             <div className={styles.MainTitle2}>
@@ -140,7 +152,7 @@ export default function Inputmoneypay() {
                                 <PaymentScheduleButton isclear={userChasuData.isclear} />
                             </div>
                             <div className={styles.SIBLayer}>
-                                <label>완납일</label>
+                                <div className={styles.SearchFont}>완납일</div>
                                 <Inputbox type="date" register={('completedate')} defaultValue={new Date(userChasuData.findate).toISOString().substring(0, 10)}/>
                             </div>
 

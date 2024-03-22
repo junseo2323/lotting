@@ -43,13 +43,25 @@
 }
 .inputcontainer_M{
     display: flex;
-    width: 25vw;
+    width: 350px;
     height:30px;
     border-radius: 10px;
     border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
     padding: 10px 20px 10px 16px;
     float: left;
     margin-right:10px;
+    margin-left:10px;
+}
+.InputFont{
+    margin-top:13px;
+    margin-left:16px;
+    color: dark;
+    /* Body-1 Regular */
+    font-family: Lexend;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px; /* 150% */
 }
 .inputcontainer {
     display: flex;
