@@ -23,18 +23,16 @@ export default function Inputmoney() {
 
   const [userData, setUserData] = useState(null);
   const [loanData,setLoandata] = useState(null);
-  useState(() => { setIdState(splitpath[3]) });
+  useState(() => { setIdState(splitpath[3])});
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
 
   useEffect(() => {
     if (userselectordata.state === 'hasValue') {
       const userdata = userselectordata.contents;
-      const userloaninit = fetchLoanInit(IdState);
       if (userdata === undefined) {
         console.log('잘못된 접근입니다');
       } else {
         setUserData(userdata);
-        setLoandata(userloaninit);
       }
     }
   }, [userselectordata]);
@@ -135,7 +133,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>자납액</div>
-                    <div className={styles.CBSumNum}>{loanData.selfprice} ₩</div>
+                    <div className={styles.CBSumNum}>{} ₩</div>
                   </div>
                   <div className={styles.CBSum}>
                   <div className={styles.CBMoneyImg}>
