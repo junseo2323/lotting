@@ -97,3 +97,14 @@ export const fetchLoanInit = (userid) => {
         throw error;
     })
 }
+
+export const fetchChasuData = (userid, chasu) =>{
+    return axios.get(path+"/api/chasu/"+userid+"/"+chasu)
+    .then(result => {
+        return result.data[0];
+    })
+    .catch(error => {
+        console.log(error);
+        throw error;
+    })
+}

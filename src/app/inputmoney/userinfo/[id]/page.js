@@ -10,9 +10,9 @@ import Link from "next/link";
 import ChasuPreBody from "@/components/ChasuPreBody";
 import ChasuFinBody from "@/components/ChasuFinBody";
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useRecoilValueLoadable, useRecoilState } from "recoil";
-import { userinfoSelector, namesearchSelector } from "@/utils/selector";
+import { userinfoSelector } from "@/utils/selector";
 
 import {fetchLoanInit} from '@/utils/api';
 
@@ -20,7 +20,6 @@ export default function Inputmoney() {
   const pathname = usePathname();
   const splitpath = pathname.split('/');
   const [IdState, setIdState] = useRecoilState(useridState);
-
   const [userData, setUserData] = useState(null);
   const [loanData,setLoandata] = useState(null);
   useState(() => { setIdState(splitpath[3]) });

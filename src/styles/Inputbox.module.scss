@@ -43,7 +43,7 @@
 }
 .inputcontainer_M{
     display: flex;
-    width:520px;
+    width: 25vw;
     height:30px;
     border-radius: 10px;
     border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
@@ -52,13 +52,14 @@
     margin-right:10px;
 }
 .inputcontainer {
-    border-radius: 10px;
-    border: 1px solid rgba(162, 161, 168, 0.20);
     display: flex;
-    height: 30px;   
-    width: 1fr;
+    width: 30vw;
+    height:30px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
     padding: 10px 20px 10px 16px;
     float: left;
+    margin-right:10px;
 }
 
 .logininputcontainer {
