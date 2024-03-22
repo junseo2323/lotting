@@ -2,19 +2,21 @@
 
 import styles from "@/styles/Inputmoney.module.scss";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from 'next/navigation';
+
 import { useridState } from "@/utils/atom";
-import { SearchButton, ModifyButton } from "@/components/Button";
+import { useRecoilValueLoadable, useRecoilState } from "recoil";
+import { userinfoSelector, usermoneySelector } from "@/utils/selector";
+
 import { BsBagDash,BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
-import Link from "next/link";
+
 import ChasuPreBody from "@/components/ChasuPreBody";
 import ChasuFinBody from "@/components/ChasuFinBody";
+import { SearchButton, ModifyButton } from "@/components/Button";
 
-import { usePathname, useRouter } from 'next/navigation';
-import { useRecoilValueLoadable, useRecoilState } from "recoil";
-import { userinfoSelector, namesearchSelector } from "@/utils/selector";
 
-import {fetchLoanInit} from '@/utils/api';
 
 export default function Inputmoney() {
   const pathname = usePathname();
@@ -23,19 +25,23 @@ export default function Inputmoney() {
 
   const [userData, setUserData] = useState(null);
   const [loanData,setLoandata] = useState(null);
+
   useState(() => { setIdState(splitpath[3])});
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
+  const usermoneyselectordata = useRecoilValueLoadable(usermoneySelector);
 
   useEffect(() => {
     if (userselectordata.state === 'hasValue') {
       const userdata = userselectordata.contents;
+      const userloandata = usermoneyselectordata.contents;
       if (userdata === undefined) {
         console.log('잘못된 접근입니다');
       } else {
         setUserData(userdata);
+        setLoandata(userloandata);
       }
     }
-  }, [userselectordata]);
+  }, [userselectordata,usermoneyselectordata]);
 
 
   return (
@@ -105,8 +111,8 @@ export default function Inputmoney() {
                         <div className={styles.CBTChaFont}>대출 / 자납</div>
                       </div>
                       <div className={styles.CBTDate}>
-                        <div className={styles.CBTDateFont}>대출일 : 23/12/27 </div>
-                        <div className={styles.CBTDateFont}>자납일 : 23/12/28</div>
+                        <div className={styles.CBTDateFont}>대출일 : {new Date(loanData.loandate).toLocaleDateString('KR-GB')} </div>
+                        <div className={styles.CBTDateFont}>자납일 : {new Date(loanData.selfdate).toLocaleDateString('KR-GB')}</div>
                       </div>
                     </div>
                   </div>
@@ -124,7 +130,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>대출액</div>
-                    <div className={styles.CBSumNum}>100,000,000 ₩</div>
+                    <div className={styles.CBSumNum}>{(loanData.price1+loanData.price2).toLocaleString()} ₩</div>
                   </div>
                   <div className={styles.CBSum}>
                   <div className={styles.CBMoneyImg}>
@@ -133,7 +139,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>자납액</div>
-                    <div className={styles.CBSumNum}>{} ₩</div>
+                    <div className={styles.CBSumNum}>{loanData.selfprice.toLocaleString()} ₩</div>
                   </div>
                   <div className={styles.CBSum}>
                   <div className={styles.CBMoneyImg}>
@@ -142,7 +148,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>총액</div>
-                    <div className={styles.CBSumNum}>490,000,000 ₩</div>
+                    <div className={styles.CBSumNum}>{(loanData.selfprice+loanData.price1+loanData.price2).toLocaleString()} ₩</div>
                   </div>
                 </div>
                 {/* 한 덩어리 */}

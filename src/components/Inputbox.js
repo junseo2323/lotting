@@ -21,7 +21,7 @@ export const Inputbox = (props) => {
     const onChange = props.onChange;
     const date_placeholder = props.date_placeholder;
     const name = props.name;
-    const value = props.value;
+    const defaultValue = props.defaultValue;
 
     return(
         <>
@@ -31,6 +31,7 @@ export const Inputbox = (props) => {
                 type={type}
                 onChange={onChange}
                 placeholder={placeholder}
+                defaultValue={defaultValue}
                 {...props.register}
             />
         </>
@@ -87,6 +88,7 @@ export const Inputbox_L = (props) => {
     const onChange = props.onChange;
     const date_placeholder = props.date_placeholder;
     const name = props.name;
+    const defaultValue = props.defaultValue;
 
     return(
         <>
@@ -98,6 +100,7 @@ export const Inputbox_L = (props) => {
                 placeholder={placeholder}
                 {...props.register}
                 onChange={onChange}
+                defaultValue={defaultValue}
             />
         </>
     )
@@ -109,17 +112,19 @@ export const Inputbox_M = (props) => {
     const onChange = props.onChange;
     const date_placeholder = props.date_placeholder;
     const name = props.name;
+    const defaultValue = props.defaultValue;
 
     return(
         <>
+            <label>{placeholder}</label>
             <input
                 className={styles.inputcontainer_M}
                 data-placeholder={date_placeholder}
                 type={type}
                 name={name}
-                placeholder={placeholder}
                 {...props.register}
                 onChange={onChange}
+                defaultValue={defaultValue}
             />
         </>
     )

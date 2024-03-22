@@ -81,8 +81,8 @@ export const ChecButton = (props) => {
     )
 }
 
-export const PaymentScheduleButton = () => {
-    const [isActivePayment, setIsActivePayment] = useState(true); // 납입 버튼 활성화 상태를 관리하는 상태
+export const PaymentScheduleButton = (props) => {
+    const [isActivePayment, setIsActivePayment] = useState(props.isclear); // 납입 버튼 활성화 상태를 관리하는 상태
 
     const handlePaymentClick = () => {
         setIsActivePayment(true); // 납입 버튼 활성화

@@ -204,9 +204,19 @@
     height:56px;
 }
 .IBLayer{
+    display: grid;
+    grid-template-columns: 3fr 4fr 3fr 4fr;
     margin-top:20px;
     margin-left:20px;
-    display:flex;
+    width:1040px;
+    height:56px;
+    gap: 15px;
+}
+.SIBLayer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr;
+    margin-top:20px;
+    margin-left:20px;
     width:1040px;
     height:56px;
 }

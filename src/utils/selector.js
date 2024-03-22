@@ -1,6 +1,6 @@
 import { selector } from "recoil";
-import { fetchNameSearch, fetchUserinfo } from "./api";
-import { searchnameState, useridState, userinfoState } from "./atom";
+import { fetchNameSearch, fetchUserinfo, fetchLoanInit,fetchChasuData } from "./api";
+import { searchnameState, useridState, userinfoState, chasuState } from "./atom";
 
 export const userinfoSelector = selector({
     key: 'userinfoSelector',
@@ -15,6 +15,36 @@ export const userinfoSelector = selector({
       }
     },
 });
+
+export const usermoneySelector = selector({
+  key: 'usermoneySelector',
+  get: async ({ get }) => {
+    const userid = get(useridState);
+    try {
+      const data = await fetchLoanInit(userid);
+      return data;
+    } catch (error) {
+      console.error('Error fetching userinfo: ', error);
+      throw error;
+    }
+  }
+})
+
+export const userchasuSelector = selector({
+  key: 'userchasuSelector',
+  get: async ({get}) => {
+    const userid = get(useridState);
+    const chasu = get(chasuState);
+
+    try {
+      const data = await fetchChasuData(userid,chasu);
+      return data;
+    } catch (error) {
+      console.error('Error fetching chasu: ',error);
+      throw error;
+    }
+  }
+})
 
 export const namesearchSelector = selector({
   key: 'namesearchSelector',
