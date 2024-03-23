@@ -35,14 +35,14 @@ export const userchasuSelector = selector({
   get: async ({get}) => {
     const userid = get(useridState);
     const chasu = get(chasuState);
-
+    if(userid){
     try {
       const data = await fetchChasuData(userid,chasu);
       return data;
     } catch (error) {
       console.error('Error fetching chasu: ',error);
       throw error;
-    }
+    }}
   }
 })
 

@@ -31,7 +31,7 @@ export default function Inputmoney() {
   const usermoneyselectordata = useRecoilValueLoadable(usermoneySelector);
 
   useEffect(() => {
-    if (userselectordata.state === 'hasValue') {
+    if (userselectordata.state === 'hasValue' && usermoneyselectordata.state==='hasValue') {
       const userdata = userselectordata.contents;
       const userloandata = usermoneyselectordata.contents;
       if (userdata === undefined) {
@@ -139,7 +139,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>자납액</div>
-                    <div className={styles.CBSumNum}>{loanData.selfprice.toLocaleString()} ₩</div>
+                    <div className={styles.CBSumNum}>{(loanData.selfprice).toLocaleString()} ₩</div>
                   </div>
                   <div className={styles.CBSum}>
                   <div className={styles.CBMoneyImg}>
