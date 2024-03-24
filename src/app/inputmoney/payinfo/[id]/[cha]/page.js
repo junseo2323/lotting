@@ -7,7 +7,7 @@ import { useridState,chasuState } from "@/utils/atom";
 import { useRecoilValueLoadable, useRecoilState } from "recoil";
 
 
-import { Inputbox, Inputbox_L, Inputbox_M } from "@/components/Inputbox"
+import { Inputbox,Inputbox_M } from "@/components/Inputbox"
 import { PaymentScheduleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
 import styles from "@/styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
@@ -15,7 +15,7 @@ import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname} from 'next/navigation';
 
 export default function Inputmoneypay() {
     const { register, handleSubmit } = useForm();

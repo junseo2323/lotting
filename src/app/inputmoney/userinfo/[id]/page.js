@@ -3,7 +3,7 @@
 import styles from "@/styles/Inputmoney.module.scss";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname} from 'next/navigation';
 
 import { useridState } from "@/utils/atom";
 import { useRecoilValueLoadable, useRecoilState } from "recoil";
