@@ -116,7 +116,7 @@ export const Inputbox_M = (props) => {
 
     return(
         <>
-            <label>{placeholder}</label>
+            <div className={styles.SearchFont}>{placeholder}</div>
             <input
                 className={styles.inputcontainer_M}
                 data-placeholder={date_placeholder}
