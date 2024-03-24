@@ -45,12 +45,14 @@ export const InputAreabox = (props) => {
     const onChange = props.onChange;
     const date_placeholder = props.date_placeholder;
     const name = props.name;
+    const defaultValue = props.defaultValue;
 
     return(
         <>
             <textarea
                 className={styles.areacontainer}
                 data-placeholder={date_placeholder}
+                defaultValue={defaultValue}
                 type={type}
                 onChange={onChange}
                 placeholder={placeholder}
