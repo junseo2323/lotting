@@ -1,5 +1,7 @@
 // ChasuPreBody 컴포넌트
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
+
 import { searchPrechasu } from '@/utils/api';
 import { BsBagDash } from "react-icons/bs";
 import { BsDatabase } from "react-icons/bs";

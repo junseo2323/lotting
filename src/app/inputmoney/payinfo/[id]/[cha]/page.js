@@ -1,6 +1,10 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+import Link from "next/link";
+import { usePathname,useRouter} from 'next/navigation';
+
+import { useForm } from 'react-hook-form';
 
 import { userchasuSelector,userinfoSelector } from '@/utils/selector';
 import { useridState,chasuState } from "@/utils/atom";
@@ -13,10 +17,6 @@ import { PaymentScheduleButton, SearchButton, Button_Y, Button_N } from "@/compo
 import styles from "@/styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
-import { useForm } from 'react-hook-form';
-import Link from "next/link";
-
-import { usePathname} from 'next/navigation';
 
 export default function Inputmoneypay() {
     const { register, handleSubmit, setValue } = useForm();
@@ -27,6 +27,8 @@ export default function Inputmoneypay() {
     const [tot, settotal] = useState(0);
 
     const pathname = usePathname();
+    const router = useRouter()
+
     const [IdState, setIdState] = useRecoilState(useridState);
     const [ChasuState, setChasuState] = useRecoilState(chasuState);
 
@@ -41,6 +43,8 @@ export default function Inputmoneypay() {
         const extractedChasu = match[2];
         setIdState(extractedId);
         setChasuState(extractedChasu);
+
+        
     })
 
     const userChasudata = useRecoilValueLoadable(userchasuSelector);
@@ -75,7 +79,9 @@ export default function Inputmoneypay() {
     
     const onSubmit = (data) => {
         data["sumprice"]=tot;
+        console.log(data);
         fetchChasuUpdate(IdState,data);
+        router.back();
     };
 
     useEffect(() => {
@@ -184,7 +190,7 @@ export default function Inputmoneypay() {
 
                             <div className={styles.IBBottonLayer}>
                         
-                            <Link href={"/inputmoney/payinfo/"}>
+                            <Link href={"/inputmoney/userinfo/"+IdState}>
                                 <Button_N type="submit"><div className={styles.BottonFont2}>취소</div></Button_N>
                             </Link>
                                 <Button_Y type="submit"><div className={styles.BottonFont}>확인</div></Button_Y>
