@@ -83,23 +83,25 @@ export const ChecButton = (props) => {
 
 export const PaymentScheduleButton = (props) => {
     const [isActivePayment, setIsActivePayment] = useState(props.isclear); // 납입 버튼 활성화 상태를 관리하는 상태
-
+    const setValue = props.setValue;
     const handlePaymentClick = () => {
         setIsActivePayment(true); // 납입 버튼 활성화
+        setValue('isclear',true);
     };
 
     const handleScheduleClick = () => {
         setIsActivePayment(false); // 예정 버튼 활성화
+        setValue('isclear',false);
     };
 
     return (
-        <div>
-            <button className={`${styles.toggleButton} ${isActivePayment ? styles.active : ''}`} onClick={handlePaymentClick}>
+        <>
+            <button type="button" className={`${styles.toggleButton} ${isActivePayment ? styles.active : ''}`} onClick={handlePaymentClick}>
                 <div className={styles.ButtonFont}>납입</div>
             </button>
-            <button className={`${styles.toggleButton} ${!isActivePayment ? styles.active : ''}`} onClick={handleScheduleClick}>
+            <button  type="button" className={`${styles.toggleButton} ${!isActivePayment ? styles.active : ''}`} onClick={handleScheduleClick}>
                 <div className={styles.ButtonFont2}>예정</div>
             </button>
-        </div>
+        </>
     );
 };

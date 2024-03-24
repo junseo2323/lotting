@@ -135,7 +135,7 @@ export default function Create() {
 
             <h3>기타 정보</h3>
             <div className={styles.content_container}>
-              <InputAreabox type="text" placeholder="기타" register={register('ext.manage',{required: true})} />
+              <InputAreabox type="text" placeholder="기타" register={register('ext.ext',{required: true})} />
             </div>
             <h1></h1>
             <Button_Y>저장하기</Button_Y>

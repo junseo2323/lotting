@@ -6,6 +6,7 @@ import { userchasuSelector,userinfoSelector } from '@/utils/selector';
 import { useridState,chasuState } from "@/utils/atom";
 import { useRecoilValueLoadable, useRecoilState } from "recoil";
 
+import { fetchChasuUpdate } from '@/utils/api';
 
 import { Inputbox,Inputbox_M } from "@/components/Inputbox"
 import { PaymentScheduleButton, SearchButton, Button_Y, Button_N } from "@/components/Button"
@@ -18,7 +19,7 @@ import Link from "next/link";
 import { usePathname} from 'next/navigation';
 
 export default function Inputmoneypay() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
     const [pay, setpay] = useState('');
     const [work, setwork] = useState('');
     const [discount, setdiscount] = useState('');
@@ -45,6 +46,7 @@ export default function Inputmoneypay() {
     const userChasudata = useRecoilValueLoadable(userchasuSelector);
     const [userData, setUserData] = useState(null);
     const userselectordata = useRecoilValueLoadable(userinfoSelector);
+
     useEffect(() => {
         if (userselectordata.state === 'hasValue') {
           const userdata = userselectordata.contents;
@@ -72,7 +74,8 @@ export default function Inputmoneypay() {
       }, [userChasudata]);
     
     const onSubmit = (data) => {
-        console.log(data);
+        data["sumprice"]=tot;
+        fetchChasuUpdate(IdState,data);
     };
 
     useEffect(() => {
@@ -112,7 +115,7 @@ export default function Inputmoneypay() {
         {userChasuData && userselectordata.state === 'hasValue' && userData &&
         (
             <div className={styles.Container}>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} >
                     <div className={styles.Mainbody}>
                         <div className={styles.MainTitle}>
                             <div className={styles.MainTitle1}>
@@ -149,25 +152,27 @@ export default function Inputmoneypay() {
                             </div>
                             <div className={styles.Line}></div>
                             <div className={styles.IBBottonLayer}>
-                                <PaymentScheduleButton isclear={userChasuData.isclear} />
+                                <PaymentScheduleButton isclear={userChasuData.isclear} setValue={setValue}/>
                             </div>
                             <div className={styles.SIBLayer}>
                                 <div className={styles.SearchFont}>완납일</div>
-                                <Inputbox type="date" register={('completedate')} defaultValue={new Date(userChasuData.findate).toISOString().substring(0, 10)}/>
+                                <Inputbox type="date" register={register('findate')} defaultValue={new Date(userChasuData.findate).toISOString().substring(0, 10)}/>
                             </div>
 
                             <div className={styles.IBLayer}>
-                                <Inputbox_M type="text" placeholder="부담금" name="pay" onChange={onChange} defaultValue={userChasuData.pay} />
-                                <Inputbox_M type="text" placeholder="업무대행비" name="work" onChange={onChange} defaultValue={userChasuData.work}  />
+                                <Inputbox_M type="text" placeholder="부담금" name="pay" register={register('pay')} onChange={onChange} defaultValue={userChasuData.pay} />
+                                <Inputbox_M type="text" placeholder="업무대행비" name="work" register={register('work')} onChange={onChange} defaultValue={userChasuData.work}  />
                             </div>
 
                             <div className={styles.IBLayer}>
-                                <Inputbox_M type="text" placeholder="할인액" name="discount" onChange={onChange} defaultValue={userChasuData.discount} />
-                                <Inputbox_M type="text" placeholder="면제액" name="del" onChange={onChange} defaultValue={userChasuData.del} />
+                                <Inputbox_M type="text" placeholder="할인액" name="discount" register={register('discount')} onChange={onChange} defaultValue={userChasuData.discount} />
+                                <Inputbox_M type="text" placeholder="면제액" name="del"  register={register('del')}onChange={onChange} defaultValue={userChasuData.del} />
                             </div>
 
                             <div className={styles.SIBLayer}>
                                 <Inputbox_M type="text" placeholder="이동" register={register('move')} defaultValue={userChasuData.move} />
+                                <Inputbox_M type="text" placeholder="납입액" register={register('payprice')} defaultValue={userChasuData.payprice} />
+                                <input type='hidden' {...register('chasu')} value={ChasuState}/>
                             </div>
 
                             <div className={styles.IBLayer}>

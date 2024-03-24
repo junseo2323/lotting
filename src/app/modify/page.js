@@ -26,10 +26,10 @@ const SearchList = (name) => {
             <Link className={styles.maincontainer} href={"/modify/"+k.id}>
               <span>{k.id}</span>
               <span>{k.userinfo.name}</span>
-              <span>{k.type}</span>
-              <span>{k.group}</span>
-              <span>{k.turn}</span>
-              <span>{k.tempinfo}</span>
+              <span>{k.data.type}</span>
+              <span>{k.data.group}</span>
+              <span>{k.data.turn}</span>
+              <span>{k.data.type}-{k.data.group}-{k.data.turn}</span>
             </Link>
           )}
       </div>
