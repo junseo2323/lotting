@@ -25,7 +25,7 @@ export default function Inputmoneypay() {
     const [discount, setdiscount] = useState('');
     const [del, setdelete] = useState('');
     const [tot, settotal] = useState(0);
-
+    const [payprice,setpayprice] = useState('');
     const pathname = usePathname();
     const router = useRouter()
 
@@ -73,6 +73,7 @@ export default function Inputmoneypay() {
             setwork(userdata.work);
             setdiscount(userdata.discount);
             setdelete(userdata.delete);
+            setpayprice(userdata.payprice);
           }
         }
       }, [userChasudata]);
@@ -86,14 +87,15 @@ export default function Inputmoneypay() {
 
     useEffect(() => {
         calculateTotal();
-    }, [pay, work, discount, del]);
+    }, [pay, work, discount, del, payprice]);
 
     const calculateTotal = () => {
         const payValue = parseInt(pay) || 0;
         const workValue = parseInt(work) || 0;
         const discountValue = parseInt(discount) || 0;
         const deleteValue = parseInt(del) || 0;
-        const total = payValue + workValue - discountValue - deleteValue;
+        const paypriceValue=parseInt(payprice) || 0;
+        const total = payValue + workValue - discountValue - deleteValue - paypriceValue;
         settotal(total);
     };
 
@@ -111,6 +113,9 @@ export default function Inputmoneypay() {
                 break;
             case 'del':
                 setdelete(value);
+                break;
+            case 'payprice':
+                setpayprice(value);
                 break;
             default:
                 break;
@@ -175,9 +180,9 @@ export default function Inputmoneypay() {
                                 <Inputbox_M type="text" placeholder="면제액" name="del"  register={register('del')}onChange={onChange} defaultValue={userChasuData.del} />
                             </div>
 
-                            <div className={styles.SIBLayer}>
+                            <div className={styles.IBLayer}>
                                 <Inputbox_M type="text" placeholder="이동" register={register('move')} defaultValue={userChasuData.move} />
-                                <Inputbox_M type="text" placeholder="납입액" register={register('payprice')} defaultValue={userChasuData.payprice} />
+                                <Inputbox_M type="text" placeholder="납입액" name ="payprice" register={register('payprice')} onChange={onChange} defaultValue={userChasuData.payprice} />
                                 <input type='hidden' {...register('chasu')} value={ChasuState}/>
                             </div>
 
