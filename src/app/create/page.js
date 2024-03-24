@@ -72,7 +72,7 @@ export default function Create() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <h3>분양인 정보</h3>
             <div className={styles.content_container}>
-              <span>관리번호 : {newid}</span> <h1></h1>
+              <div className={styles.Font}>관리번호 : {newid}</div> <h1></h1>
               <Inputbox type="text" placeholder="이름" register={register('userinfo.name',{required: true})} />
               <Inputbox type="phone" placeholder="휴대폰 번호" register={register('userinfo.phone',{required: true})} />
               <Inputbox type="number" placeholder="주민번호 앞자리" register={register('userinfo.firstid',{required: true})} />

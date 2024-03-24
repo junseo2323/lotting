@@ -130,7 +130,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>대출액</div>
-                    <div className={styles.CBSumNum}>{(loanData.price1+loanData.price2).toLocaleString()} ₩</div>
+                    <div className={styles.CBSumNum}>{((loanData.price1 !== undefined ? loanData.price1 : 0) + (loanData.price2 !== undefined ? loanData.price2 : 0)).toLocaleString()} ₩</div>
                   </div>
                   <div className={styles.CBSum}>
                   <div className={styles.CBMoneyImg}>
@@ -139,7 +139,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>자납액</div>
-                    <div className={styles.CBSumNum}>{(loanData.selfprice).toLocaleString()} ₩</div>
+                    <div className={styles.CBSumNum}>{(loanData.selfprice !== undefined ? loanData.selfprice : 0).toLocaleString()} ₩</div>
                   </div>
                   <div className={styles.CBSum}>
                   <div className={styles.CBMoneyImg}>
@@ -148,7 +148,7 @@ export default function Inputmoney() {
                       </div>
                     </div>
                     <div className={styles.CBSumText}>총액</div>
-                    <div className={styles.CBSumNum}>{(loanData.selfprice+loanData.price1+loanData.price2).toLocaleString()} ₩</div>
+                    <div className={styles.CBSumNum}>{((loanData.selfprice !== undefined ? loanData.selfprice : 0) + (loanData.price1 !== undefined ? loanData.price1 : 0) + (loanData.price2 !== undefined ? loanData.price2 : 0)).toLocaleString()} ₩</div>
                   </div>
                 </div>
                 {/* 한 덩어리 */}
