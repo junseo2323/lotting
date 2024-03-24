@@ -2,7 +2,7 @@
 
 import styles from "@/styles/Create.module.scss"
 import Swal from 'sweetalert2'
-import { Inputbox,PostInputbox,InputAreabox,DropInputbox,FileInputbox } from "@/components/Inputbox"
+import { Inputbox,Inputbox_M,PostInputbox,InputAreabox,DropInputbox,FileInputbox } from "@/components/Inputbox"
 import { Button_Y } from "@/components/Button"
 
 import { useForm } from "react-hook-form"
