@@ -99,3 +99,7 @@ export const fetchChasuData = (userid, chasu) =>{
         throw error;
     })
 }
+
+export const fetchChasuUpdate = (userid,data) => {
+    return axios.put(path+"/api/chasuupdate/"+userid,data);
+}
