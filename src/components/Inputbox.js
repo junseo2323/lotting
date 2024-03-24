@@ -197,11 +197,9 @@ export const FileInputbox = (props) => {
     )
 }
 export const PostInputbox = (props) => {
-    const { register } = useForm(); 
-
     const [postnumber,setPostnumber] = useState("우편번호")
     const [post,setPost] = useState("주소")
-    const [postdetail,setPostdetail] = useState("")
+    const [postdetail,setPostdetail] = useState("주소상세")
     const placeholder = props.placeholder
 
     const getpost = () => {
@@ -209,6 +207,7 @@ export const PostInputbox = (props) => {
           oncomplete: function( data ) {
             setPostnumber(data.zonecode)
             setPost(data.roadAddress)
+            setPostdetail(data.zonecode+","+data.roadAddress+",")
         }
         } ).open();
     }
@@ -217,31 +216,33 @@ export const PostInputbox = (props) => {
         setPostdetail(e.target.value)
     }
 
+    const postInput = () => {
+        return [postnumber,post];
+    }
+
     return(
         <>
             <label>{placeholder}</label>
             <input
                 className={styles.postcontainer}
                 type="button"
-                value={postnumber}
                 onClick={getpost}
+                defaultValue={postnumber}
                 placeholder="우편번호"
-                {...register("TEST")}
-
             />
             <input
                 className={styles.postcontainer}
                 type="button"
-                value={post}
                 onClick={getpost}
+                defaultValue={post}
                 placeholder="주소"
             />
             <input
                 className={styles.inputcontainer}
                 type="text"
                 onChange={handleChange}
-                value={postdetail}
-                placeholder="주소상세"
+                defaultValue={postdetail}
+                {...props.register}
             />
         </>
     )

@@ -31,6 +31,15 @@ module.exports = {
 }
 const nextConfig = {
 	reactStrictMode: true,
+	async redirects() {
+		return [
+		  {
+			source: '/',
+			destination: '/dashboard',
+			permanent: true, //캐쉬여부로 true를 하면 캐쉬에서 저장해서 리다이랙트 진행
+		  },
+		]
+	},  
 	swcMinify: true,
 	async rewrites() {
 	  return [

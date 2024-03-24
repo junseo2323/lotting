@@ -58,12 +58,12 @@ export default function Create() {
 
     createFile(files);
     createUser(data);
-    reset();
     Swal.fire({
       icon: 'success',
-      title: 'Alert가 실행되었습니다.',
-      text: '이곳은 내용이 나타나는 곳입니다.',
+      title: '고객정보가 입력되었습니다.',
+      text: '관리번호 : '+newid+"/ 고객명 : "+data.userinfo.name,
     });
+    reset();
     window.scrollTo(0,0);
   };
 
@@ -83,18 +83,17 @@ export default function Create() {
               <Inputbox type="text" placeholder="계좌번호" register={register('userinfo.bankid')} />
               <Inputbox type="text" placeholder="예금주" register={register('userinfo.bankwho')} />
               <DropInputbox list={sintacklist} register={register('userinfo.bankwhere')}/>
-              <PostInputbox placeholder="우편물 수령주소" name="userinfo.getpost"/>
-              <PostInputbox placeholder="주소지" name="userinfo.post"/>
+              <PostInputbox placeholder="우편물 수령주소" name="userinfo.getpost" register={register('userinfo.getpost')}/>
+              <PostInputbox placeholder="주소지" name="userinfo.post" register={register('userinfo.post')}/>
 
             </div>    
 
             <h3>관리 정보</h3>
             <div className={styles.content_container}>
-              <DropInputbox list={typeidlist} register={register('data.typeid')}/> 
+              <DropInputbox list={typeidlist} register={register('data.submitturn')}/> 
               <DropInputbox list={typelist} name="type" register={register('data.type')}/>
               <DropInputbox list={grouplist} name="group" register={register('data.group')}/>
               <DropInputbox list={turnlist} name="turn" register={register('data.turn')}/>
-              <Inputbox type="text" placeholder="가입차순"  register={register('data.submitturn')}/>
               <Inputbox type="date" date_placeholder="가입일자"  register={register('data.submitdate')} />
               <Inputbox type="date" date_placeholder="신탁사 제출일자" register={register('data.trustsubmitdate')} />
               <Inputbox type="number" placeholder="가입가" register={register('data.submitprice')}/>
