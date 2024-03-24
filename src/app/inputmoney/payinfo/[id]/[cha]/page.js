@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-import { userchasuSelector } from '@/utils/selector';
+import { userchasuSelector,userinfoSelector } from '@/utils/selector';
 import { useridState,chasuState } from "@/utils/atom";
 import { useRecoilValueLoadable, useRecoilState } from "recoil";
 
@@ -43,6 +43,18 @@ export default function Inputmoneypay() {
     })
 
     const userChasudata = useRecoilValueLoadable(userchasuSelector);
+    const [userData, setUserData] = useState(null);
+    const userselectordata = useRecoilValueLoadable(userinfoSelector);
+    useEffect(() => {
+        if (userselectordata.state === 'hasValue') {
+          const userdata = userselectordata.contents;
+          if (userdata === undefined) {
+            console.log('잘못된 접근입니다');
+          } else {
+            setUserData(userdata);
+          }
+        }
+      }, [userselectordata]);
 
     useEffect(() => {
         if (userChasudata.state === 'hasValue') {
@@ -97,7 +109,7 @@ export default function Inputmoneypay() {
     };
 
     return <>
-        {userChasuData && 
+        {userChasuData && userselectordata.state === 'hasValue' && userData &&
         (
             <div className={styles.Container}>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -110,7 +122,7 @@ export default function Inputmoneypay() {
                                 </div>
                                 <div className={styles.SearchClientNum}>
                                     <div className={styles.SearchFont1}>성함 : </div>
-                                    <div className={styles.SearchFont2}>이승준</div>
+                                    <div className={styles.SearchFont2}>{userData.userinfo.name}</div>
                                 </div>
                             </div>
                             <div className={styles.MainTitle2}>
@@ -140,7 +152,7 @@ export default function Inputmoneypay() {
                                 <PaymentScheduleButton isclear={userChasuData.isclear} />
                             </div>
                             <div className={styles.SIBLayer}>
-                                <label>완납일</label>
+                                <div className={styles.SearchFont}>완납일</div>
                                 <Inputbox type="date" register={('completedate')} defaultValue={new Date(userChasuData.findate).toISOString().substring(0, 10)}/>
                             </div>
 

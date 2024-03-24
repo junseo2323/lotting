@@ -39,11 +39,21 @@
     border: 1px solid var(--gray-gray-10, rgba(162, 161, 168, 0.10));
     display:flex;
 }
+.SearchFont{
+    margin-top:13px;
+    margin-left:16px;
+    color: dark;
+    /* Body-1 Regular */
+    font-family: Lexend;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px; /* 150% */
+}
 .SearchFont1{
     margin-top:13px;
     margin-left:16px;
     color: var(--dark-dark-20, rgba(22, 21, 28, 0.20));
-
     /* Body-1 Regular */
     font-family: Lexend;
     font-size: 16px;
