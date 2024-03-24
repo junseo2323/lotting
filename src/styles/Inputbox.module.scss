@@ -63,7 +63,7 @@
 }
 .inputcontainer {
     display: flex;
-    width: 430px;
+    width: 25vw;
     height:30px;
     border-radius: 10px;
     border: 1px solid var(--gray-gray-20, rgba(162, 161, 168, 0.20));
@@ -76,9 +76,9 @@
     border: 1px solid rgba(162, 161, 168, 0.20);
     display: flex;
     height: 50px;   
-    width: 468px;
+    width: 10vw;
     padding: 10px 20px 10px 16px;
-    margin-right: 100px;
+    margin-right: 10px;
     float: left;
 }
 .postcontainer {
@@ -86,9 +86,9 @@
     border: 1px solid rgba(162, 161, 168, 0.20);
     display: flex;
     height: 50px;   
-    width: 468px;
+    width: 30vw;
     padding: 10px 20px 10px 16px;
-    margin-right: 100px;
+    margin-right: 10px;
     float: left;
 }
 
