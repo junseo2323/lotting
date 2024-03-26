@@ -7,6 +7,7 @@ import { userinfoSelector } from "@/utils/selector";
 import { useState } from "react";
 import { useridState } from "@/utils/atom";
 import { DownloadButton } from "@/components/Button";
+import Link from "next/link";
 
 
 export default function Search() {
@@ -102,9 +103,14 @@ export default function Search() {
           </div>
           <hr />
           <h3>납임금 관리</h3>
-          이버튼을누르면납입금관리로간다
+            <Link href={"/inputmoney/userinfo/"+splitpath[3]}>
+              바로가기
+            </Link>
           <hr />
           <h3>기타 정보</h3>
+          <div>
+            {userdata.ext.ext}
+          </div>
         </>
     )
 
