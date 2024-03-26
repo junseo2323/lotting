@@ -7,10 +7,11 @@ import styles from "@/styles/Inputmoneyloan.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import Link from "next/link";
+import { useState } from "react";
 
 const Inputmoneyloan = () =>{
     const { register,watch,handleSubmit } = useForm();
-
+    
     return(
         <div className={styles.Container}>
             <div className={styles.Mainbody}>
@@ -43,13 +44,13 @@ const Inputmoneyloan = () =>{
                     </div>
                     <div className={styles.Line}></div>
                     <div className={styles.IBLayer}>
-                        <Inputbox_L type="text" placeholder="대출일" register={register('loandate')} />
+                        <Inputbox_L type="date" date_placeholder="대출일" register={register('loandate')} />
                     </div>
                         <div className={styles.IBLayer}>
                         <div className={styles.IBTText2}>
                             <div className={styles.IBTText2Font}>농협</div>
                         </div>
-                        <Inputbox_L type="text" placeholder="대출금" register={register('N_loanomey')} />
+                        <Inputbox_L type="text" placeholder="대출금"  register={register('N_loanomey')} />
                     </div>
                     {/* 한 덩어리 */}
 
@@ -74,18 +75,18 @@ const Inputmoneyloan = () =>{
                     </div>
 
                     <div className={styles.IBLayer}>
-                        <Inputbox_L type="text" placeholder="자납일" register={register('selfpaydate')} />
+                        <Inputbox_L type="date" date_placeholder="자납일" register={register('selfpaydate')} />
                     </div>
                     {/* 한 덩어리 */}
 
                     <div className={styles.IBLayer}>
-                        <Inputbox_L type="text" placeholder="자납" register={register('selfpayment')} />
+                        <Inputbox_L type="text" placeholder="자납"  register={register('selfpayment')} />
                     </div>
                     {/* 한 덩어리 */}
 
                     {/* 한 덩어리 */}
                     <div className={styles.IBLayer}>
-                        <Inputbox_L type="text" placeholder="면제액" register={register('exemptionmoney')} />
+                        <Inputbox_L type="text" placeholder="면제액"  register={register('exemptionmoney')} />
                     </div>
                     {/* 한 덩어리 */}
 
@@ -99,7 +100,7 @@ const Inputmoneyloan = () =>{
                     </div>
 
                     <div className={styles.IBLayer}>
-                        <Inputbox_L type="text" placeholder="총액" register={register('totalmoney')} />
+                        <Inputbox_L type="text" placeholder="총액" value={tot} register={register('totalmoney')} />
                     </div>
                     {/* 한 덩어리 */}
                     

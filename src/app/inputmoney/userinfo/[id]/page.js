@@ -111,8 +111,8 @@ export default function Inputmoney() {
                         <div className={styles.CBTChaFont}>대출 / 자납</div>
                       </div>
                       <div className={styles.CBTDate}>
-                        <div className={styles.CBTDateFont}>대출일 : {new Date(loanData.loandate).toLocaleDateString('KR-GB')} </div>
-                        <div className={styles.CBTDateFont}>자납일 : {new Date(loanData.selfdate).toLocaleDateString('KR-GB')}</div>
+                        <div className={styles.CBTDateFont}>대출일 : {loanData.loandate?new Date(loanData.loandate).toLocaleDateString('KR-GB'):"대출정보 없음."} </div>
+                        <div className={styles.CBTDateFont}>자납일 : {loanData.loandate?new Date(loanData.selfdate).toLocaleDateString('KR-GB'):"대출정보 없음."}</div>
                       </div>
                     </div>
                   </div>
