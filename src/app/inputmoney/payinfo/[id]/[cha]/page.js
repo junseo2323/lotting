@@ -19,6 +19,8 @@ import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 
 export default function Inputmoneypay() {
+    console.log("마운트");
+
     const { register, handleSubmit, setValue } = useForm();
     const [pay, setpay] = useState('');
     const [work, setwork] = useState('');
@@ -31,23 +33,21 @@ export default function Inputmoneypay() {
 
     const [IdState, setIdState] = useRecoilState(useridState);
     const [ChasuState, setChasuState] = useRecoilState(chasuState);
-
     const [userChasuData, setUserChasuData] = useState(null);
 
 
     useEffect(()=>{
+        console.log("effect")
         const regex = /\/(\d+)\/(\d+)$/;
         const match = pathname.match(regex);
 
         const extractedId = match[1];
         const extractedChasu = match[2];
         setIdState(extractedId);
-        setChasuState(extractedChasu);
-
-        
+        setChasuState(extractedChasu);        
     })
 
-    const userChasudata = useRecoilValueLoadable(userchasuSelector);
+    const userChasudatas = useRecoilValueLoadable(userchasuSelector);
     const [userData, setUserData] = useState(null);
     const userselectordata = useRecoilValueLoadable(userinfoSelector);
 
@@ -63,8 +63,9 @@ export default function Inputmoneypay() {
       }, [userselectordata]);
 
     useEffect(() => {
-        if (userChasudata.state === 'hasValue') {
-          const userdata = userChasudata.contents;
+        
+        if (userChasudatas.state === 'hasValue') {
+          const userdata = userChasudatas.contents;
           if (userdata === undefined) {
             console.log('잘못된 접근입니다');
           } else {
@@ -76,7 +77,7 @@ export default function Inputmoneypay() {
             setpayprice(userdata.payprice);
           }
         }
-      }, [userChasudata]);
+      }, [userChasudatas]);
     
     const onSubmit = (data) => {
         data["sumprice"]=parseInt(pay)+parseInt(work)-parseInt(discount)-parseInt(del);
@@ -84,8 +85,9 @@ export default function Inputmoneypay() {
             data["isclear"]=false;
         }
         console.log(data);
-        fetchChasuUpdate(IdState,data);
-        router.back();
+        fetchChasuUpdate(IdState, data, () => {
+            router.back();
+        });
     };
 
     useEffect(() => {

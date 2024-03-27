@@ -76,7 +76,7 @@ export const SearchButton = (props) => {
 
 export const ModifyButton = (props) => {
     return(
-        <button className={styles.modifybutton}>
+        <button className={styles.modifybutton} onClick={props.onClick}>
             {props.children}
         </button>
     )

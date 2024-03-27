@@ -127,6 +127,12 @@ export const fetchChasuData = (userid, chasu) =>{
     })
 }
 
-export const fetchChasuUpdate = (userid,data) => {
-    return axios.put(path+"/api/chasuupdate/"+userid,data);
-}
+export const fetchChasuUpdate = (userid, data, callback) => {
+    axios.put(path + "/api/chasuupdate/" + userid, data)
+        .then(() => {
+            callback();
+        })
+        .catch((error) => {
+            console.error("Error updating data:", error);
+        });
+};
