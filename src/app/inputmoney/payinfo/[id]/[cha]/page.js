@@ -79,7 +79,7 @@ export default function Inputmoneypay() {
       }, [userChasudata]);
     
     const onSubmit = (data) => {
-        data["sumprice"]=tot;
+        data["sumprice"]=parseInt(pay)+parseInt(work)-parseInt(discount)-parseInt(del);
         console.log(data);
         fetchChasuUpdate(IdState,data);
         router.back();
