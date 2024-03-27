@@ -100,7 +100,7 @@ const Inputmoneyloan = () =>{
                     </div>
 
                     <div className={styles.IBLayer}>
-                        <Inputbox_L type="text" placeholder="총액" value={tot} register={register('totalmoney')} />
+                        <Inputbox_L type="text" placeholder="총액" register={register('totalmoney')} />
                     </div>
                     {/* 한 덩어리 */}
                     

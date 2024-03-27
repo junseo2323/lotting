@@ -23,7 +23,7 @@ export default function Inputmoneypay() {
     const [pay, setpay] = useState('');
     const [work, setwork] = useState('');
     const [discount, setdiscount] = useState('');
-    const [del, setdelete] = useState('');
+    const [del, setdel] = useState('0');
     const [tot, settotal] = useState(0);
     const [payprice,setpayprice] = useState('');
     const pathname = usePathname();
@@ -72,7 +72,7 @@ export default function Inputmoneypay() {
             setpay(userdata.pay);
             setwork(userdata.work);
             setdiscount(userdata.discount);
-            setdelete(userdata.delete);
+            setdel(userdata.del);
             setpayprice(userdata.payprice);
           }
         }
@@ -80,6 +80,9 @@ export default function Inputmoneypay() {
     
     const onSubmit = (data) => {
         data["sumprice"]=parseInt(pay)+parseInt(work)-parseInt(discount)-parseInt(del);
+        if(data["isclear"]===undefined){
+            data["isclear"]=false;
+        }
         console.log(data);
         fetchChasuUpdate(IdState,data);
         router.back();
@@ -94,7 +97,7 @@ export default function Inputmoneypay() {
         const workValue = parseInt(work) || 0;
         const discountValue = parseInt(discount) || 0;
         const deleteValue = parseInt(del) || 0;
-        const paypriceValue=parseInt(payprice) || 0;
+        const paypriceValue = parseInt(payprice) || 0;
         const total = payValue + workValue - discountValue - deleteValue - paypriceValue;
         settotal(total);
     };
@@ -112,7 +115,7 @@ export default function Inputmoneypay() {
                 setdiscount(value);
                 break;
             case 'del':
-                setdelete(value);
+                setdel(value);
                 break;
             case 'payprice':
                 setpayprice(value);
@@ -177,7 +180,7 @@ export default function Inputmoneypay() {
 
                             <div className={styles.IBLayer}>
                                 <Inputbox_M type="text" placeholder="할인액" name="discount" register={register('discount')} onChange={onChange} defaultValue={userChasuData.discount} />
-                                <Inputbox_M type="text" placeholder="면제액" name="del"  register={register('del')}onChange={onChange} defaultValue={userChasuData.del} />
+                                <Inputbox_M type="text" placeholder="면제액" name="del"  register={register('del')} onChange={onChange} defaultValue={userChasuData.del} />
                             </div>
 
                             <div className={styles.IBLayer}>
