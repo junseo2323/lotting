@@ -14,6 +14,66 @@ export const banklist = [{
 "value" : "SUHYUP",
 "item" : "수협은행"
 },
+{
+"value" : "NH",
+"item" : "농협은행"
+},
+{
+"value" : "HANA",
+"item" : "KEB하나은행"
+},
+{
+"value" : "SHIN",
+"item" : "신한은행"
+},
+{
+"value" : "IBK",
+"item" : "IBK기업은행"
+},
+{
+"value" : "SC",
+"item" : "SC제일은행"
+},
+{
+"value" : "HWAN",
+"item" : "외환은행"
+},
+{
+"value" : "CITY",
+"item" : "한국시티은행"
+},
+{
+"value" : "KN",
+"item" : "경남은행"
+},
+{
+"value" : "GJ",
+"item" : "광주은행"
+},
+{
+"value" : "DG",
+"item" : "대구은행"
+},
+{
+"value" : "BS",
+"item" : "부산은행"
+},
+{
+"value" : "JB",
+"item" : "전북은행"
+},
+{
+"value" : "JEJU",
+"item" : "제주은행"
+},
+{
+"value" : "INDUSTRY",
+"item" : "한국산업은행"
+},
+{
+"value" : "EXPORT",
+"item" : "한국수출은행"
+},
 ]
   
 export const sintacklist = [{
