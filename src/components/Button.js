@@ -1,8 +1,11 @@
 "use client"
 import styles from "@/styles/Button.module.scss"
 import { useState } from 'react'
+
 import { CgSearch } from "react-icons/cg";
 import { FaFileDownload } from "react-icons/fa";
+
+import { downloadFile } from "@/utils/api";
 
 export const Button = (props) => {
     return(
@@ -15,10 +18,16 @@ export const Button = (props) => {
 const iconstyle = { fontSize: "1.5em", marginLeft: "10px", marginTop: "10px" };
 
 export const DownloadButton = (props) => {
+    const userid = props.userid;
+    const filename = props.filename;
+
+    const handleClick = () => {
+        downloadFile(userid,filename);
+    }
     return(
         <>
         <p>{props.children}</p>
-        <button className={styles.downloadbuttonstyle}>
+        <button className={styles.downloadbuttonstyle} onClick={handleClick}>
             다운로드
         </button>
         </>

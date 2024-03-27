@@ -1,5 +1,6 @@
 import axios from 'axios';
 const path = "http://3.39.167.172:8000"
+//const path = "http://localhost:8000"
 
 export const newIdGenerate = () => {
     return axios.get(path+"/api/generateid")
@@ -25,6 +26,32 @@ export const createFile = (files) => {
 
 }
 
+export const downloadFile = async (id, filename) => {
+    try {
+      const response = await axios.post(path+'/download', { id, filename }, {
+        responseType: 'blob'
+    });
+
+      // 파일 다운로드
+      const name = response.headers["content-disposition"]
+      .split("filename=")[1]
+      .replace(/"/g, "");
+        console.log(response)
+      console.log(name);
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute("download", name);
+      link.style.cssText = "display:none";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+          } catch (error) {
+      console.error('Error downloading file:', error);
+      // 오류 처리
+    }
+  };
+  
 export const createUser = (data) => {
     console.log("생성하는 유저의 정보 : ", data);
     return axios.post(path+'/api/createuser',data);

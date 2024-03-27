@@ -51,9 +51,9 @@ const Nav = () => {
           </li>
         </Link>
         <Link href="/modify">
-          <li className={pathname === "/modify" ? styles.select : styles.nonselect}>
+          <li className={splitpath[1] === "modify" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
-              {pathname === "/modify" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
+              {splitpath[1] === "modify" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
               <span className={styles.innertext}>고객 정보 수정</span>
             </div>
           </li>
