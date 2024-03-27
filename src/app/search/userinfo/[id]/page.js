@@ -6,16 +6,17 @@ import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { userinfoSelector } from "@/utils/selector";
 import { useState } from "react";
 import { useridState } from "@/utils/atom";
-import { DownloadButton } from "@/components/Button";
+import { DownloadButton,Button } from "@/components/Button";
 import Link from "next/link";
+import { InputAreabox } from "@/components/Inputbox";
 
 
 export default function Search() {
   const pathname = usePathname();
   const splitpath = pathname.split('/'); //splitpath[3]
-  
+  const userid = splitpath[3];
   const setIdState = useSetRecoilState(useridState);
-  useState(()=>{setIdState(splitpath[3])});
+  useState(()=>{setIdState(userid)});
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
   
   switch(userselectordata.state){
@@ -91,25 +92,29 @@ export default function Search() {
           <hr/>
           <h3>부속서류</h3>
           <div className={styles.file_container}>
-            {JSON.parse(userdata.fileinfo.A) ? <DownloadButton>인감증명서</DownloadButton> : <><p>인감증명서</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.B) ? <DownloadButton>본인서명확인서</DownloadButton> : <><p>본인서명확인서</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.C) ? <DownloadButton>신분증</DownloadButton> : <><p>신분증</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.D) ? <DownloadButton>확약서</DownloadButton> : <><p>확약서</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.E) ? <DownloadButton>상준위용</DownloadButton> : <><p>상준위용</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.F) ? <DownloadButton>무상옵션</DownloadButton> : <><p>무상옵션</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.G) ? <DownloadButton>선호도조사</DownloadButton> : <><p>선호도조사</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.H) ? <DownloadButton>총회동의서</DownloadButton> : <><p>총회동의서</p><p>파일이 없습니다.</p></>}
-            {JSON.parse(userdata.fileinfo.I) ? <DownloadButton>사은품</DownloadButton> : <><p>사은품</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.A) ? <DownloadButton userid={userid} filename="A">인감증명서</DownloadButton> : <><p>인감증명서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.B) ? <DownloadButton userid={userid} filename="B">본인서명확인서</DownloadButton> : <><p>본인서명확인서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.C) ? <DownloadButton userid={userid} filename="C">신분증</DownloadButton> : <><p>신분증</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.D) ? <DownloadButton userid={userid} filename="D">확약서</DownloadButton> : <><p>확약서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.E) ? <DownloadButton userid={userid} filename="E">상준위용</DownloadButton> : <><p>상준위용</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.F) ? <DownloadButton userid={userid} filename="F">무상옵션</DownloadButton> : <><p>무상옵션</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.G) ? <DownloadButton userid={userid} filename="G">선호도조사</DownloadButton> : <><p>선호도조사</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.H) ? <DownloadButton userid={userid} filename="H">총회동의서</DownloadButton> : <><p>총회동의서</p><p>파일이 없습니다.</p></>}
+            {JSON.parse(userdata.fileinfo.I) ? <DownloadButton userid={userid} filename="I">사은품</DownloadButton> : <><p>사은품</p><p>파일이 없습니다.</p></>}
           </div>
           <hr />
           <h3>납임금 관리</h3>
-            <Link href={"/inputmoney/userinfo/"+splitpath[3]}>
-              바로가기
-            </Link>
+          <div className={styles.linkbutton}>
+          <Link href={"/inputmoney/userinfo/"+splitpath[3]}>
+            <Button>
+                바로가기
+            </Button>
+          </Link>
+          </div>
           <hr />
           <h3>기타 정보</h3>
           <div>
-            {userdata.ext.ext}
+          <InputAreabox  value={userdata.ext.ext}/>
           </div>
         </>
     )
