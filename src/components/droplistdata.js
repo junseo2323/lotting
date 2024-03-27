@@ -95,16 +95,24 @@ export const sintacklist = [{
 ]
 
 export const typeidlist = [{
-"value" : "1-1",
+"value" : "1-1차",
 "item" : "1-1차"
 },
 {
-"value" : "1-2",
+"value" : "1-2차",
 "item" : "1-2차"
 },
 {
-"value" : "1-3",
+"value" : "1-3차",
 "item" : "1-3차"
+},
+{
+"value" : "1-4차",
+"item" : "1-4차"
+},
+{
+"value" : "1-5차",
+"item" : "1-5차"
 },
 {
 "value" : "2차",
@@ -179,5 +187,9 @@ export const turnlist = [{
 {
 "value" : "4",
 "item" : "4"
+},
+{
+"value" : "5",
+"item" : "5"
 }
 ]

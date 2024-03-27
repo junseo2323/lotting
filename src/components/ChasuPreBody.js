@@ -49,7 +49,7 @@ const ChasuPreBody = ({ userId }) => {
             </div>
           </div>
           <div className={styles.CBBottonBody}>
-            <ModifyButton>
+            <ModifyButton onClick={()=>{alert("hi")}}>
               <Link href={`/inputmoney/payinfo/${userId}/${item.chasu}`}>
                 <div className={styles.CBBottonFont}>납부수정</div>
               </Link>
