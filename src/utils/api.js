@@ -20,7 +20,7 @@ export const createFile = (files) => {
         formData.append('file', data );
     });
 
-    return axios.post(path+'/upload', formData, {
+    return axios.post(path+'/api/upload', formData, {
         headers: {'Content-Type': 'multipart/form-data', charset: 'utf-8'},
     });
 
@@ -28,7 +28,7 @@ export const createFile = (files) => {
 
 export const downloadFile = async (id, filename) => {
     try {
-      const response = await axios.post(path+'/download', { id, filename }, {
+      const response = await axios.post(path+'/api/download', { id, filename }, {
         responseType: 'blob'
     });
 
