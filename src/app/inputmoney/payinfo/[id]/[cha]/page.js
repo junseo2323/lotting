@@ -102,6 +102,7 @@ export default function Inputmoneypay() {
         const paypriceValue = parseInt(payprice) || 0;
         const total = payValue + workValue - discountValue - deleteValue - paypriceValue;
         settotal(total);
+        console.log("calculateTotal 작동")
     };
 
     const onChange = (e) => {
