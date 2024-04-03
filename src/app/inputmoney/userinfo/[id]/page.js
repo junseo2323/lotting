@@ -39,6 +39,7 @@ export default function Inputmoney() {
       } else {
         setUserData(userdata);
         setLoandata(userloandata);
+        console.log("loan data: ",userloandata);
       }
     }
   }, [userselectordata,usermoneyselectordata]);

@@ -20,6 +20,7 @@ export const usermoneySelector = selector({
   key: 'usermoneySelector',
   get: async ({ get }) => {
     const userid = get(useridState);
+    console.log(userid);
     try {
       const data = await fetchLoanInit(userid);
       return data;
