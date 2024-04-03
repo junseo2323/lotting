@@ -1,6 +1,6 @@
 import axios from 'axios';
 const path = "http://3.39.167.172:8000"
-//const path = "http://localhost:8000"
+//onst path = "http://localhost:8000"
 
 export const newIdGenerate = () => {
     return axios.get(path+"/api/generateid")
@@ -134,5 +134,15 @@ export const fetchChasuUpdate = (userid, data, callback) => {
         })
         .catch((error) => {
             console.error("Error updating data:", error);
+        });
+};
+
+export const fetchLoanUpdate = (userid, data, callback) => {
+    axios.put(path + "/api/loanupdate/" + userid , data)
+        .then(()=>{ 
+            callback();
+        })
+        .catch((error) => {
+            console.error("Error updating data: ", error);
         });
 };
