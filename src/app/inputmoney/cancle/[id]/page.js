@@ -8,30 +8,63 @@ import { CgSearch } from "react-icons/cg";
 import { useForm } from 'react-hook-form';
 import Link from "next/link";
 
+import { useEffect,useState } from "react";
+import { useRecoilValueLoadable,useRecoilState } from "recoil";
+import { userinfoSelector } from "@/utils/selector";
+import { useridState } from "@/utils/atom";
+import { usePathname,useRouter} from 'next/navigation';
+
 const Inputmoneycancle = () =>{
 
     const { register,watch,handleSubmit } = useForm();
+    const [IdState, setIdState] = useRecoilState(useridState);
+    const [userData, setUserData] = useState(null);
+
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const regex = /\/(\d+)$/;
+        const match = pathname.match(regex);
+        if (match) {
+            const extractedId = match[1];
+            console.log(extractedId);
+            setIdState(extractedId);
+        }
+    }, [pathname, setIdState,IdState]);
+
+    const userselectordata = useRecoilValueLoadable(userinfoSelector);
+    useEffect(() => {
+        if (userselectordata.state === 'hasValue') {
+          const userdata = userselectordata.contents;
+          if (userdata === undefined) {
+            console.error('잘못된 접근입니다');
+          } else {
+            setUserData(userdata);
+          }
+        }
+      }, [userselectordata]);
+
     return(
         <div className={styles.Container}>
             <div className={styles.Mainbody}>
                 <div className={styles.MainTitle}>
-                    <div className={styles.MainTitle1}>
-                        <div className={styles.SearchClientNum}>
-                            <div className={styles.SearchFont1}>고객번호 : </div>
-                            <div className={styles.SearchFont2}>123456</div>
+                        <div className={styles.MainTitle1}>
+                            <div className={styles.SearchClientNum}>
+                                <div className={styles.SearchFont1}>고객번호 : </div>
+                                <div className={styles.SearchFont2}>{userData.id}</div>
+                            </div>
+                        </div>
+                        <div className={styles.MainTitle2}>
+                        <Link href = "/inputmoney">
+                            <SearchButton>
+                                    <div className={styles.BottonIcon} style={{ color: 'white' }}>
+                                        <CgSearch style={{ width: '100%', height: '100%' }} />
+                                    </div>
+                                    <div className={styles.BottonFont}>고객선택</div>
+                            </SearchButton>
+                        </Link>
                         </div>
                     </div>
-                    <div className={styles.MainTitle2}>
-                    <Link href = "/inputmoneysearch">
-                        <SearchButton>
-                            <div className={styles.BottonIcon} style={{ color: 'white' }}>
-                                <CgSearch style={{ width: '100%', height: '100%' }} />
-                            </div>
-                            <div className={styles.BottonFont}>고객선택</div>
-                        </SearchButton>
-                    </Link>
-                    </div>
-                </div>
                 <div className={styles.InputBody}>
                     <div className={styles.InputBodyTitle}>
                         <div className={styles.IBTIcon}>
