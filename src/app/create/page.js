@@ -11,18 +11,14 @@ import {createFile,newIdGenerate} from "@/utils/api"
 import { useRouter } from 'next/navigation'
 
 import { createUser } from "@/utils/api"
-
 import { banklist,sintacklist,typeidlist,typelist,grouplist,turnlist } from "@/components/droplistdata"
 
-const handleChange = e => {
-  setPostdetail(e.target.value)
-}
 
 export default function Create() {
   const router = useRouter();
 
   const { register,handleSubmit,reset} = useForm();
-  
+
   const [newid, setNewid] = useState("");
 
   useEffect(() => {
@@ -58,6 +54,7 @@ export default function Create() {
 
     createFile(files);
     createUser(data);
+    
     Swal.fire({
       icon: 'success',
       title: '고객정보가 입력되었습니다.',
