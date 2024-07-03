@@ -131,11 +131,11 @@ export default function Modify() {
               </div>
               <div className={styles.InputboxField}>
                 <div className={styles.InputFont}>가입일자</div>
-                <Inputbox type="date" date_placeholder="가입일자" register={register('data.submitdate')} />
+                <Inputbox type="date" defaultValue={(userdata.data.submitdate).substr(0,10)} date_placeholder="가입일자" register={register('data.submitdate')} />
               </div>
               <div className={styles.InputboxField}>
                 <div className={styles.InputFont}>제출일자</div>
-                <Inputbox type="date" date_placeholder="신탁사 제출일자" register={register('data.trustsubmitdate')} />
+                <Inputbox type="date" defaultValue={(userdata.data.trustsubmitdate).substr(0,10)} date_placeholder="신탁사 제출일자" register={register('data.trustsubmitdate')} />
               </div>
               <div className={styles.InputboxField}>
                 <div className={styles.InputFont}>가입가</div>
@@ -143,7 +143,7 @@ export default function Modify() {
               </div>
               <div className={styles.InputboxField}>
                 <div className={styles.InputFont}>납입일자</div>
-                <Inputbox type="date" date_placeholder="예약금 납입일자" register={register('data.earnestdate')} />
+                <Inputbox type="date" defaultValue={(userdata.data.earnestdate).substr(0,10)} date_placeholder="예약금 납입일자" register={register('data.earnestdate')} />
               </div>
               <div className={styles.InputboxField}>
                 <div className={styles.InputFont}>예약금</div>
