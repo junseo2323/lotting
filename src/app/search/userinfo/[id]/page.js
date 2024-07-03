@@ -103,11 +103,11 @@ export default function Search() {
             {JSON.parse(userdata.fileinfo.I) ? <DownloadButton userid={userid} filename="I">사은품</DownloadButton> : <><p>사은품</p><p>파일이 없습니다.</p></>}
           </div>
           <hr />
-          <h3>납임금 관리</h3>
+          <h3>납입금 관리</h3>
           <div className={styles.linkbutton}>
           <Link href={"/inputmoney/userinfo/"+splitpath[3]}>
             <Button>
-                바로가기
+                <h3>바로가기</h3>
             </Button>
           </Link>
           </div>

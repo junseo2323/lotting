@@ -4,18 +4,15 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
 import { AiFillAppstore } from "react-icons/ai";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { HiOutlineUsers } from "react-icons/hi2";
 import { HiUsers } from "react-icons/hi";
 import { AiOutlineDollar } from "react-icons/ai";
 import { AiFillDollarCircle } from "react-icons/ai";
-
-
 import LOGO from "@/img/logo.png";
-
 import styles from "../styles/Nav.module.scss";
+
 const iconstyle = { fontSize: "1.5em", paddingRight: "10%", paddingLeft: "7%" };
 
 const Nav = () => {
@@ -24,7 +21,9 @@ const Nav = () => {
 
   return (
     <div className={styles.container}>
-      <Image src={LOGO} className={styles.logostyle} alt={"logo"} />
+      <Link href = "/dashboard">
+        <Image src={LOGO} className={styles.logostyle} alt={"logo"} />
+      </Link>
       <ul className={styles.listconatiner}>
         <Link href="/dashboard">
           <li className={splitpath[1] === "dashboard" ? styles.select : styles.nonselect}>
