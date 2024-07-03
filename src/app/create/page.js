@@ -80,9 +80,15 @@ export default function Create() {
               <Inputbox type="text" placeholder="계좌번호" register={register('userinfo.bankid',{required: true})} />
               <Inputbox type="text" placeholder="예금주" register={register('userinfo.bankwho',{required: true})} />
               <DropInputbox list={sintacklist} register={register('userinfo.bankwhere',{required: true})}/>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>우편물 수령주소</div>
               <PostInputbox placeholder="우편물 수령주소" name="userinfo.getpost" register={register('userinfo.getpost',{required: true})}/>
+            </div>
+            <div className={styles.InputboxField}></div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>주소지</div>
               <PostInputbox placeholder="주소지" name="userinfo.post" register={register('userinfo.post',{required: true})}/>
-
+            </div>
             </div>    
 
             <h3>관리 정보</h3>
