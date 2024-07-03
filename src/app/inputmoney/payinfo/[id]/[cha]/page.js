@@ -63,7 +63,6 @@ export default function Inputmoneypay() {
       }, [userselectordata]);
 
     useEffect(() => {
-        
         if (userChasudatas.state === 'hasValue') {
           const userdata = userChasudatas.contents;
           if (userdata === undefined) {

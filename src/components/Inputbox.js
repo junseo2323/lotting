@@ -15,6 +15,7 @@ export const Spanbox = ({children}) => {
     )
 }
 
+
 export const Inputbox = (props) => {
     const type = props.type;
     const placeholder = props.placeholder;

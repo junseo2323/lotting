@@ -1,7 +1,7 @@
 'use client'
 import Mininav from "@/components/Mininav"
 import styles from "@/styles/Create.module.scss"
-import { Inputbox,PostInputbox,InputAreabox,DropInputbox,FileInputbox } from "@/components/Inputbox"
+import { Inputbox,PostInputbox,InputAreabox,DropInputbox,FileInputbox, InputboxWithLabel } from "@/components/Inputbox"
 import { Button_Y } from "@/components/Button"
 
 import { usePathname } from "next/navigation";
@@ -56,36 +56,96 @@ export default function Modify() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <h3>분양인 정보</h3>
             <div className={styles.content_container}>
-              <span>관리번호 : {userdata.id}</span> <h1></h1> 
-              <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.name:"이름"} register={register('userinfo.name')}  />
-              <Inputbox type="phone" defaultValue={userdata.userinfo.name?userdata.userinfo.phone:"휴대폰 번호"} register={register('userinfo.phone')} />
-              <Inputbox type="number" defaultValue={userdata.userinfo.name?userdata.userinfo.firstid:"주민번호 앞자리"} register={register('userinfo.firstid')} />
-              <Inputbox type="number" defaultValue={userdata.userinfo.name?userdata.userinfo.secondid:"주민번호 뒷자리"} register={register('userinfo.secondid')} />
-              <Inputbox type="email" defaultValue={userdata.userinfo.name?userdata.userinfo.email:"이메일"} register={register('userinfo.email')}/>
-              <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.come:"가입경로"} register={register('userinfo.come')} />
-              <DropInputbox list={banklist} defaultValue={userdata.userinfo.bank} register={register('userinfo.bank')}/>
-              <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.bankid:"계좌번호"} register={register('userinfo.bankid')} />
-              <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.bankwho:"예금주"} register={register('userinfo.bankwho')} />
-              <DropInputbox list={sintacklist} defaultValue={userdata.userinfo.bankwhere} register={register('userinfo.bankwhere')}/>
-              <span>우편물 수령주소</span> 
-              <textarea defaultValue={userdata.userinfo.post} {...register("userinfo.getpost")} />
-              <span>주소지</span>
-              <textarea defaultValue={userdata.userinfo.getpost} {...register("userinfo.post")} />
-
+              <div className={styles.Font}>관리번호 : {userdata.id}</div> <h1></h1>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>이름</div>
+                <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.name:"이름"} register={register('userinfo.name')} />
+              </div>  
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>휴대폰 번호</div>
+                <Inputbox type="phone" defaultValue={userdata.userinfo.name?userdata.userinfo.phone:"휴대폰 번호"} register={register('userinfo.phone')} />
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>주민번호 앞자리</div>
+                <Inputbox type="number" defaultValue={userdata.userinfo.name?userdata.userinfo.firstid:"주민번호 앞자리"} register={register('userinfo.firstid')} />
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>주민번호 뒷자리</div>
+                <Inputbox type="number" defaultValue={userdata.userinfo.name?userdata.userinfo.secondid:"주민번호 뒷자리"} register={register('userinfo.secondid')} />
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>이메일</div>
+                <Inputbox type="email" defaultValue={userdata.userinfo.name?userdata.userinfo.email:"이메일"} register={register('userinfo.email')}/>
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>가입경로</div>
+                <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.come:"가입경로"} register={register('userinfo.come')} />
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>은행명</div>
+                <DropInputbox list={banklist} defaultValue={userdata.userinfo.bank} register={register('userinfo.bank')}/>
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>계좌번호</div>
+                <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.bankid:"계좌번호"} register={register('userinfo.bankid')} />
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>예금주</div>
+                <Inputbox type="text" defaultValue={userdata.userinfo.name?userdata.userinfo.bankwho:"예금주"} register={register('userinfo.bankwho')} />
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>신탁사</div>
+                <DropInputbox list={sintacklist} defaultValue={userdata.userinfo.bankwhere} register={register('userinfo.bankwhere')}/>
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>우편물 수령주소</div>
+                <textarea defaultValue={userdata.userinfo.post} {...register("userinfo.getpost")} />
+              </div>
+              <div className={styles.InputboxField}>
+              <div className={styles.InputFont}>주소지</div>
+                <textarea defaultValue={userdata.userinfo.getpost} {...register("userinfo.post")} />
+              </div>
             </div>    
 
             <h3>관리 정보</h3>
             <div className={styles.content_container}>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>가입차수</div>
               <DropInputbox list={typeidlist} defaultValue={userdata.data.submitturn} register={register('data.submitturn')}/> 
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>타입</div>
               <DropInputbox list={typelist} defaultValue={userdata.data.type} name="type" register={register('data.type')}/>
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>군</div>
               <DropInputbox list={grouplist} defaultValue={userdata.data.group} name="group" register={register('data.group')}/>
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>순번</div>
               <DropInputbox list={turnlist} defaultValue={userdata.data.type} name="turn" register={register('data.turn')}/>
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>가입일자</div>
               <Inputbox type="date" date_placeholder="가입일자"  register={register('data.submitdate')} />
+              </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>제출일자</div>
               <Inputbox type="date" date_placeholder="신탁사 제출일자" register={register('data.trustsubmitdate')} />
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>가입가</div>
               <Inputbox type="number"defaultValue={userdata.data.submitprice} placeholder="가입가" register={register('data.submitprice')}/>
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>납입일자</div>
               <Inputbox type="date" date_placeholder="예약금 납입일자" register={register('data.earnestdate')}/>
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>예약금</div>
               <Inputbox type="number" defaultValue={userdata.data.earnest} placeholder="예약금" register={register('data.earnest')}/>
-            </div> 
+            </div>
+            </div>
 
             <h3>부속서류</h3>
             <div className={styles.content_container}>
@@ -114,10 +174,22 @@ export default function Modify() {
 
             <h3>담당자 정보</h3>
             <div className={styles.content_container}>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>총괄</div>
               <Inputbox type="text" defaultValue={userdata.ext.manage} placeholder="총괄" register={register('ext.manage')} />
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>본부</div>
               <Inputbox type="text" defaultValue={userdata.ext.managemain} placeholder="본부" register={register('ext.managemain')} />
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>팀</div>
               <Inputbox type="text" defaultValue={userdata.ext.manageteam} placeholder="팀" register={register('ext.manageteam')} />
+            </div>
+            <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>성명</div>
               <Inputbox type="text" defaultValue={userdata.ext.managename} placeholder="성명" register={register('ext.managename')} />
+            </div>
             </div>
 
             <h3>기타 정보</h3>
