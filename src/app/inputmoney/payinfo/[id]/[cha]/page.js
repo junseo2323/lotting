@@ -146,7 +146,7 @@ export default function Inputmoneypay() {
                             </div>
                             <div className={styles.MainTitle2}>
 
-                                <Link href="/inputmoney/search">
+                                <Link href="/inputmoney">
                                     <SearchButton>
                                         <div className={styles.BottonIcon} style={{ color: 'white' }}>
                                             <CgSearch style={{ width: '100%', height: '100%' }} />
