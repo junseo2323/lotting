@@ -3,18 +3,13 @@ import Mininav from "@/components/Mininav"
 import styles from "@/styles/Create.module.scss"
 import { Inputbox,PostInputbox,InputAreabox,DropInputbox,FileInputbox, InputboxWithLabel } from "@/components/Inputbox"
 import { Button_Y } from "@/components/Button"
-
 import { usePathname } from "next/navigation";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { userinfoSelector } from "@/utils/selector";
 import { useState } from "react";
 import { useridState } from "@/utils/atom";
 import { useForm } from "react-hook-form"
-
-
-
 import { banklist,sintacklist,typeidlist,typelist,grouplist,turnlist } from "@/components/droplistdata"
-
 
 export default function Modify() {
   const pathname = usePathname();

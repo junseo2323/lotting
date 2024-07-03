@@ -226,7 +226,6 @@ export const PostInputbox = (props) => {
 
     return(
         <>
-            <label>{placeholder}</label>
             <input
                 className={styles.postcontainer}
                 type="button"
