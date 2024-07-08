@@ -16,7 +16,21 @@ export default function Modify() {
   const splitpath = pathname.split('/'); //splitpath[3]
 
   const { register, handleSubmit } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data) => {
+    console.log(data)
+    data.fileinfo = isupload;
+    console.log(data);
+
+    createFile(files);
+    createUser(data);
+    
+    Swal.fire({
+      icon: 'success',
+      title: '고객정보가 수정되었습니다.',
+    });
+    reset();
+    window.scrollTo(0,0);
+  }
 
   const setIdState = useSetRecoilState(useridState);
   useState(()=>{setIdState(splitpath[2])});
