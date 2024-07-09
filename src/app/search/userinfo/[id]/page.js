@@ -59,14 +59,15 @@ export default function Search() {
             <span>{parseInt(userdata.resgisterprice).toLocaleString('ko-KR')}₩</span>
 
             <span className={styles.title}>우편번호</span>
-            <span className={styles.title}>주소</span>
-            <span className={styles.title}>우편물주소</span>
+            <span className={styles.title}>주소지</span>
+            <span className={styles.title}></span>
             <span className={styles.title}></span>
             
             <span>{userdata.userinfo.postnumber}</span>
-            <span>{userdata.userinfo.post}</span>
             <span>{userdata.userinfo.getpost}</span>
             <span></span>
+            <span></span>
+            
 
             <span className={styles.title}>은행명</span>
             <span className={styles.title}>계좌번호</span>

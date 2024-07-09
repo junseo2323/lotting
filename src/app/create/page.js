@@ -1,20 +1,14 @@
 "use client";
 
-import styles from "@/styles/Create.module.scss";
-import Swal from "sweetalert2";
-import {
-  Inputbox,
-  PostInputbox,
-  InputAreabox,
-  DropInputbox,
-  FileInputbox,
-} from "@/components/Inputbox";
-import { Button_Y } from "@/components/Button";
+import styles from "@/styles/Create.module.scss"
+import Swal from 'sweetalert2'
+import { Inputbox,PostInputbox,InputAreabox,DropInputbox,FileInputbox } from "@/components/Inputbox"
+import { Button_Y } from "@/components/Button"
 
-import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
-import { createFile, newIdGenerate } from "@/utils/api";
-import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form"
+import { useState,useEffect } from "react"
+import {createFile,newIdGenerate} from "@/utils/api"
+import { useRouter } from 'next/navigation'
 
 import { createUser } from "@/utils/api";
 import {
@@ -156,22 +150,14 @@ export default function Create() {
             register={register("userinfo.bankwhere", { required: true })}
           />
           <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>우편물 수령주소</div>
+            <div className={styles.InputFont}>주소지</div>
             <PostInputbox
-              placeholder="우편물 수령주소"
+              placeholder="주소지"
               name="userinfo.getpost"
               register={register("userinfo.getpost", { required: true })}
             />
           </div>
           <div className={styles.InputboxField}></div>
-          <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>주소지</div>
-            <PostInputbox
-              placeholder="주소지"
-              name="userinfo.post"
-              register={register("userinfo.post", { required: true })}
-            />
-          </div>
         </div>
 
         <h3>관리 정보</h3>

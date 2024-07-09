@@ -56,11 +56,13 @@ export default function Modify() {
     const originalfile = e.target.files[0];
     const extension = value.split(".")[1];
 
+    const newid = splitpath[2]; // newid 변수를 정의하고 splitpath[2]로 설정
+
     setIsupload((prev) => ({ ...prev, [changename]: true }));
     setFile((prev) => ({ ...prev, [changename]: [value] }));
     const file = new File(
       [originalfile],
-      [newid] + "_" + [e.target.className] + "." + extension
+      `${newid}_${changename}.${extension}` // newid 변수를 사용
     );
 
     setFiles((prev) => [...prev, file]);
@@ -198,18 +200,12 @@ export default function Modify() {
                     register={register("userinfo.bankwhere")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>우편물 수령주소</div>
-                  <textarea
-                    defaultValue={userdata.userinfo.post}
-                    {...register("userinfo.getpost")}
-                  />
-                </div>
+
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>주소지</div>
                   <textarea
                     defaultValue={userdata.userinfo.getpost}
-                    {...register("userinfo.post")}
+                    {...register("userinfo.getpost")}
                   />
                 </div>
               </div>

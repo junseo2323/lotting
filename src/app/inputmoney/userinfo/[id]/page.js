@@ -70,7 +70,7 @@ export default function Inputmoney() {
               </div>
               {/* 납부 정보 표시 부분 */}
              
-              <Link href="/inputmoney/search">
+              <Link href="/inputmoney">
                 <SearchButton>
                   <div className={styles.BottonIcon} style={{ color: 'white' }}>
                     <CgSearch style={{ width: '100%', height: '100%' }} />
