@@ -31,24 +31,6 @@ export default function Modify() {
   const splitpath = pathname.split("/"); //splitpath[3]
   const router = useRouter(); // Add the useRouter hook
 
-<<<<<<< HEAD
-  const { register, handleSubmit } = useForm()
-  const onSubmit = (data) => {
-    console.log(data)
-    data.fileinfo = isupload;
-    console.log(data);
-
-    createFile(files);
-    createUser(data);
-    
-    Swal.fire({
-      icon: 'success',
-      title: '고객정보가 수정되었습니다.',
-    });
-    reset();
-    window.scrollTo(0,0);
-  }
-=======
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     try {
@@ -60,7 +42,6 @@ export default function Modify() {
       alert("사용자 정보 업데이트 중 오류가 발생했습니다.");
     }
   };
->>>>>>> 8a524925b603fead9ae516ed418192ac3a1c1d16
 
   const setIdState = useSetRecoilState(useridState);
   useState(() => {
@@ -75,11 +56,13 @@ export default function Modify() {
     const originalfile = e.target.files[0];
     const extension = value.split(".")[1];
 
+    const newid = splitpath[2]; // newid 변수를 정의하고 splitpath[2]로 설정
+
     setIsupload((prev) => ({ ...prev, [changename]: true }));
     setFile((prev) => ({ ...prev, [changename]: [value] }));
     const file = new File(
       [originalfile],
-      [newid] + "_" + [e.target.className] + "." + extension
+      `${newid}_${changename}.${extension}` // newid 변수를 사용
     );
 
     setFiles((prev) => [...prev, file]);
@@ -217,18 +200,12 @@ export default function Modify() {
                     register={register("userinfo.bankwhere")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>우편물 수령주소</div>
-                  <textarea
-                    defaultValue={userdata.userinfo.post}
-                    {...register("userinfo.getpost")}
-                  />
-                </div>
+
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>주소지</div>
                   <textarea
                     defaultValue={userdata.userinfo.getpost}
-                    {...register("userinfo.post")}
+                    {...register("userinfo.getpost")}
                   />
                 </div>
               </div>

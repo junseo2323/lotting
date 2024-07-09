@@ -171,9 +171,15 @@ export default function Inputmoneypay() {
                                 <PaymentScheduleButton isclear={userChasuData.isclear} setValue={setValue}/>
                             </div>
                             <div className={styles.SIBLayer}>
-                                <div className={styles.SearchFont}>완납일</div>
+                                <div className={styles.SearchFont}>완납일자</div>
                                 <Inputbox type="date" register={register('findate')} defaultValue={new Date(userChasuData.findate).toISOString().substring(0, 10)}/>
                             </div>
+
+                            <div className={styles.SIBLayer}>
+                                <div className={styles.SearchFont}>예정일자</div>
+                                <Inputbox type="date" register={register('findate')} defaultValue={new Date(userChasuData.findate).toISOString().substring(0, 10)}/>
+                            </div>
+                             {/* 나중에 findate -> bedate로 수정 */}
 
                             <div className={styles.IBLayer}>
                                 <Inputbox_M type="text" placeholder="부담금" name="pay" register={register('pay')} onChange={onChange} defaultValue={userChasuData.pay} />

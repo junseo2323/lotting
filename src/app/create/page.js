@@ -150,22 +150,14 @@ export default function Create() {
             register={register("userinfo.bankwhere", { required: true })}
           />
           <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>우편물 수령주소</div>
+            <div className={styles.InputFont}>주소지</div>
             <PostInputbox
-              placeholder="우편물 수령주소"
+              placeholder="주소지"
               name="userinfo.getpost"
               register={register("userinfo.getpost", { required: true })}
             />
           </div>
           <div className={styles.InputboxField}></div>
-          <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>주소지</div>
-            <PostInputbox
-              placeholder="주소지"
-              name="userinfo.post"
-              register={register("userinfo.post", { required: true })}
-            />
-          </div>
         </div>
 
         <h3>관리 정보</h3>
