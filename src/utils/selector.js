@@ -55,4 +55,3 @@ export const namesearchSelector = selector({
       const data = await fetchNameSearch(username); 
       return data;
 }});
-

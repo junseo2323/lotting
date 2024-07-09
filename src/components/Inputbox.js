@@ -166,14 +166,17 @@ export const LongInputbox = (props) => {
   );
 };
 
+
 export const DropInputbox = (props) => {
   const optionlist = props.list;
   const handlechange = props.handlechange;
   const defaultValue = props.defaultValue;
+  const placeholder = props.placeholder;
   const value = props.value;
   return (
     <select
       className={styles.Dropinputcontainer}
+      
       defaultValue={defaultValue}
       {...props.register}
     >

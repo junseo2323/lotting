@@ -120,7 +120,12 @@ export const typeidlist = [{
 }
 ]
 
-export  const typelist = [{
+export  const typelist = [
+{
+    "value":"타입",
+    "item":"타입"
+},
+{
 "value" : "44",
 "item" : "44"
 },
@@ -142,7 +147,12 @@ export  const typelist = [{
 }
 ]
 
-export  const grouplist = [{
+export  const grouplist = [
+{
+    "value":"군",
+    "item":"군"
+},
+{
 "value" : "가",
 "item" : "가"
 },
@@ -172,7 +182,12 @@ export  const grouplist = [{
 },
 ]
 
-export const turnlist = [{
+export const turnlist = [
+{
+    "value":"순번",
+    "item":"순번"
+},
+{
 "value" : "1",
 "item" : "1"
 },
