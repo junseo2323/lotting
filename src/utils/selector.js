@@ -1,6 +1,6 @@
 import { selector } from "recoil";
-import { fetchNameSearch, fetchUserinfo, fetchLoanInit,fetchChasuData } from "./api";
-import { searchnameState, useridState, userinfoState, chasuState } from "./atom";
+import { fetchNameSearch, fetchNumberSearch,fetchT,fetchUserinfo, fetchLoanInit,fetchChasuData } from "./api";
+import { searchnameState,searchnumberState, useridState, searchtypeState, chasuState } from "./atom";
 
 export const userinfoSelector = selector({
     key: 'userinfoSelector',
@@ -47,11 +47,23 @@ export const userchasuSelector = selector({
   }
 })
 
+
 export const namesearchSelector = selector({
   key: 'namesearchSelector',
   get: async ({ get }) => {
     const username = get(searchnameState);
+    const usernumber = get(searchnumberState);
     
-      const data = await fetchNameSearch(username); 
-      return data;
-}});
+    const dataByName = await fetchNameSearch(username);
+    const dataByNumber = await fetchNumberSearch(usernumber);
+
+    // 이름과 관리번호 둘 다 있는 경우, 합친 결과를 반환
+    if (username && usernumber) {
+      return [...dataByName, ...dataByNumber];
+    }
+
+    // 둘 중 하나만 있는 경우, 해당 결과만 반환
+    return username ? dataByName : dataByNumber;
+  }
+});
+

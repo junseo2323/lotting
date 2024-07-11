@@ -128,6 +128,18 @@ export const fetchNameSearch = (username) => {
     });
 };
 
+export const fetchNumberSearch = (usernumber) => {
+  return axios
+    .get(path + "/api/searchnumber/" + usernumber)
+    .then((result) => {
+      return result.data;
+    })
+    .catch((error) => {
+      console.log(error);
+      throw error;
+    });
+};
+
 export const fetchLoanInit = (userid) => {
   return axios
     .get(path + "/api/chasuinit/loan/" + userid)

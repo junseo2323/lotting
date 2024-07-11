@@ -1,14 +1,6 @@
 "use client";
 
 import {
-  banklist,
-  sintacklist,
-  typeidlist,
-  typelist,
-  grouplist,
-  turnlist,
-} from "@/components/droplistdata";
-import {
   Inputbox,
   PostInputbox,
   LongInputbox,
@@ -16,10 +8,8 @@ import {
   FileInputbox,
 } from "@/components/Inputbox";
 import styles from "@/styles/Search.module.scss";
-
-import { searchnameState } from "@/utils/atom";
+import { searchnameState, searchnumberState } from "@/utils/atom";
 import { namesearchSelector } from "@/utils/selector";
-
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
@@ -27,21 +17,30 @@ import {
   useRecoilValueLoadable,
   useSetRecoilState,
 } from "recoil";
+import {
+  banklist,
+  sintacklist,
+  typeidlist,
+  typelist,
+  grouplist,
+  turnlist,
+} from "@/components/droplistdata";
 
-const SearchList = ({ name }) => {
-  let searchname = name.length > 1 ? name : "";
-
+const SearchList = ({ name, number }) => {
   const setNameState = useSetRecoilState(searchnameState);
-  let searchdata = useRecoilValueLoadable(namesearchSelector);
+  const setNumberState = useSetRecoilState(searchnumberState);
+  let searchname = name.length > 1 ? name : "";
+  let searchnumber = number.length > 1 ? number : "";
 
   useEffect(() => {
     setNameState(searchname);
-  }, [searchname, setNameState]);
+    setNumberState(searchnumber);
+  }, [searchname, searchnumber, setNameState, setNumberState]);
 
-  console.log(searchdata);
+  let searchdata = useRecoilValueLoadable(namesearchSelector);
 
   if (searchdata.state === "loading") {
-    return null; // 초기 렌더링에서 서버와 클라이언트 간 차이를 없애기 위해 null 반환
+    return null;
   }
 
   if (searchdata.state === "hasError") {
@@ -71,19 +70,26 @@ const SearchList = ({ name }) => {
   );
 };
 
-export default function Search() {
+export default function Modify() {
   const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
 
-  const onChange = (e) => {
+  const onNameChange = (e) => {
     const text = e.target.value;
     setName(text.replace(/ /g, ""));
   };
 
+  const onNumberChange = (e) => {
+    const text = e.target.value;
+    setNumber(text.replace(/ /g, ""));
+  };
+
   return (
     <>
-      <h3>고객 정보 검색</h3>
-      <div className={styles.container}>
-        <Inputbox type="text" placeholder="고객 성함" onChange={onChange} />
+      <h1></h1>
+      <div className={styles.flexContainer}>
+        <Inputbox type="text" placeholder="고객 성함" onChange={onNameChange} />
+        <Inputbox type="text" placeholder="관리번호" onChange={onNumberChange} />
         <DropInputbox list={typelist} />
         <DropInputbox list={grouplist} />
         <DropInputbox list={turnlist} />
@@ -96,7 +102,7 @@ export default function Search() {
         <span>순번</span>
         <span>임시동호</span>
       </div>
-      {typeof window !== "undefined" && <SearchList name={name} />}
+      {typeof window !== "undefined" && <SearchList name={name} number={number} />}
     </>
   );
 }
