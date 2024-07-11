@@ -47,20 +47,22 @@ const SearchList = ({ name }) => {
   return (
     <div>
       {searchdata.state === "hasValue" &&
-        searchdata.contents.map((k) => (
-          <Link
-            className={styles.maincontainer}
-            href={"/modify/" + k.id}
-            key={k.id}
-          >
-            <span>{k.id}</span>
-            <span>{k.userinfo.name}</span>
-            <span>{k.data.type}</span>
-            <span>{k.data.group}</span>
-            <span>{k.data.turn}</span>
-            <span>{k.data.type + "-" + k.data.group + "-" + k.data.turn}</span>
-          </Link>
-        ))}
+        searchdata.contents
+          .filter((k) => k.userinfo && k.data) // 필터 조건 추가
+          .map((k) => (
+            <Link
+              className={styles.maincontainer}
+              href={"/modify/" + k.id}
+              key={k.id}
+            >
+              <span>{k.id}</span>
+              <span>{k.userinfo?.name || "N/A"}</span>
+              <span>{k.data?.type || "N/A"}</span>
+              <span>{k.data?.group || "N/A"}</span>
+              <span>{k.data?.turn || "N/A"}</span>
+              <span>{`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}</span>
+            </Link>
+          ))}
     </div>
   );
 };
