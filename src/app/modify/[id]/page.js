@@ -257,13 +257,6 @@ export default function Modify() {
                   />
                 </div>
                 <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>제출일자</div>
-                  <Inputbox
-                    type="date"
-                    defaultValue={userdata.data.trustsubmitdate.substr(0, 10)}
-                    date_placeholder="신탁사 제출일자"
-                    register={register("data.trustsubmitdate")}
-                  />
                 </div>
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>가입가</div>

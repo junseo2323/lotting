@@ -186,11 +186,7 @@ export default function Create() {
             date_placeholder="가입일자"
             register={register("data.submitdate", { required: true })}
           />
-          <Inputbox
-            type="date"
-            date_placeholder="신탁사 제출일자"
-            register={register("data.trustsubmitdate", { required: true })}
-          />
+          
           <Inputbox
             type="number"
             placeholder="가입가"

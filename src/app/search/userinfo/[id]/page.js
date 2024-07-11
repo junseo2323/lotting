@@ -54,9 +54,9 @@ export default function Search() {
             <span className={styles.title}>가입가</span>
             
             <span>{userdata.data.submitturn}</span>
-            <span>{userdata.data.trustsubmitdate.slice(0,10)}</span>
+            <span>없음</span>
             <span>{userdata.data.submitdate.slice(0,10)}</span>
-            <span>{parseInt(userdata.resgisterprice).toLocaleString('ko-KR')}₩</span>
+            <span>{userdata.data.submitprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
 
             <span className={styles.title}>우편번호</span>
             <span className={styles.title}>주소지</span>
