@@ -140,6 +140,17 @@ export const fetchNumberSearch = (usernumber) => {
     });
 };
 
+export const deleteUser = (id) => {
+  return axios.post(path + "/api/deleteuser", { id: id.toString() })
+    .then((result) => {
+      return result.data;
+    })
+    .catch((error) => {
+      console.error('Error deleting user:', error);
+      throw error;
+    });
+};
+
 export const fetchLoanInit = (userid) => {
   return axios
     .get(path + "/api/chasuinit/loan/" + userid)

@@ -19,6 +19,17 @@
     gap: 10px;
   }  
 
+  .rowContainer {
+    width:900px;
+    display:flex;
+  }
+  .unitContainer{
+    width:125px;
+    height:20px;
+    margin-right:20px;
+    margin-top:7px;
+  }
+
 .tablecontainer span {
     font-size: 14px;
     color: #A2A1A8;
@@ -28,7 +39,7 @@
 .maincontainer {
     margin: 30px;
     display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 20px;
     width: 50vw;
     font-size: 14px;
@@ -38,4 +49,13 @@
 
 .linkbutton{
     width: 10px;
+}
+.CBBottonFont{
+    color:#FFF;
+    /* Caption Regular */
+    font-family: Lexend;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 18px; /* 150% */
 }
