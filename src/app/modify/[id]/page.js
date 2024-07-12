@@ -13,7 +13,7 @@ import { Button_Y } from "@/components/Button";
 import { usePathname, useRouter } from "next/navigation";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { userinfoSelector } from "@/utils/selector";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useridState } from "@/utils/atom";
 import { useForm } from "react-hook-form";
 import {
@@ -44,9 +44,9 @@ export default function Modify() {
   };
 
   const setIdState = useSetRecoilState(useridState);
-  useState(() => {
+  useEffect(() => {
     setIdState(splitpath[2]);
-  });
+  }, [splitpath, setIdState]);
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
 
   const handleChange = (e) => {
@@ -75,8 +75,7 @@ export default function Modify() {
   switch (userselectordata.state) {
     case "hasValue":
       const userdata = userselectordata.contents;
-      console.log("====" + userdata.data.turn);
-      if (userdata === undefined)
+      if (!userdata)
         return (
           <>
             <h1>잘못된 접근입니다</h1>
@@ -89,15 +88,13 @@ export default function Modify() {
             <form onSubmit={handleSubmit(onSubmit)}>
               <h3>분양인 정보</h3>
               <div className={styles.content_container}>
-                <div className={styles.Font}>관리번호 : {userdata.id}</div>{" "}
+                <div className={styles.Font}>관리번호 : {userdata.id}</div>
                 <h1></h1>
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>이름</div>
                   <Inputbox
                     type="text"
-                    defaultValue={
-                      userdata.userinfo.name ? userdata.userinfo.name : "이름"
-                    }
+                    defaultValue={userdata.userinfo.name || "이름"}
                     register={register("userinfo.name")}
                   />
                 </div>
@@ -105,11 +102,7 @@ export default function Modify() {
                   <div className={styles.InputFont}>휴대폰 번호</div>
                   <Inputbox
                     type="phone"
-                    defaultValue={
-                      userdata.userinfo.name
-                        ? userdata.userinfo.phone
-                        : "휴대폰 번호"
-                    }
+                    defaultValue={userdata.userinfo.phone || "휴대폰 번호"}
                     register={register("userinfo.phone")}
                   />
                 </div>
@@ -118,9 +111,7 @@ export default function Modify() {
                   <Inputbox
                     type="number"
                     defaultValue={
-                      userdata.userinfo.name
-                        ? userdata.userinfo.firstid
-                        : "주민번호 앞자리"
+                      userdata.userinfo.firstid || "주민번호 앞자리"
                     }
                     register={register("userinfo.firstid")}
                   />
@@ -130,9 +121,7 @@ export default function Modify() {
                   <Inputbox
                     type="number"
                     defaultValue={
-                      userdata.userinfo.name
-                        ? userdata.userinfo.secondid
-                        : "주민번호 뒷자리"
+                      userdata.userinfo.secondid || "주민번호 뒷자리"
                     }
                     register={register("userinfo.secondid")}
                   />
@@ -141,11 +130,7 @@ export default function Modify() {
                   <div className={styles.InputFont}>이메일</div>
                   <Inputbox
                     type="email"
-                    defaultValue={
-                      userdata.userinfo.name
-                        ? userdata.userinfo.email
-                        : "이메일"
-                    }
+                    defaultValue={userdata.userinfo.email || "이메일"}
                     register={register("userinfo.email")}
                   />
                 </div>
@@ -153,11 +138,7 @@ export default function Modify() {
                   <div className={styles.InputFont}>가입경로</div>
                   <Inputbox
                     type="text"
-                    defaultValue={
-                      userdata.userinfo.name
-                        ? userdata.userinfo.come
-                        : "가입경로"
-                    }
+                    defaultValue={userdata.userinfo.come || "가입경로"}
                     register={register("userinfo.come")}
                   />
                 </div>
@@ -173,11 +154,7 @@ export default function Modify() {
                   <div className={styles.InputFont}>계좌번호</div>
                   <Inputbox
                     type="text"
-                    defaultValue={
-                      userdata.userinfo.name
-                        ? userdata.userinfo.bankid
-                        : "계좌번호"
-                    }
+                    defaultValue={userdata.userinfo.bankid || "계좌번호"}
                     register={register("userinfo.bankid")}
                   />
                 </div>
@@ -185,11 +162,7 @@ export default function Modify() {
                   <div className={styles.InputFont}>예금주</div>
                   <Inputbox
                     type="text"
-                    defaultValue={
-                      userdata.userinfo.name
-                        ? userdata.userinfo.bankwho
-                        : "예금주"
-                    }
+                    defaultValue={userdata.userinfo.bankwho || "예금주"}
                     register={register("userinfo.bankwho")}
                   />
                 </div>
@@ -421,8 +394,8 @@ export default function Modify() {
         );
 
     case "loading":
-      console.log("lodding");
-      return <></>;
+      console.log("loading");
+      return <div>Loading...</div>;
 
     case "hasError":
       throw userselectordata.contents;
