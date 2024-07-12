@@ -25,6 +25,8 @@ import {
   grouplist,
   turnlist,
 } from "@/components/droplistdata";
+import { deleteUser } from "@/utils/api";
+import { ModifyButton } from "@/components/Button";
 
 const SearchList = ({ name, number }) => {
   const setNameState = useSetRecoilState(searchnameState);
@@ -47,24 +49,40 @@ const SearchList = ({ name, number }) => {
     return <div> </div>;
   }
 
+  const handleDelete = async (id) => {
+    console.log('Deleting user with id:', id); // 이 줄을 추가하여 id 값을 로그로 확인
+    try {
+      await deleteUser(id);
+      alert("사용자가 성공적으로 삭제되었습니다.");
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      alert("사용자 삭제 중 오류가 발생했습니다.");
+    }
+  };
+
   return (
     <div>
       {searchdata.state === "hasValue" &&
         searchdata.contents
-          .filter((k) => k.userinfo && k.data) // 필터 조건 추가
+          .filter((k) => k.userinfo && k.data)
           .map((k) => (
-            <Link
-              className={styles.maincontainer}
-              href={"/modify/" + k.id}
-              key={k.id}
-            >
-              <span>{k.id}</span>
-              <span>{k.userinfo?.name || "N/A"}</span>
-              <span>{k.data?.type || "N/A"}</span>
-              <span>{k.data?.group || "N/A"}</span>
-              <span>{k.data?.turn || "N/A"}</span>
-              <span>{`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}</span>
-            </Link>
+            <div className={styles.maincontainer} key={k.id}>
+              <Link href={"/modify/" + k.id} className={styles.link}>
+              <div className={styles.rowContainer}>
+                <div className={styles.unitContainer}>{k.id}</div>
+                <div className={styles.unitContainer}>{k.userinfo?.name || "N/A"}</div>
+                <div className={styles.unitContainer}>{k.data?.type || "N/A"}</div>
+                <div className={styles.unitContainer}>{k.data?.group || "N/A"}</div>
+                <div className={styles.unitContainer}>{k.data?.turn || "N/A"}</div>
+                <div className={styles.unitContainer}>{`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}</div>
+              </div>
+              </Link>
+              <ModifyButton onClick={() => handleDelete(k.id)}>
+                <div className={styles.CBBottonFont}>
+                  삭제
+                </div>
+              </ModifyButton>
+            </div>
           ))}
     </div>
   );
@@ -82,12 +100,6 @@ export default function Modify() {
   const onNumberChange = (e) => {
     const text = e.target.value;
     setNumber(text.replace(/ /g, ""));
-  };
-
-  const containerStyle = {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    gap: '10px'
   };
 
   return (
