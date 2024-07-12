@@ -58,13 +58,14 @@ export const downloadFile = async (id, filename) => {
 
 export const createUser = (data) => {
   console.log("생성하는 유저의 정보 : ", data);
- return axios.post(path + "/api/createuser", data);
+  return axios.post(path + "/api/createuser", data);
 };
 
 export const updateUserinfo = (userid, data) => {
   console.log("userid : " + userid);
   console.log("바꿀 data : " + JSON.stringify(data, null, 2));
-  return axios.put(path + "/api/userinfo/" + userid, data)
+  return axios
+    .put(path + "/api/userinfo/" + userid, data)
     .then((result) => {
       return result.data;
     })
@@ -73,8 +74,6 @@ export const updateUserinfo = (userid, data) => {
       throw error;
     });
 };
-
-
 
 export const fetchLogin = (username, password) => {
   return axios.post(path + "/api/auth/signin");
@@ -141,12 +140,13 @@ export const fetchNumberSearch = (usernumber) => {
 };
 
 export const deleteUser = (id) => {
-  return axios.post(path + "/api/deleteuser", { id: id.toString() })
+  return axios
+    .post(path + "/api/deleteuser", { id: id.toString() })
     .then((result) => {
       return result.data;
     })
     .catch((error) => {
-      console.error('Error deleting user:', error);
+      console.error("Error deleting user:", error);
       throw error;
     });
 };
