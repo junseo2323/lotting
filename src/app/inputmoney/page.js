@@ -3,16 +3,11 @@
 
 import styles from "@/styles/Inputmoneysearch.module.scss";
 import { Searchbox } from "@/components/Inputbox";
-import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { searchnameState, searchnumberState } from "@/utils/atom";
 import { namesearchSelector } from "@/utils/selector";
 import { useEffect, useState } from "react";
-import {
-  useRecoilValue,
-  useRecoilValueLoadable,
-  useSetRecoilState,
-} from "recoil";
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { CgSearch } from "react-icons/cg";
 
 const SearchList = ({ name, number }) => {
@@ -29,41 +24,43 @@ const SearchList = ({ name, number }) => {
 
   let searchdata = useRecoilValueLoadable(namesearchSelector);
 
-  switch (searchdata.state) {
-    case "loading":
-      return <div></div>;
+  if (searchdata.state === "loading") {
+    return <div>Loading...</div>;
+  }
 
-    case "hasValue":
-      return (
-        <div>
-          {searchdata.contents.map((k) => (
-            <Link
-              key={k.id}
-              className={styles.MainContainer}
-              href={`/inputmoney/userinfo/${k.id}`}
-            >
-              <div className={styles.CategoryContent}>
-                <div className={styles.CategoryBody1}>
-                  <div className={styles.ContentFont}>{k.id}</div>
-                </div>
-                <div className={styles.CategoryBody1}>
-                  <div className={styles.ContentFont}>{k.userinfo.name}</div>
-                </div>
-                <div className={styles.CategoryBody1}>
-                  <div className={styles.ContentFont}>
-                    {k.data.type}-{k.data.group}-{k.data.turn}
-                  </div>
+  if (searchdata.state === "hasError") {
+    return <div>Error fetching data</div>;
+  }
+
+  if (searchdata.state === "hasValue") {
+    return (
+      <div>
+        {searchdata.contents.map((k) => (
+          <Link
+            key={k.id}
+            className={styles.MainContainer}
+            href={`/inputmoney/userinfo/${k.id}`}
+          >
+            <div className={styles.CategoryContent}>
+              <div className={styles.CategoryBody1}>
+                <div className={styles.ContentFont}>{k.id}</div>
+              </div>
+              <div className={styles.CategoryBody1}>
+                <div className={styles.ContentFont}>{k.userinfo.name}</div>
+              </div>
+              <div className={styles.CategoryBody1}>
+                <div className={styles.ContentFont}>
+                  {k.data.type}-{k.data.group}-{k.data.turn}
                 </div>
               </div>
-            </Link>
-          ))}
-        </div>
-      );
-    case "hasError":
-      return <div>Error fetching data</div>;
-    default:
-      return null;
+            </div>
+          </Link>
+        ))}
+      </div>
+    );
   }
+
+  return null;
 };
 
 export default function Inputmoneysearch() {
