@@ -75,6 +75,7 @@ export default function Modify() {
   switch (userselectordata.state) {
     case "hasValue":
       const userdata = userselectordata.contents;
+      console.log("====" + userdata.data.turn);
       if (userdata === undefined)
         return (
           <>
@@ -200,7 +201,6 @@ export default function Modify() {
                     register={register("userinfo.bankwhere")}
                   />
                 </div>
-
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>주소지</div>
                   <textarea
@@ -242,7 +242,7 @@ export default function Modify() {
                   <div className={styles.InputFont}>순번</div>
                   <DropInputbox
                     list={turnlist}
-                    defaultValue={userdata.data.type}
+                    defaultValue={userdata.data.turn}
                     name="turn"
                     register={register("data.turn")}
                   />
@@ -256,8 +256,7 @@ export default function Modify() {
                     register={register("data.submitdate")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
-                </div>
+                <div className={styles.InputboxField}></div>
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>가입가</div>
                   <Inputbox
