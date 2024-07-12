@@ -1,32 +1,47 @@
-"use client"
+//inputmoney.js
+"use client";
 
 import styles from "@/styles/Inputmoneysearch.module.scss";
 import { Searchbox } from "@/components/Inputbox";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { searchnameState } from "@/utils/atom";
+import { searchnameState, searchnumberState } from "@/utils/atom";
 import { namesearchSelector } from "@/utils/selector";
 import { useEffect, useState } from "react";
-import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 import { CgSearch } from "react-icons/cg";
 
-const SearchList = ( name ) => {
-  let searchname;
-  if((name.name).length > 1) searchname = name.name;
-  
+const SearchList = ({ name, number }) => {
+  let searchname = name.length > 1 ? name : "";
+  let searchnumber = number.length > 1 ? number : "";
+
   const setNameState = useSetRecoilState(searchnameState);
+  const setNumberState = useSetRecoilState(searchnumberState);
+
+  useEffect(() => {
+    setNameState(searchname);
+    setNumberState(searchnumber);
+  }, [searchname, searchnumber, setNameState, setNumberState]);
+
   let searchdata = useRecoilValueLoadable(namesearchSelector);
-  useEffect(()=>{ setNameState(searchname)});
 
   switch (searchdata.state) {
-    case 'loading':
+    case "loading":
       return <div></div>;
 
-    case 'hasValue':
+    case "hasValue":
       return (
         <div>
-          {(searchdata.contents).map((k) => (
-            <Link key={k.id} className={styles.MainContainer} href={`/inputmoney/userinfo/${k.id}`}>
+          {searchdata.contents.map((k) => (
+            <Link
+              key={k.id}
+              className={styles.MainContainer}
+              href={`/inputmoney/userinfo/${k.id}`}
+            >
               <div className={styles.CategoryContent}>
                 <div className={styles.CategoryBody1}>
                   <div className={styles.ContentFont}>{k.id}</div>
@@ -35,15 +50,17 @@ const SearchList = ( name ) => {
                   <div className={styles.ContentFont}>{k.userinfo.name}</div>
                 </div>
                 <div className={styles.CategoryBody1}>
-                  <div className={styles.ContentFont}>{k.data.type}-{k.data.group}-{k.data.turn}</div>
+                  <div className={styles.ContentFont}>
+                    {k.data.type}-{k.data.group}-{k.data.turn}
+                  </div>
                 </div>
               </div>
             </Link>
           ))}
         </div>
       );
-    case 'hasError':
-      return <div>Error fetching data</div>
+    case "hasError":
+      return <div>Error fetching data</div>;
     default:
       return null;
   }
@@ -51,41 +68,53 @@ const SearchList = ( name ) => {
 
 export default function Inputmoneysearch() {
   const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
 
-  const onChange = (e) => {
+  const onNameChange = (e) => {
     const text = e.target.value;
     setName(text.replace(/ /g, ""));
   };
 
+  const onNumberChange = (e) => {
+    const text = e.target.value;
+    setNumber(text.replace(/ /g, ""));
+  };
+
   return (
-      <div className={styles.SelectContainer}>
-        <div className={styles.SelectTitleBody}>
-          <div className={styles.SelectTitle}>
-            <div className={styles.SelectTitleFont}>고객선택</div>
-          </div>
-          <div className={styles.Search}>
-            <div className={styles.SearchBody}>
-              <Searchbox type="text" placeholder="고객 성함" onChange={onChange} />
-            </div>
-            <div className={styles.SearchIcon}>
-              <CgSearch style={{ width: '30px', height: '30px' }} />
-            </div>
-          </div>
-          <div className={styles.CategoryBody}>
-            <div className={styles.CategoryBody1}>
-              <div className={styles.CategoryFont}>고객번호</div>
-            </div>
-            <div className={styles.CategoryBody1}>
-              <div className={styles.CategoryFont}>성명</div>
-            </div>
-            <div className={styles.CategoryBody1}>
-              <div className={styles.CategoryFont}>동호번호</div>
-            </div>
-          </div>
-          <div className={styles.Line}></div>
-          <SearchList name={name} />
-          <div className={styles.Line}></div>
+    <div className={styles.SelectContainer}>
+      <div className={styles.SelectTitleBody}>
+        <div className={styles.SelectTitle}>
+          <div className={styles.SelectTitleFont}>고객선택</div>
         </div>
+        <div className={styles.Search}>
+          <div className={styles.SearchBody}>
+            <Searchbox
+              type="text"
+              placeholder="고객 성함"
+              onChange={onNameChange}
+            />
+            <Searchbox
+              type="text"
+              placeholder="관리번호"
+              onChange={onNumberChange}
+            />
+          </div>
+        </div>
+        <div className={styles.CategoryBody}>
+          <div className={styles.CategoryBody1}>
+            <div className={styles.CategoryFont}>고객번호</div>
+          </div>
+          <div className={styles.CategoryBody1}>
+            <div className={styles.CategoryFont}>성명</div>
+          </div>
+          <div className={styles.CategoryBody1}>
+            <div className={styles.CategoryFont}>동호번호</div>
+          </div>
+        </div>
+        <div className={styles.Line}></div>
+        <SearchList name={name} number={number} />
+        <div className={styles.Line}></div>
       </div>
+    </div>
   );
 }
