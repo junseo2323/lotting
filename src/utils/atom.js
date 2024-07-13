@@ -12,12 +12,12 @@ export const useridState = atom({
 
 export const searchnameState = atom({
     key: 'searchnameState',
-    default: null,
+    default: "",
 })
 
 export const searchnumberState = atom({
     key: 'searchnumberState',
-    default: null,
+    default: "",
 });
 
 export const searchtypeState = atom({
