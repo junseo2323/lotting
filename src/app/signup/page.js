@@ -43,7 +43,7 @@ export default function Signup() {
           <LoginInputbox
             className={styles.input}
             name="username"
-            placeholder="사용자 이름"
+            placeholder="사용자 이름 (아이디)"
             onChange={handleChange}
           />
           <LoginInputbox
