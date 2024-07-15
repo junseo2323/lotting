@@ -18,6 +18,7 @@ import {
 import styles from "@/styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
+import withAuth from "@/utils/hoc/withAuth";
 
 const formatNumber = (value) => {
   if (!value) return "0";
@@ -30,7 +31,7 @@ const parseNumber = (value) => {
   return value.toString().replace(/,/g, "");
 };
 
-export default function Inputmoneypay() {
+function Inputmoneypay() {
   const { register, handleSubmit, setValue } = useForm();
   const [pay, setpay] = useState("0");
   const [work, setwork] = useState("0");
@@ -312,3 +313,5 @@ export default function Inputmoneypay() {
     </>
   );
 }
+
+export default withAuth(Inputmoneypay);

@@ -25,8 +25,9 @@ import {
   turnlist,
 } from "@/components/droplistdata";
 import { updateUserinfo, createFile } from "@/utils/api"; // Import createFile
+import withAuth from "@/utils/hoc/withAuth";
 
-export default function Modify() {
+function Modify() {
   const pathname = usePathname();
   const splitpath = pathname.split("/"); //splitpath[3]
   const router = useRouter(); // Add the useRouter hook
@@ -452,3 +453,5 @@ export default function Modify() {
       throw userselectordata.contents;
   }
 }
+
+export default withAuth(Modify);
