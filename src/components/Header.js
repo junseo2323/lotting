@@ -1,9 +1,10 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client'
+import React, { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { AiOutlineBell } from "react-icons/ai";
 import styles from "../styles/Header.module.scss";
+import AuthContext from "@/utils/context/AuthContext";
 
 
 const iconstyle = { fontSize: "1.5em", float: "left", margin: "13px" };
@@ -30,24 +31,10 @@ const Header = () => {
       "차수별 납입금을 한번에 확인하고 수정,생성,삭제를 진행할 수 있습니다. [개발중]",
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const user = localStorage.getItem("username");
-    if (token) {
-      setIsLoggedIn(true);
-      setUsername(user);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, []);
+  const { isLoggedIn, username, logout } = useContext(AuthContext);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    setIsLoggedIn(false);
+    logout();
     router.push("/login");
   };
 
