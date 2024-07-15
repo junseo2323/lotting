@@ -63,6 +63,9 @@ export const createUser = (data) => {
 
 export const updateUserinfo = (userid, data) => {
   console.log("userid : " + userid);
+  if (data.fileinfo && data.fileinfo._id) {
+    delete data.fileinfo._id;
+  }
   console.log("바꿀 data : " + JSON.stringify(data, null, 2));
   return axios
     .put(path + "/api/userinfo/" + userid, data)
@@ -83,6 +86,7 @@ export const fetchUserinfo = (userid) => {
   return axios
     .get(path + "/api/userinfo/" + userid)
     .then((result) => {
+      console.log(result.data[0].fileinfo);
       return result.data[0];
     })
     .catch((error) => {

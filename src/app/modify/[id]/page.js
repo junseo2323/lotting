@@ -24,17 +24,22 @@ import {
   grouplist,
   turnlist,
 } from "@/components/droplistdata";
-import { updateUserinfo } from "@/utils/api";
+import { updateUserinfo, createFile } from "@/utils/api"; // Import createFile
 
 export default function Modify() {
   const pathname = usePathname();
   const splitpath = pathname.split("/"); //splitpath[3]
   const router = useRouter(); // Add the useRouter hook
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const onSubmit = async (data) => {
     try {
-      await updateUserinfo(splitpath[2], data);
+      data.fileinfo = isupload; // Add this line to include fileinfo in the data
+      console.log("d" + data);
+      console.log("d" + data.userinfo);
+      console.log("d" + data.fileinfo);
+      await createFile(files); // Upload files first
+      await updateUserinfo(splitpath[2], data); // Then update user info
       alert("사용자 정보가 성공적으로 업데이트되었습니다.");
       router.push("/modify/"); // 다시 검색 페이지로 이동
     } catch (error) {
@@ -68,9 +73,47 @@ export default function Modify() {
     setFiles((prev) => [...prev, file]);
   };
 
-  const [isupload, setIsupload] = useState({ A: false, B: false });
-  const [file, setFile] = useState({ A: "", B: "" });
+  const [isupload, setIsupload] = useState({
+    A: false,
+    B: false,
+    C: false,
+    D: false,
+    E: false,
+    F: false,
+    G: false,
+    H: false,
+    I: false,
+  });
+  const [file, setFile] = useState({
+    A: "",
+    B: "",
+    C: "",
+    D: "",
+    E: "",
+    F: "",
+    G: "",
+    H: "",
+    I: "",
+  });
   const [files, setFiles] = useState([]);
+
+  useEffect(() => {
+    if (userselectordata.state === "hasValue" && userselectordata.contents) {
+      const userdata = userselectordata.contents;
+      const initialFileState = {};
+      const initialUploadState = {};
+
+      for (const key in userdata.fileinfo) {
+        if (userdata.fileinfo.hasOwnProperty(key)) {
+          initialFileState[key] = userdata.fileinfo[key] ? "파일 존재" : "";
+          initialUploadState[key] = !!userdata.fileinfo[key];
+        }
+      }
+
+      setFile(initialFileState);
+      setIsupload(initialUploadState);
+    }
+  }, [userselectordata.state, userselectordata.contents]);
 
   switch (userselectordata.state) {
     case "hasValue":
@@ -261,7 +304,6 @@ export default function Modify() {
 
               <h3>부속서류</h3>
               <div className={styles.content_container}>
-                수정예정
                 <span>인감증명서</span>
                 <span>본인서명확인서</span>
                 <FileInputbox
@@ -270,6 +312,7 @@ export default function Modify() {
                   value={file["A"]}
                   isupload={isupload["A"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.A")} // Add this line
                 />
                 <FileInputbox
                   className="B"
@@ -277,6 +320,7 @@ export default function Modify() {
                   value={file["B"]}
                   isupload={isupload["B"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.B")} // Add this line
                 />
                 <span>신분증</span>
                 <span>확약서</span>
@@ -286,6 +330,7 @@ export default function Modify() {
                   value={file["C"]}
                   isupload={isupload["C"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.C")} // Add this line
                 />
                 <FileInputbox
                   className="D"
@@ -293,6 +338,7 @@ export default function Modify() {
                   value={file["D"]}
                   isupload={isupload["D"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.D")} // Add this line
                 />
                 <span>상준위용</span>
                 <span>무상옵션</span>
@@ -302,6 +348,7 @@ export default function Modify() {
                   value={file["E"]}
                   isupload={isupload["E"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.E")} // Add this line
                 />
                 <FileInputbox
                   className="F"
@@ -309,6 +356,7 @@ export default function Modify() {
                   value={file["F"]}
                   isupload={isupload["F"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.F")} // Add this line
                 />
                 <span>선호도조사</span>
                 <span>총회동의서</span>
@@ -318,6 +366,7 @@ export default function Modify() {
                   value={file["G"]}
                   isupload={isupload["G"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.G")} // Add this line
                 />
                 <FileInputbox
                   className="H"
@@ -325,6 +374,7 @@ export default function Modify() {
                   value={file["H"]}
                   isupload={isupload["H"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.H")} // Add this line
                 />
                 <span>사은품</span>
                 <span></span>
@@ -334,6 +384,7 @@ export default function Modify() {
                   value={file["I"]}
                   isupload={isupload["I"]}
                   handleChange={handleChange}
+                  register={register("fileinfo.I")} // Add this line
                 />
                 <span></span>
               </div>
