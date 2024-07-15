@@ -1,9 +1,8 @@
-
 import Nav from '@/components/Nav'
 import './globals.css'
 import Header from '@/components/Header'
 import RecoilRootProvider from './recoilRootProvider';
-
+import { AuthProvider } from '@/utils/context/AuthContext';
 
 export const metadata = {
   title: 'LOTTING',
@@ -12,6 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <AuthProvider>
     <html>
       <head>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -23,6 +23,6 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
         </RecoilRootProvider>
       </body>
-    </html>
+    </html></AuthProvider>
   )
 }
