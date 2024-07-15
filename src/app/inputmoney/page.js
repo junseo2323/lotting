@@ -1,4 +1,3 @@
-//inputmoney.js
 "use client";
 
 import styles from "@/styles/Inputmoneysearch.module.scss";
@@ -9,6 +8,7 @@ import { namesearchSelector } from "@/utils/selector";
 import { useEffect, useState } from "react";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { CgSearch } from "react-icons/cg";
+import withAuth from "@/utils/hoc/withAuth";
 
 const SearchList = ({ name, number }) => {
   let searchname = name.length > 1 ? name : "";
@@ -63,7 +63,7 @@ const SearchList = ({ name, number }) => {
   return null;
 };
 
-export default function Inputmoneysearch() {
+function Inputmoneysearch() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
@@ -115,3 +115,5 @@ export default function Inputmoneysearch() {
     </div>
   );
 }
+
+export default withAuth(Inputmoneysearch);

@@ -1,14 +1,21 @@
 "use client";
 
-import styles from "@/styles/Create.module.scss"
-import Swal from 'sweetalert2'
-import { Inputbox,PostInputbox,InputAreabox,DropInputbox,FileInputbox } from "@/components/Inputbox"
-import { Button_Y } from "@/components/Button"
+import styles from "@/styles/Create.module.scss";
+import Swal from "sweetalert2";
+import {
+  Inputbox,
+  PostInputbox,
+  InputAreabox,
+  DropInputbox,
+  FileInputbox,
+} from "@/components/Inputbox";
+import { Button_Y } from "@/components/Button";
+import withAuth from "@/utils/hoc/withAuth"; // withAuth HOC 사용
 
-import { useForm } from "react-hook-form"
-import { useState,useEffect } from "react"
-import {createFile,newIdGenerate} from "@/utils/api"
-import { useRouter } from 'next/navigation'
+import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
+import { createFile, newIdGenerate } from "@/utils/api";
+import { useRouter } from "next/navigation";
 
 import { createUser } from "@/utils/api";
 import {
@@ -20,7 +27,7 @@ import {
   turnlist,
 } from "@/components/droplistdata";
 
-export default function Create() {
+function Create() {
   const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm();
@@ -62,7 +69,7 @@ export default function Create() {
   const [files, setFiles] = useState([]);
 
   const handleChange = (e) => {
-    //file 핸들링
+    // file 핸들링
     const changename = e.target.className;
     console.log(changename);
     const value = e.target.value;
@@ -186,7 +193,7 @@ export default function Create() {
             date_placeholder="가입일자"
             register={register("data.submitdate", { required: true })}
           />
-          
+
           <Inputbox
             type="number"
             placeholder="가입가"
@@ -321,3 +328,5 @@ export default function Create() {
     </div>
   );
 }
+
+export default withAuth(Create); // withAuth HOC 적용

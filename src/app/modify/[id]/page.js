@@ -25,8 +25,9 @@ import {
   turnlist,
 } from "@/components/droplistdata";
 import { updateUserinfo, createFile } from "@/utils/api"; // Import createFile
+import withAuth from "@/utils/hoc/withAuth";
 
-export default function Modify() {
+function Modify() {
   const pathname = usePathname();
   const splitpath = pathname.split("/"); //splitpath[3]
   const router = useRouter(); // Add the useRouter hook
@@ -34,10 +35,14 @@ export default function Modify() {
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = async (data) => {
     try {
-      await createFile(files);
-      await updateUserinfo(splitpath[2], data);
+      data.fileinfo = isupload; // Add this line to include fileinfo in the data
+      console.log("d" + data);
+      console.log("d" + data.userinfo);
+      console.log("d" + data.fileinfo);
+      await createFile(files); // Upload files first
+      await updateUserinfo(splitpath[2], data); // Then update user info
       alert("사용자 정보가 성공적으로 업데이트되었습니다.");
-      window.location.reload();
+      router.push("/modify/"); // 다시 검색 페이지로 이동
     } catch (error) {
       console.error("사용자 정보 업데이트 중 오류 발생:", error);
       alert("사용자 정보 업데이트 중 오류가 발생했습니다.");
@@ -448,3 +453,5 @@ export default function Modify() {
       throw userselectordata.contents;
   }
 }
+
+export default withAuth(Modify);

@@ -16,7 +16,9 @@ import ChasuPreBody from "@/components/ChasuPreBody";
 import ChasuFinBody from "@/components/ChasuFinBody";
 import { SearchButton, ModifyButton } from "@/components/Button";
 
-export default function Inputmoney() {
+import withAuth from "@/utils/hoc/withAuth"; // withAuth 임포트
+
+function Inputmoney() {
   const pathname = usePathname();
   const splitpath = pathname.split("/");
   const [IdState, setIdState] = useRecoilState(useridState);
@@ -27,6 +29,7 @@ export default function Inputmoney() {
   useState(() => {
     setIdState(splitpath[3]);
   });
+
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
   const usermoneyselectordata = useRecoilValueLoadable(usermoneySelector);
 
@@ -42,7 +45,6 @@ export default function Inputmoney() {
       } else {
         setUserData(userdata);
         setLoandata(userloandata);
-        console.log("loan data: ", userloandata);
       }
     }
   }, [userselectordata, usermoneyselectordata]);
@@ -224,3 +226,5 @@ export default function Inputmoney() {
     </>
   );
 }
+
+export default withAuth(Inputmoney); // withAuth로 감싸기

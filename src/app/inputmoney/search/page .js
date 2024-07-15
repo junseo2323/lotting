@@ -25,6 +25,7 @@ import {
   useRecoilValueLoadable,
   useSetRecoilState,
 } from "recoil";
+import withAuth from "@/utils/hoc/withAuth"; // withAuth 임포트
 
 const SearchList = ({ name }) => {
   const setNameState = useSetRecoilState(searchnameState);
@@ -63,7 +64,7 @@ const SearchList = ({ name }) => {
   );
 };
 
-export default function Search() {
+function Search() {
   const [name, setName] = useState("");
 
   const onChange = (e) => {
@@ -92,3 +93,5 @@ export default function Search() {
     </>
   );
 }
+
+export default withAuth(Search); // withAuth로 감싸기

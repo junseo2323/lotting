@@ -28,8 +28,9 @@ import { useRecoilValueLoadable, useRecoilState } from "recoil";
 import { userinfoSelector, usermoneySelector } from "@/utils/selector";
 import { usePathname, useRouter } from "next/navigation";
 import { fetchLoanInit, fetchLoanUpdate } from "@/utils/api";
+import withAuth from "@/utils/hoc/withAuth";
 
-export default function Inputmoneyloan() {
+function Inputmoneyloan() {
   const router = useRouter();
 
   const [loandate, setLoandate] = useState("");
@@ -282,3 +283,4 @@ export default function Inputmoneyloan() {
     </>
   );
 }
+export default withAuth(Inputmoneyloan);
