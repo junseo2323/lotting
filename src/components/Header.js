@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { AiOutlineBell } from "react-icons/ai";
 import styles from "../styles/Header.module.scss";
 
+
 const iconstyle = { fontSize: "1.5em", float: "left", margin: "13px" };
 
 const Header = () => {
@@ -61,20 +62,31 @@ const Header = () => {
         <h3 className={styles.subtitle}>{subtitle[splitpath[1]]}</h3>
       </div>
       <div className={styles.rightcontainer}>
-        <AiOutlineBell style={iconstyle} />
+      <AiOutlineBell style={iconstyle} />
+        <div className={styles.loginbody}>
         {isLoggedIn ? (
           <div className={styles.usercontainer}>
-            <h1 className={styles.name}>{username}</h1>
-            <h3 className={styles.role}>Logged in</h3>
+            <div className={styles.Name}>
+              <h1 className={styles.name}>{username}</h1>
+            </div>
+            <div className={styles.loginfo}>
+              <h3 className={styles.role}>Logged in</h3>
             <button onClick={handleLogout} className={styles.logoutButton}>
-              로그아웃버튼
+              <h3 className={styles.role}>
+                <div className={styles.logoutbutton}>로그아웃</div>
+              </h3>
             </button>
+            </div>
           </div>
         ) : (
+          <div className={styles.button}>
           <button onClick={handleLogin} className={styles.loginButton}>
-            로그인
+            <div className={styles.ButtonFont}>로그인</div>
           </button>
+          </div>
+
         )}
+      </div>
       </div>
     </div>
   );
