@@ -14,12 +14,15 @@ export const Spanbox = ({ children }) => {
 };
 
 export const Inputbox = (props) => {
-  const type = props.type;
-  const placeholder = props.placeholder;
-  const onChange = props.onChange;
-  const date_placeholder = props.date_placeholder;
-  const name = props.name;
-  const defaultValue = props.defaultValue;
+  const {
+    type,
+    placeholder,
+    onChange,
+    date_placeholder,
+    name,
+    defaultValue,
+    register,
+  } = props;
 
   return (
     <>
@@ -27,10 +30,11 @@ export const Inputbox = (props) => {
         className={styles.inputcontainer}
         data-placeholder={date_placeholder}
         type={type}
+        name={name}
         onChange={onChange}
         placeholder={placeholder}
         defaultValue={defaultValue}
-        {...props.register}
+        {...register}
       />
     </>
   );
@@ -123,7 +127,7 @@ export const Inputbox_M = (props) => {
         name={name}
         {...props.register}
         onChange={onChange}
-        defaultValue={defaultValue}
+        value={defaultValue}
       />
     </>
   );

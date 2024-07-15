@@ -19,16 +19,25 @@ import styles from "@/styles/Inputmoneypay.module.scss";
 import { BsDatabase } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 
-export default function Inputmoneypay() {
-  console.log("마운트");
+const formatNumber = (value) => {
+  if (!value) return "0";
+  const numberString = value.toString().replace(/[^0-9]/g, "");
+  return numberString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
+const parseNumber = (value) => {
+  if (!value) return "0";
+  return value.toString().replace(/,/g, "");
+};
+
+export default function Inputmoneypay() {
   const { register, handleSubmit, setValue } = useForm();
-  const [pay, setpay] = useState("");
-  const [work, setwork] = useState("");
-  const [discount, setdiscount] = useState("");
+  const [pay, setpay] = useState("0");
+  const [work, setwork] = useState("0");
+  const [discount, setdiscount] = useState("0");
   const [del, setdel] = useState("0");
   const [tot, settotal] = useState(0);
-  const [payprice, setpayprice] = useState("");
+  const [payprice, setpayprice] = useState("0");
   const pathname = usePathname();
   const router = useRouter();
 
@@ -41,7 +50,6 @@ export default function Inputmoneypay() {
   const userselectordata = useRecoilValueLoadable(userinfoSelector);
 
   useEffect(() => {
-    console.log("effect");
     const regex = /\/(\d+)\/(\d+)$/;
     const match = pathname.match(regex);
 
@@ -71,11 +79,11 @@ export default function Inputmoneypay() {
         console.log("잘못된 접근입니다");
       } else {
         setUserChasuData(userdata);
-        setpay(userdata.pay);
-        setwork(userdata.work);
-        setdiscount(userdata.discount);
-        setdel(userdata.del);
-        setpayprice(userdata.payprice);
+        setpay(formatNumber(userdata.pay));
+        setwork(formatNumber(userdata.work));
+        setdiscount(formatNumber(userdata.discount));
+        setdel(formatNumber(userdata.del));
+        setpayprice(formatNumber(userdata.payprice));
       }
     }
   }, [userChasudatas]);
@@ -91,11 +99,18 @@ export default function Inputmoneypay() {
 
   const onSubmit = (data) => {
     data["sumprice"] =
-      parseInt(pay) + parseInt(work) - parseInt(discount) - parseInt(del);
+      parseInt(parseNumber(pay)) +
+      parseInt(parseNumber(work)) -
+      parseInt(parseNumber(discount)) -
+      parseInt(parseNumber(del));
     if (data["isclear"] === undefined) {
       data["isclear"] = false;
     }
-    console.log(data);
+    data["pay"] = parseNumber(pay);
+    data["work"] = parseNumber(work);
+    data["discount"] = parseNumber(discount);
+    data["del"] = parseNumber(del);
+    data["payprice"] = parseNumber(payprice);
     fetchChasuUpdate(IdState, data, () => {
       router.back();
     });
@@ -106,34 +121,35 @@ export default function Inputmoneypay() {
   }, [pay, work, discount, del, payprice]);
 
   const calculateTotal = () => {
-    const payValue = parseInt(pay) || 0;
-    const workValue = parseInt(work) || 0;
-    const discountValue = parseInt(discount) || 0;
-    const deleteValue = parseInt(del) || 0;
-    const paypriceValue = parseInt(payprice) || 0;
+    const payValue = parseInt(parseNumber(pay)) || 0;
+    const workValue = parseInt(parseNumber(work)) || 0;
+    const discountValue = parseInt(parseNumber(discount)) || 0;
+    const deleteValue = parseInt(parseNumber(del)) || 0;
+    const paypriceValue = parseInt(parseNumber(payprice)) || 0;
     const total =
       payValue + workValue - discountValue - deleteValue - paypriceValue;
     settotal(total);
-    console.log("calculateTotal 작동");
   };
 
   const onChange = (e) => {
     const { name, value } = e.target;
+    const formattedValue = formatNumber(value);
+
     switch (name) {
       case "pay":
-        setpay(value);
+        setpay(formattedValue === "0" ? "" : formattedValue);
         break;
       case "work":
-        setwork(value);
+        setwork(formattedValue === "0" ? "" : formattedValue);
         break;
       case "discount":
-        setdiscount(value);
+        setdiscount(formattedValue === "0" ? "" : formattedValue);
         break;
       case "del":
-        setdel(value);
+        setdel(formattedValue === "0" ? "" : formattedValue);
         break;
       case "payprice":
-        setpayprice(value);
+        setpayprice(formattedValue === "0" ? "" : formattedValue);
         break;
       default:
         break;
@@ -220,7 +236,7 @@ export default function Inputmoneypay() {
                     name="pay"
                     register={register("pay")}
                     onChange={onChange}
-                    defaultValue={userChasuData.pay}
+                    defaultValue={pay}
                   />
                   <Inputbox_M
                     type="text"
@@ -228,7 +244,7 @@ export default function Inputmoneypay() {
                     name="work"
                     register={register("work")}
                     onChange={onChange}
-                    defaultValue={userChasuData.work}
+                    defaultValue={work}
                   />
                 </div>
                 <div className={styles.IBLayer}>
@@ -238,7 +254,7 @@ export default function Inputmoneypay() {
                     name="discount"
                     register={register("discount")}
                     onChange={onChange}
-                    defaultValue={userChasuData.discount}
+                    defaultValue={discount}
                   />
                   <Inputbox_M
                     type="text"
@@ -246,7 +262,7 @@ export default function Inputmoneypay() {
                     name="del"
                     register={register("del")}
                     onChange={onChange}
-                    defaultValue={userChasuData.del}
+                    defaultValue={del}
                   />
                 </div>
                 <div className={styles.IBLayer}>
@@ -262,7 +278,7 @@ export default function Inputmoneypay() {
                     name="payprice"
                     register={register("payprice")}
                     onChange={onChange}
-                    defaultValue={userChasuData.payprice}
+                    defaultValue={payprice}
                   />
                   <input
                     type="hidden"
