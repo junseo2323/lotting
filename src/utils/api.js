@@ -40,8 +40,6 @@ export const downloadFile = async (id, filename) => {
     const name = response.headers["content-disposition"]
       .split("filename=")[1]
       .replace(/"/g, "");
-    console.log(response);
-    console.log(name);
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
     link.href = url;
@@ -57,16 +55,13 @@ export const downloadFile = async (id, filename) => {
 };
 
 export const createUser = (data) => {
-  console.log("생성하는 유저의 정보 : ", data);
   return axios.post(path + "/api/createuser", data);
 };
 
 export const updateUserinfo = (userid, data) => {
-  console.log("userid : " + userid);
   if (data.fileinfo && data.fileinfo._id) {
     delete data.fileinfo._id;
   }
-  console.log("바꿀 data : " + JSON.stringify(data, null, 2));
   return axios
     .put(path + "/api/userinfo/" + userid, data)
     .then((result) => {
@@ -98,7 +93,6 @@ export const fetchUserinfo = (userid) => {
   return axios
     .get(path + "/api/userinfo/" + userid)
     .then((result) => {
-      console.log(result.data[0].fileinfo);
       return result.data[0];
     })
     .catch((error) => {

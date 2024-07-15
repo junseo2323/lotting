@@ -166,7 +166,6 @@ export const LongInputbox = (props) => {
   );
 };
 
-
 export const DropInputbox = (props) => {
   const optionlist = props.list;
   const handlechange = props.handlechange;
@@ -176,7 +175,6 @@ export const DropInputbox = (props) => {
   return (
     <select
       className={styles.Dropinputcontainer}
-      
       defaultValue={defaultValue}
       {...props.register}
     >
@@ -200,7 +198,7 @@ const iconstyle = {
 
 export const FileInputbox = (props) => {
   return (
-    <label className={styles.Fileinputcontainer} for={props.className}>
+    <label className={styles.Fileinputcontainer} htmlFor={props.className}>
       <input
         type="file"
         id={props.className}

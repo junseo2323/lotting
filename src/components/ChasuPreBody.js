@@ -20,7 +20,6 @@ const ChasuPreBody = ({ userId }) => {
     try {
       const fetchedData = await searchPrechasu(userId);
       setData(fetchedData);
-      console.log(fetchedData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
