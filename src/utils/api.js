@@ -79,7 +79,19 @@ export const updateUserinfo = (userid, data) => {
 };
 
 export const fetchLogin = (username, password) => {
-  return axios.post(path + "/api/auth/signin");
+  return axios.post(path + "/api/auth/signin", {
+    username,
+    password,
+  });
+};
+
+export const fetchSignup = (username, email, password, roles) => {
+  return axios.post(path + "/api/auth/signup", {
+    username,
+    email,
+    password,
+    roles,
+  });
 };
 
 export const fetchUserinfo = (userid) => {
