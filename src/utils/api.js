@@ -1,6 +1,7 @@
 import axios from "axios";
 //const path = "http://3.39.167.172:8000"
-const path = "http://localhost:8000";
+// const path = "http://localhost:8000";
+const path= "http://3.34.193.15:8000"
 
 export const newIdGenerate = () => {
   return axios
