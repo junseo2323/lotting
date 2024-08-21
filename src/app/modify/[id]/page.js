@@ -341,7 +341,7 @@ function Modify() {
                   handleChange={handleChange}
                   register={register("fileinfo.D")} // Add this line
                 />
-                <span>상준위용</span>
+                <span>창준위용</span>
                 <span>무상옵션</span>
                 <FileInputbox
                   className="E"

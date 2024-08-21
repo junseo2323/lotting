@@ -54,7 +54,6 @@ const SearchList = ({ name, number }) => {
         let aValue, bValue;
 
         if (sortConfig.key === "id") {
-          // 관리번호는 숫자형으로 변환하여 비교
           aValue = parseInt(a[sortConfig.key], 10);
           bValue = parseInt(b[sortConfig.key], 10);
         } else {
@@ -94,38 +93,49 @@ const SearchList = ({ name, number }) => {
         <span onClick={() => handleSort("type")}>타입</span>
         <span onClick={() => handleSort("group")}>군</span>
         <span onClick={() => handleSort("turn")}>순번</span>
+        <span onClick={() => handleSort("submitturn")}>가입 차순</span>
+        <span onClick={() => handleSort("submitdate")}>가입 날짜</span>
         <span>임시동호</span>
       </div>
       {searchdata.state === "hasValue" &&
         sortedData()
           .filter((k) => k.userinfo && k.data)
-          .map((k) => (
-            <div className={styles.maincontainer} key={k.id}>
-              <Link href={"/search/userinfo/" + k.id} className={styles.link}>
-                <div className={styles.rowContainer}>
-                  <div className={styles.unitContainer}>{k.id}</div>
-                  <div className={styles.unitContainer}>
-                    {k.userinfo?.name || "N/A"}
+          .map((k) => {
+            console.log(k);
+            return (
+              <div className={styles.maincontainer} key={k.id}>
+                <Link href={"/search/userinfo/" + k.id} className={styles.link}>
+                  <div className={styles.rowContainer}>
+                    <div className={styles.unitContainer}>{k.id}</div>
+                    <div className={styles.unitContainer}>
+                      {k.userinfo?.name || "N/A"}
+                    </div>
+                    <div className={styles.unitContainer}>
+                      {k.data?.type || "N/A"}
+                    </div>
+                    <div className={styles.unitContainer}>
+                      {k.data?.group || "N/A"}
+                    </div>
+                    <div className={styles.unitContainer}>
+                      {k.data?.turn || "N/A"}
+                    </div>
+                    <div className={styles.unitContainer}>
+                      {k.data?.submitturn || "N/A"}
+                    </div>
+                    <div className={styles.unitContainer}>
+                      {k.data?.submitdate.slice(0, 10) || "N/A"}
+                    </div>
+                    <div
+                      className={styles.unitContainer}
+                    >{`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}</div>
                   </div>
-                  <div className={styles.unitContainer}>
-                    {k.data?.type || "N/A"}
-                  </div>
-                  <div className={styles.unitContainer}>
-                    {k.data?.group || "N/A"}
-                  </div>
-                  <div className={styles.unitContainer}>
-                    {k.data?.turn || "N/A"}
-                  </div>
-                  <div
-                    className={styles.unitContainer}
-                  >{`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}</div>
-                </div>
-              </Link>
-              <ModifyButton onClick={() => handleDelete(k.id)}>
-                <div className={styles.CBBottonFont}>삭제</div>
-              </ModifyButton>
-            </div>
-          ))}
+                </Link>
+                <ModifyButton onClick={() => handleDelete(k.id)}>
+                  <div className={styles.CBBottonFont}>삭제</div>
+                </ModifyButton>
+              </div>
+            );
+          })}
     </div>
   );
 };

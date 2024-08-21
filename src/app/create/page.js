@@ -25,6 +25,7 @@ import {
   typelist,
   grouplist,
   turnlist,
+  sortlist,
 } from "@/components/droplistdata";
 
 function Create() {
@@ -133,6 +134,10 @@ function Create() {
             placeholder="이메일"
             register={register("userinfo.email", { required: true })}
           />
+          <DropInputbox
+            list={sortlist}
+            register={register("userinfo.sort", { required: true })} //분류 임시추가. *temp
+          />
           <Inputbox
             type="text"
             placeholder="가입경로"
@@ -157,9 +162,17 @@ function Create() {
             register={register("userinfo.bankwhere", { required: true })}
           />
           <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>주소지</div>
+            <div className={styles.InputFont}>법정주소</div>
             <PostInputbox
-              placeholder="주소지"
+              placeholder="법정주소"
+              name="userinfo.post"
+              register={register("userinfo.post", { required: true })}
+            />
+          </div>
+          <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>우편물 수령주소</div>
+            <PostInputbox
+              placeholder="우편물 수령주소"
               name="userinfo.getpost"
               register={register("userinfo.getpost", { required: true })}
             />
@@ -211,6 +224,30 @@ function Create() {
           />
         </div>
 
+        <h3>MGM</h3>
+        <div className={styles.content_container}>
+          <Inputbox
+            type="text"
+            placeholder="업체명"
+            register={register("mgm.companyname", { required: true })}
+          />
+          <Inputbox
+            type="text"
+            placeholder="이름"
+            register={register("mgm.name", { required: true })}
+          />
+          <Inputbox
+            type="text"
+            placeholder="기관"
+            register={register("mgm.organization", { required: true })}
+          />
+          <Inputbox
+            type="text"
+            placeholder="계좌"
+            register={register("mgm.accountnumber", { required: true })}
+          />
+        </div>
+
         <h3>부속서류</h3>
         <div className={styles.content_container}>
           <span>인감증명서</span>
@@ -245,7 +282,7 @@ function Create() {
             isupload={isupload["D"]}
             handleChange={handleChange}
           />
-          <span>상준위용</span>
+          <span>창준위용</span>
           <span>무상옵션</span>
           <FileInputbox
             className="E"

@@ -1,3 +1,10 @@
+export const sortlist = [
+  {
+    value: "1",
+    item: "청약",
+  },
+];
+
 export const banklist = [
   {
     value: "SHINHAN",
