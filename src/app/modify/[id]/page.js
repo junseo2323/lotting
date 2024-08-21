@@ -218,8 +218,15 @@ function Modify() {
                     register={register("userinfo.bankwhere")}
                   />
                 </div>
+                {/* <div className={styles.InputboxField}>
+                  <div className={styles.InputFont}>법정주소</div>
+                  <textarea
+                    defaultValue={userdata.userinfo.post}
+                    {...register("userinfo.post")}   ㄴ ㅏ 중에 데이터베이스 추가되면 활성화 *temp
+                  />
+                </div> */}
                 <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>주소지</div>
+                  <div className={styles.InputFont}>우편물 수령주소</div>
                   <textarea
                     defaultValue={userdata.userinfo.getpost}
                     {...register("userinfo.getpost")}
@@ -303,6 +310,29 @@ function Modify() {
                 </div>
               </div>
 
+              {/*<h3>MGM</h3> *temp 이것도 나중에 추가
+              <div className={styles.content_container}>
+                <Inputbox
+                  type="text"
+                  placeholder="업체명"
+                  register={register("mgm.companyname", { required: true })}
+                />
+                <Inputbox
+                  type="text"
+                  placeholder="이름"
+                  register={register("mgm.name", { required: true })}
+                />
+                <Inputbox
+                  type="text"
+                  placeholder="기관"
+                  register={register("mgm.organization", { required: true })}
+                />
+                <Inputbox
+                  type="text"
+                  placeholder="계좌"
+                  register={register("mgm.accountnumber", { required: true })}
+                />
+              </div>*/}
               <h3>부속서류</h3>
               <div className={styles.content_container}>
                 <span>인감증명서</span>
