@@ -166,7 +166,7 @@ function Inputmoneypay() {
               <div className={styles.MainTitle}>
                 <div className={styles.MainTitle1}>
                   <div className={styles.SearchClientNum}>
-                    <div className={styles.SearchFont1}>고객번호 : </div>
+                    <div className={styles.SearchFont1}>회원번호 : </div>
                     <div className={styles.SearchFont2}>{IdState}</div>
                   </div>
                   <div className={styles.SearchClientNum}>
@@ -185,7 +185,7 @@ function Inputmoneypay() {
                       >
                         <CgSearch style={{ width: "100%", height: "100%" }} />
                       </div>
-                      <div className={styles.BottonFont}>고객선택</div>
+                      <div className={styles.BottonFont}>회원선택</div>
                     </SearchButton>
                   </Link>
                 </div>

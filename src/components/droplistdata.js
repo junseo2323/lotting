@@ -76,6 +76,36 @@ export const banklist = [
     item: "한국수출은행",
   },
 ];
+export const classificationlist = [
+  {
+    value:"CHUNG",
+    item:"청약",
+  },
+  {
+    value:"JUNG",
+    item:"정계약",
+  },
+  {
+    value:"MODIFY",
+    item:"수정",
+  },
+  {
+    value:"CANCLE",
+    item:"해지",
+  },
+  {
+    value:"UPDAE",
+    item:"업대",
+  },
+  {
+    value:"CHANG",
+    item:"창준위",
+  },
+  {
+    value:"JIJU",
+    item:"지주",
+  },
+];
 
 export const sintacklist = [
   {

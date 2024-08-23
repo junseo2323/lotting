@@ -41,11 +41,11 @@ function Modify() {
       console.log("d" + data.fileinfo);
       await createFile(files); // Upload files first
       await updateUserinfo(splitpath[2], data); // Then update user info
-      alert("사용자 정보가 성공적으로 업데이트되었습니다.");
+      alert("회원 정보가 성공적으로 업데이트되었습니다.");
       router.push("/modify/"); // 다시 검색 페이지로 이동
     } catch (error) {
-      console.error("사용자 정보 업데이트 중 오류 발생:", error);
-      alert("사용자 정보 업데이트 중 오류가 발생했습니다.");
+      console.error("회원 정보 업데이트 중 오류 발생:", error);
+      alert("회원 정보 업데이트 중 오류가 발생했습니다.");
     }
   };
 
@@ -130,7 +130,7 @@ function Modify() {
           <>
             <h1></h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <h3>분양인 정보</h3>
+              <h3>회원 정보</h3>
               <div className={styles.content_container}>
                 <div className={styles.Font}>관리번호 : {userdata.id}</div>
                 <h1></h1>

@@ -34,7 +34,7 @@ function Search() {
       else
         return (
           <>
-            <h3>고객정보</h3>
+            <h3>회원정보</h3>
             <div className={styles.container}>
               <span className={styles.title}>관리번호</span>
               <span className={styles.title}>성명</span>

@@ -115,7 +115,7 @@ function Modify() {
     <>
       <h1></h1>
       <div className={styles.flexContainer}>
-        <Inputbox type="text" placeholder="고객 성함" onChange={onNameChange} />
+        <Inputbox type="text" placeholder="회원 성함" onChange={onNameChange} />
         <Inputbox
           type="text"
           placeholder="관리번호"

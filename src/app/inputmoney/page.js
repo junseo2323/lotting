@@ -81,13 +81,13 @@ function Inputmoneysearch() {
     <div className={styles.SelectContainer}>
       <div className={styles.SelectTitleBody}>
         <div className={styles.SelectTitle}>
-          <div className={styles.SelectTitleFont}>고객선택</div>
+          <div className={styles.SelectTitleFont}>회원선택</div>
         </div>
         <div className={styles.Search}>
           <div className={styles.SearchBody}>
             <Searchbox
               type="text"
-              placeholder="고객 성함"
+              placeholder="회원성함"
               onChange={onNameChange}
             />
             <Searchbox
@@ -99,7 +99,7 @@ function Inputmoneysearch() {
         </div>
         <div className={styles.CategoryBody}>
           <div className={styles.CategoryBody1}>
-            <div className={styles.CategoryFont}>고객번호</div>
+            <div className={styles.CategoryFont}>회원번호</div>
           </div>
           <div className={styles.CategoryBody1}>
             <div className={styles.CategoryFont}>성명</div>

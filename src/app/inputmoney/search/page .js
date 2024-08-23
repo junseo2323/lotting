@@ -76,7 +76,7 @@ function Search() {
     <>
       <h1></h1>
       <div className={styles.container}>
-        <Inputbox type="text" placeholder="고객 성함" onChange={onChange} />
+        <Inputbox type="text" placeholder="회원 성함" onChange={onChange} />
         <DropInputbox list={typelist} />
         <DropInputbox list={grouplist} />
         <DropInputbox list={turnlist} />

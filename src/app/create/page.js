@@ -8,6 +8,7 @@ import {
   InputAreabox,
   DropInputbox,
   FileInputbox,
+  Checkbox,
 } from "@/components/Inputbox";
 import { Button_Y } from "@/components/Button";
 import withAuth from "@/utils/hoc/withAuth"; // withAuth HOC 사용
@@ -21,6 +22,7 @@ import { createUser } from "@/utils/api";
 import {
   banklist,
   sintacklist,
+  classificationlist,
   typeidlist,
   typelist,
   grouplist,
@@ -95,8 +97,8 @@ function Create() {
 
     Swal.fire({
       icon: "success",
-      title: "고객정보가 입력되었습니다.",
-      text: "관리번호 : " + newid + "/ 고객명 : " + data.userinfo.name,
+      title: "회원정보가 입력되었습니다.",
+      text: "관리번호 : " + newid + "/ 회원명 : " + data.userinfo.name,
     });
     reset();
     window.scrollTo(0, 0);
@@ -105,7 +107,7 @@ function Create() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h3>분양인 정보</h3>
+        <h3>회원 정보</h3>
         <div className={styles.content_container}>
           <div className={styles.Font}>관리번호 : {newid}</div> <h1></h1>
           <Inputbox
@@ -133,6 +135,10 @@ function Create() {
             placeholder="이메일"
             register={register("userinfo.email", { required: true })}
           />
+          <DropInputbox
+            list={classificationlist}
+            register={register("userinfo.classify", { required: true })}
+          />
           <Inputbox
             type="text"
             placeholder="가입경로"
@@ -152,7 +158,8 @@ function Create() {
             placeholder="예금주"
             register={register("userinfo.bankwho", { required: true })}
           />
-          <DropInputbox
+          <h1></h1>
+         <DropInputbox
             list={sintacklist}
             register={register("userinfo.bankwhere", { required: true })}
           />
@@ -160,55 +167,105 @@ function Create() {
             <div className={styles.InputFont}>주소지</div>
             <PostInputbox
               placeholder="주소지"
+              name="userinfo.post"
+              register={register("userinfo.post", { required: true })}
+            />
+          </div>
+          <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>우편물 주소지</div>
+            <PostInputbox
+              placeholder="우편물 주소지"
               name="userinfo.getpost"
               register={register("userinfo.getpost", { required: true })}
             />
           </div>
           <div className={styles.InputboxField}></div>
+          
         </div>
 
         <h3>관리 정보</h3>
-        <div className={styles.content_container}>
-          <DropInputbox
-            list={typeidlist}
-            register={register("data.submitturn", { required: true })}
-          />
-          <DropInputbox
-            list={typelist}
-            name="type"
-            register={register("data.type", { required: true })}
-          />
-          <DropInputbox
-            list={grouplist}
-            name="group"
-            register={register("data.group", { required: true })}
-          />
-          <DropInputbox
-            list={turnlist}
-            name="turn"
-            register={register("data.turn", { required: true })}
-          />
-          <Inputbox
-            type="date"
-            date_placeholder="가입일자"
-            register={register("data.submitdate", { required: true })}
-          />
+        <div className={styles.mainbody}>
+        <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+            <DropInputbox
+              list={typeidlist}
+              register={register("data.submitturn", { required: true })}
+            />
+            <DropInputbox
+              list={typelist}
+              name="type"
+              register={register("data.type", { required: true })}
+            />
+            </div>
+            <div className={styles.content_body2}>
+            <DropInputbox
+              list={grouplist}
+              name="group"
+              register={register("data.group", { required: true })}
+            />
+            <DropInputbox
+              list={turnlist}
+              name="turn"
+              register={register("data.turn", { required: true })}
+            />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+            <Inputbox
+              type="date"
+              date_placeholder="가입일자"
+              register={register("data.submitdate", { required: true })}
+            />
+            </div>
+            <div className={styles.content_body2}>
+            <Inputbox
+              type="number"
+              placeholder="가입가"
+              register={register("data.submitprice", { required: true })}
+            />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+            <Inputbox
+              type="date"
+              date_placeholder="예약금 납입일자"
+              register={register("data.earnestdate", { required: true })}
+            />
+            </div>
+            <div className={styles.content_body2}>
+            <Inputbox
+              type="number"
+              placeholder="예약금"
+              register={register("data.earnest", { required: true })}
+            />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body3}>
+            <Checkbox
+              label="7차 면제"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            </div>
+            <div className={styles.content_body3}>
+            <Checkbox
+              label="출자금"
+              name="investment"
+              register={register("fileinfo.investment", { required: true })}
+            />
+            </div>
+            <div className={styles.content_body3}>
+            <Checkbox
+              label="자산A동 계약서"
+              name="contract"
+              register={register("fileinfo.contract", { required: true })}
+            />
+            </div>
+          </div>
 
-          <Inputbox
-            type="number"
-            placeholder="가입가"
-            register={register("data.submitprice", { required: true })}
-          />
-          <Inputbox
-            type="date"
-            date_placeholder="예약금 납입일자"
-            register={register("data.earnestdate", { required: true })}
-          />
-          <Inputbox
-            type="number"
-            placeholder="예약금"
-            register={register("data.earnest", { required: true })}
-          />
         </div>
 
         <h3>부속서류</h3>

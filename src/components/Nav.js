@@ -37,7 +37,7 @@ const Nav = () => {
           <li className={splitpath[1] === "search" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
               {splitpath[1] === "search" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
-              <span className={styles.innertext}>고객 정보 검색</span>
+              <span className={styles.innertext}>회원 정보 검색</span>
             </div>
           </li>
         </Link>
@@ -45,7 +45,7 @@ const Nav = () => {
           <li className={splitpath[1] === "create" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
               {splitpath[1] === "create" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
-              <span className={styles.innertext}>고객 정보 입력</span>
+              <span className={styles.innertext}>회원 정보 입력</span>
             </div>
           </li>
         </Link>
@@ -53,7 +53,7 @@ const Nav = () => {
           <li className={splitpath[1] === "modify" ? styles.select : styles.nonselect}>
             <div className={styles.innerconaainer}>
               {splitpath[1] === "modify" ? (<HiUsers style={iconstyle} />) : (<HiOutlineUsers style={iconstyle} />)}
-              <span className={styles.innertext}>고객 정보 수정</span>
+              <span className={styles.innertext}>회원 정보 수정</span>
             </div>
           </li>
         </Link>

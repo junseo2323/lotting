@@ -86,7 +86,7 @@ function Inputmoney() {
                   <div className={styles.BottonIcon} style={{ color: "white" }}>
                     <CgSearch style={{ width: "100%", height: "100%" }} />
                   </div>
-                  <div className={styles.BottonFont}>고객선택</div>
+                  <div className={styles.BottonFont}>회원선택</div>
                 </SearchButton>
               </Link>
             </div>

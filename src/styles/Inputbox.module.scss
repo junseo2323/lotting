@@ -160,3 +160,16 @@
     text-align: center;
 
 }
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox {
+    margin-right: 8px;
+  }
+  
+  .checkboxLabel {
+    font-size: 1em;
+    color: #333;
+  }

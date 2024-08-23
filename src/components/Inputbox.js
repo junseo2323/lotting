@@ -5,6 +5,24 @@ import styles from "@/styles/Inputbox.module.scss";
 import { IoMdCloudUpload } from "react-icons/io";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 
+export const Checkbox = (props) => {
+  const { label, name, onChange, defaultChecked, register } = props;
+
+  return (
+    <div className={styles.checkboxContainer}>
+      <input
+        type="checkbox"
+        name={name}
+        defaultChecked={defaultChecked}
+        onChange={onChange}
+        {...register}
+        className={styles.checkbox}
+      />
+      <label className={styles.checkboxLabel}>{label}</label>
+    </div>
+  );
+};
+
 export const Spanbox = ({ children }) => {
   return (
     <>
