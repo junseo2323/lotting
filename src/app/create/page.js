@@ -173,14 +173,6 @@ function Create() {
             />
           </div>
           <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>우편물 수령주소</div>
-            <PostInputbox
-              placeholder="주소지"
-              name="userinfo.post"
-              register={register("userinfo.post", { required: true })}
-            />
-          </div>
-          <div className={styles.InputboxField}>
             <div className={styles.InputFont}>우편물 주소지</div>
             <PostInputbox
               placeholder="우편물 주소지"
