@@ -5,6 +5,44 @@
     row-gap: 20px;
 }
 
+.rowcontainer{
+    width:1370px;
+    height:110px;
+    margin-top:30px;
+    margin-left:15px;
+    margin-bottom:15px;
+    display:flex;
+}
+.unitbody{
+    width:200px;
+    height:80px;
+    margin-right:15px;
+}
+.titlebody{
+    width:200px;
+    height:20px;
+    margin-bottom:10px;
+}
+.contentbody{
+    width:200px;
+    height:60px;
+}
+
+.postunitbody{
+    width:400px;
+    height:80px;
+    margin-right:15px;
+}
+.posttitlebody{
+    width:400px;
+    height:20px;
+    margin-bottom:10px;
+}
+.postcontentbody{
+    width:400px;
+    height:60px;
+}
+
 .title {
     font-size: 14px;
     color: #A2A1A8;

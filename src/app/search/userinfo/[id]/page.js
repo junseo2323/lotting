@@ -35,77 +35,238 @@ function Search() {
         return (
           <>
             <h3>회원정보</h3>
-            <div className={styles.container}>
-              <span className={styles.title}>관리번호</span>
-              <span className={styles.title}>성명</span>
-              <span className={styles.title}>주민번호</span>
-              <span className={styles.title}>이메일</span>
-
-              <span>{userdata.id}</span>
-              <span>{userdata.userinfo.name}</span>
-              <span>
-                {userdata.userinfo.firstid}-{userdata.userinfo.secondid}
-              </span>
-              <span>{userdata.userinfo.email}</span>
-
-              <span className={styles.title}>휴대전화</span>
-              <span className={styles.title}>타입</span>
-              <span className={styles.title}>군</span>
-              <span className={styles.title}>순번</span>
-
-              <span>{userdata.userinfo.phone}</span>
-              <span>{userdata.data.type}</span>
-              <span>{userdata.data.group}</span>
-              <span>{userdata.data.turn}</span>
-
-              <span className={styles.title}>가입차순</span>
-              <span className={styles.title}>신탁사제출</span>
-              <span className={styles.title}>가입일자</span>
-              <span className={styles.title}>가입가</span>
-
-              <span>{userdata.data.submitturn}</span>
-              <span>없음</span>
-              <span>{userdata.data.submitdate.slice(0, 10)}</span>
-              <span>
-                {userdata.data.submitprice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              </span>
-
-              <span className={styles.title}>예약금 납입일자</span>
-              <span className={styles.title}>예약금</span>
-              <span className={styles.title}>법정주소</span>
-              <span className={styles.title}>우편물 수령주소</span>
-
-              <span>{userdata.data.earnestdate.slice(0, 10)}</span>
-              <span>
-                {userdata.data.earnest
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              </span>
-              <span>{userdata.userinfo.post}</span>
-              <span>{userdata.userinfo.getpost}</span>
-
-              <span className={styles.title}>은행명</span>
-              <span className={styles.title}>계좌번호</span>
-              <span className={styles.title}>예금주</span>
-              <span className={styles.title}>신탁사</span>
-
-              <span>{userdata.userinfo.bank}</span>
-              <span>{userdata.userinfo.bankid}</span>
-              <span>{userdata.userinfo.bankwho}</span>
-              <span>{userdata.userinfo.bankwhere}</span>
-
-              <span className={styles.title}>총괄</span>
-              <span className={styles.title}>본부</span>
-              <span className={styles.title}>팀</span>
-              <span className={styles.title}>담당자</span>
-
-              <span>{userdata.ext.manage}</span>
-              <span>{userdata.ext.managemain}</span>
-              <span>{userdata.ext.manageteam}</span>
-              <span>{userdata.ext.managename}</span>
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>관리번호</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.id}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>성명</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.userinfo.name}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>주민번호</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>
+                    {userdata.userinfo.firstid}-{userdata.userinfo.secondid}
+                  </span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>이메일</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.userinfo.email}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>휴대전화</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.userinfo.phone}</span>
+                </div>
+              </div>
             </div>
+
+            <div className={styles.rowcontainer}>
+              
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>타입</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.data.type}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>군</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.data.group}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>순번</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.data.turn}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>가입차순</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.data.submitturn}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>가입일자</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.data.submitdate.slice(0, 10)}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>가입가</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>
+                  {userdata.data.submitprice
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>예약금 납입일자</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.data.earnestdate.slice(0, 10)}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>예약금</span>
+                </div>
+                <div className={styles.contentbody}>
+                <span>
+                  {userdata.data.earnest
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.rowcontainer}>
+              <div className={styles.postunitbody}>
+                <div className={styles.posttitlebody}>
+                  <span className={styles.title}>법정주소</span>
+                </div>
+                <div className={styles.postcontentbody}>
+                  <span>{userdata.userinfo.getpost}</span>
+                </div>
+              </div>
+              <div className={styles.postunitbody}>
+                <div className={styles.posttitlebody}>
+                  <span className={styles.title}>우편물 수령주소</span>
+                </div>
+                <div className={styles.postcontentbody}>
+                  <span>{userdata.userinfo.post}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>은행명</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.userinfo.bank}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>계좌번호</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.userinfo.bankid}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>예금주</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.userinfo.bankwho}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>7차 면제</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>예정</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>출자금</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>예정</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>지산A동 계약서</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>예정</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>총괄</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.ext.manage}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>본부</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.ext.managemain}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>팀</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.ext.manageteam}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>담당자</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.ext.managename}</span>
+                </div>
+              </div>
+            </div>
+
             <h1></h1>
             <hr />
             <h3>부속서류</h3>

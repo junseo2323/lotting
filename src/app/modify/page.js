@@ -88,14 +88,31 @@ const SearchList = ({ name, number }) => {
   return (
     <div>
       <div className={styles.tablecontainer}>
-        <span onClick={() => handleSort("id")}>관리번호</span>
-        <span onClick={() => handleSort("name")}>성명</span>
-        <span onClick={() => handleSort("type")}>타입</span>
-        <span onClick={() => handleSort("group")}>군</span>
-        <span onClick={() => handleSort("turn")}>순번</span>
-        <span onClick={() => handleSort("submitturn")}>가입 차순</span>
-        <span onClick={() => handleSort("submitdate")}>가입 날짜</span>
-        <span>임시동호</span>
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("id")}>관리번호</span>
+        </div>
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("name")}>성명</span>
+        </div>
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("type")}>타입</span>
+        </div>
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("group")}>군</span>
+        </div>
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("turn")}>순번</span>
+        </div>
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("submitturn")}>가입 차순</span>
+        </div>
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("submitdate")}>가입 날짜</span>
+        </div>
+        <div className={styles.unitContainer}>
+          <span>임시동호</span>
+        </div>
+        <span></span>
       </div>
       {searchdata.state === "hasValue" &&
         sortedData()
@@ -123,16 +140,18 @@ const SearchList = ({ name, number }) => {
                       {k.data?.submitturn || "N/A"}
                     </div>
                     <div className={styles.unitContainer}>
-                      {k.data?.submitdate.slice(0, 10) || "N/A"}
+                      {k.data?.submitdate ? k.data.submitdate.slice(0, 10) : "N/A"}
                     </div>
                     <div
                       className={styles.unitContainer}
                     >{`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}</div>
                   </div>
                 </Link>
+                <div className={styles.unitContainer}>
                 <ModifyButton onClick={() => handleDelete(k.id)}>
                   <div className={styles.CBBottonFont}>삭제</div>
                 </ModifyButton>
+                </div>
               </div>
             );
           })}

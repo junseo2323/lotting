@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 import { useridState } from "@/utils/atom";
 import { useForm } from "react-hook-form";
 import {
+  classificationlist,
   banklist,
   sintacklist,
   typeidlist,
@@ -134,7 +135,7 @@ function Modify() {
               <div className={styles.content_container}>
                 <div className={styles.Font}>관리번호 : {userdata.id}</div>
                 <h1></h1>
-                <div className={styles.InputboxField}>
+                <div className={styles.InputField}>
                   <div className={styles.InputFont}>이름</div>
                   <Inputbox
                     type="text"
@@ -179,6 +180,13 @@ function Modify() {
                   />
                 </div>
                 <div className={styles.InputboxField}>
+                  <div className={styles.InputFont}>분류</div>
+                  <DropInputbox
+                    list={classificationlist}
+                    register={register("userinfo.classify", { required: true })}
+                  />
+                </div>
+                <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>가입경로</div>
                   <Inputbox
                     type="text"
@@ -210,14 +218,7 @@ function Modify() {
                     register={register("userinfo.bankwho")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>신탁사</div>
-                  <DropInputbox
-                    list={sintacklist}
-                    defaultValue={userdata.userinfo.bankwhere}
-                    register={register("userinfo.bankwhere")}
-                  />
-                </div>
+            
                 {/* <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>법정주소</div>
                   <textarea
@@ -226,15 +227,85 @@ function Modify() {
                   />
                 </div> */}
                 <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>우편물 수령주소</div>
+                  <div className={styles.InputFont}>법정주소</div>
                   <textarea
                     defaultValue={userdata.userinfo.getpost}
+                    {...register("userinfo.getpost")}
+                  />
+                </div>
+                <div className={styles.InputboxField}>
+                  <div className={styles.InputFont}>우편물 주소지</div>
+                  <textarea
+                    defaultValue={userdata.userinfo.post}
                     {...register("userinfo.getpost")}
                   />
                 </div>
               </div>
 
               <h3>관리 정보</h3>
+              <div className={styles.mainbody}>
+                <div className={styles.content_body}>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputField}>
+                      <div className={styles.InputFont}>가입차수</div>
+                      <DropInputbox
+                        list={typeidlist}
+                        defaultValue={userdata.data.submitturn}
+                        register={register("data.submitturn")}
+                      />
+                    </div>
+                    <div className={styles.InputField}>
+                    <div className={styles.InputFont}>타입</div>
+                      <DropInputbox
+                        list={typelist}
+                        defaultValue={userdata.data.type}
+                        name="type"
+                        register={register("data.type")}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputField}>
+                      <div className={styles.InputFont}>군</div>
+                      <DropInputbox
+                        list={grouplist}
+                        defaultValue={userdata.data.group}
+                        name="group"
+                        register={register("data.group")}
+                      />
+                    </div>
+                    <div className={styles.InputField}>
+                      <div className={styles.InputFont}>순번</div>
+                      <DropInputbox
+                        list={turnlist}
+                        defaultValue={userdata.data.turn}
+                        name="turn"
+                        register={register("data.turn")}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputField}>
+                      <div className={styles.InputFont}>가입차수</div>
+                      <DropInputbox
+                        list={typeidlist}
+                        defaultValue={userdata.data.submitturn}
+                        register={register("data.submitturn")}
+                      />
+                    </div>
+                    <div className={styles.InputField}>
+                      <div className={styles.InputFont}>가입차수</div>
+                      <DropInputbox
+                        list={typeidlist}
+                        defaultValue={userdata.data.submitturn}
+                        register={register("data.submitturn")}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
               <div className={styles.content_container}>
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>가입차수</div>

@@ -6,10 +6,8 @@
 }
 .tablecontainer {
   margin: 30px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  width: 50vw;
+  display: flex;
+  width: 900px;
 }
 .tablecontainer span {
   cursor: pointer; /* 기본적으로 포인터 커서 설정 */
@@ -44,10 +42,9 @@
 
 .maincontainer {
   margin: 30px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
   gap: 20px;
-  width: 50vw;
+  width: 900px;
   font-size: 14px;
   text-decoration: none;
   color: #000;

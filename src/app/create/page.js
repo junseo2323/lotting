@@ -159,11 +159,6 @@ function Create() {
             placeholder="예금주"
             register={register("userinfo.bankwho", { required: true })}
           />
-          <h1></h1>
-         <DropInputbox
-            list={sintacklist}
-            register={register("userinfo.bankwhere", { required: true })}
-          />
           <div className={styles.InputboxField}>
             <div className={styles.InputFont}>법정주소</div>
             <PostInputbox
@@ -211,6 +206,7 @@ function Create() {
             />
             </div>
           </div>
+          
           <div className={styles.content_body}>
             <div className={styles.content_body2}>
             <Inputbox
