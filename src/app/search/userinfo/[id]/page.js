@@ -72,15 +72,19 @@ function Search() {
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </span>
 
-              <span className={styles.title}>우편번호</span>
-              <span className={styles.title}>주소지</span>
-              <span className={styles.title}></span>
-              <span className={styles.title}></span>
+              <span className={styles.title}>예약금 납입일자</span>
+              <span className={styles.title}>예약금</span>
+              <span className={styles.title}>법정주소</span>
+              <span className={styles.title}>우편물 수령주소</span>
 
-              <span>{userdata.userinfo.postnumber}</span>
+              <span>{userdata.data.earnestdate.slice(0, 10)}</span>
+              <span>
+                {userdata.data.earnest
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </span>
+              <span>{userdata.userinfo.post}</span>
               <span>{userdata.userinfo.getpost}</span>
-              <span></span>
-              <span></span>
 
               <span className={styles.title}>은행명</span>
               <span className={styles.title}>계좌번호</span>
@@ -148,7 +152,7 @@ function Search() {
               )}
               {JSON.parse(userdata.fileinfo.E) ? (
                 <DownloadButton userid={userid} filename="E">
-                  상준위용
+                  창준위용
                 </DownloadButton>
               ) : (
                 <>

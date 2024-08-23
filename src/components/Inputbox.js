@@ -262,7 +262,7 @@ export const PostInputbox = (props) => {
       oncomplete: function (data) {
         setPostnumber(data.zonecode);
         setPost(data.roadAddress);
-        setPostdetail(data.zonecode + "," + data.roadAddress + ",");
+        setPostdetail(data.roadAddress + ",");
       },
     }).open();
   };

@@ -27,6 +27,7 @@ import {
   typelist,
   grouplist,
   turnlist,
+  sortlist,
 } from "@/components/droplistdata";
 
 function Create() {
@@ -164,7 +165,15 @@ function Create() {
             register={register("userinfo.bankwhere", { required: true })}
           />
           <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>주소지</div>
+            <div className={styles.InputFont}>법정주소</div>
+            <PostInputbox
+              placeholder="법정주소"
+              name="userinfo.post"
+              register={register("userinfo.post", { required: true })}
+            />
+          </div>
+          <div className={styles.InputboxField}>
+            <div className={styles.InputFont}>우편물 수령주소</div>
             <PostInputbox
               placeholder="주소지"
               name="userinfo.post"
@@ -268,9 +277,80 @@ function Create() {
 
         </div>
 
+        <h3>MGM</h3>
+        <div className={styles.content_container}>
+          <Inputbox
+            type="text"
+            placeholder="업체명"
+            register={register("mgm.companyname", { required: true })}
+          />
+          <Inputbox
+            type="text"
+            placeholder="이름"
+            register={register("mgm.name", { required: true })}
+          />
+          <Inputbox
+            type="text"
+            placeholder="기관"
+            register={register("mgm.organization", { required: true })}
+          />
+          <Inputbox
+            type="text"
+            placeholder="계좌"
+            register={register("mgm.accountnumber", { required: true })}
+          />
+        </div>
+
+        
+
         <h3>부속서류</h3>
         <div className={styles.content_container}>
-          <span>인감증명서</span>
+          <Checkbox
+              label="인감증명서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="본인서명확인서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="확약서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="신분증"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="무상옵션"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="상준위용"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="총회동의서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="선호도조사"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="사은품"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+          {/* <span>인감증명서</span>
           <span>본인서명확인서</span>
           <FileInputbox
             className="A"
@@ -342,8 +422,19 @@ function Create() {
             value={file["I"]}
             isupload={isupload["I"]}
             handleChange={handleChange}
-          />
+          /> */}
           <span></span>
+          <span></span>
+          <span></span>
+          <span>파일업로드</span>
+          <span></span>
+          <FileInputbox
+            className="H"
+            name="fileH"
+            value={file["H"]}
+            isupload={isupload["H"]}
+            handleChange={handleChange}
+          />
         </div>
 
         <h3>담당자 정보</h3>
