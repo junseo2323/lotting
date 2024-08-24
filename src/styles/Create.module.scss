@@ -25,13 +25,14 @@
 .content_body{
     width:70vw;
     height: auto;
-    display:flex;
+    display:grid;
 }
 .content_body2{
+    display: block;
     width: 35vw;
     height: auto;
     display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 2fr 4fr;
 }
 .content_body3{
     width: 23vw;
@@ -41,12 +42,17 @@
 .InputField{
     width:25vw;
     height:60px;
-    display:flex;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
     flex-direction: row;
+}
+.InputTextarea{
+    width: 30vw;
 }
 .InputFont{
     font-size:14px;
     padding-left:10px;
+    padding-top: 15px;
     padding-bottom:10px;
     color:#A1A2A8;
 }

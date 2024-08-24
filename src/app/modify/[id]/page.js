@@ -135,7 +135,7 @@ function Modify() {
               <div className={styles.content_container}>
                 <div className={styles.Font}>관리번호 : {userdata.id}</div>
                 <h1></h1>
-                <div className={styles.InputField}>
+                <div>
                   <div className={styles.InputFont}>이름</div>
                   <Inputbox
                     type="text"
@@ -229,6 +229,7 @@ function Modify() {
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>법정주소</div>
                   <textarea
+                    className={styles.InputTextarea}
                     defaultValue={userdata.userinfo.getpost}
                     {...register("userinfo.getpost")}
                   />
@@ -236,6 +237,7 @@ function Modify() {
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>우편물 주소지</div>
                   <textarea
+                    className={styles.InputTextarea}
                     defaultValue={userdata.userinfo.post}
                     {...register("userinfo.getpost")}
                   />
@@ -245,6 +247,7 @@ function Modify() {
               <h3>관리 정보</h3>
               <div className={styles.mainbody}>
                 <div className={styles.content_body}>
+                  
                   <div className={styles.content_body2}>
                     <div className={styles.InputField}>
                       <div className={styles.InputFont}>가입차수</div>
@@ -264,6 +267,7 @@ function Modify() {
                       />
                     </div>
                   </div>
+
                   <div className={styles.content_body2}>
                     <div className={styles.InputField}>
                       <div className={styles.InputFont}>군</div>

@@ -31,6 +31,7 @@ module.exports = {
 }
 const nextConfig = {
 	reactStrictMode: true,
+	basePath: "/absproxy/3000",
 	async redirects() {
 		return [
 		  {
@@ -45,7 +46,7 @@ const nextConfig = {
 	  return [
 		{
 		  source: "/api/:path*",
-		  destination: "http://localhost:8000/api/:path*",
+		  destination: "http://121.136.47.206:8080/proxy/8000/api/:path*",
 		},
 	  ];
 	},  
