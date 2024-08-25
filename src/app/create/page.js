@@ -158,7 +158,7 @@ function Create() {
           />
           <DropInputbox
             list={classificationlist}
-            register={register("userinfo.classify", { required: true })}
+            register={register("userinfo.sort", { required: true })}
           />
           <Inputbox
             type="text"

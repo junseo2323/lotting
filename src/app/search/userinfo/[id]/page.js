@@ -79,9 +79,7 @@ function Search() {
                 </div>
               </div>
             </div>
-
             <div className={styles.rowcontainer}>
-              
               <div className={styles.unitbody}>
                 <div className={styles.titlebody}>
                   <span className={styles.title}>타입</span>
@@ -115,7 +113,6 @@ function Search() {
                 </div>
               </div>
             </div>
-
             <div className={styles.rowcontainer}>
               <div className={styles.unitbody}>
                 <div className={styles.titlebody}>
@@ -131,9 +128,9 @@ function Search() {
                 </div>
                 <div className={styles.contentbody}>
                   <span>
-                  {userdata.data.submitprice
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    {userdata.data.submitprice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </span>
                 </div>
               </div>
@@ -150,15 +147,14 @@ function Search() {
                   <span className={styles.title}>예약금</span>
                 </div>
                 <div className={styles.contentbody}>
-                <span>
-                  {userdata.data.earnest
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                </span>
+                  <span>
+                    {userdata.data.earnest
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </span>
                 </div>
               </div>
             </div>
-
             <div className={styles.rowcontainer}>
               <div className={styles.postunitbody}>
                 <div className={styles.posttitlebody}>
@@ -177,7 +173,6 @@ function Search() {
                 </div>
               </div>
             </div>
-
             <div className={styles.rowcontainer}>
               <div className={styles.unitbody}>
                 <div className={styles.titlebody}>
@@ -204,7 +199,6 @@ function Search() {
                 </div>
               </div>
             </div>
-
             <div className={styles.rowcontainer}>
               <div className={styles.unitbody}>
                 <div className={styles.titlebody}>
@@ -231,7 +225,6 @@ function Search() {
                 </div>
               </div>
             </div>
-
             <div className={styles.rowcontainer}>
               <div className={styles.unitbody}>
                 <div className={styles.titlebody}>
@@ -266,101 +259,98 @@ function Search() {
                 </div>
               </div>
             </div>
-
             <h1></h1>
             <hr />
             <h3>부속서류</h3>
             <div className={styles.file_container}>
-              {JSON.parse(userdata.fileinfo.A) ? (
-                <DownloadButton userid={userid} filename="A">
-                  인감증명서
+              {JSON.parse(userdata.fileinfo.upload) ? (
+                <DownloadButton userid={userid} filename="upload">
+                  부속 서류
                 </DownloadButton>
               ) : (
                 <>
-                  <p>인감증명서</p>
+                  <p>부속 서류</p>
                   <p>파일이 없습니다.</p>
                 </>
               )}
-              {JSON.parse(userdata.fileinfo.B) ? (
-                <DownloadButton userid={userid} filename="B">
-                  본인서명확인서
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>본인서명확인서</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
-              {JSON.parse(userdata.fileinfo.C) ? (
-                <DownloadButton userid={userid} filename="C">
-                  신분증
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>신분증</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
-              {JSON.parse(userdata.fileinfo.D) ? (
-                <DownloadButton userid={userid} filename="D">
-                  확약서
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>확약서</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
-              {JSON.parse(userdata.fileinfo.E) ? (
-                <DownloadButton userid={userid} filename="E">
-                  창준위용
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>상준위용</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
-              {JSON.parse(userdata.fileinfo.F) ? (
-                <DownloadButton userid={userid} filename="F">
-                  무상옵션
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>무상옵션</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
-              {JSON.parse(userdata.fileinfo.G) ? (
-                <DownloadButton userid={userid} filename="G">
-                  선호도조사
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>선호도조사</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
-              {JSON.parse(userdata.fileinfo.H) ? (
-                <DownloadButton userid={userid} filename="H">
-                  총회동의서
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>총회동의서</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
-              {JSON.parse(userdata.fileinfo.I) ? (
-                <DownloadButton userid={userid} filename="I">
-                  사은품
-                </DownloadButton>
-              ) : (
-                <>
-                  <p>사은품</p>
-                  <p>파일이 없습니다.</p>
-                </>
-              )}
+
+              <div className={styles.file_status}>
+                <p>상태:</p>
+                <ul>
+                  <li>
+                    <span>인감증명서: </span>
+                    {JSON.parse(userdata.fileinfo.A) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>본인서명확인서: </span>
+                    {JSON.parse(userdata.fileinfo.B) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>신분증: </span>
+                    {JSON.parse(userdata.fileinfo.C) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>확약서: </span>
+                    {JSON.parse(userdata.fileinfo.D) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>창준위용: </span>
+                    {JSON.parse(userdata.fileinfo.E) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>무상옵션: </span>
+                    {JSON.parse(userdata.fileinfo.F) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>선호도조사: </span>
+                    {JSON.parse(userdata.fileinfo.G) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>총회동의서: </span>
+                    {JSON.parse(userdata.fileinfo.H) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                  <li>
+                    <span>사은품: </span>
+                    {JSON.parse(userdata.fileinfo.I) ? (
+                      <span>✔️</span>
+                    ) : (
+                      <span>❌</span>
+                    )}
+                  </li>
+                </ul>
+              </div>
             </div>
             <hr />
             <h3>납입금 관리</h3>
