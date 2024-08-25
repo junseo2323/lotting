@@ -2,6 +2,7 @@
 import Mininav from "@/components/Mininav";
 import styles from "@/styles/Create.module.scss";
 import {
+  Checkbox,
   Inputbox,
   PostInputbox,
   InputAreabox,
@@ -245,72 +246,10 @@ function Modify() {
               </div>
 
               <h3>관리 정보</h3>
+  
               <div className={styles.mainbody}>
-                <div className={styles.content_body}>
-                  
-                  <div className={styles.content_body2}>
-                    <div className={styles.InputField}>
-                      <div className={styles.InputFont}>가입차수</div>
-                      <DropInputbox
-                        list={typeidlist}
-                        defaultValue={userdata.data.submitturn}
-                        register={register("data.submitturn")}
-                      />
-                    </div>
-                    <div className={styles.InputField}>
-                    <div className={styles.InputFont}>타입</div>
-                      <DropInputbox
-                        list={typelist}
-                        defaultValue={userdata.data.type}
-                        name="type"
-                        register={register("data.type")}
-                      />
-                    </div>
-                  </div>
-
-                  <div className={styles.content_body2}>
-                    <div className={styles.InputField}>
-                      <div className={styles.InputFont}>군</div>
-                      <DropInputbox
-                        list={grouplist}
-                        defaultValue={userdata.data.group}
-                        name="group"
-                        register={register("data.group")}
-                      />
-                    </div>
-                    <div className={styles.InputField}>
-                      <div className={styles.InputFont}>순번</div>
-                      <DropInputbox
-                        list={turnlist}
-                        defaultValue={userdata.data.turn}
-                        name="turn"
-                        register={register("data.turn")}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.content_body2}>
-                    <div className={styles.InputField}>
-                      <div className={styles.InputFont}>가입차수</div>
-                      <DropInputbox
-                        list={typeidlist}
-                        defaultValue={userdata.data.submitturn}
-                        register={register("data.submitturn")}
-                      />
-                    </div>
-                    <div className={styles.InputField}>
-                      <div className={styles.InputFont}>가입차수</div>
-                      <DropInputbox
-                        list={typeidlist}
-                        defaultValue={userdata.data.submitturn}
-                        register={register("data.submitturn")}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div className={styles.content_container}>
+           <div className={styles.content_body}> 
+              <div className={styles.content_body2}>
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>가입차수</div>
                   <DropInputbox
@@ -328,7 +267,9 @@ function Modify() {
                     register={register("data.type")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
+            </div>
+            <div className={styles.content_body2}>
+              <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>군</div>
                   <DropInputbox
                     list={grouplist}
@@ -346,7 +287,12 @@ function Modify() {
                     register={register("data.turn")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
+            </div>
+          </div>
+          
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+              <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>가입일자</div>
                   <Inputbox
                     type="date"
@@ -355,8 +301,9 @@ function Modify() {
                     register={register("data.submitdate")}
                   />
                 </div>
-                <div className={styles.InputboxField}></div>
-                <div className={styles.InputboxField}>
+            </div>
+            <div className={styles.content_body2}>
+            <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>가입가</div>
                   <Inputbox
                     type="number"
@@ -365,7 +312,11 @@ function Modify() {
                     register={register("data.submitprice")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+            <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>납입일자</div>
                   <Inputbox
                     type="date"
@@ -374,7 +325,9 @@ function Modify() {
                     register={register("data.earnestdate")}
                   />
                 </div>
-                <div className={styles.InputboxField}>
+            </div>
+            <div className={styles.content_body2}>
+            <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>예약금</div>
                   <Inputbox
                     type="number"
@@ -383,7 +336,33 @@ function Modify() {
                     register={register("data.earnest")}
                   />
                 </div>
-              </div>
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body3}>
+            <Checkbox
+              label="7차 면제"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            </div>
+            <div className={styles.content_body3}>
+            <Checkbox
+              label="출자금"
+              name="investment"
+              register={register("fileinfo.investment", { required: true })}
+            />
+            </div>
+            <div className={styles.content_body3}>
+            <Checkbox
+              label="자산A동 계약서"
+              name="contract"
+              register={register("fileinfo.contract", { required: true })}
+            />
+            </div>
+          </div>
+
+        </div>
 
               {/*<h3>MGM</h3> *temp 이것도 나중에 추가
               <div className={styles.content_container}>
@@ -410,89 +389,63 @@ function Modify() {
               </div>*/}
               <h3>부속서류</h3>
               <div className={styles.content_container}>
-                <span>인감증명서</span>
-                <span>본인서명확인서</span>
-                <FileInputbox
-                  className="A"
-                  name="fileA"
-                  value={file["A"]}
-                  isupload={isupload["A"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.A")} // Add this line
-                />
-                <FileInputbox
-                  className="B"
-                  name="fileB"
-                  value={file["B"]}
-                  isupload={isupload["B"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.B")} // Add this line
-                />
-                <span>신분증</span>
-                <span>확약서</span>
-                <FileInputbox
-                  className="C"
-                  name="fileC"
-                  value={file["C"]}
-                  isupload={isupload["C"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.C")} // Add this line
-                />
-                <FileInputbox
-                  className="D"
-                  name="fileD"
-                  value={file["D"]}
-                  isupload={isupload["D"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.D")} // Add this line
-                />
-                <span>창준위용</span>
-                <span>무상옵션</span>
-                <FileInputbox
-                  className="E"
-                  name="fileE"
-                  value={file["E"]}
-                  isupload={isupload["E"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.E")} // Add this line
-                />
-                <FileInputbox
-                  className="F"
-                  name="fileF"
-                  value={file["F"]}
-                  isupload={isupload["F"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.F")} // Add this line
-                />
-                <span>선호도조사</span>
-                <span>총회동의서</span>
-                <FileInputbox
-                  className="G"
-                  name="fileG"
-                  value={file["G"]}
-                  isupload={isupload["G"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.G")} // Add this line
-                />
-                <FileInputbox
-                  className="H"
-                  name="fileH"
-                  value={file["H"]}
-                  isupload={isupload["H"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.H")} // Add this line
-                />
-                <span>사은품</span>
-                <span></span>
-                <FileInputbox
-                  className="I"
-                  name="fileI"
-                  value={file["I"]}
-                  isupload={isupload["I"]}
-                  handleChange={handleChange}
-                  register={register("fileinfo.I")} // Add this line
-                />
-                <span></span>
+              <Checkbox
+              label="인감증명서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="본인서명확인서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="확약서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="신분증"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="무상옵션"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="상준위용"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="총회동의서"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="선호도조사"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <Checkbox
+              label="사은품"
+              name="exception"
+              register={register("fileinfo.exception", { required: true })}
+            />
+            <span></span>
+          <span></span>
+          <span></span>
+          <span>파일업로드</span>
+          <span></span>
+          <FileInputbox
+            className="H"
+            name="fileH"
+            value={file["H"]}
+            isupload={isupload["H"]}
+            handleChange={handleChange}
+          />
               </div>
 
               <h3>담당자 정보</h3>

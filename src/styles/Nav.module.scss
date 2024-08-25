@@ -1,65 +1,92 @@
-.container{
+.container {
     background-color: rgba(162, 161, 168, 0.01);
     width: 280px;
-    height: 800px; /* 뷰포트 높이의 100%로 설정합니다. */
+    height: 800px;
     float: left;
 }
-.logostyle{
+
+.logostyle {
     margin-top: 39px;
     margin-left: 30px;
-    
 }
-.listconatiner{
+
+.listconatiner {
     margin-top: 30px;
     margin-left: 30px;
 }
-.select{
-    position: relative;
 
+.select {
+    position: relative;
     background: rgba(113, 82, 243, 0.05);
     color: #7152F3;
-    /* Body-1 Bold */
     font-family: Lexend;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
-    line-height: 24px; /* 150% */
-
+    line-height: 24px;
     text-align: left;
-
     margin: 5px 0;
-
     width: 220px;
     height: 50px;
     border-radius: 0px 10px 10px 0px;
     flex-shrink: 0;
     border-left: 4px solid #7152F3;
-
 }
+
 .innerconaainer {
     padding-top: 5.5%;
+    position: relative; /* Ensure the inner container is relative to manage absolute positioning within */
 }
-.innertext{
+
+.innertext {
     position: absolute;
     padding-top: 2px;
 }
-.nonselect{
+
+.nonselect {
     color: #16151C;
-    /* Body-1 Bold */
     font-family: Lexend;
     font-size: 16px;
-    font-style: normal;
     font-weight: 300;
-    line-height: 24px; /* 150% */
-    
+    line-height: 24px;
     margin: 5px 0;
-
     text-align: left;
     padding-left: 4px;
     width: 220px;
     height: 50px;
     border-radius: 0px 10px 10px 0px;
     flex-shrink: 0;
-
 }
 
+.dropdownMenu {
+    display: none; /* 기본적으로 서브메뉴를 숨김 */
+    position: absolute;
+    top: 50px; /* 부모 li의 상단부터 50px 떨어진 위치에 서브메뉴를 표시 */
+    left: 220px; /* 부모 li의 왼쪽 끝부터 220px 떨어진 위치에 서브메뉴를 표시 */
+    background-color: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 0px 10px 10px 0px;
+}
+
+.dropdownMenu li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdownMenu li:last-child {
+    border-bottom: none;
+}
+
+.dropdownMenu li a {
+    text-decoration: none;
+    color: #16151C;
+    font-family: Lexend;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.listconatiner > li:hover .dropdownMenu {
+    display: block; /* 부모 li에 마우스를 올렸을 때 서브메뉴가 나타남 */
+}
