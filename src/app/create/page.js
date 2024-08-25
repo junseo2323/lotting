@@ -48,6 +48,7 @@ function Create() {
   }, []);
 
   const [isupload, setIsupload] = useState({
+    upload: false,
     A: false,
     B: false,
     C: false,
@@ -57,8 +58,12 @@ function Create() {
     G: false,
     H: false,
     I: false,
+    exception: false,
+    investment: false,
+    jscontract: false,
   });
   const [file, setFile] = useState({
+    upload: "",
     A: "",
     B: "",
     C: "",
@@ -68,8 +73,17 @@ function Create() {
     G: "",
     H: "",
     I: "",
+    exception: "",
+    investment: "",
+    jscontract: "",
   });
   const [files, setFiles] = useState([]);
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+
+    setIsupload((prev) => ({ ...prev, [name]: checked }));
+  };
 
   const handleChange = (e) => {
     // file 핸들링
@@ -176,93 +190,91 @@ function Create() {
             />
           </div>
           <div className={styles.InputboxField}></div>
-          
         </div>
 
         <h3>관리 정보</h3>
         <div className={styles.mainbody}>
-        <div className={styles.content_body}>
-            <div className={styles.content_body2}>
-            <DropInputbox
-              list={typeidlist}
-              register={register("data.submitturn", { required: true })}
-            />
-            <DropInputbox
-              list={typelist}
-              name="type"
-              register={register("data.type", { required: true })}
-            />
-            </div>
-            <div className={styles.content_body2}>
-            <DropInputbox
-              list={grouplist}
-              name="group"
-              register={register("data.group", { required: true })}
-            />
-            <DropInputbox
-              list={turnlist}
-              name="turn"
-              register={register("data.turn", { required: true })}
-            />
-            </div>
-          </div>
-          
           <div className={styles.content_body}>
             <div className={styles.content_body2}>
-            <Inputbox
-              type="date"
-              date_placeholder="가입일자"
-              register={register("data.submitdate", { required: true })}
-            />
+              <DropInputbox
+                list={typeidlist}
+                register={register("data.submitturn", { required: true })}
+              />
+              <DropInputbox
+                list={typelist}
+                name="type"
+                register={register("data.type", { required: true })}
+              />
             </div>
             <div className={styles.content_body2}>
-            <Inputbox
-              type="number"
-              placeholder="가입가"
-              register={register("data.submitprice", { required: true })}
-            />
-            </div>
-          </div>
-          <div className={styles.content_body}>
-            <div className={styles.content_body2}>
-            <Inputbox
-              type="date"
-              date_placeholder="예약금 납입일자"
-              register={register("data.earnestdate", { required: true })}
-            />
-            </div>
-            <div className={styles.content_body2}>
-            <Inputbox
-              type="number"
-              placeholder="예약금"
-              register={register("data.earnest", { required: true })}
-            />
-            </div>
-          </div>
-          <div className={styles.content_body}>
-            <div className={styles.content_body3}>
-            <Checkbox
-              label="7차 면제"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            </div>
-            <div className={styles.content_body3}>
-            <Checkbox
-              label="출자금"
-              name="investment"
-              register={register("fileinfo.investment", { required: true })}
-            />
-            </div>
-            <div className={styles.content_body3}>
-            <Checkbox
-              label="자산A동 계약서"
-              name="contract"
-              register={register("fileinfo.contract", { required: true })}
-            />
+              <DropInputbox
+                list={grouplist}
+                name="group"
+                register={register("data.group", { required: true })}
+              />
+              <DropInputbox
+                list={turnlist}
+                name="turn"
+                register={register("data.turn", { required: true })}
+              />
             </div>
           </div>
 
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="date"
+                date_placeholder="가입일자"
+                register={register("data.submitdate", { required: true })}
+              />
+            </div>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="number"
+                placeholder="가입가"
+                register={register("data.submitprice", { required: true })}
+              />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="date"
+                date_placeholder="예약금 납입일자"
+                register={register("data.earnestdate", { required: true })}
+              />
+            </div>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="number"
+                placeholder="예약금"
+                register={register("data.earnest", { required: true })}
+              />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body3}>
+              <Checkbox
+                label="7차 면제"
+                name="exception"
+                register={register("fileinfo.exception", { required: true })}
+              />
+            </div>
+            <div className={styles.content_body3}>
+              <Checkbox
+                label="출자금"
+                name="investment"
+                register={register("fileinfo.investment", { required: true })}
+              />
+            </div>
+            <div className={styles.content_body3}>
+              <Checkbox
+                label="자산A동 계약서"
+                name="contract"
+                register={register("fileinfo.contract", { required: true })}
+              />
+            </div>
+          </div>
         </div>
 
         <h3>MGM</h3>
@@ -289,55 +301,53 @@ function Create() {
           />
         </div>
 
-        
-
         <h3>부속서류</h3>
         <div className={styles.content_container}>
           <Checkbox
-              label="인감증명서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="본인서명확인서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="확약서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="신분증"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="무상옵션"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="상준위용"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="총회동의서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="선호도조사"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="사은품"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
+            label="인감증명서"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="본인서명확인서"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="확약서"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="신분증"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="무상옵션"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="상준위용"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="총회동의서"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="선호도조사"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
+          <Checkbox
+            label="사은품"
+            name="exception"
+            register={register("fileinfo.exception", { required: true })}
+          />
           {/* <span>인감증명서</span>
           <span>본인서명확인서</span>
           <FileInputbox
@@ -417,10 +427,10 @@ function Create() {
           <span>파일업로드</span>
           <span></span>
           <FileInputbox
-            className="H"
-            name="fileH"
-            value={file["H"]}
-            isupload={isupload["H"]}
+            className="upload"
+            name="fileupload"
+            value={file["upload"]}
+            isupload={isupload["upload"]}
             handleChange={handleChange}
           />
         </div>
