@@ -82,7 +82,13 @@ function Create() {
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
 
-    setIsupload((prev) => ({ ...prev, [name]: checked }));
+    setIsupload((prev) => {
+      const updatedState = {
+        ...prev,
+        [name]: checked,
+      };
+      return updatedState;
+    });
   };
 
   const handleChange = (e) => {
@@ -257,21 +263,21 @@ function Create() {
               <Checkbox
                 label="7차 면제"
                 name="exception"
-                register={register("fileinfo.exception", { required: true })}
+                onChange={handleCheckboxChange}
               />
             </div>
             <div className={styles.content_body3}>
               <Checkbox
                 label="출자금"
                 name="investment"
-                register={register("fileinfo.investment", { required: true })}
+                onChange={handleCheckboxChange}
               />
             </div>
             <div className={styles.content_body3}>
               <Checkbox
                 label="자산A동 계약서"
                 name="contract"
-                register={register("fileinfo.contract", { required: true })}
+                onChange={handleCheckboxChange}
               />
             </div>
           </div>
@@ -305,49 +311,29 @@ function Create() {
         <div className={styles.content_container}>
           <Checkbox
             label="인감증명서"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
+            name="A"
+            onChange={handleCheckboxChange}
           />
           <Checkbox
             label="본인서명확인서"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
+            name="B"
+            onChange={handleCheckboxChange}
           />
-          <Checkbox
-            label="확약서"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
-          />
-          <Checkbox
-            label="신분증"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
-          />
-          <Checkbox
-            label="무상옵션"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
-          />
-          <Checkbox
-            label="상준위용"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
-          />
+          <Checkbox label="확약서" name="C" onChange={handleCheckboxChange} />
+          <Checkbox label="신분증" name="D" onChange={handleCheckboxChange} />
+          <Checkbox label="무상옵션" name="E" onChange={handleCheckboxChange} />
+          <Checkbox label="상준위용" name="F" onChange={handleCheckboxChange} />
           <Checkbox
             label="총회동의서"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
+            name="G"
+            onChange={handleCheckboxChange}
           />
           <Checkbox
             label="선호도조사"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
+            name="H"
+            onChange={handleCheckboxChange}
           />
-          <Checkbox
-            label="사은품"
-            name="exception"
-            register={register("fileinfo.exception", { required: true })}
-          />
+          <Checkbox label="사은품" name="I" onChange={handleCheckboxChange} />
           <span></span>
           <span></span>
           <span></span>
