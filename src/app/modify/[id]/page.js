@@ -340,27 +340,31 @@ function Modify() {
           </div>
           <div className={styles.content_body}>
             <div className={styles.content_body3}>
-            <Checkbox
-              label="7차 면제"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
+              <Checkbox
+                label="7차 면제"
+                name="exception"
+                register={register("fileinfo.exception", { required: true })}
+                defaultChecked={userdata.fileinfo.exception && JSON.parse(userdata.fileinfo.exception)}
+              />
             </div>
             <div className={styles.content_body3}>
-            <Checkbox
-              label="출자금"
-              name="investment"
-              register={register("fileinfo.investment", { required: true })}
-            />
+              <Checkbox
+                label="출자금"
+                name="investment"
+                register={register("fileinfo.investment", { required: true })}
+                defaultChecked={userdata.fileinfo.investment && JSON.parse(userdata.fileinfo.investment)}
+              />
             </div>
             <div className={styles.content_body3}>
-            <Checkbox
-              label="자산A동 계약서"
-              name="contract"
-              register={register("fileinfo.contract", { required: true })}
-            />
+              <Checkbox
+                label="자산A동 계약서"
+                name="jscontract"
+                register={register("fileinfo.jscontract", { required: true })}
+                defaultChecked={userdata.fileinfo.jscontract && JSON.parse(userdata.fileinfo.jscontract)}
+              />
             </div>
           </div>
+
 
         </div>
 
@@ -390,50 +394,60 @@ function Modify() {
               <h3>부속서류</h3>
               <div className={styles.content_container}>
               <Checkbox
-              label="인감증명서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="본인서명확인서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="확약서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="신분증"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="무상옵션"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="상준위용"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="총회동의서"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="선호도조사"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
-            <Checkbox
-              label="사은품"
-              name="exception"
-              register={register("fileinfo.exception", { required: true })}
-            />
+                label="인감증명서"
+                name="A"
+                defaultChecked={JSON.parse(userdata.fileinfo.A)}
+                register={register("fileinfo.A", { required: true })}
+              />
+              <Checkbox
+                label="본인서명확인서"
+                name="B"
+                defaultChecked={JSON.parse(userdata.fileinfo.B)}
+                register={register("fileinfo.B", { required: true })}
+              />
+              <Checkbox
+                label="확약서"
+                name="D"
+                defaultChecked={JSON.parse(userdata.fileinfo.D)}
+                register={register("fileinfo.D", { required: true })}
+              />
+              <Checkbox
+                label="신분증"
+                name="C"
+                defaultChecked={JSON.parse(userdata.fileinfo.C)}
+                register={register("fileinfo.C", { required: true })}
+              />
+              <Checkbox
+                label="무상옵션"
+                name="F"
+                defaultChecked={JSON.parse(userdata.fileinfo.F)}
+                register={register("fileinfo.F", { required: true })}
+              />
+              <Checkbox
+                label="창준위용"
+                name="E"
+                defaultChecked={JSON.parse(userdata.fileinfo.E)}
+                register={register("fileinfo.E", { required: true })}
+              />
+              <Checkbox
+                label="총회동의서"
+                name="H"
+                defaultChecked={JSON.parse(userdata.fileinfo.H)}
+                register={register("fileinfo.H", { required: true })}
+              />
+              <Checkbox
+                label="선호도조사"
+                name="G"
+                defaultChecked={JSON.parse(userdata.fileinfo.G)}
+                register={register("fileinfo.G", { required: true })}
+              />
+              <Checkbox
+                label="사은품"
+                name="I"
+                defaultChecked={JSON.parse(userdata.fileinfo.I)}
+                register={register("fileinfo.I", { required: true })}
+              />
+
             <span></span>
           <span></span>
           <span></span>
