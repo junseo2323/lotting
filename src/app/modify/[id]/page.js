@@ -219,14 +219,7 @@ function Modify() {
                     register={register("userinfo.bankwho")}
                   />
                 </div>
-            
-                {/* <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>법정주소</div>
-                  <textarea
-                    defaultValue={userdata.userinfo.post}
-                    {...register("userinfo.post")}   ㄴ ㅏ 중에 데이터베이스 추가되면 활성화 *temp
-                  />
-                </div> */}
+
                 <div className={styles.InputboxField}>
                   <div className={styles.InputFont}>법정주소</div>
                   <textarea
@@ -246,127 +239,140 @@ function Modify() {
               </div>
 
               <h3>관리 정보</h3>
-  
+
               <div className={styles.mainbody}>
-           <div className={styles.content_body}> 
-              <div className={styles.content_body2}>
-                <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>가입차수</div>
-                  <DropInputbox
-                    list={typeidlist}
-                    defaultValue={userdata.data.submitturn}
-                    register={register("data.submitturn")}
-                  />
+                <div className={styles.content_body}>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>가입차수</div>
+                      <DropInputbox
+                        list={typeidlist}
+                        defaultValue={userdata.data.submitturn}
+                        register={register("data.submitturn")}
+                      />
+                    </div>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>타입</div>
+                      <DropInputbox
+                        list={typelist}
+                        defaultValue={userdata.data.type}
+                        name="type"
+                        register={register("data.type")}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>군</div>
+                      <DropInputbox
+                        list={grouplist}
+                        defaultValue={userdata.data.group}
+                        name="group"
+                        register={register("data.group")}
+                      />
+                    </div>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>순번</div>
+                      <DropInputbox
+                        list={turnlist}
+                        defaultValue={userdata.data.turn}
+                        name="turn"
+                        register={register("data.turn")}
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>타입</div>
-                  <DropInputbox
-                    list={typelist}
-                    defaultValue={userdata.data.type}
-                    name="type"
-                    register={register("data.type")}
-                  />
-                </div>
-            </div>
-            <div className={styles.content_body2}>
-              <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>군</div>
-                  <DropInputbox
-                    list={grouplist}
-                    defaultValue={userdata.data.group}
-                    name="group"
-                    register={register("data.group")}
-                  />
-                </div>
-                <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>순번</div>
-                  <DropInputbox
-                    list={turnlist}
-                    defaultValue={userdata.data.turn}
-                    name="turn"
-                    register={register("data.turn")}
-                  />
-                </div>
-            </div>
-          </div>
-          
-          <div className={styles.content_body}>
-            <div className={styles.content_body2}>
-              <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>가입일자</div>
-                  <Inputbox
-                    type="date"
-                    defaultValue={userdata.data.submitdate.substr(0, 10)}
-                    date_placeholder="가입일자"
-                    register={register("data.submitdate")}
-                  />
-                </div>
-            </div>
-            <div className={styles.content_body2}>
-            <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>가입가</div>
-                  <Inputbox
-                    type="number"
-                    defaultValue={userdata.data.submitprice}
-                    placeholder="가입가"
-                    register={register("data.submitprice")}
-                  />
-                </div>
-            </div>
-          </div>
-          <div className={styles.content_body}>
-            <div className={styles.content_body2}>
-            <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>납입일자</div>
-                  <Inputbox
-                    type="date"
-                    defaultValue={userdata.data.earnestdate.substr(0, 10)}
-                    date_placeholder="예약금 납입일자"
-                    register={register("data.earnestdate")}
-                  />
-                </div>
-            </div>
-            <div className={styles.content_body2}>
-            <div className={styles.InputboxField}>
-                  <div className={styles.InputFont}>예약금</div>
-                  <Inputbox
-                    type="number"
-                    defaultValue={userdata.data.earnest}
-                    placeholder="예약금"
-                    register={register("data.earnest")}
-                  />
-                </div>
-            </div>
-          </div>
-          <div className={styles.content_body}>
-            <div className={styles.content_body3}>
-              <Checkbox
-                label="7차 면제"
-                name="exception"
-                register={register("fileinfo.exception", { required: true })}
-                defaultChecked={userdata.fileinfo.exception && JSON.parse(userdata.fileinfo.exception)}
-              />
-            </div>
-            <div className={styles.content_body3}>
-              <Checkbox
-                label="출자금"
-                name="investment"
-                register={register("fileinfo.investment", { required: true })}
-                defaultChecked={userdata.fileinfo.investment && JSON.parse(userdata.fileinfo.investment)}
-              />
-            </div>
-            <div className={styles.content_body3}>
-              <Checkbox
-                label="자산A동 계약서"
-                name="jscontract"
-                register={register("fileinfo.jscontract", { required: true })}
-                defaultChecked={userdata.fileinfo.jscontract && JSON.parse(userdata.fileinfo.jscontract)}
-              />
-            </div>
-          </div>
 
-
-        </div>
+                <div className={styles.content_body}>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>가입일자</div>
+                      <Inputbox
+                        type="date"
+                        defaultValue={userdata.data.submitdate.substr(0, 10)}
+                        date_placeholder="가입일자"
+                        register={register("data.submitdate")}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>가입가</div>
+                      <Inputbox
+                        type="number"
+                        defaultValue={userdata.data.submitprice}
+                        placeholder="가입가"
+                        register={register("data.submitprice")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.content_body}>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>납입일자</div>
+                      <Inputbox
+                        type="date"
+                        defaultValue={userdata.data.earnestdate.substr(0, 10)}
+                        date_placeholder="예약금 납입일자"
+                        register={register("data.earnestdate")}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.content_body2}>
+                    <div className={styles.InputboxField}>
+                      <div className={styles.InputFont}>예약금</div>
+                      <Inputbox
+                        type="number"
+                        defaultValue={userdata.data.earnest}
+                        placeholder="예약금"
+                        register={register("data.earnest")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.content_body}>
+                  <div className={styles.content_body3}>
+                    <Checkbox
+                      label="7차 면제"
+                      name="exception"
+                      register={register("fileinfo.exception", {
+                        required: true,
+                      })}
+                      defaultChecked={
+                        userdata.fileinfo.exception &&
+                        JSON.parse(userdata.fileinfo.exception)
+                      }
+                    />
+                  </div>
+                  <div className={styles.content_body3}>
+                    <Checkbox
+                      label="출자금"
+                      name="investment"
+                      register={register("fileinfo.investment", {
+                        required: true,
+                      })}
+                      defaultChecked={
+                        userdata.fileinfo.investment &&
+                        JSON.parse(userdata.fileinfo.investment)
+                      }
+                    />
+                  </div>
+                  <div className={styles.content_body3}>
+                    <Checkbox
+                      label="자산A동 계약서"
+                      name="jscontract"
+                      register={register("fileinfo.jscontract", {
+                        required: true,
+                      })}
+                      defaultChecked={
+                        userdata.fileinfo.jscontract &&
+                        JSON.parse(userdata.fileinfo.jscontract)
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
               {/*<h3>MGM</h3> *temp 이것도 나중에 추가
               <div className={styles.content_container}>
@@ -393,73 +399,73 @@ function Modify() {
               </div>*/}
               <h3>부속서류</h3>
               <div className={styles.content_container}>
-              <Checkbox
-                label="인감증명서"
-                name="A"
-                defaultChecked={JSON.parse(userdata.fileinfo.A)}
-                register={register("fileinfo.A", { required: true })}
-              />
-              <Checkbox
-                label="본인서명확인서"
-                name="B"
-                defaultChecked={JSON.parse(userdata.fileinfo.B)}
-                register={register("fileinfo.B", { required: true })}
-              />
-              <Checkbox
-                label="확약서"
-                name="D"
-                defaultChecked={JSON.parse(userdata.fileinfo.D)}
-                register={register("fileinfo.D", { required: true })}
-              />
-              <Checkbox
-                label="신분증"
-                name="C"
-                defaultChecked={JSON.parse(userdata.fileinfo.C)}
-                register={register("fileinfo.C", { required: true })}
-              />
-              <Checkbox
-                label="무상옵션"
-                name="F"
-                defaultChecked={JSON.parse(userdata.fileinfo.F)}
-                register={register("fileinfo.F", { required: true })}
-              />
-              <Checkbox
-                label="창준위용"
-                name="E"
-                defaultChecked={JSON.parse(userdata.fileinfo.E)}
-                register={register("fileinfo.E", { required: true })}
-              />
-              <Checkbox
-                label="총회동의서"
-                name="H"
-                defaultChecked={JSON.parse(userdata.fileinfo.H)}
-                register={register("fileinfo.H", { required: true })}
-              />
-              <Checkbox
-                label="선호도조사"
-                name="G"
-                defaultChecked={JSON.parse(userdata.fileinfo.G)}
-                register={register("fileinfo.G", { required: true })}
-              />
-              <Checkbox
-                label="사은품"
-                name="I"
-                defaultChecked={JSON.parse(userdata.fileinfo.I)}
-                register={register("fileinfo.I", { required: true })}
-              />
+                <Checkbox
+                  label="인감증명서"
+                  name="A"
+                  defaultChecked={JSON.parse(userdata.fileinfo.A)}
+                  register={register("fileinfo.A", { required: true })}
+                />
+                <Checkbox
+                  label="본인서명확인서"
+                  name="B"
+                  defaultChecked={JSON.parse(userdata.fileinfo.B)}
+                  register={register("fileinfo.B", { required: true })}
+                />
+                <Checkbox
+                  label="확약서"
+                  name="D"
+                  defaultChecked={JSON.parse(userdata.fileinfo.D)}
+                  register={register("fileinfo.D", { required: true })}
+                />
+                <Checkbox
+                  label="신분증"
+                  name="C"
+                  defaultChecked={JSON.parse(userdata.fileinfo.C)}
+                  register={register("fileinfo.C", { required: true })}
+                />
+                <Checkbox
+                  label="무상옵션"
+                  name="F"
+                  defaultChecked={JSON.parse(userdata.fileinfo.F)}
+                  register={register("fileinfo.F", { required: true })}
+                />
+                <Checkbox
+                  label="창준위용"
+                  name="E"
+                  defaultChecked={JSON.parse(userdata.fileinfo.E)}
+                  register={register("fileinfo.E", { required: true })}
+                />
+                <Checkbox
+                  label="총회동의서"
+                  name="H"
+                  defaultChecked={JSON.parse(userdata.fileinfo.H)}
+                  register={register("fileinfo.H", { required: true })}
+                />
+                <Checkbox
+                  label="선호도조사"
+                  name="G"
+                  defaultChecked={JSON.parse(userdata.fileinfo.G)}
+                  register={register("fileinfo.G", { required: true })}
+                />
+                <Checkbox
+                  label="사은품"
+                  name="I"
+                  defaultChecked={JSON.parse(userdata.fileinfo.I)}
+                  register={register("fileinfo.I", { required: true })}
+                />
 
-            <span></span>
-          <span></span>
-          <span></span>
-          <span>파일업로드</span>
-          <span></span>
-          <FileInputbox
-            className="H"
-            name="fileH"
-            value={file["H"]}
-            isupload={isupload["H"]}
-            handleChange={handleChange}
-          />
+                <span></span>
+                <span></span>
+                <span></span>
+                <span>파일업로드</span>
+                <span></span>
+                <FileInputbox
+                  className="H"
+                  name="fileH"
+                  value={file["H"]}
+                  isupload={isupload["H"]}
+                  handleChange={handleChange}
+                />
               </div>
 
               <h3>담당자 정보</h3>

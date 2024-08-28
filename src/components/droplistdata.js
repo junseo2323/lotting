@@ -85,32 +85,32 @@ export const banklist = [
 ];
 export const classificationlist = [
   {
-    value:"CHUNG",
-    item:"청약",
+    value: "c",
+    item: "청약",
   },
   {
-    value:"JUNG",
-    item:"정계약",
+    value: "j",
+    item: "정계약",
   },
   {
-    value:"MODIFY",
-    item:"수정",
+    value: "r",
+    item: "수정",
   },
   {
-    value:"CANCLE",
-    item:"해지",
+    value: "x",
+    item: "해지",
   },
   {
-    value:"UPDAE",
-    item:"업대",
+    value: "p",
+    item: "업대",
   },
   {
-    value:"CHANG",
-    item:"창준위",
+    value: "t",
+    item: "창준위",
   },
   {
-    value:"JIJU",
-    item:"지주",
+    value: "g",
+    item: "지주",
   },
 ];
 

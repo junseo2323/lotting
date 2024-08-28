@@ -12,6 +12,16 @@ import { deleteUser } from "@/utils/api";
 import { ModifyButton } from "@/components/Button";
 import withAuth from "@/utils/hoc/withAuth";
 
+const categoryMapping = {
+  c: "청약",
+  j: "정계약",
+  r: "수정",
+  x: "해지",
+  p: "업대",
+  t: "창준위",
+  g: "지주",
+};
+
 const SearchList = ({ name, number }) => {
   const setNameState = useSetRecoilState(searchnameState);
   const setNumberState = useSetRecoilState(searchnumberState);
@@ -88,6 +98,7 @@ const SearchList = ({ name, number }) => {
   return (
     <div>
       <div className={styles.tablecontainer}>
+        {/* 기존 열 */}
         <div className={styles.unitContainer}>
           <span onClick={() => handleSort("id")}>관리번호</span>
         </div>
@@ -112,13 +123,15 @@ const SearchList = ({ name, number }) => {
         <div className={styles.unitContainer}>
           <span>임시동호</span>
         </div>
-        <span></span>
+        {/* 새로 추가된 분류 열 */}
+        <div className={styles.unitContainer}>
+          <span onClick={() => handleSort("category")}>분류</span>
+        </div>
       </div>
       {searchdata.state === "hasValue" &&
         sortedData()
           .filter((k) => k.userinfo && k.data)
           .map((k) => {
-            console.log(k);
             return (
               <div className={styles.maincontainer} key={k.id}>
                 <Link href={"/search/userinfo/" + k.id} className={styles.link}>
@@ -140,18 +153,23 @@ const SearchList = ({ name, number }) => {
                       {k.data?.submitturn || "N/A"}
                     </div>
                     <div className={styles.unitContainer}>
-                      {k.data?.submitdate ? k.data.submitdate.slice(0, 10) : "N/A"}
+                      {k.data?.submitdate
+                        ? k.data.submitdate.slice(0, 10)
+                        : "N/A"}
                     </div>
-
-                    <div
-                      className={styles.unitContainer}
-                    >{`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}</div>
+                    <div className={styles.unitContainer}>
+                      {`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}
+                    </div>
+                    {/* 분류 값 표시 */}
+                    <div className={styles.unitContainer}>
+                      {categoryMapping[k.userinfo?.sort] || "N/A"}
+                    </div>
                   </div>
                 </Link>
                 <div className={styles.unitContainer}>
-                <ModifyButton onClick={() => handleDelete(k.id)}>
-                  <div className={styles.CBBottonFont}>삭제</div>
-                </ModifyButton>
+                  <ModifyButton onClick={() => handleDelete(k.id)}>
+                    <div className={styles.CBBottonFont}>삭제</div>
+                  </ModifyButton>
                 </div>
               </div>
             );
