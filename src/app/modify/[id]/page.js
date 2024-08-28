@@ -184,7 +184,7 @@ function Modify() {
                   <div className={styles.InputFont}>분류</div>
                   <DropInputbox
                     list={classificationlist}
-                    register={register("userinfo.classify", { required: true })}
+                    register={register("userinfo.sort", { required: true })}
                   />
                 </div>
                 <div className={styles.InputboxField}>

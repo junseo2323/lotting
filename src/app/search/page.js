@@ -13,12 +13,16 @@ import { ModifyButton } from "@/components/Button";
 import withAuth from "@/utils/hoc/withAuth";
 
 const categoryMapping = {
+  1: "정계약",
   c: "청약",
   j: "정계약",
   r: "수정",
   x: "해지",
+  x1: "해지",
   p: "업대",
+  p1: "업대",
   t: "창준위",
+  t1: "창준위",
   g: "지주",
 };
 
@@ -57,7 +61,11 @@ const SearchList = ({ name, number }) => {
   };
 
   const sortedData = () => {
-    let sortableData = [...searchdata.contents];
+    const allowedSortValues = ["1", "c", "j", "p", "p1", "t", "t1", "g"];
+
+    let sortableData = [...searchdata.contents].filter((k) =>
+      allowedSortValues.includes(k.userinfo?.sort)
+    );
 
     if (sortConfig.key !== null) {
       sortableData.sort((a, b) => {
@@ -98,7 +106,6 @@ const SearchList = ({ name, number }) => {
   return (
     <div>
       <div className={styles.tablecontainer}>
-        {/* 기존 열 */}
         <div className={styles.unitContainer}>
           <span onClick={() => handleSort("id")}>관리번호</span>
         </div>
@@ -120,10 +127,9 @@ const SearchList = ({ name, number }) => {
         <div className={styles.unitContainer}>
           <span onClick={() => handleSort("submitdate")}>가입 날짜</span>
         </div>
-        <div className={styles.unitContainer}>
+        {/* <div className={styles.unitContainer}>
           <span>임시동호</span>
-        </div>
-        {/* 새로 추가된 분류 열 */}
+        </div> */}
         <div className={styles.unitContainer}>
           <span onClick={() => handleSort("category")}>분류</span>
         </div>
@@ -157,10 +163,9 @@ const SearchList = ({ name, number }) => {
                         ? k.data.submitdate.slice(0, 10)
                         : "N/A"}
                     </div>
-                    <div className={styles.unitContainer}>
+                    {/* <div className={styles.unitContainer}>
                       {`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}
-                    </div>
-                    {/* 분류 값 표시 */}
+                    </div> */}
                     <div className={styles.unitContainer}>
                       {categoryMapping[k.userinfo?.sort] || "N/A"}
                     </div>

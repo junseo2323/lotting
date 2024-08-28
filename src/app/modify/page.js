@@ -13,12 +13,16 @@ import { ModifyButton } from "@/components/Button";
 import withAuth from "@/utils/hoc/withAuth";
 
 const categoryMapping = {
+  1: "정계약",
   c: "청약",
   j: "정계약",
   r: "수정",
   x: "해지",
+  x1: "해지",
   p: "업대",
+  p1: "업대",
   t: "창준위",
+  t1: "창준위",
   g: "지주",
 };
 
@@ -48,6 +52,10 @@ const SearchList = ({ name, number }) => {
     return <div>Error loading data</div>;
   }
 
+  if (searchdata.state === "hasValue") {
+    console.log("Received search data:", searchdata.contents);
+  }
+
   const handleSort = (key) => {
     let direction = "ascending";
     if (sortConfig.key === key && sortConfig.direction === "ascending") {
@@ -57,13 +65,47 @@ const SearchList = ({ name, number }) => {
   };
 
   const sortedData = () => {
-    let sortableData = [...searchdata.contents];
+    const allowedSortValues = [
+      "1",
+      "c",
+      "j",
+      "p",
+      "p1",
+      "t",
+      "t1",
+      "g",
+      "r",
+      "x",
+      "x1",
+    ];
+
+    const categoryOrder = {
+      정계약: 1,
+      청약: 2,
+      수정: 3,
+      해지: 4,
+      업대: 5,
+      창준위: 6,
+      지주: 7,
+      "N/A": 99,
+    };
+
+    let sortableData = [...searchdata.contents].filter((k) =>
+      allowedSortValues.includes(k.userinfo?.sort)
+    );
 
     if (sortConfig.key !== null) {
       sortableData.sort((a, b) => {
         let aValue, bValue;
 
-        if (sortConfig.key === "id") {
+        if (sortConfig.key === "sort") {
+          aValue =
+            categoryOrder[categoryMapping[a.userinfo?.sort]] ||
+            categoryOrder["N/A"];
+          bValue =
+            categoryOrder[categoryMapping[b.userinfo?.sort]] ||
+            categoryOrder["N/A"];
+        } else if (sortConfig.key === "id") {
           aValue = parseInt(a[sortConfig.key], 10);
           bValue = parseInt(b[sortConfig.key], 10);
         } else {
@@ -80,6 +122,8 @@ const SearchList = ({ name, number }) => {
         return 0;
       });
     }
+
+    console.log("Sorted data:", sortableData);
 
     return sortableData;
   };
@@ -121,11 +165,7 @@ const SearchList = ({ name, number }) => {
           <span onClick={() => handleSort("submitdate")}>가입 날짜</span>
         </div>
         <div className={styles.unitContainer}>
-          <span>임시동호</span>
-        </div>
-        {/* 새로 추가된 분류 열 */}
-        <div className={styles.unitContainer}>
-          <span onClick={() => handleSort("category")}>분류</span>
+          <span onClick={() => handleSort("sort")}>분류</span>
         </div>
       </div>
       {searchdata.state === "hasValue" &&
@@ -157,10 +197,7 @@ const SearchList = ({ name, number }) => {
                         ? k.data.submitdate.slice(0, 10)
                         : "N/A"}
                     </div>
-                    <div className={styles.unitContainer}>
-                      {`${k.data?.type || "N/A"}-${k.data?.group || "N/A"}-${k.data?.turn || "N/A"}`}
-                    </div>
-                    {/* 분류 값 표시 */}
+
                     <div className={styles.unitContainer}>
                       {categoryMapping[k.userinfo?.sort] || "N/A"}
                     </div>
