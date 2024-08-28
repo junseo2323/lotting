@@ -1,92 +1,103 @@
 .container {
-    background-color: rgba(162, 161, 168, 0.01);
-    width: 280px;
-    height: 800px;
-    float: left;
+  background-color: rgba(162, 161, 168, 0.01);
+  width: 280px;
+  height: 800px;
+  float: left;
 }
 
 .logostyle {
-    margin-top: 39px;
-    margin-left: 30px;
+  margin-top: 39px;
+  margin-left: 30px;
 }
 
-.listconatiner {
-    margin-top: 30px;
-    margin-left: 30px;
+.listContainer {
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
 .select {
-    position: relative;
-    background: rgba(113, 82, 243, 0.05);
-    color: #7152F3;
-    font-family: Lexend;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    text-align: left;
-    margin: 5px 0;
-    width: 220px;
-    height: 50px;
-    border-radius: 0px 10px 10px 0px;
-    flex-shrink: 0;
-    border-left: 4px solid #7152F3;
+  position: relative;
+  background: rgba(113, 82, 243, 0.05);
+  color: #7152f3;
+  font-family: Lexend;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+  margin: 5px 0;
+  width: 220px;
+  height: 50px;
+  border-radius: 0px 10px 10px 0px;
+  flex-shrink: 0;
+  border-left: 4px solid #7152f3;
+  transition: all 0.3s ease;
 }
 
-.innerconaainer {
-    padding-top: 5.5%;
-    position: relative; /* Ensure the inner container is relative to manage absolute positioning within */
+.innerContainer {
+  padding-top: 5.5%;
+  position: relative;
 }
 
 .innertext {
-    position: absolute;
-    padding-top: 2px;
+  position: absolute;
+  padding-top: 2px;
 }
 
 .nonselect {
-    color: #16151C;
-    font-family: Lexend;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 24px;
-    margin: 5px 0;
-    text-align: left;
-    padding-left: 4px;
-    width: 220px;
-    height: 50px;
-    border-radius: 0px 10px 10px 0px;
-    flex-shrink: 0;
+  color: #16151c;
+  font-family: Lexend;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 5px 0;
+  text-align: left;
+  padding-left: 4px;
+  width: 220px;
+  height: 50px;
+  border-radius: 0px 10px 10px 0px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.nonselect:hover {
+  background-color: rgba(113, 82, 243, 0.1);
+  color: #7152f3;
 }
 
 .dropdownMenu {
-    display: none; /* 기본적으로 서브메뉴를 숨김 */
-    position: absolute;
-    top: 50px; /* 부모 li의 상단부터 50px 떨어진 위치에 서브메뉴를 표시 */
-    left: 220px; /* 부모 li의 왼쪽 끝부터 220px 떨어진 위치에 서브메뉴를 표시 */
-    background-color: #fff;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 0px 10px 10px 0px;
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 220px;
+  background-color: #fff;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 10px 10px 0px;
+  z-index: 1;
 }
 
-.dropdownMenu li {
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
+.dropdownMenu a {
+  text-decoration: none;
+  color: #16151c;
+  font-family: Lexend;
+  font-size: 14px;
+  font-weight: 300;
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
 }
 
-.dropdownMenu li:last-child {
-    border-bottom: none;
+.dropdownMenu a:last-child {
+  border-bottom: none;
 }
 
-.dropdownMenu li a {
-    text-decoration: none;
-    color: #16151C;
-    font-family: Lexend;
-    font-size: 14px;
-    font-weight: 300;
+.dropdownMenu a:hover {
+  background-color: rgba(113, 82, 243, 0.1);
 }
 
-.listconatiner > li:hover .dropdownMenu {
-    display: block; /* 부모 li에 마우스를 올렸을 때 서브메뉴가 나타남 */
+.listContainer > div:hover .dropdownMenu {
+  display: block;
 }
