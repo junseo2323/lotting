@@ -1,7 +1,7 @@
 .container {
   background-color: rgba(162, 161, 168, 0.01);
   width: 280px;
-  height: 800px;
+  height: auto;
   float: left;
 }
 
@@ -64,40 +64,37 @@
   color: #7152f3;
 }
 
-.dropdownMenu {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 220px;
-  background-color: #fff;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 0px 10px 10px 0px;
-  z-index: 1;
+.expandableContainer {
+  margin: 5px 0;
+  transition: margin-bottom 0.5s ease-in-out;
 }
 
-.dropdownMenu a {
-  text-decoration: none;
-  color: #16151c;
+.expandableContainer:hover {
+  margin-bottom: 0px;
+}
+
+.expandableMenu {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.expandableContainer:hover .expandableMenu {
+  max-height: 150px;
+}
+
+.expandableMenuItem {
+  padding-left: 15%;
   font-family: Lexend;
   font-size: 14px;
   font-weight: 300;
-  display: block;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-  transition: background-color 0.3s ease;
+  color: #16151c;
+  line-height: 24px;
+  cursor: pointer;
 }
 
-.dropdownMenu a:last-child {
-  border-bottom: none;
-}
-
-.dropdownMenu a:hover {
+.expandableMenuItem:hover {
   background-color: rgba(113, 82, 243, 0.1);
-}
-
-.listContainer > div:hover .dropdownMenu {
-  display: block;
+  color: #7152f3;
+  transition: all 0.3s ease;
 }

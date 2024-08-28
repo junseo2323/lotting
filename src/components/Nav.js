@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -19,6 +19,7 @@ const iconstyle = { fontSize: "1.5em", paddingRight: "10%", paddingLeft: "7%" };
 const Nav = () => {
   const pathname = usePathname();
   const splitpath = pathname.split("/");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -43,22 +44,34 @@ const Nav = () => {
           </div>
         </Link>
         <div
-          className={
-            splitpath[1] === "search" ? styles.select : styles.nonselect
-          }
+          className={styles.expandableContainer}
+          onMouseEnter={() => setMenuOpen(true)}
+          onMouseLeave={() => setMenuOpen(false)}
         >
-          <div className={styles.innerContainer}>
-            {splitpath[1] === "search" ? (
-              <HiUsers style={iconstyle} />
-            ) : (
-              <HiOutlineUsers style={iconstyle} />
-            )}
-            <span className={styles.innertext}>회원 정보 검색</span>
+          <div
+            className={
+              splitpath[1] === "search" ? styles.select : styles.nonselect
+            }
+          >
+            <div className={styles.innerContainer}>
+              {splitpath[1] === "search" ? (
+                <HiUsers style={iconstyle} />
+              ) : (
+                <HiOutlineUsers style={iconstyle} />
+              )}
+              <span className={styles.innertext}>회원 정보 검색</span>
+            </div>
           </div>
-          <div className={styles.dropdownMenu}>
-            <Link href="/search">정계약</Link>
-            <Link href="/search/modify">수정</Link>
-            <Link href="/search/cancel">해지</Link>
+          <div className={styles.expandableMenu}>
+            <Link href="/search">
+              <div className={styles.expandableMenuItem}>정계약</div>
+            </Link>
+            <Link href="/search/modify">
+              <div className={styles.expandableMenuItem}>수정</div>
+            </Link>
+            <Link href="/search/cancel">
+              <div className={styles.expandableMenuItem}>해지</div>
+            </Link>
           </div>
         </div>
         <Link href="/create">
