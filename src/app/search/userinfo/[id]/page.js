@@ -363,7 +363,7 @@ function Search() {
                 </div>
                 <div className={styles.contentbody}>
                   <span>
-                    {userdata.cancel.canceldate
+                    {userdata.cancel && userdata.cancel.canceldate
                       ? userdata.cancel.canceldate.slice(0, 10)
                       : "정보 없음"}
                   </span>
@@ -375,7 +375,7 @@ function Search() {
                 </div>
                 <div className={styles.contentbody}>
                   <span>
-                    {userdata.cancel.paybackdate
+                    {userdata.cancel && userdata.cancel.paybackdate
                       ? userdata.cancel.paybackdate.slice(0, 10)
                       : "정보 없음"}
                   </span>
