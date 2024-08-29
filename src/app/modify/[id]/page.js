@@ -28,6 +28,7 @@ import {
 } from "@/components/droplistdata";
 import { updateUserinfo, createFile } from "@/utils/api"; // Import createFile
 import withAuth from "@/utils/hoc/withAuth";
+import Swal from "sweetalert2"; // sweetalert2 import
 
 function Modify() {
   const pathname = usePathname();
@@ -38,16 +39,23 @@ function Modify() {
   const onSubmit = async (data) => {
     try {
       data.fileinfo = isupload; // Add this line to include fileinfo in the data
-      console.log("d" + data);
-      console.log("d" + data.userinfo);
-      console.log("d" + data.fileinfo);
       await createFile(files); // Upload files first
       await updateUserinfo(splitpath[2], data); // Then update user info
-      alert("회원 정보가 성공적으로 업데이트되었습니다.");
-      router.push("/modify/"); // 다시 검색 페이지로 이동
+      Swal.fire({
+        icon: "success",
+        title: "회원 정보가 성공적으로 업데이트되었습니다.",
+        confirmButtonText: "확인",
+      }).then(() => {
+        window.location.reload(); // 페이지 새로고침
+      });
     } catch (error) {
       console.error("회원 정보 업데이트 중 오류 발생:", error);
-      alert("회원 정보 업데이트 중 오류가 발생했습니다.");
+      Swal.fire({
+        icon: "error",
+        title: "오류 발생",
+        text: "회원 정보 업데이트 중 오류가 발생했습니다.",
+        confirmButtonText: "확인",
+      });
     }
   };
 
@@ -77,6 +85,7 @@ function Modify() {
   };
 
   const [isupload, setIsupload] = useState({
+    upload: false,
     A: false,
     B: false,
     C: false,
@@ -86,8 +95,12 @@ function Modify() {
     G: false,
     H: false,
     I: false,
+    exception: false,
+    investment: false,
+    jscontract: false,
   });
   const [file, setFile] = useState({
+    upload: "",
     A: "",
     B: "",
     C: "",
@@ -97,19 +110,38 @@ function Modify() {
     G: "",
     H: "",
     I: "",
+    exception: "",
+    investment: "",
+    jscontract: "",
   });
   const [files, setFiles] = useState([]);
 
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+
+    setIsupload((prev) => {
+      const updatedState = {
+        ...prev,
+        [name]: checked,
+      };
+      return updatedState;
+    });
+
+    console.log(isupload);
+  };
   useEffect(() => {
     if (userselectordata.state === "hasValue" && userselectordata.contents) {
       const userdata = userselectordata.contents;
       const initialFileState = {};
       const initialUploadState = {};
 
-      for (const key in userdata.fileinfo) {
-        if (userdata.fileinfo.hasOwnProperty(key)) {
+      for (const key in isupload) {
+        if (userdata.fileinfo && userdata.fileinfo.hasOwnProperty(key)) {
           initialFileState[key] = userdata.fileinfo[key] ? "파일 존재" : "";
           initialUploadState[key] = !!userdata.fileinfo[key];
+        } else {
+          initialFileState[key] = ""; // 데이터베이스에 값이 없으면 빈 문자열로 초기화
+          initialUploadState[key] = false; // 데이터베이스에 값이 없으면 false로 초기화
         }
       }
 
@@ -320,15 +352,13 @@ function Modify() {
                     </div>
                   </div>
                   <div className={styles.content_body2}>
-                    <div className={styles.InputboxField}>
-                      <div className={styles.InputFont}>예약금</div>
-                      <Inputbox
-                        type="number"
-                        defaultValue={userdata.data.earnest}
-                        placeholder="예약금"
-                        register={register("data.earnest")}
-                      />
-                    </div>
+                    <div className={styles.InputFont}>예약금</div>
+                    <Inputbox
+                      type="number"
+                      defaultValue={userdata.data.earnest}
+                      placeholder="예약금"
+                      register={register("data.earnest")}
+                    />
                   </div>
                 </div>
                 <div className={styles.content_body}>
@@ -336,9 +366,7 @@ function Modify() {
                     <Checkbox
                       label="7차 면제"
                       name="exception"
-                      register={register("fileinfo.exception", {
-                        required: true,
-                      })}
+                      onChange={handleCheckboxChange}
                       defaultChecked={
                         userdata.fileinfo.exception &&
                         JSON.parse(userdata.fileinfo.exception)
@@ -349,9 +377,7 @@ function Modify() {
                     <Checkbox
                       label="출자금"
                       name="investment"
-                      register={register("fileinfo.investment", {
-                        required: true,
-                      })}
+                      onChange={handleCheckboxChange}
                       defaultChecked={
                         userdata.fileinfo.investment &&
                         JSON.parse(userdata.fileinfo.investment)
@@ -362,9 +388,7 @@ function Modify() {
                     <Checkbox
                       label="자산A동 계약서"
                       name="jscontract"
-                      register={register("fileinfo.jscontract", {
-                        required: true,
-                      })}
+                      onChange={handleCheckboxChange}
                       defaultChecked={
                         userdata.fileinfo.jscontract &&
                         JSON.parse(userdata.fileinfo.jscontract)
@@ -402,56 +426,56 @@ function Modify() {
                 <Checkbox
                   label="인감증명서"
                   name="A"
+                  onChange={handleCheckboxChange}
                   defaultChecked={JSON.parse(userdata.fileinfo.A)}
-                  register={register("fileinfo.A", { required: true })}
                 />
                 <Checkbox
                   label="본인서명확인서"
                   name="B"
+                  onChange={handleCheckboxChange}
                   defaultChecked={JSON.parse(userdata.fileinfo.B)}
-                  register={register("fileinfo.B", { required: true })}
                 />
                 <Checkbox
                   label="확약서"
-                  name="D"
-                  defaultChecked={JSON.parse(userdata.fileinfo.D)}
-                  register={register("fileinfo.D", { required: true })}
+                  name="C"
+                  onChange={handleCheckboxChange}
+                  defaultChecked={JSON.parse(userdata.fileinfo.C)}
                 />
                 <Checkbox
                   label="신분증"
-                  name="C"
-                  defaultChecked={JSON.parse(userdata.fileinfo.C)}
-                  register={register("fileinfo.C", { required: true })}
+                  name="D"
+                  onChange={handleCheckboxChange}
+                  defaultChecked={JSON.parse(userdata.fileinfo.D)}
                 />
                 <Checkbox
                   label="무상옵션"
-                  name="F"
-                  defaultChecked={JSON.parse(userdata.fileinfo.F)}
-                  register={register("fileinfo.F", { required: true })}
+                  name="E"
+                  onChange={handleCheckboxChange}
+                  defaultChecked={JSON.parse(userdata.fileinfo.E)}
                 />
                 <Checkbox
                   label="창준위용"
-                  name="E"
-                  defaultChecked={JSON.parse(userdata.fileinfo.E)}
-                  register={register("fileinfo.E", { required: true })}
+                  name="F"
+                  onChange={handleCheckboxChange}
+                  defaultChecked={JSON.parse(userdata.fileinfo.F)}
                 />
                 <Checkbox
                   label="총회동의서"
-                  name="H"
-                  defaultChecked={JSON.parse(userdata.fileinfo.H)}
-                  register={register("fileinfo.H", { required: true })}
+                  name="G"
+                  onChange={handleCheckboxChange}
+                  defaultChecked={JSON.parse(userdata.fileinfo.G)}
                 />
                 <Checkbox
                   label="선호도조사"
-                  name="G"
-                  defaultChecked={JSON.parse(userdata.fileinfo.G)}
-                  register={register("fileinfo.G", { required: true })}
+                  name="H"
+                  onChange={handleCheckboxChange}
+                  defaultChecked={JSON.parse(userdata.fileinfo.H)}
                 />
                 <Checkbox
                   label="사은품"
                   name="I"
+                  onChange={handleCheckboxChange}
                   defaultChecked={JSON.parse(userdata.fileinfo.I)}
-                  register={register("fileinfo.I", { required: true })}
                 />
 
                 <span></span>
@@ -460,10 +484,10 @@ function Modify() {
                 <span>파일업로드</span>
                 <span></span>
                 <FileInputbox
-                  className="H"
-                  name="fileH"
-                  value={file["H"]}
-                  isupload={isupload["H"]}
+                  className="upload"
+                  name="fileupload"
+                  value={file["upload"]}
+                  isupload={isupload["upload"]}
                   handleChange={handleChange}
                 />
               </div>

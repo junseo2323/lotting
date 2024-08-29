@@ -276,7 +276,7 @@ function Create() {
             <div className={styles.content_body3}>
               <Checkbox
                 label="자산A동 계약서"
-                name="contract"
+                name="jscontract"
                 onChange={handleCheckboxChange}
               />
             </div>
@@ -322,7 +322,7 @@ function Create() {
           <Checkbox label="확약서" name="C" onChange={handleCheckboxChange} />
           <Checkbox label="신분증" name="D" onChange={handleCheckboxChange} />
           <Checkbox label="무상옵션" name="E" onChange={handleCheckboxChange} />
-          <Checkbox label="상준위용" name="F" onChange={handleCheckboxChange} />
+          <Checkbox label="창준위용" name="F" onChange={handleCheckboxChange} />
           <Checkbox
             label="총회동의서"
             name="G"
