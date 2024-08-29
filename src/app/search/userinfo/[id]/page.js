@@ -55,7 +55,7 @@ function Search() {
                   <span className={styles.title}>관리번호</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.id}</span>
+                  <span>{userdata.id || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -63,7 +63,7 @@ function Search() {
                   <span className={styles.title}>성명</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.userinfo.name}</span>
+                  <span>{userdata.userinfo.name || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -72,7 +72,8 @@ function Search() {
                 </div>
                 <div className={styles.contentbody}>
                   <span>
-                    {userdata.userinfo.firstid}-{userdata.userinfo.secondid}
+                    {userdata.userinfo.firstid || "정보 없음"}-
+                    {userdata.userinfo.secondid || "정보 없음"}
                   </span>
                 </div>
               </div>
@@ -81,7 +82,7 @@ function Search() {
                   <span className={styles.title}>이메일</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.userinfo.email}</span>
+                  <span>{userdata.userinfo.email || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -89,7 +90,7 @@ function Search() {
                   <span className={styles.title}>휴대전화</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.userinfo.phone}</span>
+                  <span>{userdata.userinfo.phone || "정보 없음"}</span>
                 </div>
               </div>
             </div>
@@ -99,7 +100,7 @@ function Search() {
                   <span className={styles.title}>타입</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.data.type}</span>
+                  <span>{userdata.data.type || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -107,7 +108,7 @@ function Search() {
                   <span className={styles.title}>군</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.data.group}</span>
+                  <span>{userdata.data.group || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -115,7 +116,7 @@ function Search() {
                   <span className={styles.title}>순번</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.data.turn}</span>
+                  <span>{userdata.data.turn || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -123,7 +124,7 @@ function Search() {
                   <span className={styles.title}>가입차순</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.data.submitturn}</span>
+                  <span>{userdata.data.submitturn || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -132,7 +133,7 @@ function Search() {
                 </div>
                 <div className={styles.contentbody}>
                   <span>
-                    {sortMapping[userdata.userinfo.sort] || "알 수 없음"}
+                    {sortMapping[userdata.userinfo.sort] || "정보 없음"}
                   </span>
                 </div>
               </div>
@@ -143,7 +144,11 @@ function Search() {
                   <span className={styles.title}>가입일자</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.data.submitdate.slice(0, 10)}</span>
+                  <span>
+                    {userdata.data.submitdate
+                      ? userdata.data.submitdate.slice(0, 10)
+                      : "정보 없음"}
+                  </span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -153,8 +158,10 @@ function Search() {
                 <div className={styles.contentbody}>
                   <span>
                     {userdata.data.submitprice
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      ? userdata.data.submitprice
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      : "정보 없음"}
                   </span>
                 </div>
               </div>
@@ -163,7 +170,11 @@ function Search() {
                   <span className={styles.title}>예약금 납입일자</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.data.earnestdate.slice(0, 10)}</span>
+                  <span>
+                    {userdata.data.earnestdate
+                      ? userdata.data.earnestdate.slice(0, 10)
+                      : "정보 없음"}
+                  </span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -173,8 +184,10 @@ function Search() {
                 <div className={styles.contentbody}>
                   <span>
                     {userdata.data.earnest
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      ? userdata.data.earnest
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      : "정보 없음"}
                   </span>
                 </div>
               </div>
@@ -185,7 +198,7 @@ function Search() {
                   <span className={styles.title}>법정주소</span>
                 </div>
                 <div className={styles.postcontentbody}>
-                  <span>{userdata.userinfo.getpost}</span>
+                  <span>{userdata.userinfo.getpost || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.postunitbody}>
@@ -193,7 +206,7 @@ function Search() {
                   <span className={styles.title}>우편물 수령주소</span>
                 </div>
                 <div className={styles.postcontentbody}>
-                  <span>{userdata.userinfo.post}</span>
+                  <span>{userdata.userinfo.post || "정보 없음"}</span>
                 </div>
               </div>
             </div>
@@ -203,7 +216,7 @@ function Search() {
                   <span className={styles.title}>은행명</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.userinfo.bank}</span>
+                  <span>{userdata.userinfo.bank || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -211,7 +224,7 @@ function Search() {
                   <span className={styles.title}>계좌번호</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.userinfo.bankid}</span>
+                  <span>{userdata.userinfo.bankid || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -219,7 +232,7 @@ function Search() {
                   <span className={styles.title}>예금주</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.userinfo.bankwho}</span>
+                  <span>{userdata.userinfo.bankwho || "정보 없음"}</span>
                 </div>
               </div>
             </div>
@@ -273,7 +286,7 @@ function Search() {
                   <span className={styles.title}>총괄</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.ext.manage}</span>
+                  <span>{userdata.ext.manage || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -281,7 +294,7 @@ function Search() {
                   <span className={styles.title}>본부</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.ext.managemain}</span>
+                  <span>{userdata.ext.managemain || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -289,7 +302,7 @@ function Search() {
                   <span className={styles.title}>팀</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.ext.manageteam}</span>
+                  <span>{userdata.ext.manageteam || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -297,7 +310,7 @@ function Search() {
                   <span className={styles.title}>담당자</span>
                 </div>
                 <div className={styles.contentbody}>
-                  <span>{userdata.ext.managename}</span>
+                  <span>{userdata.ext.managename || "정보 없음"}</span>
                 </div>
               </div>
             </div>
@@ -311,7 +324,7 @@ function Search() {
                   <span className={styles.title}>업체명</span>
                 </div>
                 <div className={styles.contentbody}>
-                  {/* <span>{userdata.mgm.companyname}</span> */}
+                  <span>{userdata.mgm?.companyname || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -319,7 +332,7 @@ function Search() {
                   <span className={styles.title}>이름</span>
                 </div>
                 <div className={styles.contentbody}>
-                  {/* <span>{userdata.mgm.name}</span> */}
+                  <span>{userdata.mgm?.name || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -327,7 +340,7 @@ function Search() {
                   <span className={styles.title}>기관</span>
                 </div>
                 <div className={styles.contentbody}>
-                  {/* <span>{userdata.mgm.organization}</span> */}
+                  <span>{userdata.mgm?.organization || "정보 없음"}</span>
                 </div>
               </div>
               <div className={styles.unitbody}>
@@ -335,7 +348,93 @@ function Search() {
                   <span className={styles.title}>계좌</span>
                 </div>
                 <div className={styles.contentbody}>
-                  {/* <span>{userdata.mgm.accountnumber}</span> */}
+                  <span>{userdata.mgm?.accountnumber || "정보 없음"}</span>
+                </div>
+              </div>
+            </div>
+            <h1></h1>
+            <hr />
+
+            <h3>가입해지</h3>
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>해지일자</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>
+                    {userdata.cancel.canceldate
+                      ? userdata.cancel.canceldate.slice(0, 10)
+                      : "정보 없음"}
+                  </span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>환급일자</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>
+                    {userdata.cancel.paybackdate
+                      ? userdata.cancel.paybackdate.slice(0, 10)
+                      : "정보 없음"}
+                  </span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>환급금</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.cancel?.paybackprice || "정보 없음"}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>은행</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.cancel?.bank || "정보 없음"}</span>
+                </div>
+              </div>
+            </div>
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>계좌번호</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.cancel?.bankid || "정보 없음"}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>예금주</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.cancel?.bankwho || "정보 없음"}</span>
+                </div>
+              </div>
+            </div>
+            <h1></h1>
+            <hr />
+
+            <h3>지연이자</h3>
+            <div className={styles.rowcontainer}>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>지연일수</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.delayedloan?.loandate || "정보 없음"}</span>
+                </div>
+              </div>
+              <div className={styles.unitbody}>
+                <div className={styles.titlebody}>
+                  <span className={styles.title}>지연이자액</span>
+                </div>
+                <div className={styles.contentbody}>
+                  <span>{userdata.delayedloan?.loan || "정보 없음"}</span>
                 </div>
               </div>
             </div>
@@ -363,7 +462,7 @@ function Search() {
                 <ul>
                   <li>
                     <span>인감증명서 </span>
-                    {JSON.parse(userdata.fileinfo.A) ? (
+                    {userdata.fileinfo.A && JSON.parse(userdata.fileinfo.A) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -371,7 +470,7 @@ function Search() {
                   </li>
                   <li>
                     <span>본인서명확인서 </span>
-                    {JSON.parse(userdata.fileinfo.B) ? (
+                    {userdata.fileinfo.B && JSON.parse(userdata.fileinfo.B) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -379,7 +478,7 @@ function Search() {
                   </li>
                   <li>
                     <span>신분증 </span>
-                    {JSON.parse(userdata.fileinfo.C) ? (
+                    {userdata.fileinfo.C && JSON.parse(userdata.fileinfo.C) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -387,7 +486,7 @@ function Search() {
                   </li>
                   <li>
                     <span>확약서 </span>
-                    {JSON.parse(userdata.fileinfo.D) ? (
+                    {userdata.fileinfo.D && JSON.parse(userdata.fileinfo.D) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -399,7 +498,7 @@ function Search() {
                 <ul>
                   <li>
                     <span>창준위용 </span>
-                    {JSON.parse(userdata.fileinfo.E) ? (
+                    {userdata.fileinfo.E && JSON.parse(userdata.fileinfo.E) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -407,7 +506,7 @@ function Search() {
                   </li>
                   <li>
                     <span>무상옵션 </span>
-                    {JSON.parse(userdata.fileinfo.F) ? (
+                    {userdata.fileinfo.F && JSON.parse(userdata.fileinfo.F) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -415,7 +514,7 @@ function Search() {
                   </li>
                   <li>
                     <span>선호도조사 </span>
-                    {JSON.parse(userdata.fileinfo.G) ? (
+                    {userdata.fileinfo.G && JSON.parse(userdata.fileinfo.G) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -423,7 +522,7 @@ function Search() {
                   </li>
                   <li>
                     <span>총회동의서 </span>
-                    {JSON.parse(userdata.fileinfo.H) ? (
+                    {userdata.fileinfo.H && JSON.parse(userdata.fileinfo.H) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -431,7 +530,7 @@ function Search() {
                   </li>
                   <li>
                     <span>사은품 </span>
-                    {JSON.parse(userdata.fileinfo.I) ? (
+                    {userdata.fileinfo.I && JSON.parse(userdata.fileinfo.I) ? (
                       <span>✔️</span>
                     ) : (
                       <span>❌</span>
@@ -453,7 +552,7 @@ function Search() {
             <hr />
             <h3>기타 정보</h3>
             <div>
-              <InputAreabox value={userdata.ext.ext} />
+              <InputAreabox value={userdata.ext.ext || "정보 없음"} />
             </div>
           </>
         );

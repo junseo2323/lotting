@@ -90,7 +90,24 @@ const Nav = () => {
             </div>
           </div>
         </Link>
-        
+        <Link href="/createwithdraw">
+          <div
+            className={
+              splitpath[1] === "createwithdraw"
+                ? styles.select
+                : styles.nonselect
+            }
+          >
+            <div className={styles.innerContainer}>
+              {splitpath[1] === "createwithdraw" ? (
+                <HiUsers style={iconstyle} />
+              ) : (
+                <HiOutlineUsers style={iconstyle} />
+              )}
+              <span className={styles.innertext}>해약 회원 입력</span>
+            </div>
+          </div>
+        </Link>
         <div
           className={styles.expandableContainer}
           onMouseEnter={() => setMenuOpen(true)}

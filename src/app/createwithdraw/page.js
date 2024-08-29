@@ -28,9 +28,10 @@ import {
   grouplist,
   turnlist,
   sortlist,
+  cancellist,
 } from "@/components/droplistdata";
 
-function Create() {
+function Createwithdraw() {
   const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm();
@@ -153,48 +154,43 @@ function Create() {
           />
           <Inputbox
             type="email"
-            placeholder="이메일 *"
-            register={register("userinfo.email", { required: true })}
+            placeholder="이메일"
+            register={register("userinfo.email")}
           />
           <DropInputbox
-            list={classificationlist}
-            register={register("userinfo.sort", { required: true })}
-            placeholder="분류 *"
+            list={cancellist}
+            register={register("userinfo.sort")}
           />
           <Inputbox
             type="text"
-            placeholder="가입경로 *"
-            register={register("userinfo.come", { required: true })}
+            placeholder="가입경로"
+            register={register("userinfo.come")}
           />
-          <DropInputbox
-            list={banklist}
-            register={register("userinfo.bank", { required: true })}
-            placeholder="은행 *"
+          <DropInputbox list={banklist} register={register("userinfo.bank")} />
+          <Inputbox
+            type="text"
+            placeholder="계좌번호"
+            register={register("userinfo.bankid")}
           />
           <Inputbox
             type="text"
-            placeholder="계좌번호 *"
-            register={register("userinfo.bankid", { required: true })}
-          />
-          <Inputbox
-            type="text"
-            placeholder="예금주 *"
-            register={register("userinfo.bankwho", { required: true })}
+            placeholder="예금주"
+            register={register("userinfo.bankwho")}
           />
           <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>법정주소 *</div>
+            <div className={styles.InputFont}>법정주소</div>
             <PostInputbox
               placeholder="법정주소"
               name="userinfo.post"
-              register={register("userinfo.post", { required: true })}
+              register={register("userinfo.post")}
             />
           </div>
           <div className={styles.InputboxField}>
-            <div className={styles.InputFont}>우편물 주소지 *</div>
+            <div className={styles.InputFont}>우편물 주소지</div>
             <PostInputbox
               placeholder="우편물 주소지"
               name="userinfo.getpost"
-              register={register("userinfo.getpost", { required: true })}
+              register={register("userinfo.getpost")}
             />
           </div>
           <div className={styles.InputboxField}></div>
@@ -206,28 +202,24 @@ function Create() {
             <div className={styles.content_body2}>
               <DropInputbox
                 list={typeidlist}
-                register={register("data.submitturn", { required: true })}
-                placeholder="제출 순번 *"
+                register={register("data.submitturn")}
               />
               <DropInputbox
                 list={typelist}
                 name="type"
-                register={register("data.type", { required: true })}
-                placeholder="유형 *"
+                register={register("data.type")}
               />
             </div>
             <div className={styles.content_body2}>
               <DropInputbox
                 list={grouplist}
                 name="group"
-                register={register("data.group", { required: true })}
-                placeholder="그룹 *"
+                register={register("data.group")}
               />
               <DropInputbox
                 list={turnlist}
                 name="turn"
-                register={register("data.turn", { required: true })}
-                placeholder="턴 *"
+                register={register("data.turn")}
               />
             </div>
           </div>
@@ -236,15 +228,15 @@ function Create() {
             <div className={styles.content_body2}>
               <Inputbox
                 type="date"
-                date_placeholder="가입일자 *"
-                register={register("data.submitdate", { required: true })}
+                date_placeholder="가입일자"
+                register={register("data.submitdate")}
               />
             </div>
             <div className={styles.content_body2}>
               <Inputbox
                 type="number"
-                placeholder="가입가 *"
-                register={register("data.submitprice", { required: true })}
+                placeholder="가입가"
+                register={register("data.submitprice")}
               />
             </div>
           </div>
@@ -252,15 +244,15 @@ function Create() {
             <div className={styles.content_body2}>
               <Inputbox
                 type="date"
-                date_placeholder="예약금 납입일자 *"
-                register={register("data.earnestdate", { required: true })}
+                date_placeholder="예약금 납입일자"
+                register={register("data.earnestdate")}
               />
             </div>
             <div className={styles.content_body2}>
               <Inputbox
                 type="number"
-                placeholder="예약금 *"
-                register={register("data.earnest", { required: true })}
+                placeholder="예약금"
+                register={register("data.earnest")}
               />
             </div>
           </div>
@@ -293,23 +285,89 @@ function Create() {
         <div className={styles.content_container}>
           <Inputbox
             type="text"
-            placeholder="업체명 *"
-            register={register("mgm.companyname", { required: true })}
+            placeholder="업체명"
+            register={register("mgm.companyname")}
           />
           <Inputbox
             type="text"
-            placeholder="이름 *"
-            register={register("mgm.name", { required: true })}
+            placeholder="이름"
+            register={register("mgm.name")}
           />
           <Inputbox
             type="text"
-            placeholder="기관 *"
-            register={register("mgm.organization", { required: true })}
+            placeholder="기관"
+            register={register("mgm.organization")}
           />
           <Inputbox
             type="text"
-            placeholder="계좌 *"
-            register={register("mgm.accountnumber", { required: true })}
+            placeholder="계좌"
+            register={register("mgm.accountnumber")}
+          />
+        </div>
+        <h3>가입해지</h3>
+        <div className={styles.mainbody}>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="date"
+                date_placeholder="해지일자 *"
+                register={register("cancel.canceldate", { required: true })}
+              />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="date"
+                date_placeholder="환급일자 *"
+                register={register("cancel.paybackdate", { required: true })}
+              />
+            </div>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="number"
+                placeholder="환급금 *"
+                register={register("cancel.paybackprice", { required: true })}
+              />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+              <DropInputbox
+                list={banklist}
+                register={register("cancel.bank", { required: true })}
+              />
+            </div>
+          </div>
+          <div className={styles.content_body}>
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="text"
+                placeholder="예금주 *"
+                register={register("cancel.bankwho", { required: true })}
+              />
+            </div>{" "}
+            <div className={styles.content_body2}>
+              <Inputbox
+                type="text"
+                placeholder="계좌번호 *"
+                register={register("cancel.bankid", { required: true })}
+              />
+            </div>
+          </div>
+        </div>
+
+        <h3>지연이자</h3>
+        <div className={styles.content_container}>
+          <Inputbox
+            type="text"
+            placeholder="일수 *"
+            register={register("delayedloan.loandate", { required: true })}
+          />
+          <Inputbox
+            type="number"
+            placeholder="지연이자액 *"
+            register={register("delayedloan.loan", { required: true })}
           />
         </div>
 
@@ -358,23 +416,23 @@ function Create() {
         <div className={styles.content_container}>
           <Inputbox
             type="text"
-            placeholder="총괄 *"
-            register={register("ext.manage", { required: true })}
+            placeholder="총괄"
+            register={register("ext.manage")}
           />
           <Inputbox
             type="text"
-            placeholder="본부 *"
-            register={register("ext.managemain", { required: true })}
+            placeholder="본부"
+            register={register("ext.managemain")}
           />
           <Inputbox
             type="text"
-            placeholder="팀 *"
-            register={register("ext.manageteam", { required: true })}
+            placeholder="팀"
+            register={register("ext.manageteam")}
           />
           <Inputbox
             type="text"
-            placeholder="성명 *"
-            register={register("ext.managename", { required: true })}
+            placeholder="성명"
+            register={register("ext.managename")}
           />
         </div>
 
@@ -382,8 +440,8 @@ function Create() {
         <div className={styles.content_container}>
           <InputAreabox
             type="text"
-            placeholder="기타 *"
-            register={register("ext.ext", { required: true })}
+            placeholder="기타"
+            register={register("ext.ext")}
           />
         </div>
         <h1></h1>
@@ -394,4 +452,4 @@ function Create() {
   );
 }
 
-export default withAuth(Create); // withAuth HOC 적용
+export default withAuth(Createwithdraw); // withAuth HOC 적용

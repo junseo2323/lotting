@@ -97,10 +97,6 @@ export const classificationlist = [
     item: "수정",
   },
   {
-    value: "x",
-    item: "해지",
-  },
-  {
     value: "p",
     item: "업대",
   },
@@ -112,8 +108,17 @@ export const classificationlist = [
     value: "g",
     item: "지주",
   },
+  {
+    value: "x",
+    item: "해지",
+  },
 ];
-
+export const cancellist = [
+  {
+    value: "x",
+    item: "해지",
+  },
+];
 export const sintacklist = [
   {
     value: "MOGUNGHWA",
