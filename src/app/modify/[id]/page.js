@@ -46,7 +46,7 @@ function Modify() {
         title: "회원 정보가 성공적으로 업데이트되었습니다.",
         confirmButtonText: "확인",
       }).then(() => {
-        window.location.reload(); // 페이지 새로고침
+        window.location.reload();
       });
     } catch (error) {
       console.error("회원 정보 업데이트 중 오류 발생:", error);

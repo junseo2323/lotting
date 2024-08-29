@@ -65,19 +65,7 @@ const SearchList = ({ name, number }) => {
   };
 
   const sortedData = () => {
-    const allowedSortValues = [
-      "1",
-      "c",
-      "j",
-      "p",
-      "p1",
-      "t",
-      "t1",
-      "g",
-      "r",
-      "x",
-      "x1",
-    ];
+    const allowedSortValues = ["r"];
 
     const categoryOrder = {
       정계약: 1,
