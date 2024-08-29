@@ -90,7 +90,12 @@ const Nav = () => {
             </div>
           </div>
         </Link>
-        <Link href="/modify">
+        
+        <div
+          className={styles.expandableContainer}
+          onMouseEnter={() => setMenuOpen(true)}
+          onMouseLeave={() => setMenuOpen(false)}
+        >
           <div
             className={
               splitpath[1] === "modify" ? styles.select : styles.nonselect
@@ -105,7 +110,19 @@ const Nav = () => {
               <span className={styles.innertext}>회원 정보 수정</span>
             </div>
           </div>
-        </Link>
+          <div className={styles.expandableMenu}>
+            <Link href="/modify">
+              <div className={styles.expandableMenuItem}>정계약</div>
+            </Link>
+            <Link href="/modify/modify">
+              <div className={styles.expandableMenuItem}>수정</div>
+            </Link>
+            <Link href="/modify/cancel">
+              <div className={styles.expandableMenuItem}>해지</div>
+            </Link>
+          </div>
+        </div>
+
         <Link href="/inputmoney">
           <div
             className={
