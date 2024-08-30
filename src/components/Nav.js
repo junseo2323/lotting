@@ -10,7 +10,12 @@ import {
   AiOutlineDollar,
   AiFillDollarCircle,
 } from "react-icons/ai";
-import { HiOutlineUsers, HiUsers } from "react-icons/hi2";
+import {
+  HiOutlineUsers,
+  HiUsers,
+  HiMagnifyingGlass,
+  HiPencilSquare,
+} from "react-icons/hi2";  // 새로운 아이콘 추가
 import LOGO from "@/img/logo.png";
 import styles from "../styles/Nav.module.scss";
 
@@ -55,9 +60,9 @@ const Nav = () => {
           >
             <div className={styles.innerContainer}>
               {splitpath[1] === "search" ? (
-                <HiUsers style={iconstyle} />
+                <HiMagnifyingGlass style={iconstyle} />
               ) : (
-                <HiOutlineUsers style={iconstyle} />
+                <HiMagnifyingGlass style={iconstyle} />
               )}
               <span className={styles.innertext}>회원 정보 검색</span>
             </div>
@@ -120,9 +125,9 @@ const Nav = () => {
           >
             <div className={styles.innerContainer}>
               {splitpath[1] === "modify" ? (
-                <HiUsers style={iconstyle} />
+                <HiPencilSquare style={iconstyle} />
               ) : (
-                <HiOutlineUsers style={iconstyle} />
+                <HiPencilSquare style={iconstyle} />
               )}
               <span className={styles.innertext}>회원 정보 수정</span>
             </div>
